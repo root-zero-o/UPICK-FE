@@ -9,6 +9,8 @@ module.exports = {
   theme: {
     fontSize: {},
     colors: {
+      gradientBlue: "#45DDFF",
+      gradientGreen: "#45F1DA",
       green: "#45FFBC",
 
       skyblue: "#00B6F0",
@@ -19,9 +21,12 @@ module.exports = {
       lightGray: "#F7FAFF",
       gray: "#B1C3D0",
       darkGray: "#808E99",
+      gradientGray: "#E4E6FC",
 
       black: "#000000",
-      white: "#ffffff",
+      white: "#FFFFFF",
+      borderWhite: "#E4E5E6",
+      gradientWhite: "#F3F9F7",
     },
     fontFamily: {
       "sdg-b": ["SDG-B"],
@@ -37,7 +42,12 @@ module.exports = {
       "bon-regular": ["bon-regular"],
       "bon-thin": ["bon-thin"],
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        whiteLeft: "-10px 30px 0px rgba(247, 250, 255, 1)",
+        whiteRight: "10px 30px 0px rgba(247, 250, 255, 1)",
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 };

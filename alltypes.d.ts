@@ -1,2 +1,2 @@
-declare module "react-query";
-declare module "react-query/devtools";
+declare module "@tanstack/react-query";
+declare module "@tanstack/react-query-devtools";

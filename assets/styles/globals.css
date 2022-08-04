@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+
+@font-face {
+  font-family: "SDG-B";
+  src: url("../fonts/SDG/AppleSDGothicNeoB.woff");
+}
+@font-face {
+  font-family: "SDG-EB";
+  src: url("../fonts/SDG/AppleSDGothicNeoEB.woff");
+}
+@font-face {
+  font-family: "SDG-H";
+  src: url("../fonts/SDG/AppleSDGothicNeoH.woff");
+}
+@font-face {
+  font-family: "SDG-L";
+  src: url("../fonts/SDG/AppleSDGothicNeoL.woff");
+}
+@font-face {
+  font-family: "SDG-M";
+  src: url("../fonts/SDG/AppleSDGothicNeoM.woff");
+}
+@font-face {
+  font-family: "bon-black";
+  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Black.woff");
+}
+@font-face {
+  font-family: "bon-bold";
+  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Bold.woff");
+}
+@font-face {
+  font-family: "bon-demiLight";
+  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-DemiLight.woff");
+}
+@font-face {
+  font-family: "bon-light";
+  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Light.woff");
+}
+@font-face {
+  font-family: "bon-medium";
+  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Medium.woff");
+}
+@font-face {
+  font-family: "bon-regular";
+  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Regular.woff");
+}
+@font-face {
+  font-family: "bon-thin";
+  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Thin.woff");
+}
+
+@layer components {
+}
+
+@tailwind utilities;

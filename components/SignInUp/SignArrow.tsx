@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Arrow from "../../assets/images/Arrow.svg";
+import Arrow from "../../assets/images/icons/Arrow.svg";
 
 const SignArrow = () => {
   return (

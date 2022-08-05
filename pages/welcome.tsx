@@ -1,9 +1,11 @@
 import Image from "next/image";
-import Logo from "../assets/imgs/Logo.svg";
+import Logo from "../assets/images/Logo.svg";
+import Seo from "../components/Seo";
 
 const welcome = () => {
   return (
     <div className="relative flex items-start justify-center h-full bg-green overflow-hidden ">
+      <Seo title="welcome" />
       {/* 우상단 동그라미 */}
       <div className="w-[285.8px] h-[285.8px] absolute bg-welcome-p-one blur-[10px] rounded-full top-[-60px] left-[200px]" />
       {/* 중앙 동그라미 */}

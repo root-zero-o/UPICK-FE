@@ -1,17 +1,35 @@
-import SignBG from "../components/SignInUp/SignBG";
+import HeaderBG from "../components/HeaderBG";
 import SignBottom from "../components/SignInUp/SignBottom";
 import SignInput from "../components/SignInUp/SignInput";
 import SignArrow from "../components/SignInUp/SignArrow";
 import SignHeader from "../components/SignInUp/SignHeader";
 import SignInputBottom from "../components/SignInUp/SignInputBottom";
 import Image from "next/image";
-import DisablePW from "../assets/images/DisablePW.svg";
+import DisablePW from "../assets/images/icons/DisablePW.svg";
 import Hand from "../assets/images/Hand.svg";
+import Seo from "../components/Seo";
 
 const signup = () => {
   return (
     <div className="flex flex-col items-start justify-start w-full h-full font-sdg-b">
-      <SignBG />
+      <Seo title="회원가입" />
+      <HeaderBG
+        fullWidth="100%"
+        fullHeight="643px"
+        fullTop="-37.56%"
+        innerWidth="504px"
+        innerHeight="504px"
+        innerTop="75.78%"
+        innerLeft="-6.4%"
+        outerWidth="504px"
+        outerHeight="504px"
+        outerTop="-28.57%"
+        outerLeft="-31.73%"
+        showInnerDIv={true}
+        showOuterDiv={true}
+        rot={0}
+        bgFlag={true}
+      />
       <div className="relative flex items-center justify-start w-full z-9 ml-[40px] mt-[90px]">
         <span className="text-white text-[26px] leading-[36px] z-50 tracking-wide">
           반갑습니다

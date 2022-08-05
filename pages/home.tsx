@@ -3,6 +3,7 @@ import { SearchInput } from "../components/SearchInput";
 import Image from "next/image";
 import hiHand from "../assets/images/Hi hand 1.svg";
 import HeaderBG from "../components/HeaderBG";
+import Header from "../components/Header";
 
 const home = () => {
   return (
@@ -24,14 +25,14 @@ const home = () => {
         rot={150}
         bgFlag={false}
       />
+      <Header />
       <h1 className="font-sdg-b z-40 text-white text-[23px] absolute top-[18%] left-[10%]">
         김준호님, 반가워요
       </h1>
       <div className="absolute top-[12%] left-[39%]">
         <Image alt="" src={hiHand} />
       </div>
-
-      <SearchInput top={200} />
+      <SearchInput top={195} />
     </div>
   );
 };

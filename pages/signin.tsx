@@ -1,13 +1,13 @@
-import HeaderBG from "../components/HeaderBG";
-import SignBottom from "../components/SignInUp/SignBottom";
-import SignInput from "../components/SignInUp/SignInput";
-import SignArrow from "../components/SignInUp/SignArrow";
-import SignHeader from "../components/SignInUp/SignHeader";
-import SignInputBottom from "../components/SignInUp/SignInputBottom";
+import HeaderBG from "components/HeaderBG";
+import SignBottom from "components/SignInUp/SignBottom";
+import SignInput from "components/SignInUp/SignInput";
+import SignArrow from "components/SignInUp/SignArrow";
+import SignHeader from "components/SignInUp/SignHeader";
+import SignInputBottom from "components/SignInUp/SignInputBottom";
+import Seo from "components/Seo";
 import Image from "next/image";
-import DisablePW from "../assets/images/icons/DisablePW.svg";
-import Hand from "../assets/images/Hand.svg";
-import Seo from "../components/Seo";
+import DisablePW from "assets/images/icons/DisablePW.svg";
+import Hand from "assets/images/Hand.svg";
 
 const signin = () => {
   return (

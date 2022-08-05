@@ -6,7 +6,7 @@ import down from "../assets/images/icons/down.svg";
 
 const Header = () => {
   return (
-    <div className="w-full h-[50px]  absolute top-[7%] px-6 flex items-center justify-between">
+    <div className="w-full h-[50px]  absolute top-[8%] px-6 flex items-center justify-between">
       <div className="w-[40%] h-full flex items-center ">
         <span className="text-white text-[18px] font-sdg-m">애옹애옹약국</span>
         <Image alt="" src={down} />

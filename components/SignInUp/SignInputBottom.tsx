@@ -15,7 +15,9 @@ const SignInputBottom = ({
     <>
       <div className="find mt-[28px]">
         <span>
-          <strong onClick={onLink}>{textOne}</strong>
+          <strong onClick={onLink} className="cursor-pointer">
+            {textOne}
+          </strong>
           {textTwo}
         </span>
       </div>

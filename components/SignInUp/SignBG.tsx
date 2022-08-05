@@ -5,6 +5,7 @@ const SignBG = () => {
         <div className="w-[504px] h-[504px] bg-sign-p-three top-[75.78%] left-[-6.4%] rounded-full" />
       </div>
       <div className="w-[504px] h-[504px] bg-sign-p-two rounded-full top-[-28.57%] left-[-31.73%]" />
+
       <style jsx>
         {`
           div {

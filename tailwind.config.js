@@ -45,17 +45,10 @@ module.exports = {
           "linear-gradient(239.24deg, #45DDFF 28.42%, #0041E8 105.96%);",
         "welcome-p-two":
           "linear-gradient(317.3deg, #1576FB 5.42%, #45F1DA 85.66%);",
-        "welcome-p-three":
-          "linear-gradient(239.24deg, #45DDFF 28.42%, #0041E8 105.96%)",
-        "welcome-p-four":
-          "linear-gradient(239.24deg, #45DDFF 28.42%, #0041E8 105.96%)",
-
         // sign page linear gradient
         "sign-p-one":
           "linear-gradient(201.89deg, #45FFBC 13.17%, #45DDFF 107.88%)",
         "sign-p-two":
-          "linear-gradient(317.3deg, #1576FB 5.42%, #45F1DA 85.66%)",
-        "sign-p-three":
           "linear-gradient(317.3deg, #1576FB 5.42%, #45F1DA 85.66%)",
         // home page linear gradient
         "home-p-one":

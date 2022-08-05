@@ -45,7 +45,7 @@ const HeaderBG = ({
         )}
       >
         {showInnerDIv && (
-          <div className="innerDiv bg-sign-p-three  rounded-full" />
+          <div className="innerDiv bg-sign-p-two  rounded-full" />
         )}
       </div>
       {showOuterDiv && <div className="outerDiv bg-sign-p-two rounded-full " />}

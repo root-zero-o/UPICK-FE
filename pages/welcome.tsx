@@ -15,7 +15,7 @@ const welcome = () => {
       <div className="w-[70.79px] h-[70.79px] absolute bg-welcome-p-four blur-[10px] rounded-full top-[438.39px] left-[321.43px]" />
       {/* 텍스트 & 로고 */}
       <div className="flex flex-col items-center justify-start w-full h-full mt-[296px]">
-        <span className="font-sdg-b text-white text-[18px] z-10 mb-[20px]">
+        <span className="font-sdg-b text-white text-[18px] leading=[36px] z-10 mb-[20px]">
           나에게 딱 맞는 건강기능식품
         </span>
         <Image src={Logo} width="234.29px" height="71px" alt="" />

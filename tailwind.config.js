@@ -9,8 +9,6 @@ module.exports = {
   theme: {
     fontSize: {},
     colors: {
-      gradientBlue: "#45DDFF",
-      gradientGreen: "#45F1DA",
       green: "#45FFBC",
 
       skyblue: "#00B6F0",
@@ -21,12 +19,10 @@ module.exports = {
       lightGray: "#F7FAFF",
       gray: "#B1C3D0",
       darkGray: "#808E99",
-      gradientGray: "#E4E6FC",
+      cyan: "#00B7F0",
 
       black: "#000000",
-      white: "#FFFFFF",
-      borderWhite: "#E4E5E6",
-      gradientWhite: "#F3F9F7",
+      white: "#ffffff",
     },
     fontFamily: {
       "sdg-b": ["SDG-B"],
@@ -43,11 +39,26 @@ module.exports = {
       "bon-thin": ["bon-thin"],
     },
     extend: {
-      boxShadow: {
-        whiteLeft: "-10px 30px 0px rgba(247, 250, 255, 1)",
-        whiteRight: "10px 30px 0px rgba(247, 250, 255, 1)",
+      backgroundImage: {
+        // welcome page linear gradient
+        "welcome-p-one":
+          "linear-gradient(239.24deg, #45DDFF 28.42%, #0041E8 105.96%);",
+        "welcome-p-two":
+          "linear-gradient(317.3deg, #1576FB 5.42%, #45F1DA 85.66%);",
+        "welcome-p-three":
+          "linear-gradient(239.24deg, #45DDFF 28.42%, #0041E8 105.96%)",
+        "welcome-p-four":
+          "linear-gradient(239.24deg, #45DDFF 28.42%, #0041E8 105.96%)",
+
+        // sign page linear gradient
+        "sign-p-one":
+          "linear-gradient(201.89deg, #45FFBC 13.17%, #45DDFF 107.88%)",
+        "sign-p-two":
+          "linear-gradient(317.3deg, #1576FB 5.42%, #45F1DA 85.66%)",
+        "sign-p-three":
+          "linear-gradient(317.3deg, #1576FB 5.42%, #45F1DA 85.66%)",
       },
     },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [],
 };

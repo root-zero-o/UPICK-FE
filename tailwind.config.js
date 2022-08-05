@@ -58,6 +58,10 @@ module.exports = {
         "sign-p-three":
           "linear-gradient(317.3deg, #1576FB 5.42%, #45F1DA 85.66%)",
       },
+      boxShadow: {
+        // sign page
+        "sign-p-input": "0px 17px 23px -3px rgba(177, 194, 208, 0.4)",
+      },
     },
   },
   plugins: [],

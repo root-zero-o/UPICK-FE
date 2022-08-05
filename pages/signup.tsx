@@ -57,8 +57,12 @@ const signup = () => {
             src={DisablePW}
           />
           <SignArrow />
-          {/* 아이디 비번 찾기 */}
-          <SignInputBottom textOne="이용약관" textTwo="에 동의하시나요?" />
+          {/* 아이디 비번 찾기 - link 작업해야함*/}
+          <SignInputBottom
+            textOne="이용약관"
+            textTwo="에 동의하시나요?"
+            link=""
+          />
         </div>
       </div>
       <SignBottom

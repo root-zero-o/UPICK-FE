@@ -19,6 +19,8 @@ module.exports = {
       lightGray: "#F7FAFF",
       gray: "#B1C3D0",
       darkGray: "#808E99",
+      gray_300: "#d2effa",
+      cyan: "#00B7F0",
 
       black: "#000000",
       white: "#ffffff",
@@ -48,7 +50,7 @@ module.exports = {
           "linear-gradient(239.24deg, #45DDFF 28.42%, #0041E8 105.96%)",
         "welcome-p-four":
           "linear-gradient(239.24deg, #45DDFF 28.42%, #0041E8 105.96%)",
-        "welcome-logo": "url('/assets/imgs/Logo.svg')",
+
         // sign page linear gradient
         "sign-p-one":
           "linear-gradient(201.89deg, #45FFBC 13.17%, #45DDFF 107.88%)",

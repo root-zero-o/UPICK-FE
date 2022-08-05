@@ -19,6 +19,8 @@ const signin = () => {
         outerLeft="-31.73%"
         showInnerDIv={true}
         showOuterDiv={true}
+        rot={0}
+        bgFlag={true}
       />
       {/* 반갑습니다&손바닥 div */}
       <div className="relative flex items-center justify-start w-full z-9 ml-[40px] mt-[90px]">

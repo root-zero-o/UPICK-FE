@@ -1,3 +1,8 @@
+function cls(...classnames: string[]) {
+  // class들을 string 배열에 넣어준다.
+  return classnames.join(" "); // join으로 공백을 사이에 둔 문자열로 변환한다.
+}
+
 const HeaderBG = ({
   fullWidth,
   fullHeight,
@@ -12,6 +17,8 @@ const HeaderBG = ({
   outerLeft,
   showInnerDIv,
   showOuterDiv,
+  rot,
+  bgFlag,
 }: {
   fullWidth: string;
   fullHeight: string;
@@ -26,10 +33,17 @@ const HeaderBG = ({
   outerLeft: string;
   showInnerDIv: boolean;
   showOuterDiv: boolean;
+  rot: number;
+  bgFlag: boolean;
 }) => {
   return (
     <>
-      <div className="wholeDiv bg-sign-p-one rounded-[101px] overflow-hidden">
+      <div
+        className={cls(
+          "wholeDiv rounded-[101px] overflow-hidden",
+          bgFlag ? "bg-sign-p-one" : "bg-home-p-one"
+        )}
+      >
         {showInnerDIv && (
           <div className="innerDiv bg-sign-p-three  rounded-full" />
         )}
@@ -50,6 +64,7 @@ const HeaderBG = ({
             height: ${innerHeight};
             top: ${innerTop};
             left: ${innerLeft};
+            transform: rotate(${rot}deg);
           }
           .outerDiv {
             width: ${outerWidth};

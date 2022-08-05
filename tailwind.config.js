@@ -57,10 +57,19 @@ module.exports = {
           "linear-gradient(317.3deg, #1576FB 5.42%, #45F1DA 85.66%)",
         "sign-p-three":
           "linear-gradient(317.3deg, #1576FB 5.42%, #45F1DA 85.66%)",
+        // home page linear gradient
+        "home-p-one":
+          "linear-gradient(180.37deg, #45FFBC -5.06%, #45DDFF 89.84%)",
+        // search input linear gradient
+        searchInput:
+          "linear-gradient(180deg, rgba(243, 249, 247, 0.3) 0%, rgba(228, 230, 252, 0.3) 100%)",
       },
+
       boxShadow: {
         // sign page
         "sign-p-input": "0px 17px 23px -3px rgba(177, 194, 208, 0.4)",
+        "home-p-category-btn":
+          "-4px -4px 6px rgba(255, 255, 255, 0.5), 4px 4px 6px rgba(177, 194, 208, 0.4);",
       },
     },
   },

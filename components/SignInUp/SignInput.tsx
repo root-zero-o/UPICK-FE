@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Image from "next/image";
 
 const SignInput = ({
@@ -11,12 +12,35 @@ const SignInput = ({
   showButton: boolean;
   src: string;
 }) => {
+  const [passwordType, setPasswordType] = useState({
+    type: "password",
+    visible: false,
+  });
+  // 비밀번호 토글 func
+  const handlePasswordType = () => {
+    setPasswordType(() => {
+      if (!passwordType.visible) {
+        return { type: "text", visible: true };
+      }
+      return { type: "password", visible: false };
+    });
+  };
   return (
     <>
       <div className="inputDiv">
-        <input type={type} placeholder={placeholder} />
+        {type !== "password" ? (
+          // 일반 input들
+          <input type={type} placeholder={placeholder} />
+        ) : (
+          // 비밀번호 전용 input
+          <input type={passwordType.type} placeholder={placeholder} />
+        )}
+        {/* visible 해주는 toggle flag */}
         {showButton && (
-          <button className="flex items-center justify-center ml-2">
+          <button
+            className="flex items-center justify-center ml-2"
+            onClick={handlePasswordType}
+          >
             <Image src={src} width="18px" height="17px" alt="" />
           </button>
         )}

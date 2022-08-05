@@ -1,5 +1,4 @@
-import { useRouter } from "next/router";
-import { useCallback } from "react";
+import useClickRoute from "hooks/useClickRoute";
 
 const SignBottom = ({
   firstText,
@@ -10,10 +9,7 @@ const SignBottom = ({
   secondText: string;
   link: string;
 }) => {
-  const router = useRouter();
-  const onLink = useCallback(() => {
-    router.push(`${link}`);
-  }, [router, link]);
+  const onLink = useClickRoute({ link });
   return (
     <>
       {/* 하단 텍스트 */}

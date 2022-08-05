@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Logo from "../assets/images/Logo.svg";
-import Seo from "../components/Seo";
+import Logo from "assets/images/Logo.svg";
+import Seo from "components/Seo";
 
 const welcome = () => {
   return (

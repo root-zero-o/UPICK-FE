@@ -1,17 +1,21 @@
+import useClickRoute from "hooks/useClickRoute";
 import React from "react";
 
 const SignInputBottom = ({
   textOne,
   textTwo,
+  link,
 }: {
   textOne: string;
   textTwo: string;
+  link: string;
 }) => {
+  const onLink = useClickRoute({ link });
   return (
     <>
       <div className="find mt-[28px]">
         <span>
-          <strong>{textOne}</strong>
+          <strong onClick={onLink}>{textOne}</strong>
           {textTwo}
         </span>
       </div>

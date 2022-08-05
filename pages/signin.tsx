@@ -1,13 +1,13 @@
-import HeaderBG from "../components/HeaderBG";
-import SignBottom from "../components/SignInUp/SignBottom";
-import SignInput from "../components/SignInUp/SignInput";
-import SignArrow from "../components/SignInUp/SignArrow";
-import SignHeader from "../components/SignInUp/SignHeader";
-import SignInputBottom from "../components/SignInUp/SignInputBottom";
+import HeaderBG from "components/HeaderBG";
+import SignBottom from "components/SignInUp/SignBottom";
+import SignInput from "components/SignInUp/SignInput";
+import SignArrow from "components/SignInUp/SignArrow";
+import SignHeader from "components/SignInUp/SignHeader";
+import SignInputBottom from "components/SignInUp/SignInputBottom";
+import Seo from "components/Seo";
 import Image from "next/image";
-import DisablePW from "../assets/images/icons/DisablePW.svg";
-import Hand from "../assets/images/Hand.svg";
-import Seo from "../components/Seo";
+import DisablePW from "assets/images/icons/DisablePW.svg";
+import Hand from "assets/images/Hand.svg";
 
 const signin = () => {
   return (
@@ -57,8 +57,12 @@ const signin = () => {
             src={DisablePW}
           />
           <SignArrow />
-          {/* 아이디 비번 찾기 */}
-          <SignInputBottom textOne="이메일/비밀번호" textTwo="를 잊으셨나요?" />
+          {/* 아이디 비번 찾기 - link 작업해야함 */}
+          <SignInputBottom
+            textOne="이메일/비밀번호"
+            textTwo="를 잊으셨나요?"
+            link=""
+          />
         </div>
       </div>
       <SignBottom

@@ -56,6 +56,9 @@ module.exports = {
         // search input linear gradient
         searchInput:
           "linear-gradient(180deg, rgba(243, 249, 247, 0.3) 0%, rgba(228, 230, 252, 0.3) 100%)",
+        // home - popular pick card linear gradient
+        "home-popularPick-card":
+          "linear-gradient(1.47deg, #F7FAFF 46.89%, rgba(247, 250, 255, 0) 101.82%)",
       },
 
       boxShadow: {

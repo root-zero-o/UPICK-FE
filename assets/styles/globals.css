@@ -58,3 +58,7 @@
 input:focus {
   outline: none;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

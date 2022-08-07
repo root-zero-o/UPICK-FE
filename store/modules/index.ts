@@ -1,7 +1,10 @@
 import { combineReducers } from "redux";
+import userSlice from "./userSlice";
 
 // 루트 리듀서
-const rootReducer = combineReducers({}); // 리듀서가 추가되면 여기에 넣는다.
+const rootReducer = combineReducers({
+  user: userSlice,
+}); // 리듀서가 추가되면 여기에 넣는다.
 
 export default rootReducer;
 

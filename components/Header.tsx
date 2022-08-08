@@ -15,7 +15,7 @@ const Header = ({
   isWhite: boolean;
 }) => {
   return (
-    <div className="w-full  absolute top-[8%] px-6 flex items-center justify-between">
+    <div className="w-full  absolute top-[8%] px-6 flex items-center justify-between z-40">
       {home ? (
         <div className="w-[42%] h-full flex items-center ">
           <span className="text-white text-[18px] font-sdg-m">
@@ -27,11 +27,11 @@ const Header = ({
         <div className="w-[42%] h-full flex items-center ">
           <BackBtn isWhite={isWhite} />
           {isWhite ? (
-            <span className="text-white font-sdg-b text-[23px] ml-6">
+            <span className="text-white font-sdg-b text-[23px] ml-6 drop-shadow-sm">
               {title}
             </span>
           ) : (
-            <span className="text-navy font-sdg-b text-[23px] ml-6">
+            <span className="text-navy font-sdg-b text-[23px] ml-6 drop-shadow-sm">
               {title}
             </span>
           )}

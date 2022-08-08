@@ -24,7 +24,7 @@ const Header = ({
           <Image alt="" src={down} />
         </div>
       ) : (
-        <div className="w-[42%] h-full flex items-center ">
+        <div className="w-[45%] h-full flex items-center ">
           <BackBtn isWhite={isWhite} />
           {isWhite ? (
             <span className="text-white font-sdg-b text-[23px] ml-6 drop-shadow-sm">

@@ -1,18 +1,25 @@
 import React from "react";
 import Image from "next/image";
 import fullHeart from "../../assets/images/icons/fullHeart.svg";
+import useClickRoute from "hooks/useClickRoute";
 
 const ProductCard = ({
   title,
   keyword1,
   keyword2,
+  link,
 }: {
   title: string;
   keyword1: string;
   keyword2: string;
+  link: string;
 }) => {
+  const onLink = useClickRoute({ link });
   return (
-    <div className="w-[131px] h-[155px] rounded-[15px] bg-gray shadow-lg flex flex-col">
+    <div
+      onClick={onLink}
+      className="w-[131px] h-[155px] rounded-[15px] bg-gray shadow-lg flex flex-col hover:cursor-pointer hover:-translate-y-1 transition-all"
+    >
       <div className="w-full h-1/4 flex justify-end px-2">
         <Image alt="" src={fullHeart} />
       </div>

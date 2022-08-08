@@ -49,23 +49,10 @@
   font-family: "bon-thin";
   src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Thin.woff");
 }
-
-@layer components {
-}
-
-@tailwind utilities;
-
-input:focus {
-  outline: none;
-}
-
-
 @layer components {
   .home-section-wrapper {
     @apply w-full px-4 flex justify-evenly;
   }
-
-::-webkit-scrollbar {
-  display: none;
-
 }
+
+@tailwind utilities;

@@ -80,15 +80,45 @@ const home = () => {
         />
       </div>
       {/* link 연결 필요 */}
-      <CategoryTitle title="우리동네약사" subtitle="" link="/" />
+      <CategoryTitle title="우리동네약사" subtitle="" link="/neighborhood/" />
       {/* link 연결 필요 */}
       <div className="home-section-wrapper grid grid-cols-3">
-        <PharmacistProfile pharmacist="차은우" pharmacy="잘생김" link="/" />
-        <PharmacistProfile pharmacist="차은우" pharmacy="잘생김" link="/" />
-        <PharmacistProfile pharmacist="차은우" pharmacy="잘생김" link="/" />
-        <PharmacistProfile pharmacist="차은우" pharmacy="잘생김" link="/" />
-        <PharmacistProfile pharmacist="차은우" pharmacy="잘생김" link="/" />
-        <PharmacistProfile pharmacist="차은우" pharmacy="잘생김" link="/" />
+        <PharmacistProfile
+          pharmacist="차은우"
+          pharmacy="잘생김"
+          link="/"
+          location={false}
+        />
+        <PharmacistProfile
+          pharmacist="차은우"
+          pharmacy="잘생김"
+          link="/"
+          location={false}
+        />
+        <PharmacistProfile
+          pharmacist="차은우"
+          pharmacy="잘생김"
+          link="/"
+          location={false}
+        />
+        <PharmacistProfile
+          pharmacist="차은우"
+          pharmacy="잘생김"
+          link="/"
+          location={false}
+        />
+        <PharmacistProfile
+          pharmacist="차은우"
+          pharmacy="잘생김"
+          link="/"
+          location={false}
+        />
+        <PharmacistProfile
+          pharmacist="차은우"
+          pharmacy="잘생김"
+          link="/"
+          location={false}
+        />
       </div>
       {/* link 연결 필요 */}
       <CategoryTitle title="최근 봤던 약" subtitle="" link="/" />

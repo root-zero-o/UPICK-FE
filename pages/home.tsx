@@ -44,7 +44,7 @@ const home = () => {
         </div>
         <SearchInput top="78%" />
       </div>
-      <Header home={true} />
+      <Header home={true} isWhite={true} />
       <div className="home-section-wrapper pt-4">
         <HomeCategoryBtn src={pharmacist} text="약사픽" />
         <HomeCategoryBtn src={people} text="대중픽" />

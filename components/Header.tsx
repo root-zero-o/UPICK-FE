@@ -5,7 +5,15 @@ import notification from "../assets/images/icons/nofication.svg";
 import down from "../assets/images/icons/down.svg";
 import BackBtn from "./BackBtn";
 
-const Header = ({ home }: { home: boolean }) => {
+const Header = ({
+  home,
+  title,
+  isWhite,
+}: {
+  home: boolean;
+  title?: string;
+  isWhite: boolean;
+}) => {
   return (
     <div className="w-full  absolute top-[8%] px-6 flex items-center justify-between">
       {home ? (
@@ -17,7 +25,16 @@ const Header = ({ home }: { home: boolean }) => {
         </div>
       ) : (
         <div className="w-[42%] h-full flex items-center ">
-          <BackBtn />
+          <BackBtn isWhite={isWhite} />
+          {isWhite ? (
+            <span className="text-white font-sdg-b text-[23px] ml-6">
+              {title}
+            </span>
+          ) : (
+            <span className="text-navy font-sdg-b text-[23px] ml-6">
+              {title}
+            </span>
+          )}
         </div>
       )}
 

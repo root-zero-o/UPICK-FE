@@ -58,3 +58,9 @@
 input:focus {
   outline: none;
 }
+
+@layer components {
+  .home-section-wrapper {
+    @apply w-full px-4 flex justify-evenly;
+  }
+}

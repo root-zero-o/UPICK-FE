@@ -18,7 +18,7 @@ import ProductProfile from "components/ui/ProductProfile";
 
 const home = () => {
   return (
-    <div className="  w-full h-full bg-lightGray">
+    <div className="  w-full bg-lightGray">
       <div className="w-full h-[270px] relative flex flex-col items-center">
         <HeaderBG
           fullWidth="100%"

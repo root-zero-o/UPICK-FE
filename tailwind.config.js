@@ -7,6 +7,10 @@ module.exports = {
     "./lib/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      mobile: { min: "280px", max: "480px" },
+      desktop: { min: "768px" },
+    },
     fontSize: {},
     colors: {
       green: "#45FFBC",

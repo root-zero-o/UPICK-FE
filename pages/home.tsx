@@ -11,7 +11,6 @@ import myPick from "../assets/images/icons/myPick.svg";
 import HomeCategoryBtn from "../components/ui/HomeCategoryBtn";
 import CategoryTitle from "components/ui/CategoryTitle";
 import TextCard from "components/TextCard";
-import fullHeart from "../assets/images/icons/fullHeart.svg";
 import ProductCard from "components/ui/ProductCard";
 import PharmacistProfile from "components/ui/PharmacistProfile";
 import ProductProfile from "components/ui/ProductProfile";
@@ -45,7 +44,7 @@ const home = () => {
         </div>
         <SearchInput top="78%" />
       </div>
-      <Header />
+      <Header home={true} />
       <div className="home-section-wrapper pt-4">
         <HomeCategoryBtn src={pharmacist} text="약사픽" />
         <HomeCategoryBtn src={people} text="대중픽" />

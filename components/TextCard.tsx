@@ -12,8 +12,8 @@ const TextCard = ({
   likes: number;
 }) => {
   return (
-    <div className="w-full  flex flex-col items-center space-y-2 pt-2 pb-12 relative">
-      <div className="w-[322px] bg-lightGray rounded-[15px] shadow-md px-6 py-4 relative">
+    <div className="w-full  flex flex-col items-center space-y-2 relative">
+      <div className="w-[322px] bg-lightGray rounded-[15px] shadow-md px-6 py-2 relative">
         <div className="w-full py-2 border-b-[1px] border-gray flex justify-between">
           <h2 className="text-[16px] font-sdg-b text-navy ">{title}</h2>
           <Image alt="" src={fullHeart} />

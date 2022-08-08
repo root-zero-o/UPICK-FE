@@ -10,9 +10,9 @@ const CategoryTitle = ({
   subtitle: string;
 }) => {
   return (
-    <div className="w-full z-40 flex px-8 justify-between items-center">
+    <div className="w-full z-40 flex px-8 pt-10 pb-6 justify-between items-center">
       <div className="flex mt-1">
-        <h2 className="font-sdg-b text-navy text-[16px]">{title},</h2>
+        <h2 className="font-sdg-b text-navy text-[16px]">{title}</h2>
         <h3 className="font-sdg-l text-navy text-[16px] ml-1">{subtitle}</h3>
       </div>
       <div className="flex items-center">

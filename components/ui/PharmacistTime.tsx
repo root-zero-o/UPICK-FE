@@ -24,11 +24,11 @@ const PharmacistTime = ({
     <div className="flex mx-5 items-center justify-evenly py-4 relative">
       <span className="text-[16px] text-[#212222] font-sdg-b">{name} 약사</span>
       {active ? (
-        <div className="bg-skyblue text-white w-[50.23px] h-[20px] rounded-[13px] text-[10px] font-sdg-l flex items-center justify-center pt-1">
+        <div className="bg-skyblue text-white w-[50.23px] h-[20px] rounded-[13px] text-[10px] font-sdg-l flex items-center justify-center">
           상담가능
         </div>
       ) : (
-        <div className="border-[1px] border-gray text-gray w-[50.23px] h-[20px] rounded-[13px] text-[10px] font-sdg-l flex items-center justify-center pt-1">
+        <div className="border-[1px] border-gray text-gray w-[50.23px] h-[20px] rounded-[13px] text-[10px] font-sdg-l flex items-center justify-center ">
           상담불가
         </div>
       )}

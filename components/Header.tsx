@@ -9,13 +9,15 @@ const Header = ({
   home,
   title,
   isWhite,
+  icon,
 }: {
   home: boolean;
   title?: string;
   isWhite: boolean;
+  icon: boolean;
 }) => {
   return (
-    <div className="w-full  absolute top-[8%] px-6 flex items-center justify-between z-40">
+    <div className="w-full absolute top-[8%] flex items-center justify-between z-40">
       {home ? (
         <div className="w-[42%] h-full flex items-center ">
           <span className="text-white text-[18px] font-sdg-m">
@@ -37,18 +39,19 @@ const Header = ({
           )}
         </div>
       )}
-
-      <div className="w-[38%]  flex justify-evenly items-center">
-        <div className="flex items-center h-[50px] mr-[-15px] relative">
-          <Image alt="" src={shopIcon} />
-          <div className="w-[14px] h-[14px] bg-navy rounded-full absolute right-[32%] top-[5%] flex items-center justify-center px-[4px] pt-[2px]">
-            <span className="text-white text-[10px] font-sdg-l">2</span>
+      {icon ? (
+        <div className="w-[38%]  flex justify-evenly items-center">
+          <div className="flex items-center h-[50px] mr-[-15px] relative">
+            <Image alt="" src={shopIcon} />
+            <div className="w-[14px] h-[14px] bg-navy rounded-full absolute right-[32%] top-[5%] flex items-center justify-center px-[4px] pt-[2px]">
+              <span className="text-white text-[10px] font-sdg-l">2</span>
+            </div>
+          </div>
+          <div>
+            <Image alt="" src={notification} />
           </div>
         </div>
-        <div>
-          <Image alt="" src={notification} />
-        </div>
-      </div>
+      ) : null}
     </div>
   );
 };

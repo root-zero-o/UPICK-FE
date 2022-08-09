@@ -2,19 +2,23 @@ import React, { useState, useEffect } from "react";
 import time from "../../assets/images/icons/time.svg";
 import Image from "next/image";
 import send from "../../assets/images/icons/send.svg";
+import useClickRoute from "hooks/useClickRoute";
 
 const PharmacistTime = ({
   name,
   able,
   startTime,
   endTime,
+  link,
 }: {
   name: string;
   able: boolean;
   startTime: string;
   endTime: string;
+  link: string;
 }) => {
   const [active, setActive] = useState(false);
+  const onLink = useClickRoute({ link });
   useEffect(() => {
     if (able) {
       setActive(true);
@@ -39,7 +43,10 @@ const PharmacistTime = ({
           {startTime} ~ {endTime}
         </span>
       </div>
-      <div className="w-[30px] h-[30px] rounded-full bg-white shadow-md flex items-center justify-center hover:cursor-pointer hover:shadow-lg">
+      <div
+        onClick={onLink}
+        className="w-[30px] h-[30px] rounded-full bg-white shadow-md flex items-center justify-center hover:cursor-pointer hover:shadow-lg"
+      >
         <Image alt="" src={send} />
       </div>
     </div>

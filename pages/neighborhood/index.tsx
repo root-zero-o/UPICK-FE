@@ -10,10 +10,12 @@ import CategoryTitle from "components/ui/CategoryTitle";
 import PharmacistProfile from "components/ui/PharmacistProfile";
 import PharmacistTime from "components/ui/PharmacistTime";
 import NavBar from "components/NavBar";
+import Seo from "components/Seo";
 
 const index = () => {
   return (
     <div className=" w-full bg-lightGray relative">
+      <Seo title="울동네약사" />
       <div className="w-full h-[270px] relative flex flex-col items-center">
         <HeaderBG
           fullWidth="100%"
@@ -40,7 +42,7 @@ const index = () => {
           <BlurBtn src={chat} text="약사상담" />
         </div>
       </div>
-      <Header home={false} title="울동네약사" isWhite={true} />
+      <Header home={false} title="울동네약사" isWhite={true} icon={true} />
       <CategoryTitle title="가장 가까운 거리순" subtitle="" link="/" />
       <div className="home-section-wrapper">
         <PharmacistProfile
@@ -73,18 +75,21 @@ const index = () => {
             able={false}
             startTime="13:00"
             endTime="16:00"
+            link="/chat"
           />
           <PharmacistTime
             name="차은우"
             able={true}
             startTime="13:00"
             endTime="16:00"
+            link="/chat"
           />
           <PharmacistTime
             name="차은우"
             able={true}
             startTime="13:00"
             endTime="16:00"
+            link="/chat"
           />
         </div>
       </div>

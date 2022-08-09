@@ -1,5 +1,6 @@
 import React from "react";
 import { SearchInput } from "../components/SearchInput";
+import Seo from "components/Seo";
 import Image from "next/image";
 import hiHand from "../assets/images/Hi hand 1.svg";
 import HeaderBG from "../components/HeaderBG";
@@ -18,6 +19,7 @@ import ProductProfile from "components/ui/ProductProfile";
 const home = () => {
   return (
     <div className="  w-full bg-lightGray">
+      <Seo title="home" />
       <div className="w-full h-[270px] relative flex flex-col items-center">
         <HeaderBG
           fullWidth="100%"
@@ -44,7 +46,7 @@ const home = () => {
         </div>
         <SearchInput top="78%" />
       </div>
-      <Header home={true} isWhite={true} />
+      <Header home={true} isWhite={true} icon={true} />
       <div className="home-section-wrapper pt-4">
         {/* link 연결 필요 */}
         <HomeCategoryBtn src={pharmacist} text="약사픽" link="/" />

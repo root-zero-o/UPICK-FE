@@ -4,7 +4,7 @@ import Seo from "components/Seo";
 
 const welcome = () => {
   return (
-    <div className="w-full h-screen bg-green overflow-hidden">
+    <div className="w-full h-screen bg-green overflow-y-hidden">
       <Seo title="welcome" />
       <div className="relative w-full h-full">
         <div className="w-[285.8px] h-[285.8px] absolute bg-welcome-p-one blur-[10px] rounded-full top-[-60px] left-[200px]" />

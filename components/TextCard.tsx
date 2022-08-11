@@ -20,7 +20,7 @@ const TextCard = ({
     <div className="w-full  flex flex-col items-center space-y-2 relative">
       <div
         onClick={onLink}
-        className="w-[322px] bg-lightGray rounded-[15px] shadow-md px-6 py-2 relative hover:shadow-lg hover:cursor-pointer transition-all"
+        className="w-[300px] bg-lightGray rounded-[15px] shadow-md px-6 py-2 relative hover:shadow-lg hover:cursor-pointer transition-all"
       >
         <div className="w-full py-2 border-b-[1px] border-gray flex justify-between">
           <h2 className="text-[16px] font-sdg-b text-navy ">{title}</h2>

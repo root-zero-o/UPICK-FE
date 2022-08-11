@@ -11,7 +11,14 @@ module.exports = {
       mobile: { min: "280px", max: "480px" },
       desktop: { min: "768px" },
     },
-    fontSize: {},
+    fontSize: {
+      "2xl": "26px",
+      xl: "22px",
+      lg: "20px",
+      md: "16px",
+      sm: "12px",
+      xs: "10px",
+    },
     colors: {
       green: "#45FFBC",
 
@@ -29,18 +36,9 @@ module.exports = {
       white: "#ffffff",
     },
     fontFamily: {
-      "sdg-b": ["SDG-B"],
-      "sdg-eb": ["SDG-EB"],
-      "sdg-h": ["SDG-H"],
-      "sdg-l": ["SDG-L"],
-      "sdg-m": ["SDG-M"],
       "bon-black": ["bon-black"],
       "bon-bold": ["bon-bold"],
-      "bon-demiLight": ["bon-demiLight"],
-      "bon-light": ["bon-light"],
       "bon-medium": ["bon-medium"],
-      "bon-regular": ["bon-regular"],
-      "bon-thin": ["bon-thin"],
     },
     extend: {
       backgroundImage: {

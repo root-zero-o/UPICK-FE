@@ -12,7 +12,7 @@ import useClickRoute from "hooks/useClickRoute";
 const Signin = () => {
   const onLink = useClickRoute({ link: "/home" });
   return (
-    <div className="flex flex-col items-center justify-between bg-green">
+    <div className="h-screen flex flex-col items-center justify-between bg-green">
       <div className="InnerBox relative bg-lightBlue/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
         <SignHeader signInFlag={true} link="/signup" error={false} />
         <div className="flex flex-col justify-start items-center mt-[40.5px]">

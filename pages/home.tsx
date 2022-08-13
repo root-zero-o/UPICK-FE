@@ -13,6 +13,7 @@ import ProductCard from "components/ui/ProductCard";
 import PharmacistProfile from "components/ui/PharmacistProfile";
 import ProductProfile from "components/ui/ProductProfile";
 import Layout from "../components/Layout";
+import Footer from "components/ui/Footer";
 
 const home = () => {
   return (
@@ -104,11 +105,12 @@ const home = () => {
         />
       </div>
       <CategoryTitle title="최근 봤던 약" subtitle="" link="/" />
-      <div className="home-section-wrapper pb-6">
+      <div className="home-section-wrapper pb-16">
         <ProductProfile company="온누리" name="프리미엄 오메가쓰리" link="/" />
         <ProductProfile company="부광약품" name="올인핏" link="/" />
         <ProductProfile company="경남제약" name="밸런스케어 VIP" link="/" />
       </div>
+      <Footer />
     </Layout>
   );
 };

@@ -36,7 +36,7 @@ const TextCard = ({
           <div className="w-[51px] h-[55px] bg-white rounded-[9px] border-[1px] border-[#E6EFF7]"></div>
           <div className="w-[51px] h-[55px] bg-white rounded-[9px] border-[1px] border-[#E6EFF7]"></div>
         </div>
-        <div className="w-[54px] h-[54px] rounded-full bg-gray absolute bottom-[-13%] left-[10%]"></div>
+        <div className="w-[54px] h-[54px] rounded-full bg-coolgray3 absolute bottom-[-13%] left-[10%]"></div>
       </div>
     </div>
   );

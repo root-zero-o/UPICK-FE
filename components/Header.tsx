@@ -17,7 +17,7 @@ const Header = ({
   icon: boolean;
 }) => {
   return (
-    <div className="w-full px-7 absolute top-[3%] flex items-center justify-between z-40">
+    <div className="w-full px-7 absolute top-[-5%] flex items-center justify-between z-40">
       {home ? (
         <div className="w-[80%] h-full flex items-center ">
           <h4 className="text-white text-lg font-light">
@@ -29,7 +29,9 @@ const Header = ({
         <div className="w-[70%] h-full flex items-center ">
           <BackBtn isWhite={isWhite} />
           {isWhite ? (
-            <h2 className="text-white ml-6 drop-shadow-sm">{title}</h2>
+            <h2 className="text-white ml-6 drop-shadow-sm text-2xl mb-2 font-bold">
+              {title}
+            </h2>
           ) : (
             <h2 className="ml-6 drop-shadow-sm">{title}</h2>
           )}

@@ -14,35 +14,35 @@ import Seo from "components/Seo";
 
 const index = () => {
   return (
-    <div className=" w-full bg-lightGray relative">
-      <Seo title="울동네약사" />
-      <div className="w-full h-[270px] relative flex flex-col items-center">
+    <div className=" w-full bg-coolgray1 relative">
+      <Header home={false} title="울동네약사" isWhite={true} icon={true} />
+
+      <div className="w-full h-[180px] relative flex flex-col items-center">
         <HeaderBG
           fullWidth="100%"
           fullHeight="350px"
-          fullTop="-40%"
+          fullTop="-105%"
           innerWidth="504px"
           innerHeight="504px"
-          innerTop="15%"
-          innerLeft="-12%"
+          innerTop="-35.21%"
+          innerLeft="-20%"
           outerWidth="504px"
           outerHeight="504px"
           outerTop="-28.57%"
           outerLeft="-31.73%"
           showInnerDIv={true}
           showOuterDiv={false}
-          rot={80}
+          rot={150}
           bgFlag={false}
         />
-
-        <SearchInput top="48%" />
-        <div className="home-section-wrapper z-40 absolute bottom-[-4%]">
+        <SearchInput top="17%" />
+        <div className="home-section-wrapper z-40 absolute bottom-[-10%]">
           <BlurBtn src={best} text="인기순" />
           <BlurBtn src={location} text="거리순" />
           <BlurBtn src={chat} text="약사상담" />
         </div>
       </div>
-      <Header home={false} title="울동네약사" isWhite={true} icon={true} />
+
       <CategoryTitle title="가장 가까운 거리순" subtitle="" link="/" />
       <div className="home-section-wrapper">
         <PharmacistProfile
@@ -69,7 +69,7 @@ const index = () => {
       </div>
       <CategoryTitle title="우리 동네 약사 상담" subtitle="" link="/" />
       <div className="home-section-wrapper z-40 pb-4">
-        <div className="w-[95%] divide-y-[1px] divide-gray  bg-white rounded-[15px] flex flex-col shadow-md">
+        <div className="w-[95%] divide-y-[1px] divide-coolgray3  bg-white rounded-[15px] flex flex-col shadow-md">
           <PharmacistTime
             name="차은우"
             able={false}

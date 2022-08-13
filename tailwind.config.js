@@ -13,9 +13,9 @@ module.exports = {
       desktop: { min: "768px" },
     },
     fontSize: {
-      "2xl": "26px",
-      xl: "22px",
-      lg: "20px",
+      "2xl": "22px",
+      xl: "20px",
+      lg: "18px",
       md: "16px",
       sm: "12px",
       xs: "10px",

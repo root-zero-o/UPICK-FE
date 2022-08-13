@@ -31,12 +31,10 @@ const PharmacistProfile = ({
       </span>
       {location ? (
         <div className="flex items-center mt-[-6px]">
-          <div className="mb-2">
+          <div className="mb-1">
             <Image alt="" src={LocationBlue} />
           </div>
-          <span className="text-[12px] text-navy font-sdg-m ml-1">
-            {meter}m
-          </span>
+          <span className="text-sm text-darkblue1 ml-1">{meter}m</span>
         </div>
       ) : null}
     </div>

@@ -41,7 +41,7 @@ const home = () => {
         </h2>
         <SearchInput top="67%" />
       </div>
-      <Header home={true} isWhite={true} icon={true} />
+      <Header home={true} isWhite={true} icon={true} top="2%" />
       <div className="home-section-wrapper">
         {/* link 연결 필요 */}
         <HomeCategoryBtn src={pharmacist} text="약사픽" link="/" />

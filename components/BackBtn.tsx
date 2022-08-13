@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 const BackBtn = ({ isWhite }: { isWhite: boolean }) => {
   const router = useRouter();
   return (
-    <div onClick={() => router.back()}>
+    <div onClick={() => router.back()} className="hover:cursor-pointer">
       {isWhite ? (
         <Image alt="" src={pathWhite} />
       ) : (

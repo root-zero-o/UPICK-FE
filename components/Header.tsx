@@ -10,14 +10,16 @@ const Header = ({
   title,
   isWhite,
   icon,
+  top,
 }: {
   home: boolean;
   title?: string;
   isWhite: boolean;
   icon: boolean;
+  top: string;
 }) => {
   return (
-    <div className="w-full px-7 absolute top-[-5%] flex items-center justify-between z-40">
+    <div className="w-full px-7 flex items-center justify-between z-40 container">
       {home ? (
         <div className="w-[80%] h-full flex items-center ">
           <h4 className="text-white text-lg font-light">
@@ -50,6 +52,14 @@ const Header = ({
           </div>
         </div>
       ) : null}
+      <style jsx>
+        {`
+          .container {
+            position: absolute;
+            top: ${top};
+          }
+        `}
+      </style>
     </div>
   );
 };

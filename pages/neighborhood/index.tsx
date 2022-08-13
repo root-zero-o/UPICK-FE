@@ -15,7 +15,13 @@ import Seo from "components/Seo";
 const index = () => {
   return (
     <div className=" w-full bg-coolgray1 relative">
-      <Header home={false} title="울동네약사" isWhite={true} icon={true} />
+      <Header
+        home={false}
+        title="울동네약사"
+        isWhite={true}
+        icon={true}
+        top="-5%"
+      />
 
       <div className="w-full h-[180px] relative flex flex-col items-center">
         <HeaderBG

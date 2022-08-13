@@ -13,7 +13,7 @@ const Signup = () => {
   const [isDup, setIsDup] = useState(true);
   const onLink = useClickRoute({ link: "/home" });
   return (
-    <div className="h-full flex flex-col items-center justify-between bg-green">
+    <div className="flex flex-col items-center justify-between bg-green">
       {/* <HeaderBG
         fullWidth="100%"
         fullHeight="600px"

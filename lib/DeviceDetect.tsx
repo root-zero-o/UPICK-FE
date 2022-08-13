@@ -20,7 +20,7 @@ function DeviceDetect({ children }: Children) {
           .mobile {
             position: relative;
             width: 100%;
-            height: 200vh;
+            height: 100%;
             max-height: 1000px;
             max-width: 420px;
             margin: auto;

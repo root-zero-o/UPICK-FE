@@ -12,8 +12,8 @@ import useClickRoute from "hooks/useClickRoute";
 const Signin = () => {
   const onLink = useClickRoute({ link: "/home" });
   return (
-    <div className="h-full flex flex-col items-center bg-green">
-      <div className="InnerBox bg-lightBlue/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
+    <div className="h-full flex flex-col items-center justify-between bg-green">
+      <div className="InnerBox relative bg-lightBlue/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
         <SignHeader signInFlag={true} link="/signup" error={false} />
         <div className="flex flex-col justify-start items-center mt-[40.5px]">
           <SignInput
@@ -35,7 +35,7 @@ const Signin = () => {
             textTwo="를 잊으셨나요?"
             link=""
           />
-          <div className="flex flex-col items-center justify-between w-[164px] h-[81px] mt-[16px]">
+          <div className="flex flex-col items-center justify-between w-[164px] h-[81px] mt-[16px] mb-[75px]">
             <span className="bottomTxt">간편 로그인</span>
             <div className="flex justify-center gap-[20px]">
               <div className="social bg-kakao">
@@ -49,10 +49,10 @@ const Signin = () => {
               </div>
             </div>
           </div>
-          <SignArrow />
         </div>
+        <SignArrow />
       </div>
-      <span className="bottomTxt mt-[17.5vh]">
+      <span className="bottomTxt mb-[5.5%]">
         회원가입 없이
         <strong className="cursor-pointer" onClick={onLink}>
           &nbsp;둘러보기
@@ -63,7 +63,6 @@ const Signin = () => {
           .InnerBox {
             width: calc(100% - 58px);
             margin-top: 16.5vh;
-            height: 437px;
           }
           .ErrorText {
             font-weight: 500;

@@ -52,7 +52,7 @@ const Signin = () => {
         </div>
         <SignArrow />
       </div>
-      <span className="bottomTxt mb-[5.5%]">
+      <span className="bottomTxt mb-[55px]">
         회원가입 없이
         <strong className="cursor-pointer" onClick={onLink}>
           &nbsp;둘러보기

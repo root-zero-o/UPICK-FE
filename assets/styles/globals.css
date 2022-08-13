@@ -1,19 +1,6 @@
 @tailwind base;
 @tailwind components;
 
-@font-face {
-  font-family: "bon-black";
-  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Black.woff");
-}
-@font-face {
-  font-family: "bon-bold";
-  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Bold.woff");
-}
-@font-face {
-  font-family: "bon-medium";
-  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Medium.woff");
-}
-
 @layer components {
   .home-section-wrapper {
     @apply w-full px-4 flex justify-evenly;

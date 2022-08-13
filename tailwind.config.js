@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: [
@@ -38,11 +39,6 @@ module.exports = {
       kakao: "#FFE600",
       naver: "#00BE35",
     },
-    fontFamily: {
-      "bon-black": ["bon-black"],
-      "bon-bold": ["bon-bold"],
-      "bon-medium": ["bon-medium"],
-    },
     extend: {
       backgroundImage: {
         // welcome page linear gradient
@@ -73,6 +69,9 @@ module.exports = {
           "-4px -4px 6px rgba(255, 255, 255, 0.5), 4px 4px 6px rgba(177, 194, 208, 0.4);",
         chatBlue: "0px -15px 0px 0px rgba(210, 239, 250, 1)",
         chatWhite: "0px -15px 0px 0px rgba(255, 255, 255, 1)",
+      },
+      fontFamily: {
+        sans: ["Noto+Sans+KR", ...defaultTheme.fontFamily.sans],
       },
     },
   },

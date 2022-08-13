@@ -15,7 +15,7 @@ function DeviceDetect({ children }: Children) {
             justify-content: flex-start;
             align-items: center;
             height: 100vh;
-            background-repeat: no-repeat;
+            font-family: "Noto Sans KR", sans-serif;
           }
           .mobile {
             position: relative;
@@ -26,6 +26,7 @@ function DeviceDetect({ children }: Children) {
             margin: auto;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 24px;
+            background-color: #f7faff;
           }
         `}
       </style>

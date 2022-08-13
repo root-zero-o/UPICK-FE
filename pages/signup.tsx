@@ -13,7 +13,7 @@ const Signup = () => {
   const [isDup, setIsDup] = useState(true);
   const onLink = useClickRoute({ link: "/home" });
   return (
-    <div className="h-screen flex flex-col items-center justify-between bg-green">
+    <div className="flex flex-col items-center justify-between bg-lightGray">
       {/* <HeaderBG
         fullWidth="100%"
         fullHeight="600px"
@@ -54,7 +54,7 @@ const Signup = () => {
         </div>
         <SignArrow />
       </div>
-      <div className="flex flex-col items-center justify-start w-[164px] h-[141px] mt-[134px] mb-[49px]">
+      <div className="flex flex-col items-center justify-start w-[164px] h-[141px] mt-[134px] mb-[40px]">
         <span className="bottomTxt">간편 회원가입</span>
         <div className="flex justify-center gap-[20px] mt-[16px]">
           <div className="social bg-kakao">
@@ -74,12 +74,11 @@ const Signup = () => {
           </strong>
         </span>
       </div>
-
       <style jsx>
         {`
           .InnerBox {
             width: calc(100% - 58px);
-            margin-top: 16.5vh;
+            margin-top: 138px;
           }
           .ErrorText {
             font-weight: 500;

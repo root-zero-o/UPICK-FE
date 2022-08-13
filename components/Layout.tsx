@@ -18,7 +18,7 @@ const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
     <div className="w-full flex flex-col pt-3 relative">
       <div className="w-full flex items-center justify-between px-6 z-40">
         {home ? (
-          <div className="flex items-center">
+          <div className="flex items-center w-[80%]">
             <h4 className="text-white text-lg font-light">
               여덟글자여덟글자약국
             </h4>

@@ -6,10 +6,12 @@ const SignHeader = ({
   signInFlag,
   link,
   error,
+  first,
 }: {
   signInFlag: boolean;
   link: string;
   error: boolean;
+  first: boolean;
 }) => {
   const onLink = useClickRoute({ link: link });
   return (
@@ -25,6 +27,14 @@ const SignHeader = ({
               className="relative marDiv flex flex-col items-center justify-center"
               onClick={onLink}
             >
+              {first && (
+                <div className="errorImg relative">
+                  <span className="absolute top-[12%] left-[7%] font-[500] text-[12px] font-blue z-10">
+                    혹시 <span className="font-[700]">유픽 첫방문</span>이라면?
+                  </span>
+                  <Image src={TalkCloud} alt="" />
+                </div>
+              )}
               <span className="text-darkGray text-[20px] opacity-[0.4] cursor-pointer">
                 회원가입
               </span>
@@ -37,7 +47,10 @@ const SignHeader = ({
               onClick={onLink}
             >
               {error && (
-                <div className="errorImg">
+                <div className="errorImg relative">
+                  <span className="absolute top-[12%] left-[3%] font-[500] text-[12px] font-blue z-10">
+                    이전에 가입했다면 로그인
+                  </span>
                   <Image src={TalkCloud} alt="" />
                 </div>
               )}
@@ -59,8 +72,9 @@ const SignHeader = ({
           }
           .errorImg {
             position: absolute;
-            top: -50px;
+            top: -55px;
             width: 139px;
+            color: #1576fb;
           }
         `}</style>
       </div>

@@ -32,7 +32,12 @@ const Signup = () => {
         bgFlag={false}
       /> */}
       <div className="InnerBox relative bg-lightBlue/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
-        <SignHeader signInFlag={false} link="/signin" error={isDup} />
+        <SignHeader
+          signInFlag={false}
+          link="/signin"
+          error={isDup}
+          first={false}
+        />
         <div className="flex flex-col justify-start items-center mt-[40.5px]">
           <SignInput
             type="text"

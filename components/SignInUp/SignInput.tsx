@@ -1,16 +1,22 @@
 import { useState } from "react";
 import Image from "next/image";
 
+function cls(...classnames: string[]) {
+  return classnames.join(" ");
+}
+
 const SignInput = ({
   type,
   placeholder,
   showButton,
   src,
+  error,
 }: {
   type: string;
   placeholder: string;
   showButton: boolean;
   src: string;
+  error: boolean;
 }) => {
   const [passwordType, setPasswordType] = useState({
     type: "password",
@@ -27,7 +33,7 @@ const SignInput = ({
   };
   return (
     <>
-      <div className="inputDiv">
+      <div className={cls("inputDiv", error ? "error" : "")}>
         {type !== "password" ? (
           // 일반 input들
           <input type={type} placeholder={placeholder} />
@@ -38,7 +44,10 @@ const SignInput = ({
         {/* visible 해주는 toggle flag */}
         {showButton && (
           <button
-            className="flex items-center justify-center ml-2"
+            className={cls(
+              "flex items-center justify-center mr-[12px]",
+              passwordType.visible ? "opacity-[0.3]" : ""
+            )}
             onClick={handlePasswordType}
           >
             <Image src={src} width="18px" height="17px" alt="" />
@@ -50,7 +59,7 @@ const SignInput = ({
           input {
             background-color: transparent;
             margin-left: 20px;
-            width: 227.34px;
+            width: calc(100% - 50px);
             line-height: 23px;
           }
           input::placeholder {
@@ -59,12 +68,17 @@ const SignInput = ({
           .inputDiv {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             width: calc(100% - 22px);
             height: 44px;
             background-color: #f7faff;
             border: 1px solid #b1c2d0;
             border-radius: 22px;
             margin-bottom: 20px;
+          }
+          .error {
+            border: 1px solid #f94a23;
+            color: #f94a23;
           }
         `}
       </style>

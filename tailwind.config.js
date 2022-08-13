@@ -34,6 +34,9 @@ module.exports = {
 
       black: "#000000",
       white: "#ffffff",
+      error: "#F94A23",
+      kakao: "#FFE600",
+      naver: "#00BE35",
     },
     fontFamily: {
       "bon-black": ["bon-black"],

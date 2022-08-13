@@ -13,7 +13,7 @@ const SignInputBottom = ({
   const onLink = useClickRoute({ link });
   return (
     <>
-      <div className="find mt-[28px]">
+      <div className="find">
         <span>
           <strong onClick={onLink} className="cursor-pointer">
             {textOne}

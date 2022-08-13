@@ -4,13 +4,31 @@ interface Children {
 
 function DeviceDetect({ children }: Children) {
   return (
-    <div className="w-screen h-screen">
-      <div
-        className="desktop:fixed desktop:w-[375px] desktop:h-[812px] desktop:right-1/2 desktop:top-1/2 desktop:translate-x-1/2 desktop:-translate-y-1/2 desktop:overflow-x-hidden
-      mobile:w-screen mobile:overflow-x-hidden scrollbar-hide "
-      >
-        {children}
-      </div>
+    <div className="web">
+      <div className="mobile">{children}</div>
+      <style jsx>
+        {`
+          .web {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            background-repeat: no-repeat;
+          }
+          .mobile {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            max-height: 1000px;
+            max-width: 420px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 24px;
+          }
+        `}
+      </style>
     </div>
   );
 }

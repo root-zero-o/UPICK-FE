@@ -54,7 +54,7 @@ const Signup = () => {
         </div>
         <SignArrow />
       </div>
-      <div className="flex flex-col items-center justify-start w-[164px] h-[141px] mb-[3.5%]">
+      <div className="flex flex-col items-center justify-start w-[164px] h-[141px] mt-[134px] mb-[49px]">
         <span className="bottomTxt">간편 회원가입</span>
         <div className="flex justify-center gap-[20px] mt-[16px]">
           <div className="social bg-kakao">

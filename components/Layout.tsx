@@ -25,7 +25,7 @@ const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
             <Image alt="" src={down} />
           </div>
         ) : (
-          <div className="w-[80%] h-full flex items-center">
+          <div className="flex items-center">
             <BackBtn isWhite={isWhite} />
             {isWhite ? (
               <h2 className="text-white ml-6 drop-shadow-sm text-2xl mb-2 font-bold">
@@ -37,7 +37,7 @@ const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
           </div>
         )}
         {icon ? (
-          <div className="w-[40%] flex justify-evenly items-center ">
+          <div className="flex justify-evenly items-center ">
             <div className="flex items-center relative">
               <div>
                 <Image alt="" src={shopIcon} />
@@ -50,7 +50,9 @@ const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
               <Image alt="" src={notification} />
             </div>
           </div>
-        ) : null}
+        ) : (
+          <div className="h-[110px]"></div>
+        )}
       </div>
 
       {children}

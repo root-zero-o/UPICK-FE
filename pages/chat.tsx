@@ -1,13 +1,12 @@
-import Header from "components/Header";
 import React from "react";
 import Image from "next/image";
 import sendWhite from "../assets/images/icons/sendWhite.svg";
+import Layout from "components/Layout";
 
 const chat = () => {
   return (
-    <div className="w-full ">
-      <Header title="" home={false} isWhite={false} icon={false} top="5%" />
-      <div className="w-full px-8 pt-16 bg-coolgray1 flex flex-col">
+    <Layout home={false} title="" isWhite={false} icon={false}>
+      <div className=" w-full flex flex-col px-8 absolute top-[60px]">
         <div className="mb-4 pb-2 border-b-[1px] border-coolgray3 flex items-end justify-end">
           <span className="text-sm text-coolgray3 mr-2 font-medium">
             잘생김 약국
@@ -18,7 +17,7 @@ const chat = () => {
           <div className="w-[51px] h-[51px] rounded-full border-white border-[3px] bg-coolgray3 shadow-md"></div>
         </div>
       </div>
-      <div className="px-8 min-h-screen space-y-4 flex flex-col">
+      <div className="px-8 space-y-4 flex flex-col mt-6">
         <div className="bg-blue3 rounded-[27px] px-6 py-3 relative max-w-full flex justify-end">
           <span className="text-sm text-darkblue1">
             약사님 잘생겼어요약사님 잘생겼어요약사님 잘생겼어요약사님
@@ -47,8 +46,7 @@ const chat = () => {
           <span>15:53:11</span>
         </div>
       </div>
-
-      <div className="w-full h-[60px] sticky right-0 bottom-[0px] flex justify-evenly items-center bg-coolgray1 z-40">
+      <div className="w-full h-[60px] fixed bottom-0 max-w-[420px] flex justify-evenly items-center bg-coolgray1 z-40">
         <div className="w-[40px] h-[40px] rounded-full bg-white shadow-md flex items-center justify-center hover:cursor-pointer hover:shadow-lg">
           <span className="text-sm text-coolgray3 font-medium">종료</span>
         </div>
@@ -61,7 +59,7 @@ const chat = () => {
           <Image alt="" src={sendWhite} />
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

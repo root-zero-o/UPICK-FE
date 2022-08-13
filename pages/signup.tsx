@@ -99,7 +99,6 @@ const Signup = () => {
             cursor: pointer;
           }
           .bottomTxt {
-            font-weight: 500;
             font-size: 14px;
             line-height: 21px;
             color: #808e99;

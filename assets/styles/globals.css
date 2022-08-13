@@ -1,17 +1,20 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
-@font-face {
-  font-family: "bon-black";
-  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Black.woff");
-}
-@font-face {
-  font-family: "bon-bold";
-  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Bold.woff");
-}
-@font-face {
-  font-family: "bon-medium";
-  src: url("../fonts/NotoSansCJK/NotoSansCJKkr-Medium.woff");
+@layer base {
+  @font-face {
+    font-family: "bonBlack";
+    src: url("/public/fonts/NotoSansKR-Black.woff2");
+  }
+  @font-face {
+    font-family: "bonBold";
+    src: url("/public/fonts/NotoSansKR-Bold.woff2");
+  }
+  @font-face {
+    font-family: "bonMedium";
+    src: url("/public/fonts/NotoSansKR-Medium.woff2");
+  }
 }
 
 @layer components {
@@ -19,5 +22,3 @@
     @apply w-full px-4 flex justify-evenly;
   }
 }
-
-@tailwind utilities;

@@ -17,11 +17,11 @@ const HomeCategoryBtn = ({
     <div className="flex flex-col items-center">
       <div
         onClick={onLink}
-        className="w-[56px] h-[56px] bg-lightGray rounded-full flex items-center justify-center shadow-home-p-category-btn hover:cursor-pointer hover:bg-white transition-colors"
+        className="w-[56px] h-[56px] bg-lightGray font-bold rounded-full flex items-center justify-center shadow-home-p-category-btn hover:cursor-pointer hover:bg-white transition-colors"
       >
         <Image alt="" src={src} />
       </div>
-      <span className="text-[13px] text-gray font-sdg-m mt-[12px]">{text}</span>
+      <span className="text-[13px] text-coolgray3 mt-[12px]">{text}</span>
     </div>
   );
 };

@@ -11,7 +11,7 @@ import myPickBlue from "../assets/images/icons/myPickBlue.svg";
 
 const NavBar = ({ location }: { location: string }) => {
   return (
-    <div className="w-full h-[60px] sticky bottom-[0px] flex justify-evenly items-center bg-coolgray1 z-40 pt-1">
+    <div className="w-full h-[60px] fixed bottom-0 max-w-[420px] flex justify-evenly items-center z-40 pt-1 bg-coolgray1 ">
       {location === "pharmacistPick" ? (
         <div className="flex flex-col items-center text-blue1">
           <Image alt="" src={pharmacistBlue} />

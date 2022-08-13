@@ -4,8 +4,8 @@ interface Children {
 
 function DeviceDetect({ children }: Children) {
   return (
-    <div className="web">
-      <div className="mobile">{children}</div>
+    <div className="web w-screen">
+      <div className="mobile min-h-screen">{children}</div>
       <style jsx>
         {`
           .web {
@@ -14,13 +14,11 @@ function DeviceDetect({ children }: Children) {
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            height: 100vh;
             font-family: "Noto Sans KR", sans-serif;
           }
           .mobile {
             position: relative;
             width: 100%;
-
             max-width: 420px;
             margin: auto;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);

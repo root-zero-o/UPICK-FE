@@ -5,7 +5,7 @@ import Search from "../assets/images/icons/Search.svg";
 export const SearchInput = ({ top }: { top: string }) => {
   return (
     <>
-      <div className="w-[85%] h-[48px] bg-searchInput rounded-[24px] backdrop-blur flex items-center pl-2">
+      <div className="w-[85%] h-[48px] bg-searchInput rounded-[24px] backdrop-blur flex items-center pl-2 mx-auto">
         <Image src={Search} alt="" className="ml-5" />
       </div>
       <input

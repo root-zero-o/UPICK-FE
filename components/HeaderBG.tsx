@@ -47,8 +47,11 @@ const HeaderBG = ({
         {showInnerDIv && (
           <div className="innerDiv bg-sign-p-two  rounded-full" />
         )}
+        {showOuterDiv && (
+          <div className="outerDiv bg-sign-p-two rounded-full " />
+        )}
       </div>
-      {showOuterDiv && <div className="outerDiv bg-sign-p-two rounded-full " />}
+
       <style jsx>
         {`
           div {

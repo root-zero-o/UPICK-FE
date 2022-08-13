@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: [
@@ -12,10 +13,9 @@ module.exports = {
       desktop: { min: "768px" },
     },
     fontSize: {
-      "3xl": "26px",
-      "2xl": "22px",
-      xl: "20px",
-      lg: "18px",
+      "2xl": "26px",
+      xl: "22px",
+      lg: "20px",
       md: "16px",
       sm: "12px",
       xs: "10px",
@@ -23,32 +23,22 @@ module.exports = {
     colors: {
       green: "#45FFBC",
 
-      blue1: "#1576FB",
-      blue2: "#00B7F0",
-      blue3: "#D2EFFA",
-      darkblue1: "#153075",
-      darkblue2: "#224AAE",
+      skyblue: "#00B6F0",
+      blue: "#1576FB",
+      navy: "#4A5A95",
+      lightBlue: "#D2EFFA",
 
-      orange: "#F94A23",
-      yellow1: "#F9B023",
-      yellow2: "#FFC83A",
-
-      coolgray1: "#F7FAFF",
-      coolgray2: "#E2F0FB",
-      coolgray3: "#B1C2D0",
-      coolgray4: "#808E99",
-      coolgray5: "#4C5D6B",
+      lightGray: "#F7FAFF",
+      gray: "#B1C3D0",
+      darkGray: "#808E99",
       cyan: "#00B7F0",
 
       black: "#000000",
       white: "#ffffff",
+      error: "#F94A23",
+      kakao: "#FFE600",
+      naver: "#00BE35",
     },
-    fontFamily: {
-      bonBlack: ["bonBlack", "sans-serif"],
-      bonBold: ["bonBold", "sans-serif"],
-      bonMedium: ["bonMedium", "sans-serif"],
-    },
-
     extend: {
       backgroundImage: {
         // welcome page linear gradient
@@ -79,6 +69,9 @@ module.exports = {
           "-4px -4px 6px rgba(255, 255, 255, 0.5), 4px 4px 6px rgba(177, 194, 208, 0.4);",
         chatBlue: "0px -15px 0px 0px rgba(210, 239, 250, 1)",
         chatWhite: "0px -15px 0px 0px rgba(255, 255, 255, 1)",
+      },
+      fontFamily: {
+        sans: ["Noto+Sans+KR", ...defaultTheme.fontFamily.sans],
       },
     },
   },

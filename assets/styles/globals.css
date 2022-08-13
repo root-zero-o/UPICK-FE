@@ -1,24 +1,16 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
-
-@layer base {
-  @font-face {
-    font-family: "bonBlack";
-    src: url("/public/fonts/NotoSansKR-Black.woff2");
-  }
-  @font-face {
-    font-family: "bonBold";
-    src: url("/public/fonts/NotoSansKR-Bold.woff2");
-  }
-  @font-face {
-    font-family: "bonMedium";
-    src: url("/public/fonts/NotoSansKR-Medium.woff2");
-  }
-}
 
 @layer components {
   .home-section-wrapper {
     @apply w-full px-4 flex justify-evenly;
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  input:focus {
+    outline: none;
+  }
 }
+
+@tailwind utilities;

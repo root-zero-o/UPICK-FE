@@ -1,8 +1,6 @@
 import React from "react";
 import { SearchInput } from "../components/SearchInput";
 import Seo from "components/Seo";
-import Image from "next/image";
-import hiHand from "../assets/images/Hi hand 1.svg";
 import HeaderBG from "../components/HeaderBG";
 import Header from "../components/Header";
 import pharmacist from "../assets/images/icons/pharmacist.svg";
@@ -18,7 +16,7 @@ import ProductProfile from "components/ui/ProductProfile";
 
 const home = () => {
   return (
-    <div className="  w-full bg-lightGray">
+    <div className="  w-full bg-coolgray1">
       <Seo title="home" />
       <div className="w-full h-[270px] relative flex flex-col items-center">
         <HeaderBG
@@ -38,12 +36,9 @@ const home = () => {
           rot={150}
           bgFlag={false}
         />
-        <h1 className="font-sdg-b z-40 text-white text-[23px] absolute top-[60%] left-[10%]">
+        <h2 className="z-40 text-white absolute top-[60%] left-[10%] font-bonBold text-2xl">
           김준호님, 반가워요
-        </h1>
-        <div className="absolute top-[40%] left-[40%]">
-          <Image alt="" src={hiHand} />
-        </div>
+        </h2>
         <SearchInput top="78%" />
       </div>
       <Header home={true} isWhite={true} icon={true} />

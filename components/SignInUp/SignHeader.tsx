@@ -14,8 +14,7 @@ const SignHeader = ({
   const onLink = useClickRoute({ link: link });
   return (
     <>
-      {/* 로그인 헤더 */}
-      <div className="flex  mt-[44px]">
+      <div className="flex mt-[44px] font-[700]">
         {signInFlag ? (
           <>
             <div className="marDiv flex flex-col items-center justify-center cursor-pointer">

@@ -12,7 +12,7 @@ import useClickRoute from "hooks/useClickRoute";
 const Signin = () => {
   const onLink = useClickRoute({ link: "/home" });
   return (
-    <div className="h-screen flex flex-col items-center justify-between bg-green">
+    <div className="flex flex-col items-center justify-between bg-lightGray">
       <div className="InnerBox relative bg-lightBlue/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
         <SignHeader signInFlag={true} link="/signup" error={false} />
         <div className="flex flex-col justify-start items-center mt-[40.5px]">
@@ -52,7 +52,7 @@ const Signin = () => {
         </div>
         <SignArrow />
       </div>
-      <span className="bottomTxt mt-[175px] mb-[60px]">
+      <span className="bottomTxt mt-[175px] mb-[30px]">
         회원가입 없이
         <strong className="cursor-pointer" onClick={onLink}>
           &nbsp;둘러보기
@@ -62,7 +62,7 @@ const Signin = () => {
         {`
           .InnerBox {
             width: calc(100% - 58px);
-            margin-top: 16.5vh;
+            margin-top: 138px;
           }
           .ErrorText {
             font-weight: 500;
@@ -82,6 +82,7 @@ const Signin = () => {
             font-size: 14px;
             line-height: 21px;
             color: #808e99;
+            font-weight: 500;
           }
         `}
       </style>

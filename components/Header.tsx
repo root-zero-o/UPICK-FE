@@ -19,23 +19,17 @@ const Header = ({
   return (
     <div className="w-full px-6 absolute top-[8%] flex items-center justify-between z-40">
       {home ? (
-        <div className="w-[42%] h-full flex items-center ">
-          <span className="text-white text-[18px] font-sdg-m">
-            애옹애옹약국
-          </span>
+        <div className="w-[45%] h-full flex items-center ">
+          <h4 className="text-white font-bon-medium text-lg">애옹애옹약국</h4>
           <Image alt="" src={down} />
         </div>
       ) : (
         <div className="w-[45%] h-full flex items-center ">
           <BackBtn isWhite={isWhite} />
           {isWhite ? (
-            <span className="text-white font-sdg-b text-[23px] ml-6 drop-shadow-sm">
-              {title}
-            </span>
+            <h2 className="text-white ml-6 drop-shadow-sm">{title}</h2>
           ) : (
-            <span className="text-navy font-sdg-b text-[23px] ml-6 drop-shadow-sm">
-              {title}
-            </span>
+            <h2 className="ml-6 drop-shadow-sm">{title}</h2>
           )}
         </div>
       )}

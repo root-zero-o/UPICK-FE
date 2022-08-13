@@ -22,11 +22,11 @@ const home = () => {
         <HeaderBG
           fullWidth="100%"
           fullHeight="350px"
-          fullTop="-40%"
+          fullTop="-50%"
           innerWidth="504px"
           innerHeight="504px"
           innerTop="-35.21%"
-          innerLeft="-32%"
+          innerLeft="-20%"
           outerWidth="504px"
           outerHeight="504px"
           outerTop="-28.57%"
@@ -36,13 +36,13 @@ const home = () => {
           rot={150}
           bgFlag={false}
         />
-        <h2 className="z-40 text-white absolute top-[60%] left-[10%] font-bonBold text-2xl">
+        <h2 className="z-40 text-white absolute top-[45%] left-[10%] font-bold text-2xl">
           김준호님, 반가워요
         </h2>
-        <SearchInput top="78%" />
+        <SearchInput top="67%" />
       </div>
       <Header home={true} isWhite={true} icon={true} />
-      <div className="home-section-wrapper pt-4">
+      <div className="home-section-wrapper">
         {/* link 연결 필요 */}
         <HomeCategoryBtn src={pharmacist} text="약사픽" link="/" />
         <HomeCategoryBtn src={people} text="대중픽" link="/" />

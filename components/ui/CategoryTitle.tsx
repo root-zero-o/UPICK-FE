@@ -14,18 +14,16 @@ const CategoryTitle = ({
 }) => {
   const onLink = useClickRoute({ link: link });
   return (
-    <div className="w-full z-40 flex px-8 pt-10 pb-6 justify-between items-center">
+    <div className="w-full z-40 flex px-10 pt-10 pb-6 justify-between items-center">
       <div className="flex mt-1">
-        <h2 className="font-sdg-b text-navy text-[16px]">{title}</h2>
-        <h3 className="font-sdg-l text-navy text-[16px] ml-1">{subtitle}</h3>
+        <h2 className="text-darkblue1 text-md font-black">{title}</h2>
+        <h3 className="text-darkblue1 text-md ml-1 font-medium">{subtitle}</h3>
       </div>
       <div
         onClick={onLink}
         className="flex items-center hover:cursor-pointer hover:drop-shadow-md"
       >
-        <span className="text-[10px] font-sdg-m text-gray mr-1 mt-1 ">
-          더보기
-        </span>
+        <span className="text-xs text-coolgray3 mr-1 ">더보기</span>
         <Image alt="" src={rightArrow} />
       </div>
     </div>

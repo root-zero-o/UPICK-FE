@@ -46,7 +46,7 @@ const index = () => {
           <PharmacistProfile
             pharmacist="차은우"
             pharmacy="잘생김"
-            link="/"
+            link="/neighborhood/detail/1"
             location={true}
             meter={123}
           />

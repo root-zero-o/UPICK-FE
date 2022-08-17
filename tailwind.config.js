@@ -64,6 +64,9 @@ module.exports = {
         // home - popular pick card linear gradient
         "home-popularPick-card":
           "linear-gradient(1.47deg, #F7FAFF 46.89%, rgba(247, 250, 255, 0) 101.82%)",
+        // map header linear-gradient
+        "map-header":
+          "linear-gradient(180deg, #F7FAFF 5%, rgba(247, 250, 255, 0) 35%)",
       },
 
       boxShadow: {
@@ -73,6 +76,7 @@ module.exports = {
           "-4px -4px 6px rgba(255, 255, 255, 0.5), 4px 4px 6px rgba(177, 194, 208, 0.4);",
         chatBlue: "0px -15px 0px 0px rgba(210, 239, 250, 1)",
         chatWhite: "0px -15px 0px 0px rgba(255, 255, 255, 1)",
+        "map-header": "0px -8px 10px 0px rgba(177, 194, 208, 0.4)",
       },
       fontFamily: {
         sans: ["Noto+Sans+KR", ...defaultTheme.fontFamily.sans],

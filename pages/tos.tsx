@@ -1,4 +1,7 @@
-const tos = () => {
+import useClickRoute from "hooks/useClickRoute";
+
+const Tos = () => {
+  const onLink = useClickRoute({ link: "/signupdetail" });
   return (
     <div className="h-screen flex flex-col items-center justify-between">
       <div className="flex w-full h-[208px] bg-blue1 rounded-b-[101px]">
@@ -7,7 +10,9 @@ const tos = () => {
         </span>
       </div>
       <div>이용약관 텍스트 들어올곳</div>
-      <button className="confirmBtn">모두 확인</button>
+      <button className="confirmBtn" onClick={onLink}>
+        모두 확인
+      </button>
       <style jsx>{`
         .confirmBtn {
           width: calc(100% - 54px);
@@ -24,4 +29,4 @@ const tos = () => {
   );
 };
 
-export default tos;
+export default Tos;

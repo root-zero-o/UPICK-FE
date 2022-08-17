@@ -20,14 +20,14 @@ const TextCard = ({
     <div className="w-full  flex flex-col items-center space-y-2 relative">
       <div
         onClick={onLink}
-        className="w-[300px] bg-lightGray rounded-[15px] shadow-md px-6 py-2 relative hover:shadow-lg hover:cursor-pointer transition-all"
+        className="w-[80%] bg-coolgray1 rounded-[15px] shadow-md px-6 py-4 relative hover:shadow-lg hover:cursor-pointer transition-all"
       >
-        <div className="w-full py-2 border-b-[1px] border-gray flex justify-between">
-          <h2 className="text-[16px] font-sdg-b text-navy ">{title}</h2>
+        <div className="w-full py-2 border-b-[1px] border-coolgray3 flex justify-between">
+          <h2 className="text-md text-darkblue2 font-bold">{title}</h2>
           <Image alt="" src={fullHeart} />
         </div>
-        <div className="px-1 pt-2">
-          <span className="text-[12px] text-darkGray font-sdg-l leading-5 block">
+        <div className="pt-2">
+          <span className="text-sm text-coolgray4 leading-5 block font-light">
             {text} ...
           </span>
         </div>
@@ -36,18 +36,7 @@ const TextCard = ({
           <div className="w-[51px] h-[55px] bg-white rounded-[9px] border-[1px] border-[#E6EFF7]"></div>
           <div className="w-[51px] h-[55px] bg-white rounded-[9px] border-[1px] border-[#E6EFF7]"></div>
         </div>
-        <div className="w-[54px] h-[54px] rounded-full bg-gray absolute bottom-[-13%] left-[10%]"></div>
-      </div>
-      <div className="w-full flex justify-end relative items-center pt-4">
-        <div className="w-[22.17px] h-[22.17px] bg-gray rounded-full border-2 border-lightGray absolute right-[45%]"></div>
-        <div className="w-[22.17px] h-[22.17px] bg-gray rounded-full border-2 border-lightGray absolute right-[38%]"></div>
-        <div className="w-[22.17px] h-[22.17px] bg-gray rounded-full border-2 border-lightGray absolute right-[31%] z-40"></div>
-        <div className="w-[22.17px] h-[22.17px] bg-gray rounded-full border-2 border-lightGray absolute right-[28%] z-30"></div>
-        <div className="w-[22.17px] h-[22.17px] bg-gray rounded-full border-2 border-lightGray absolute right-[25%] z-20"></div>
-        <div className="text-[10.35px] text-gray font-sdg-l absolute right-[18%]">
-          +{likes}
-        </div>
-        <div className="w-[29.57px] h-[29.57px] bg-white rounded-full absolute right-[8%]"></div>
+        <div className="w-[54px] h-[54px] rounded-full bg-coolgray3 absolute bottom-[-13%] left-[10%]"></div>
       </div>
     </div>
   );

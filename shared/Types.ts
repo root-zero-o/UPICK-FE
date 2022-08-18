@@ -5,5 +5,7 @@ export interface userType {
     isLogin: boolean;
     nickname: string;
     email: string;
+    savedName: string;
+    savedEmail: string;
   };
 }

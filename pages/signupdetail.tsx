@@ -4,11 +4,17 @@ import ErrorPW from "assets/images/icons/ErrorPW.svg";
 import Arrow from "assets/images/icons/Arrow.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "store/modules";
 
 const SignupDetail = () => {
   const [pw, setPw] = useState<string | undefined>();
   const [pwTwo, setPwTwo] = useState<string | undefined>();
   const [progress, setProgress] = useState<number>(50);
+  const { savedEmail, savedName } = useSelector(
+    (state: RootState) => state.user.userInfo
+  );
+  console.log(savedName, savedEmail);
   const onDisableHandler = () => {
     if (pw && pwTwo && pw === pwTwo) return false;
     return true;
@@ -27,10 +33,10 @@ const SignupDetail = () => {
         </span>
         <div className="absolute bottom-[-20%] left-1/2 transform -translate-x-1/2 -translate-y-1/2  w-[295px] h-[44px]">
           <div className="flex items-center w-[295px] h-[44px] bg-coolgray1 rounded-[22px] pl-[15px] mb-[20px] border-[1px] border-coolgray3">
-            <span>이름값(수정불가)</span>
+            <span>{savedName}</span>
           </div>
           <div className="flex items-center w-[295px] h-[44px] bg-coolgray1 rounded-[22px] pl-[15px] mb-[20px] border-[1px] border-coolgray3">
-            <span>이메일값(수정불가)</span>
+            <span>{savedEmail}</span>
           </div>
           <SignInput
             type="password"

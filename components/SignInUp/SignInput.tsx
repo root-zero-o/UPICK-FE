@@ -38,7 +38,11 @@ const SignInput = ({
       <div className={cls("inputDiv", error ? "error" : "")}>
         {type !== "password" ? (
           // 일반 input들
-          <input type={type} placeholder={placeholder} />
+          <input
+            type={type}
+            placeholder={placeholder}
+            onChange={(e) => onchange(e.target.value)}
+          />
         ) : (
           // 비밀번호 전용 input
           <input

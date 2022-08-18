@@ -12,6 +12,8 @@ import useClickRoute from "hooks/useClickRoute";
 const Signup = () => {
   const [isDup, setIsDup] = useState(true);
   const onLink = useClickRoute({ link: "/home" });
+  const [name, setName] = useState<string | undefined>();
+  const [email, setEmail] = useState<string | undefined>();
   return (
     <div className="flex flex-col items-center justify-between bg-lightGray">
       <HeaderBG
@@ -45,7 +47,7 @@ const Signup = () => {
             showButton={false}
             src=""
             error={false}
-            onchange={null}
+            onchange={setName}
           />
           <SignInput
             type="email"
@@ -53,13 +55,13 @@ const Signup = () => {
             showButton={false}
             src=""
             error={isDup}
-            onchange={null}
+            onchange={setEmail}
           />
           <span className="ErrorText text-error mt-[8px] mb-[92px]">
             이미 해당 메일이 쓰인 계정이 있어요
           </span>
         </div>
-        <SignArrow />
+        <SignArrow signup={true} input1={name} input2={email} />
       </div>
       <div className="flex flex-col items-center justify-start w-[164px] h-[141px] mt-[134px] mb-[40px]">
         <span className="bottomTxt">간편 회원가입</span>

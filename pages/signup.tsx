@@ -14,7 +14,7 @@ const Signup = () => {
   const onLink = useClickRoute({ link: "/home" });
   return (
     <div className="flex flex-col items-center justify-between bg-lightGray">
-      {/* <HeaderBG
+      <HeaderBG
         fullWidth="100%"
         fullHeight="600px"
         fullTop="-37.56%"
@@ -30,7 +30,7 @@ const Signup = () => {
         showOuterDiv={true}
         rot={150}
         bgFlag={false}
-      /> */}
+      />
       <div className="InnerBox relative bg-lightBlue/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
         <SignHeader
           signInFlag={false}
@@ -45,6 +45,7 @@ const Signup = () => {
             showButton={false}
             src=""
             error={false}
+            onchange={null}
           />
           <SignInput
             type="email"
@@ -52,6 +53,7 @@ const Signup = () => {
             showButton={false}
             src=""
             error={isDup}
+            onchange={null}
           />
           <span className="ErrorText text-error mt-[8px] mb-[92px]">
             이미 해당 메일이 쓰인 계정이 있어요

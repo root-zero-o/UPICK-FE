@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import Image from "next/image";
 
 function cls(...classnames: string[]) {
@@ -11,12 +11,14 @@ const SignInput = ({
   showButton,
   src,
   error,
+  onchange,
 }: {
   type: string;
   placeholder: string;
   showButton: boolean;
   src: string;
   error: boolean;
+  onchange: any;
 }) => {
   const [passwordType, setPasswordType] = useState({
     type: "password",
@@ -39,7 +41,11 @@ const SignInput = ({
           <input type={type} placeholder={placeholder} />
         ) : (
           // 비밀번호 전용 input
-          <input type={passwordType.type} placeholder={placeholder} />
+          <input
+            type={passwordType.type}
+            placeholder={placeholder}
+            onChange={(e) => onchange(e.target.value)}
+          />
         )}
         {/* visible 해주는 toggle flag */}
         {showButton && (
@@ -69,7 +75,7 @@ const SignInput = ({
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: calc(100% - 22px);
+            width: 295px;
             height: 44px;
             background-color: #f7faff;
             border: 1px solid #b1c2d0;

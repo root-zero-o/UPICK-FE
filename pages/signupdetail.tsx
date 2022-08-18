@@ -1,30 +1,18 @@
 import SignInput from "components/SignInUp/SignInput";
 import DisablePW from "assets/images/icons/DisablePW.svg";
 import ErrorPW from "assets/images/icons/ErrorPW.svg";
-import Arrow from "assets/images/icons/Arrow.svg";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "store/modules";
+import ProgressBar from "components/ui/ProgressBar";
 
 const SignupDetail = () => {
   const [pw, setPw] = useState<string | undefined>();
   const [pwTwo, setPwTwo] = useState<string | undefined>();
-  const [progress, setProgress] = useState<number>(50);
   const { savedEmail, savedName } = useSelector(
     (state: RootState) => state.user.userInfo
   );
-  console.log(savedName, savedEmail);
-  const onDisableHandler = () => {
-    if (pw && pwTwo && pw === pwTwo) return false;
-    return true;
-  };
-  useEffect(() => {
-    if (pw) setProgress(75);
-    else if (!pw) setProgress(50);
-    if (pw && pwTwo && pw === pwTwo) setProgress(100);
-    else if (!pw && !pwTwo && pw !== pwTwo) setProgress(75);
-  }, [pw, pwTwo]);
+
   return (
     <div className="h-screen flex flex-col items-center justify-between">
       <div className="relative w-full h-[208px] bg-blue1 rounded-b-[101px]">
@@ -74,37 +62,11 @@ const SignupDetail = () => {
           )}
         </div>
       </div>
-      <div className="flex items-center justify-end w-[calc(100%-56px)] h-[110px] mb-[16px]">
-        <div className="progressBarBlock">
-          <div className="progressBar" />
-        </div>
-        <div className="relative w-[80px] h-[80px] rounded-full bg-white">
-          <button
-            disabled={onDisableHandler()}
-            className="absolute flex items-center justify-center w-[55px] h-[55px] z-1 rounded-full bg-blue2 z-1 right-1/2 top-1/2 translate-x-1/2 -translate-y-1/2"
-          >
-            <Image src={Arrow} alt="" />
-          </button>
-        </div>
-      </div>
+      <ProgressBar initial={50} text1={pw} text2={pwTwo} />
       <style jsx>{`
         .inputBox {
           position: absolute;
           right: 0;
-        }
-        .progressBarBlock {
-          height: 3px;
-          width: 70%;
-          background-color: #e2f0fb;
-        }
-        .progressBar {
-          width: ${progress}%;
-          height: 3px;
-          background-color: #00b7f0;
-          transition: width 1s;
-        }
-        button:disabled {
-          opacity: 0.2;
         }
       `}</style>
     </div>

@@ -12,9 +12,11 @@ import useClickRoute from "hooks/useClickRoute";
 const Signup = () => {
   const [isDup, setIsDup] = useState(true);
   const onLink = useClickRoute({ link: "/home" });
+  const [name, setName] = useState<string | undefined>();
+  const [email, setEmail] = useState<string | undefined>();
   return (
     <div className="flex flex-col items-center justify-between bg-lightGray">
-      {/* <HeaderBG
+      <HeaderBG
         fullWidth="100%"
         fullHeight="600px"
         fullTop="-37.56%"
@@ -30,9 +32,14 @@ const Signup = () => {
         showOuterDiv={true}
         rot={150}
         bgFlag={false}
-      /> */}
+      />
       <div className="InnerBox relative bg-lightBlue/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
-        <SignHeader signInFlag={false} link="/signin" error={isDup} />
+        <SignHeader
+          signInFlag={false}
+          link="/signin"
+          error={isDup}
+          first={false}
+        />
         <div className="flex flex-col justify-start items-center mt-[40.5px]">
           <SignInput
             type="text"
@@ -40,6 +47,7 @@ const Signup = () => {
             showButton={false}
             src=""
             error={false}
+            onchange={setName}
           />
           <SignInput
             type="email"
@@ -47,12 +55,13 @@ const Signup = () => {
             showButton={false}
             src=""
             error={isDup}
+            onchange={setEmail}
           />
           <span className="ErrorText text-error mt-[8px] mb-[92px]">
             이미 해당 메일이 쓰인 계정이 있어요
           </span>
         </div>
-        <SignArrow />
+        <SignArrow signup={true} input1={name} input2={email} />
       </div>
       <div className="flex flex-col items-center justify-start w-[164px] h-[141px] mt-[134px] mb-[40px]">
         <span className="bottomTxt">간편 회원가입</span>
@@ -94,7 +103,6 @@ const Signup = () => {
             cursor: pointer;
           }
           .bottomTxt {
-            font-weight: 500;
             font-size: 14px;
             line-height: 21px;
             color: #808e99;

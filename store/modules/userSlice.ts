@@ -18,6 +18,8 @@ const initialState: userType = {
     isLogin: false,
     nickname: "",
     email: "",
+    savedName: "",
+    savedEmail: "",
   },
   loading: false,
   error: null,
@@ -26,8 +28,15 @@ const initialState: userType = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    saveUserInfo: function (state, { type, payload }) {
+      state.userInfo.savedName = payload.name;
+      state.userInfo.savedEmail = payload.email;
+    },
+  },
   extraReducers: (builder) => {},
 });
+
+export const { saveUserInfo } = userSlice.actions;
 
 export default userSlice.reducer;

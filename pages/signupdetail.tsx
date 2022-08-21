@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "store/modules";
 import ProgressBar from "components/ui/ProgressBar";
+import { passwordRegCheck } from "shared/LoginCheck";
 
 const SignupDetail = () => {
   const [pw, setPw] = useState<string | undefined>();
@@ -12,6 +13,13 @@ const SignupDetail = () => {
   const { savedEmail, savedName } = useSelector(
     (state: RootState) => state.user.userInfo
   );
+
+  const reg = () => {
+    // 통과된경우
+    if (passwordRegCheck(pw) || pw === "") return true;
+    // 실패한경우
+    return false;
+  };
 
   return (
     <div className="h-screen flex flex-col items-center justify-between">
@@ -26,15 +34,28 @@ const SignupDetail = () => {
           <div className="flex items-center w-[295px] h-[44px] bg-coolgray1 rounded-[22px] pl-[15px] mb-[20px] border-[1px] border-coolgray3">
             <span>{savedEmail}</span>
           </div>
-          <SignInput
-            type="password"
-            placeholder="영문+숫자+특수문자 8~20자리"
-            showButton={true}
-            src={DisablePW}
-            error={false}
-            onchange={setPw}
-          />
-          {pw !== pwTwo && pwTwo?.length ? (
+          {/* 1차 비밀번호 */}
+          {reg() ? (
+            <SignInput
+              type="password"
+              placeholder="영문+숫자+특수문자 8~20자리"
+              showButton={true}
+              src={DisablePW}
+              error={false}
+              onchange={setPw}
+            />
+          ) : (
+            <SignInput
+              type="password"
+              placeholder="영문+숫자+특수문자 8~20자리"
+              showButton={true}
+              src={DisablePW}
+              error={true}
+              onchange={setPw}
+            />
+          )}
+          {/* 2차 비밀번호 */}
+          {pw !== pwTwo && pwTwo?.length && !passwordRegCheck(pwTwo) ? (
             <SignInput
               type="password"
               placeholder="비밀번호 확인"
@@ -53,7 +74,7 @@ const SignupDetail = () => {
               onchange={setPwTwo}
             />
           )}
-          {pw !== pwTwo && pwTwo?.length ? (
+          {(pw !== pwTwo && pwTwo?.length) || !reg() ? (
             <div className="w-full flex justify-center text-error">
               <span className=" mt-[12px]">양식이 올바르지 않아요!</span>
             </div>

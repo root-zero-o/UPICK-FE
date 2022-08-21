@@ -40,7 +40,7 @@ const Signup = () => {
         rot={150}
         bgFlag={false}
       />
-      <div className="InnerBox relative bg-lightBlue/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
+      <div className="InnerBox relative bg-blue3/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
         <SignHeader
           signInFlag={false}
           link="/signin"

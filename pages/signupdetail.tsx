@@ -6,10 +6,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "store/modules";
 import ProgressBar from "components/ui/ProgressBar";
 import { passwordRegCheck } from "shared/LoginCheck";
+import useClickRoute from "hooks/useClickRoute";
 
 const SignupDetail = () => {
   const [pw, setPw] = useState("");
   const [pwTwo, setPwTwo] = useState("");
+  const onLink = useClickRoute({ link: "/congrats" });
   const { savedEmail, savedName } = useSelector(
     (state: RootState) => state.user.userInfo
   );
@@ -83,7 +85,7 @@ const SignupDetail = () => {
           )}
         </div>
       </div>
-      <ProgressBar initial={50} text1={pw} text2={pwTwo} />
+      <ProgressBar initial={50} text1={pw} text2={pwTwo} onClick={onLink} />
       <style jsx>{`
         .inputBox {
           position: absolute;

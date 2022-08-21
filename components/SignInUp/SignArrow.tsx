@@ -8,10 +8,12 @@ const SignArrow = ({
   signup,
   input1,
   input2,
+  disabled,
 }: {
   signup: boolean;
   input1: string | undefined;
   input2: string | undefined;
+  disabled: boolean;
 }) => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -25,6 +27,7 @@ const SignArrow = ({
         <button
           className="flex items-center justify-center absolute w-[55px] h-[55px] rounded-full bg-blue2 z-1 right-1/2 top-1/2 translate-x-1/2 -translate-y-1/2"
           onClick={onLink}
+          disabled={disabled}
         >
           <Image src={Arrow} alt="" />
         </button>

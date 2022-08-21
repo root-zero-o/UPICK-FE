@@ -1,6 +1,7 @@
 import Arrow from "assets/images/icons/Arrow.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { passwordRegCheck } from "shared/LoginCheck";
 
 enum ENUM {
   HALF = 50,
@@ -28,7 +29,7 @@ const ProgressBar = ({
 
   // progress bar gauge
   useEffect(() => {
-    if (text1) setProgress(ENUM.THREE_QUARTERS);
+    if (text1 && passwordRegCheck(text1)) setProgress(ENUM.THREE_QUARTERS);
     else if (!text1) setProgress(ENUM.HALF);
     if (text1 && text2 && text1 === text2) setProgress(ENUM.FULL);
     else if (!text1 && !text2 && text1 !== text2)
@@ -60,9 +61,6 @@ const ProgressBar = ({
           height: 3px;
           background-color: #00b7f0;
           transition: width 1s;
-        }
-        button:disabled {
-          opacity: 0.2;
         }
       `}</style>
     </div>

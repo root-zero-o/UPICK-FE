@@ -75,7 +75,7 @@ const Signin = () => {
             </div>
           </div>
         </div>
-        <SignArrow signup={false} input1="" input2="" />
+        <SignArrow signup={false} input1="" input2="" disabled={true} />
       </div>
       <span className="bottomTxt mt-[175px] mb-[30px]">
         회원가입 없이

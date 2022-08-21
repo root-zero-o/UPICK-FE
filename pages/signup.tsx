@@ -12,8 +12,8 @@ import useClickRoute from "hooks/useClickRoute";
 const Signup = () => {
   const [isDup, setIsDup] = useState(true);
   const onLink = useClickRoute({ link: "/home" });
-  const [name, setName] = useState<string | undefined>();
-  const [email, setEmail] = useState<string | undefined>();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   return (
     <div className="flex flex-col items-center justify-between bg-lightGray">
       <HeaderBG

@@ -8,8 +8,8 @@ import ProgressBar from "components/ui/ProgressBar";
 import { passwordRegCheck } from "shared/LoginCheck";
 
 const SignupDetail = () => {
-  const [pw, setPw] = useState<string | undefined>();
-  const [pwTwo, setPwTwo] = useState<string | undefined>();
+  const [pw, setPw] = useState("");
+  const [pwTwo, setPwTwo] = useState("");
   const { savedEmail, savedName } = useSelector(
     (state: RootState) => state.user.userInfo
   );

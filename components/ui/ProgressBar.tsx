@@ -62,9 +62,6 @@ const ProgressBar = ({
           background-color: #00b7f0;
           transition: width 1s;
         }
-        button:disabled {
-          opacity: 0.2;
-        }
       `}</style>
     </div>
   );

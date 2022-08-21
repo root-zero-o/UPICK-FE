@@ -11,6 +11,9 @@
   input:focus {
     outline: none;
   }
+  button:disabled {
+    opacity: 0.2;
+  }
 }
 
 @tailwind utilities;

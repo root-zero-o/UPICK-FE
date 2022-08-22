@@ -57,7 +57,7 @@ const SignupDetail = () => {
             />
           )}
           {/* 2차 비밀번호 */}
-          {pw !== pwTwo && pwTwo?.length && !passwordRegCheck(pwTwo) ? (
+          {pw !== pwTwo || (pwTwo?.length && !passwordRegCheck(pwTwo)) ? (
             <SignInput
               type="password"
               placeholder="비밀번호 확인"

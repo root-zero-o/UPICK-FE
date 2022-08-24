@@ -9,3 +9,9 @@ export interface userType {
     savedEmail: string;
   };
 }
+
+export interface UserRegistrationModel {
+  email?: string;
+  password?: string;
+  username?: string;
+}

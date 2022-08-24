@@ -1,17 +1,34 @@
+import { UserRegistrationModel } from "./../../shared/Types";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { userType } from "shared/Types";
 import apis from "shared/api";
 
 const LOGIN = "user/LOGIN";
+const DUPLICATE = "user/DUPLICATE";
+const SIGNUP = "user/SIGNUP";
 
-export const getKakao = createAsyncThunk(LOGIN, async (code: string) => {
+export const __getKakao = createAsyncThunk(LOGIN, async (code: string) => {
   const response = await apis.getKakao(code);
   return response.data;
 });
-export const getGoogle = createAsyncThunk(LOGIN, async (code: string) => {
+export const __getGoogle = createAsyncThunk(LOGIN, async (code: string) => {
   const response = await apis.getGoogle(code);
   return response.data;
 });
+
+export const __DupCheck = createAsyncThunk(DUPLICATE, async (email: string) => {
+  const response = await apis.getGoogle(email);
+  return response.data;
+});
+
+export const __signUp = createAsyncThunk(
+  SIGNUP,
+  async (payload: UserRegistrationModel) => {
+    const response = await apis.addSignUp(payload);
+    console.log(response);
+    return response.data;
+  }
+);
 
 const initialState: userType = {
   userInfo: {
@@ -34,7 +51,11 @@ const userSlice = createSlice({
       state.userInfo.savedEmail = payload.email;
     },
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(__signUp.fulfilled, (state, payload) => {
+      console.log("성공");
+    });
+  },
 });
 
 export const { saveUserInfo } = userSlice.actions;

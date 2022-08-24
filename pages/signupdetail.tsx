@@ -2,19 +2,30 @@ import SignInput from "components/SignInUp/SignInput";
 import DisablePW from "assets/images/icons/DisablePW.svg";
 import ErrorPW from "assets/images/icons/ErrorPW.svg";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "store/modules";
 import ProgressBar from "components/ui/ProgressBar";
 import { passwordRegCheck } from "shared/LoginCheck";
 import useClickRoute from "hooks/useClickRoute";
+import { __signUp } from "store/modules/userSlice";
+import { AppDispatch } from "store/configStore";
 
 const SignupDetail = () => {
   const [pw, setPw] = useState("");
   const [pwTwo, setPwTwo] = useState("");
+  const dispatch: AppDispatch = useDispatch();
   const onLink = useClickRoute({ link: "/congrats" });
   const { savedEmail, savedName } = useSelector(
     (state: RootState) => state.user.userInfo
   );
+
+  // 회원가입 버튼 이벤트
+  const onClickHandler = () => {
+    dispatch(
+      __signUp({ email: savedEmail, password: pw, username: savedName })
+    );
+    onLink();
+  };
 
   const reg = () => {
     // 통과된경우
@@ -85,7 +96,12 @@ const SignupDetail = () => {
           )}
         </div>
       </div>
-      <ProgressBar initial={50} text1={pw} text2={pwTwo} onClick={onLink} />
+      <ProgressBar
+        initial={50}
+        text1={pw}
+        text2={pwTwo}
+        onClick={onClickHandler}
+      />
       <style jsx>{`
         .inputBox {
           position: absolute;

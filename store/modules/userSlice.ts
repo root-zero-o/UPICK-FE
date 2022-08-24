@@ -7,19 +7,28 @@ const LOGIN = "user/LOGIN";
 const DUPLICATE = "user/DUPLICATE";
 const SIGNUP = "user/SIGNUP";
 
-export const __getKakao = createAsyncThunk(LOGIN, async (code: string) => {
-  const response = await apis.getKakao(code);
-  return response.data;
-});
-export const __getGoogle = createAsyncThunk(LOGIN, async (code: string) => {
-  const response = await apis.getGoogle(code);
-  return response.data;
-});
+export const __getKakao = createAsyncThunk(
+  LOGIN,
+  async (payload: UserRegistrationModel) => {
+    const response = await apis.getKakao(payload);
+    return response.data;
+  }
+);
+export const __getGoogle = createAsyncThunk(
+  LOGIN,
+  async (payload: UserRegistrationModel) => {
+    const response = await apis.getGoogle(payload);
+    return response.data;
+  }
+);
 
-export const __DupCheck = createAsyncThunk(DUPLICATE, async (email: string) => {
-  const response = await apis.getGoogle(email);
-  return response.data;
-});
+export const __DupCheck = createAsyncThunk(
+  DUPLICATE,
+  async (payload: UserRegistrationModel) => {
+    const response = await apis.getDupCheck(payload);
+    return response.data;
+  }
+);
 
 export const __signUp = createAsyncThunk(
   SIGNUP,

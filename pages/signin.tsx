@@ -9,9 +9,34 @@ import Google from "assets/images/logos/Google_logo.svg";
 import Image from "next/image";
 import useClickRoute from "hooks/useClickRoute";
 import HeaderBG from "components/HeaderBG";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "store/configStore";
+import { __signIn } from "store/modules/userSlice";
+import { useState } from "react";
+import { emailRegCheck, passwordRegCheck } from "shared/LoginCheck";
+import { RootState } from "store/modules";
 
 const Signin = () => {
-  const onLink = useClickRoute({ link: "/home" });
+  const onHomeLink = useClickRoute({ link: "/home" });
+  const [email, setEmail] = useState("");
+  const [pw, setPw] = useState("");
+  const dispatch: AppDispatch = useDispatch();
+  const { isLogin } = useSelector((state: RootState) => state.user.userInfo);
+
+  // button disable handler
+  const onDisableHandler = () => {
+    if (passwordRegCheck(pw) && emailRegCheck(email)) return false;
+    return true;
+  };
+
+  // 회원가입 버튼 이벤트
+  const onClickHandler = () => {
+    dispatch(__signIn({ email, password: pw }));
+    if (isLogin) {
+      onHomeLink();
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-between bg-lightGray">
       <HeaderBG
@@ -41,11 +66,11 @@ const Signin = () => {
         <div className="flex flex-col justify-start items-center mt-[40.5px]">
           <SignInput
             type="text"
-            placeholder="이름"
+            placeholder="이메일"
             showButton={false}
             src=""
             error={false}
-            onchange={null}
+            onchange={setEmail}
           />
           <SignInput
             type="password"
@@ -53,7 +78,7 @@ const Signin = () => {
             showButton={true}
             src={DisablePW}
             error={false}
-            onchange={null}
+            onchange={setPw}
           />
           <SignInputBottom
             textOne="이메일/비밀번호"
@@ -75,11 +100,11 @@ const Signin = () => {
             </div>
           </div>
         </div>
-        <SignArrow signup={false} input1="" input2="" disabled={true} />
+        <SignArrow disabled={onDisableHandler()} onClick={onClickHandler} />
       </div>
       <span className="bottomTxt mt-[175px] mb-[30px]">
         회원가입 없이
-        <strong className="cursor-pointer" onClick={onLink}>
+        <strong className="cursor-pointer" onClick={onHomeLink}>
           &nbsp;둘러보기
         </strong>
       </span>

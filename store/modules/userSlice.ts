@@ -25,7 +25,7 @@ export const __getGoogle = createAsyncThunk(
 export const __DupCheck = createAsyncThunk(
   DUPLICATE,
   async (payload: UserRegistrationModel) => {
-    const response = await apis.getDupCheck(payload);
+    const response = await apis.dupCheck(payload);
     return response.data;
   }
 );
@@ -33,14 +33,22 @@ export const __DupCheck = createAsyncThunk(
 export const __signUp = createAsyncThunk(
   SIGNUP,
   async (payload: UserRegistrationModel) => {
-    const response = await apis.addSignUp(payload);
-    console.log(response);
+    const response = await apis.signUp(payload);
+    return response.data;
+  }
+);
+
+export const __signIn = createAsyncThunk(
+  LOGIN,
+  async (payload: UserRegistrationModel) => {
+    const response = await apis.signIn(payload);
     return response.data;
   }
 );
 
 const initialState: userType = {
   userInfo: {
+    dupCheck: true,
     isLogin: false,
     nickname: "",
     email: "",
@@ -55,14 +63,24 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    // 기본 유저 정보 저장 - 휘발성
     saveUserInfo: function (state, { type, payload }) {
       state.userInfo.savedName = payload.name;
       state.userInfo.savedEmail = payload.email;
     },
   },
   extraReducers: (builder) => {
+    // 회원가입
     builder.addCase(__signUp.fulfilled, (state, payload) => {
-      console.log("성공");
+      console.log("회원가입 성공");
+    });
+    // 중복체크
+    builder.addCase(__DupCheck.fulfilled, (state, payload) => {
+      console.log("중복체크 성공");
+    });
+    // 로그인
+    builder.addCase(__signIn.fulfilled, (state, payload) => {
+      console.log("로그인 성공");
     });
   },
 });

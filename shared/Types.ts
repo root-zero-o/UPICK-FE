@@ -2,6 +2,7 @@ export interface userType {
   loading: boolean;
   error: any;
   userInfo: {
+    dupCheck: boolean;
     isLogin: boolean;
     nickname: string;
     email: string;

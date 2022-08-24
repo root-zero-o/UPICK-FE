@@ -12,10 +12,10 @@ export const apis = {
   getNaver: ({ code, state }: { code: string; state: string }) =>
     api.post(`/oauth/naver/callback?code=${code}&state=${state}`),
 
-  getDupCheck: (payload: UserRegistrationModel) =>
+  dupCheck: (payload: UserRegistrationModel) =>
     api.post(`/user/signup/checkEmail?email=${payload.email}`),
-  addSignUp: (payload: UserRegistrationModel) =>
-    api.post(`/user/signup`, payload),
+  signUp: (payload: UserRegistrationModel) => api.post(`/user/signup`, payload),
+  signIn: (payload: UserRegistrationModel) => api.post(`/user/login`, payload),
 };
 
 export default apis;

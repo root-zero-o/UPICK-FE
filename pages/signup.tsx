@@ -1,7 +1,6 @@
 import SignHeader from "components/SignInUp/SignHeader";
 import SignInput from "components/SignInUp/SignInput";
 import SignArrow from "components/SignInUp/SignArrow";
-import { useState } from "react";
 import HeaderBG from "components/HeaderBG";
 import Kakao from "assets/images/logos/Kakao_logo.svg";
 import Naver from "assets/images/logos/Naver_logo.svg";
@@ -9,18 +8,38 @@ import Google from "assets/images/logos/Google_logo.svg";
 import Image from "next/image";
 import useClickRoute from "hooks/useClickRoute";
 import { emailRegCheck, nameRegCheck } from "shared/LoginCheck";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "store/modules";
+import { AppDispatch } from "store/configStore";
+import { saveUserInfo, __DupCheck } from "store/modules/userSlice";
+import { useState } from "react";
 
 const Signup = () => {
   const [isDup, setIsDup] = useState(false);
-  const onLink = useClickRoute({ link: "/home" });
+  const onHomeLink = useClickRoute({ link: "/home" });
+  const onSuccessLink = useClickRoute({ link: "/tos" });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const dispatch: AppDispatch = useDispatch();
+  const { dupCheck } = useSelector((state: RootState) => state.user.userInfo);
 
   // button disable handler
   const onDisableHandler = () => {
     if (nameRegCheck(name) && emailRegCheck(email)) return false;
     return true;
   };
+
+  // 회원가입 버튼 이벤트
+  const onClickHandler = () => {
+    dispatch(__DupCheck({ email }));
+    setIsDup(true);
+    if (!dupCheck) {
+      console.log(dupCheck);
+      dispatch(saveUserInfo({ name, email }));
+      onSuccessLink();
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-between bg-lightGray">
       <HeaderBG
@@ -40,7 +59,7 @@ const Signup = () => {
         rot={150}
         bgFlag={false}
       />
-      <div className="InnerBox relative bg-lightBlue/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
+      <div className="InnerBox relative bg-blue3/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
         <SignHeader
           signInFlag={false}
           link="/signin"
@@ -69,7 +88,7 @@ const Signup = () => {
             />
           )}
           {/* 이메일 input 유효성 */}
-          {!emailRegCheck(email) && email.length !== 0 ? (
+          {(!emailRegCheck(email) && email.length !== 0) || isDup ? (
             <SignInput
               type="email"
               placeholder="이메일"
@@ -92,7 +111,7 @@ const Signup = () => {
           {isDup ? (
             //  중복일경우
             <span className="ErrorText text-error mt-[8px] mb-[92px]">
-              중복 입니다.
+              이미 해당 메일이 쓰인 계정이 있어요
             </span>
           ) : // 중복 아닐경우
           (!nameRegCheck(name) && name.length !== 0) ||
@@ -106,12 +125,7 @@ const Signup = () => {
             </span>
           )}
         </div>
-        <SignArrow
-          signup={true}
-          input1={name}
-          input2={email}
-          disabled={onDisableHandler()}
-        />
+        <SignArrow disabled={onDisableHandler()} onClick={onClickHandler} />
       </div>
       <div className="flex flex-col items-center justify-start w-[164px] h-[141px] mt-[134px] mb-[40px]">
         <span className="bottomTxt">간편 회원가입</span>
@@ -128,7 +142,7 @@ const Signup = () => {
         </div>
         <span className="bottomTxt mt-[36px]">
           회원가입 없이
-          <strong className="cursor-pointer" onClick={onLink}>
+          <strong className="cursor-pointer" onClick={onHomeLink}>
             &nbsp;둘러보기
           </strong>
         </span>

@@ -1,6 +1,6 @@
 import Arrow from "assets/images/icons/Arrow.svg";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { passwordRegCheck } from "shared/LoginCheck";
 
 enum ENUM {
@@ -13,10 +13,12 @@ const ProgressBar = ({
   initial,
   text1,
   text2,
+  onClick,
 }: {
   initial: number;
   text1: string | undefined;
   text2: string | undefined;
+  onClick: MouseEventHandler<HTMLButtonElement>;
 }) => {
   // Progress state - get initial % through props
   const [progress, setProgress] = useState<number>(initial);
@@ -45,6 +47,7 @@ const ProgressBar = ({
         <button
           disabled={onDisableHandler()}
           className="absolute flex items-center justify-center w-[55px] h-[55px] z-1 rounded-full bg-blue2 z-1 right-1/2 top-1/2 translate-x-1/2 -translate-y-1/2"
+          onClick={onClick}
         >
           <Image src={Arrow} alt="" />
         </button>

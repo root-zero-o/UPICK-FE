@@ -16,8 +16,8 @@ export const makeStore = () =>
   });
 
 export type AppStore = ReturnType<typeof makeStore>;
-
 export type AppDispatch = ThunkDispatch<UserRegistrationModel, any, AnyAction>;
+
 const wrapper = createWrapper<AppStore>(makeStore);
 
 export default wrapper;

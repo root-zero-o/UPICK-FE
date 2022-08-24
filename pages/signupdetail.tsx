@@ -62,13 +62,14 @@ const SignupDetail = () => {
               type="password"
               placeholder="영문+숫자+특수문자 8~20자리"
               showButton={true}
-              src={DisablePW}
+              src={ErrorPW}
               error={true}
               onchange={setPw}
             />
           )}
           {/* 2차 비밀번호 */}
-          {pw !== pwTwo || (pwTwo?.length && !passwordRegCheck(pwTwo)) ? (
+          {(pw !== pwTwo && pwTwo) ||
+          (pwTwo?.length && !passwordRegCheck(pwTwo)) ? (
             <SignInput
               type="password"
               placeholder="비밀번호 확인"
@@ -87,7 +88,7 @@ const SignupDetail = () => {
               onchange={setPwTwo}
             />
           )}
-          {(pw !== pwTwo && pwTwo?.length) || !reg() ? (
+          {(pw !== pwTwo && pwTwo) || !reg() ? (
             <div className="w-full flex justify-center text-error">
               <span className=" mt-[12px]">양식이 올바르지 않아요!</span>
             </div>

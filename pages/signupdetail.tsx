@@ -1,7 +1,7 @@
 import SignInput from "components/SignInUp/SignInput";
 import DisablePW from "assets/images/icons/DisablePW.svg";
 import ErrorPW from "assets/images/icons/ErrorPW.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "store/modules";
 import ProgressBar from "components/ui/ProgressBar";
@@ -14,7 +14,8 @@ const SignupDetail = () => {
   const [pw, setPw] = useState("");
   const [pwTwo, setPwTwo] = useState("");
   const dispatch: AppDispatch = useDispatch();
-  const onLink = useClickRoute({ link: "/congrats" });
+  const onSuccessLink = useClickRoute({ link: "/congrats" });
+  const onReloadLink = useClickRoute({ link: "/signup" });
   const { savedEmail, savedName } = useSelector(
     (state: RootState) => state.user.userInfo
   );
@@ -24,7 +25,7 @@ const SignupDetail = () => {
     dispatch(
       __signUp({ email: savedEmail, password: pw, username: savedName })
     );
-    onLink();
+    onSuccessLink();
   };
 
   const reg = () => {
@@ -33,6 +34,12 @@ const SignupDetail = () => {
     // 실패한경우
     return false;
   };
+
+  useEffect(() => {
+    if (savedEmail === "" || savedName === "") {
+      onReloadLink();
+    }
+  }, [savedEmail, savedName, onReloadLink]);
 
   return (
     <div className="h-screen flex flex-col items-center justify-between">

@@ -10,7 +10,8 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 export const makeStore = () =>
   configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({ serializableCheck: false }),
     // devTools : boolean 값으로 개발자 도구 on/off
     // preloadedState: store 초기값 설정
   });

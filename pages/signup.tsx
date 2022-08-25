@@ -11,11 +11,10 @@ import { emailRegCheck, nameRegCheck } from "shared/LoginCheck";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "store/modules";
 import { AppDispatch } from "store/configStore";
-import { saveUserInfo, __DupCheck } from "store/modules/userSlice";
-import { useState } from "react";
+import { rollBackDup, saveUserInfo, __dupCheck } from "store/modules/userSlice";
+import { useState, useEffect } from "react";
 
 const Signup = () => {
-  const [isDup, setIsDup] = useState(false);
   const onHomeLink = useClickRoute({ link: "/home" });
   const onSuccessLink = useClickRoute({ link: "/tos" });
   const [name, setName] = useState("");
@@ -29,16 +28,23 @@ const Signup = () => {
     return true;
   };
 
-  // 회원가입 버튼 이벤트
+  // 회원가입 버튼 이벤트 - 중복검사 진행
   const onClickHandler = () => {
-    dispatch(__DupCheck({ email }));
-    setIsDup(true);
-    if (!dupCheck) {
-      console.log(dupCheck);
+    dispatch(__dupCheck({ email }));
+  };
+
+  // 중복 아닐시에 페이지 이동
+  useEffect(() => {
+    if (dupCheck === false) {
       dispatch(saveUserInfo({ name, email }));
       onSuccessLink();
     }
-  };
+  }, [dispatch, dupCheck, name, email, onSuccessLink]);
+
+  // 가장 먼저 실행 -> 중복체크 원상태로
+  useEffect(() => {
+    dispatch(rollBackDup({ data: null }));
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-between bg-lightGray">
@@ -63,7 +69,7 @@ const Signup = () => {
         <SignHeader
           signInFlag={false}
           link="/signin"
-          error={isDup}
+          error={dupCheck}
           first={false}
         />
         <div className="flex flex-col justify-start items-center mt-[40.5px]">
@@ -88,7 +94,7 @@ const Signup = () => {
             />
           )}
           {/* 이메일 input 유효성 */}
-          {(!emailRegCheck(email) && email.length !== 0) || isDup ? (
+          {(!emailRegCheck(email) && email.length !== 0) || dupCheck ? (
             <SignInput
               type="email"
               placeholder="이메일"
@@ -108,7 +114,7 @@ const Signup = () => {
             />
           )}
           {/* 유효성 텍스트*/}
-          {isDup ? (
+          {dupCheck ? (
             //  중복일경우
             <span className="ErrorText text-error mt-[8px] mb-[92px]">
               이미 해당 메일이 쓰인 계정이 있어요

@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_SERVER,
+  baseURL: process.env.NEXT_PUBLIC_SERVER,
 });
 
 api.interceptors.request.use(
   (data: any) => {
-    // data.headers.Authorization = localStorage.getItem("Authorization");
+    data.headers.authorization = localStorage.getItem("Authorization");
     return data;
   },
   () => {}

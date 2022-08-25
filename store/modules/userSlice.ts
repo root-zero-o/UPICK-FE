@@ -43,7 +43,8 @@ export const __signIn = createAsyncThunk(
   LOGIN,
   async (payload: UserRegistrationModel) => {
     const response = await apis.signIn(payload);
-    if (response.data === "") return true;
+    localStorage.setItem("authorization", response.headers.authorization);
+    if (response.headers.authorization) return true;
     return false;
   }
 );
@@ -86,6 +87,7 @@ const userSlice = createSlice({
     });
     // 로그인
     builder.addCase(__signIn.fulfilled, (state, { type, payload }) => {
+      state.userInfo.isLogin = true;
       console.log("로그인 성공");
     });
   },

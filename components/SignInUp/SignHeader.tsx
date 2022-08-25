@@ -10,7 +10,7 @@ const SignHeader = ({
 }: {
   signInFlag: boolean;
   link: string;
-  error: boolean;
+  error: boolean | null;
   first: boolean;
 }) => {
   const onLink = useClickRoute({ link: link });

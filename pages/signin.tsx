@@ -12,7 +12,7 @@ import HeaderBG from "components/HeaderBG";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "store/configStore";
 import { __signIn } from "store/modules/userSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { emailRegCheck, passwordRegCheck } from "shared/LoginCheck";
 import { RootState } from "store/modules";
 
@@ -32,10 +32,14 @@ const Signin = () => {
   // 회원가입 버튼 이벤트
   const onClickHandler = () => {
     dispatch(__signIn({ email, password: pw }));
+  };
+
+  useEffect(() => {
+    console.log(isLogin);
     if (isLogin) {
       onHomeLink();
     }
-  };
+  }, [isLogin, onHomeLink]);
 
   return (
     <div className="flex flex-col items-center justify-between bg-lightGray">

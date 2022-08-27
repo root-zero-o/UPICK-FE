@@ -13,10 +13,12 @@ import { RootState } from "store/modules";
 import { AppDispatch } from "store/configStore";
 import { rollBackDup, saveUserInfo, __dupCheck } from "store/modules/userSlice";
 import { useState, useEffect } from "react";
+import { KAKAO_AUTH_URL } from "shared/SocialAuth";
 
 const Signup = () => {
   const onHomeLink = useClickRoute({ link: "/home" });
   const onSuccessLink = useClickRoute({ link: "/tos" });
+  const onKakao = useClickRoute({ link: `${KAKAO_AUTH_URL}` });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const dispatch: AppDispatch = useDispatch();
@@ -136,7 +138,7 @@ const Signup = () => {
       <div className="flex flex-col items-center justify-start w-[164px] h-[141px] mt-[134px] mb-[40px]">
         <span className="bottomTxt">간편 회원가입</span>
         <div className="flex justify-center gap-[20px] mt-[16px]">
-          <div className="social bg-kakao">
+          <div className="social bg-kakao" onClick={onKakao}>
             <Image src={Kakao} alt="" />
           </div>
           <div className="social bg-naver">

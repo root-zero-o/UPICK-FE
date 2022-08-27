@@ -15,9 +15,11 @@ import { __signIn } from "store/modules/userSlice";
 import { useEffect, useState } from "react";
 import { emailRegCheck, passwordRegCheck } from "shared/LoginCheck";
 import { RootState } from "store/modules";
+import { KAKAO_AUTH_URL } from "shared/SocialAuth";
 
 const Signin = () => {
   const onHomeLink = useClickRoute({ link: "/home" });
+  const onKakao = useClickRoute({ link: `${KAKAO_AUTH_URL}` });
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const dispatch: AppDispatch = useDispatch();
@@ -92,7 +94,7 @@ const Signin = () => {
           <div className="flex flex-col items-center justify-between w-[164px] h-[81px] mt-[16px] mb-[75px]">
             <span className="bottomTxt">간편 로그인</span>
             <div className="flex justify-center gap-[20px]">
-              <div className="social bg-kakao">
+              <div className="social bg-kakao" onClick={onKakao}>
                 <Image src={Kakao} alt="" />
               </div>
               <div className="social bg-naver">

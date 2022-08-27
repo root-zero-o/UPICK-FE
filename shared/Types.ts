@@ -15,5 +15,4 @@ export interface UserRegistrationModel {
   email?: string;
   password?: string;
   username?: string;
-  code?: string;
 }

@@ -9,16 +9,14 @@ const SIGNUP = "user/SIGNUP";
 
 export const __getKakao = createAsyncThunk(
   LOGIN,
-  async (payload: UserRegistrationModel) => {
-    const response = await apis.getKakao(payload);
-    return response.data;
-  }
-);
-export const __getGoogle = createAsyncThunk(
-  LOGIN,
-  async (payload: UserRegistrationModel) => {
-    const response = await apis.getGoogle(payload);
-    return response.data;
+  async (payload: string | null) => {
+    console.log(payload);
+    const data = await apis.getKakao(payload);
+    console.log(data);
+    if (data.headers.authorization !== undefined) {
+      localStorage.setItem("authorization", data.headers.authorization);
+    }
+    return data;
   }
 );
 

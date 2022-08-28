@@ -14,7 +14,7 @@ const CategoryTitle = ({
 }) => {
   const onLink = useClickRoute({ link: link });
   return (
-    <div className="w-full z-40 flex px-10 pt-10 pb-6 justify-between items-center">
+    <div className="w-full z-40 flex justify-between items-center px-10">
       <div className="flex mt-1">
         <h2 className="text-darkblue1 text-md font-black">{title}</h2>
         <h3 className="text-darkblue1 text-md ml-1 font-medium">{subtitle}</h3>

@@ -14,16 +14,17 @@ import PharmacistProfile from "components/ui/PharmacistProfile";
 import ProductProfile from "components/ui/ProductProfile";
 import Layout from "../components/Layout";
 import Footer from "components/ui/Footer";
+import AdSlide from "components/ui/AdSlide";
 
 const home = () => {
   return (
     <Layout home={true} title="" isWhite={true} icon={true}>
       <Seo title="home" />
-      <div className=" w-full flex flex-col items-center">
+      <div className=" w-full flex flex-col pb-16 items-center">
         <HeaderBG
           fullWidth="100%"
           fullHeight="350px"
-          fullTop="-140px"
+          fullTop="-160px"
           innerWidth="504px"
           innerHeight="504px"
           innerTop="20.21%"
@@ -37,27 +38,56 @@ const home = () => {
           rot={150}
           bgFlag={false}
         />
-        <SearchInput top="180px" />
+        <SearchInput top="150px" />
+        <div className="z-40 w-full px-2 pt-4">
+          <h1 className="text-white text-2xl font-bold z-40 px-6">
+            최대일곱글자임님, 반가워요!
+          </h1>
+        </div>
       </div>
-      <h1 className="text-white text-2xl font-bold z-40 px-10">
-        최대일곱글자임님, 반가워요!
-      </h1>
-      <div className="home-section-wrapper pt-24">
-        <HomeCategoryBtn src={pharmacist} text="약사픽" link="/" />
-        <HomeCategoryBtn src={people} text="대중픽" link="/" />
-        <HomeCategoryBtn src={pharmacy} text="울동네약사" link="/" />
-        <HomeCategoryBtn src={myPick} text="마이픽" link="/" />
-      </div>
-      <CategoryTitle title="약사픽," subtitle="가장 추천하는 약" link="/" />
-      <TextCard
-        title="무더위, 에너지가 없다면?"
-        text="무더위로 인해 체력이 많이 떨어지는 날에는 보양식들을 많이 찾는데요,
+
+      <div className="home-section-wrapper">
+        <CategoryTitle
+          title="약사픽,"
+          subtitle="가장 추천하는 영양제"
+          link="/"
+        />
+        <AdSlide />
+        <div className="divide-y-[1px] divide-coolgray3 px-12 ">
+          <TextCard
+            title="무더위, 에너지가 없다면?"
+            text="무더위로 인해 체력이 많이 떨어지는 날에는 보양식들을 많이 찾는데요,
             비타민계에서 보양식에 해당하는 것은 바로"
-        likes={354}
-        link="/"
-      />
-      <CategoryTitle title="대중픽," subtitle="가장 인기좋은 구독제" link="/" />
-      <div className="home-section-wrapper pt-2 ">
+            link="/"
+          />
+          <TextCard
+            title="무더위, 에너지가 없다면?"
+            text="무더위로 인해 체력이 많이 떨어지는 날에는 보양식들을 많이 찾는데요,
+            비타민계에서 보양식에 해당하는 것은 바로"
+            link="/"
+          />
+          <TextCard
+            title="무더위, 에너지가 없다면?"
+            text="무더위로 인해 체력이 많이 떨어지는 날에는 보양식들을 많이 찾는데요,
+            비타민계에서 보양식에 해당하는 것은 바로"
+            link="/"
+          />
+          <TextCard
+            title="무더위, 에너지가 없다면?"
+            text="무더위로 인해 체력이 많이 떨어지는 날에는 보양식들을 많이 찾는데요,
+            비타민계에서 보양식에 해당하는 것은 바로"
+            link="/"
+          />
+        </div>
+      </div>
+
+      <div className="home-section-wrapper">
+        <CategoryTitle
+          title="대중픽,"
+          subtitle="가장 인기좋은 구독제"
+          link="/"
+        />
+
         <ProductCard
           title="복합 징코플러스"
           keyword1="고함량"

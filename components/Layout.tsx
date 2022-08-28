@@ -1,10 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import shopIcon from "../assets/images/icons/shopIcon.svg";
 import notification from "../assets/images/icons/nofication.svg";
 import down from "../assets/images/icons/down.svg";
 import BackBtn from "./BackBtn";
-import shopBlue from "../assets/images/icons/shopBlue.svg";
 
 interface LayoutProps {
   title?: string;
@@ -16,7 +14,7 @@ interface LayoutProps {
 
 const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
   return (
-    <div className="w-full flex flex-col relative pt-6">
+    <div className="w-full flex flex-col relative pt-6 space-y-6 overflow-x-hidden">
       <div className="w-full flex items-center justify-between px-6 z-40">
         {home ? (
           <div className="flex items-center w-[80%]">
@@ -39,21 +37,6 @@ const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
         )}
         {icon ? (
           <div className="flex justify-evenly items-center ">
-            <div className="flex items-center relative">
-              {isWhite ? (
-                <div>
-                  <Image alt="" src={shopIcon} />
-                </div>
-              ) : (
-                <div>
-                  <Image alt="" src={shopBlue} />
-                </div>
-              )}
-
-              <div className="w-[14px] h-[14px] bg-blue1 rounded-full absolute right-[32%] top-[29%] flex items-center justify-center ">
-                <span className="text-white text-xs">2</span>
-              </div>
-            </div>
             <div>
               <Image alt="" src={notification} />
             </div>

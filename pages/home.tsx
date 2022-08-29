@@ -132,7 +132,7 @@ const home = () => {
       </div>
       <div className="home-section-wrapper pb-4">
         <CategoryTitle title="최근 봤던 약" subtitle="" link="/" />
-        <div className="flex py-4 px-4">
+        <div className="flex py-4 w-full justify-evenly">
           <ProductProfile
             company="온누리"
             name="프리미엄 오메가쓰리"

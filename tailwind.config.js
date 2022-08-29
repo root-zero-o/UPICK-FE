@@ -78,6 +78,7 @@ module.exports = {
         chatBlue: "0px -15px 0px 0px rgba(210, 239, 250, 1)",
         chatWhite: "0px -15px 0px 0px rgba(255, 255, 255, 1)",
         "map-header": "0px -8px 10px 0px rgba(177, 194, 208, 0.4)",
+        alert: "0px 17px 23px -3px rgba(177, 194, 208, 0.4)",
       },
       fontFamily: {
         sans: ["Noto+Sans+KR", ...defaultTheme.fontFamily.sans],

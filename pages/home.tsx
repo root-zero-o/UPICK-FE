@@ -2,19 +2,14 @@ import React from "react";
 import { SearchInput } from "../components/SearchInput";
 import Seo from "components/Seo";
 import HeaderBG from "../components/HeaderBG";
-import pharmacist from "../assets/images/icons/pharmacist.svg";
-import people from "../assets/images/icons/people.svg";
-import pharmacy from "../assets/images/icons/pharmacy.svg";
-import myPick from "../assets/images/icons/myPick.svg";
-import HomeCategoryBtn from "../components/ui/HomeCategoryBtn";
 import CategoryTitle from "components/ui/CategoryTitle";
 import TextCard from "components/TextCard";
-import ProductCard from "components/ui/ProductCard";
 import PharmacistProfile from "components/ui/PharmacistProfile";
 import ProductProfile from "components/ui/ProductProfile";
 import Layout from "../components/Layout";
 import Footer from "components/ui/Footer";
 import AdSlide from "components/ui/AdSlide";
+import HomeCategoryBtn from "components/ui/HomeCategoryBtn";
 
 const home = () => {
   return (
@@ -84,61 +79,69 @@ const home = () => {
       <div className="home-section-wrapper">
         <CategoryTitle
           title="대중픽,"
-          subtitle="가장 인기좋은 구독제"
+          subtitle="가장 인기좋은 영양제"
           link="/"
         />
-
-        <ProductCard
-          title="복합 징코플러스"
-          keyword1="고함량"
-          keyword2="가성비"
-          link="/"
-        />
+        <div className="flex py-6 w-full justify-evenly">
+          <HomeCategoryBtn src="" text="건강고민" link="/" />
+          <HomeCategoryBtn src="" text="연령" link="/" />
+          <HomeCategoryBtn src="" text="원료" link="/" />
+          <HomeCategoryBtn src="" text="성별" link="/" />
+        </div>
       </div>
-      <CategoryTitle title="우리동네약사" subtitle="" link="/neighborhood/" />
-      <div className="home-section-wrapper grid grid-cols-3">
-        <PharmacistProfile
-          pharmacist="차은우"
-          pharmacy="잘생김"
-          link="/"
-          location={false}
-        />
-        <PharmacistProfile
-          pharmacist="차은우"
-          pharmacy="잘생김"
-          link="/"
-          location={false}
-        />
-        <PharmacistProfile
-          pharmacist="차은우"
-          pharmacy="잘생김"
-          link="/"
-          location={false}
-        />
-        <PharmacistProfile
-          pharmacist="차은우"
-          pharmacy="잘생김"
-          link="/"
-          location={false}
-        />
-        <PharmacistProfile
-          pharmacist="차은우"
-          pharmacy="잘생김"
-          link="/"
-          location={false}
-        />
-        <PharmacistProfile
-          pharmacist="차은우"
-          pharmacy="잘생김"
-          link="/"
-          location={false}
-        />
+      <div className="home-section-wrapper">
+        <CategoryTitle title="우리동네약사" subtitle="" link="/neighborhood/" />
+        <div className=" grid grid-cols-3 px-4 py-4">
+          <PharmacistProfile
+            pharmacist="차은우"
+            pharmacy="잘생김"
+            link="/"
+            location={false}
+          />
+          <PharmacistProfile
+            pharmacist="차은우"
+            pharmacy="잘생김"
+            link="/"
+            location={false}
+          />
+          <PharmacistProfile
+            pharmacist="차은우"
+            pharmacy="잘생김"
+            link="/"
+            location={false}
+          />
+          <PharmacistProfile
+            pharmacist="차은우"
+            pharmacy="잘생김"
+            link="/"
+            location={false}
+          />
+          <PharmacistProfile
+            pharmacist="차은우"
+            pharmacy="잘생김"
+            link="/"
+            location={false}
+          />
+          <PharmacistProfile
+            pharmacist="차은우"
+            pharmacy="잘생김"
+            link="/"
+            location={false}
+          />
+        </div>
       </div>
-      <CategoryTitle title="최근 봤던 약" subtitle="" link="/" />
-      <div className="home-section-wrapper pb-16">
-        <ProductProfile company="온누리" name="프리미엄 오메가쓰리" link="/" />
-        <ProductProfile company="부광약품" name="올인핏" link="/" />
-        <ProductProfile company="경남제약" name="밸런스케어 VIP" link="/" />
+      <div className="home-section-wrapper pb-4">
+        <CategoryTitle title="최근 봤던 약" subtitle="" link="/" />
+        <div className="flex py-4 px-4">
+          <ProductProfile
+            company="온누리"
+            name="프리미엄 오메가쓰리"
+            link="/"
+          />
+          <ProductProfile company="부광약품" name="올인핏" link="/" />
+          <ProductProfile company="경남제약" name="밸런스케어 VIP" link="/" />
+          <ProductProfile company="경남제약" name="밸런스케어 VIP" link="/" />
+        </div>
       </div>
       <Footer />
     </Layout>

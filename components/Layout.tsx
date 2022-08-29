@@ -3,7 +3,7 @@ import Image from "next/image";
 import notification from "../assets/images/icons/nofication.svg";
 import down from "../assets/images/icons/down.svg";
 import BackBtn from "./BackBtn";
-
+import useClickRoute from "hooks/useClickRoute";
 interface LayoutProps {
   title?: string;
   home?: boolean;
@@ -13,8 +13,10 @@ interface LayoutProps {
 }
 
 const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
+  const onLink = useClickRoute({ link: "/alert" });
+
   return (
-    <div className="w-full flex flex-col relative pt-6 space-y-6 overflow-x-hidden">
+    <div className="w-full flex flex-col py-8 relative space-y-6 overflow-x-hidden">
       <div className="w-full flex items-center justify-between px-6 z-40">
         {home ? (
           <div className="flex items-center w-[80%]">
@@ -37,13 +39,11 @@ const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
         )}
         {icon ? (
           <div className="flex justify-evenly items-center ">
-            <div>
+            <div onClick={onLink} className="hover:cursor-pointer">
               <Image alt="" src={notification} />
             </div>
           </div>
-        ) : (
-          <div className="h-[110px]"></div>
-        )}
+        ) : null}
       </div>
 
       {children}

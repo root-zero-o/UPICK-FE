@@ -3,7 +3,7 @@
 
 @layer components {
   .home-section-wrapper {
-    @apply w-full flex flex-col space-y-4 py-4;
+    @apply w-full flex flex-col space-y-4 pt-4;
   }
   ::-webkit-scrollbar {
     display: none;

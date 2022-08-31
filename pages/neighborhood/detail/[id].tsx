@@ -27,8 +27,8 @@ const detail: NextPage = () => {
               <span className="text-coolgray1 text-sm ml-1">100+</span>
             </div>
           </div>
-          <span className="text-md font-bold text-darkblue2">잘생김 약국</span>
-          <span className="text-sm font-light text-coolgray3">
+          <span className="text-md font-bold text-coolgray4">잘생김 약국</span>
+          <span className="text-sm font-light text-coolgray4">
             충청북도 청주시 상당구 중고개로
           </span>
         </div>

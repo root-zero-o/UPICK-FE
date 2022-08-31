@@ -1,53 +1,61 @@
-import React, { useState, useEffect } from "react";
-import time from "../../assets/images/icons/time.svg";
+import React from "react";
+import downArrow from "../../assets/images/icons/downArrow.svg";
 import Image from "next/image";
-import send from "../../assets/images/icons/send.svg";
-import useClickRoute from "hooks/useClickRoute";
 
 const PharmacistTime = ({
   name,
-  able,
-  startTime,
-  endTime,
-  link,
+  pharmacy,
+  time,
+  location,
+  distance,
+  isActive,
 }: {
   name: string;
-  able: boolean;
-  startTime: string;
-  endTime: string;
-  link: string;
+  pharmacy: string;
+  time: string;
+  location: string;
+  distance: number;
+  isActive: boolean;
 }) => {
-  const [active, setActive] = useState(false);
-  const onLink = useClickRoute({ link });
-  useEffect(() => {
-    if (able) {
-      setActive(true);
-    }
-  }, [able]);
   return (
-    <div className="flex mx-5 items-center justify-evenly py-4 relative ">
-      <span className="text-md text-[#212222] font-bold">{name} 약사</span>
-      {active ? (
-        <div className="bg-blue2 text-white w-[50.23px] h-[20px] rounded-[13px] text-xs flex items-center justify-center">
-          상담가능
+    <div className="w-full px-4 flex justify-between py-5 hover:cursor-pointer hover:bg-white transition-all rounded-lg">
+      <div className="flex flex-col space-y-1">
+        <div className="flex items-center">
+          <span className="text-md text-darkblue2 font-bold mr-2">
+            {name} 약사
+          </span>
+          <span className="text-sm text-coolgray4 font-light">
+            {pharmacy} 약국
+          </span>
         </div>
-      ) : (
-        <div className="border-[1px] border-coolgray3 text-coolgray3 w-[50.23px] h-[20px] rounded-[13px] text-xs flex items-center justify-center ">
-          상담불가
+        <div className="flex items-center">
+          <span className="text-sm text-coolgray4 font-light mr-4">
+            상담가능시간
+          </span>
+          <span className="text-sm text-black font-medium">{time}</span>
         </div>
-      )}
-
-      <div className=" flex items-center h-full">
-        <Image alt="" src={time} />
-        <span className="text-xs text-coolgray3 ml-1">
-          {startTime} ~ {endTime}
-        </span>
+        {isActive ? (
+          <div className="w-[60px] h-[20px] rounded-full bg-blue2 flex justify-center items-center font-light">
+            <span className="text-xs text-white">상담가능</span>
+          </div>
+        ) : (
+          <div className="w-[60px] h-[20px] rounded-full bg-coolgray3 flex justify-center items-center font-light">
+            <span className="text-xs text-white">상담불가</span>
+          </div>
+        )}
       </div>
-      <div
-        onClick={onLink}
-        className="w-[30px] h-[30px] rounded-full bg-white shadow-md flex items-center justify-center hover:cursor-pointer hover:shadow-lg"
-      >
-        <Image alt="" src={send} />
+      <div>
+        <div className="flex flex-col items-end space-y-1">
+          <div className="flex items-center">
+            <span className="mr-2 text-sm text-coolgray4 leading-5 block font-light">
+              {location}
+            </span>
+            <Image alt="downArrow" src={downArrow} />
+          </div>
+          <span className="text-sm text-darkblue2 leading-5 block font-medium">
+            {distance} m
+          </span>
+        </div>
       </div>
     </div>
   );

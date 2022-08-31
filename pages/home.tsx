@@ -33,7 +33,7 @@ const home = () => {
           rot={150}
           bgFlag={false}
         />
-        <SearchInput top="150px" />
+        <SearchInput top="150px" width={88} />
         <div className="z-40 w-full px-2 pt-4">
           <h1 className="text-white text-2xl font-bold z-40 px-6">
             최대일곱글자임님, 반가워요!

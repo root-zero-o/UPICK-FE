@@ -3,7 +3,7 @@ import { cls } from "../../lib/utils";
 
 const AdSlide = () => {
   const [move, setMove] = useState(0);
-  const [clicked, setClicked] = useState("none");
+  const [clicked, setClicked] = useState("first");
   const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const id = e.currentTarget.id;
     if (id === "first") {

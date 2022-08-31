@@ -1,5 +1,7 @@
 import React from "react";
 import behance from "../../assets/images/behance.svg";
+import Github from "../../assets/images/icons/Github.svg";
+import Notion from "../../assets/images/icons/Notion.svg";
 import Image from "next/image";
 
 const Footer = () => {
@@ -25,12 +27,12 @@ const Footer = () => {
         <span className="mt-1">문의 : </span>
         <span>깃허브 : </span>
       </div>
-      <div className="border-t-2 border-white w-full py-5 flex items-center justify-between px-4">
+      <div className="border-t-2 border-white w-full py-3 flex items-center justify-between px-4">
+        <Image alt="" src={Github} />
         <Image alt="" src={behance} />
-        <Image alt="" src={behance} />
-        <Image alt="" src={behance} />
+        <Image alt="" src={Notion} />
       </div>
-      <div className="w-full flex justify-center text-sm">
+      <div className="w-full flex justify-center text-sm font-light">
         Copyright ©Team A. All rights reserved
       </div>
     </div>

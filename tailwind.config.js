@@ -68,6 +68,10 @@ module.exports = {
         // map header linear-gradient
         "map-header":
           "linear-gradient(180deg, #F7FAFF 5%, rgba(247, 250, 255, 0) 35%)",
+        "arrow-gradient":
+          "radial-gradient(127.2% 48.97% at 42.91% -10.91%, rgba(69, 255, 188, 0.8) 0%, rgba(69, 255, 188, 0) 100%), radial-gradient(70% 169.82% at 3.82% 96.36%, #1576FB 0%, rgba(21, 118, 251, 0) 100%), radial-gradient(70.39% 180.39% at 59.3% -8.88%, rgba(108, 222, 157, 0) 38.42%, #90EED3 100%), radial-gradient(71.41% 74.93% at 44.96% 37.14%, #6DC9FF 0%, #62C0F9 30.88%, #3FA8E8 67.62%, #4CB9ED 89.18%, #65D7F7 100%)",
+        "arrow-bg-gradient":
+          "linear-gradient(240.04deg, #F7FAFF 8.81%, #ECFAFF 88.28%)",
       },
 
       boxShadow: {
@@ -79,6 +83,9 @@ module.exports = {
         chatWhite: "0px -15px 0px 0px rgba(255, 255, 255, 1)",
         "map-header": "0px -8px 10px 0px rgba(177, 194, 208, 0.4)",
         alert: "0px 17px 23px -3px rgba(177, 194, 208, 0.4)",
+        arrow_shadow:
+          "0px 17.5531px 20.3514px rgba(0, 44, 170, 0.0361111), 0px 11.377px 11.9188px rgba(0, 44, 170, 0.0588889), 0px 6.7612px 6.48231px rgba(0, 44, 170, 0.075), 0px 3.51062px 3.30711px rgba(0, 44, 170, 0.0911111), 0px 1.43025px 1.65826px rgba(0, 44, 170, 0.113889), 0px 0.325058px 0.800866px rgba(0, 44, 170, 0.15)",
+        arrow_bg_shadow: "-10px 4px 10px rgba(0, 0, 0, 0.04)",
       },
       fontFamily: {
         sans: ["Noto+Sans+KR", ...defaultTheme.fontFamily.sans],

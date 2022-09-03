@@ -59,6 +59,8 @@ module.exports = {
         // home page linear gradient
         "home-p-one":
           "linear-gradient(180.37deg, #45FFBC -5.06%, #45DDFF 89.84%)",
+        "gradient-five":
+          "linear-gradient(350.37deg, #45DDFF -5.06%, #45FFBC 85.84%)",
         // search input linear gradient
         searchInput:
           "linear-gradient(180deg, rgba(243, 249, 247, 0.3) 0%, rgba(228, 230, 252, 0.3) 100%)",

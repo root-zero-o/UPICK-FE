@@ -11,6 +11,8 @@ import MyMedicineList from "components/mypick/MyMedicineList";
 import HxBtn from "components/mypick/HxBtn";
 import Checkbox from "components/mypick/CheckBox";
 import NavBar from "components/NavBar";
+import RecentMed from "components/mypick/RecentMed";
+import { useState } from "react";
 
 const TemplateMyPick = () => {
   return (
@@ -81,10 +83,10 @@ const TemplateMyPick = () => {
         </div>
         {/* 나의 건강 이력 */}
         <CategoryTitle title="나의 건강 이력" subtitle="" link="/" />
-        <div className="flex flex-col justify-center w-[90%] h-[300px] bg-yellow1 drop-shadow-lg rounded-lg">
-          <div className="w-full h-fit mb-4 bg-blue1 flex flex-col justify-center items-center">
+        <div className="bg-blue4 mt-4 flex flex-col items-center justify-center w-[90%] h-[300px]  shadow-md rounded-lg">
+          <div className="w-full h-fit mb-4  flex flex-col justify-center items-center">
             <HxBtn contents="진단여부" />
-            <div className="w-[80%] flex justify-between items-center">
+            <div className="mt-4 w-[80%] flex justify-between items-center">
               <Checkbox title="뇌졸증" active={true} />
               <Checkbox title="심장병" active={false} />
               <Checkbox title="고혈압" active={true} />
@@ -92,7 +94,8 @@ const TemplateMyPick = () => {
               <Checkbox title="기타(암포함)" active={false} />
             </div>
           </div>
-          <div className="h-fit bg-green bg-red-200 flex flex-col justify-center items-center">
+          <div className="mb-4 w-[80%] h-[4px] bg-blue2 rounded"></div>
+          <div className="w-full h-fit mb-4  flex flex-col justify-center items-center">
             <HxBtn contents="신체활동" />
             <span className="text-xs mt-2 mb-4">
               (숨이 차는 평소보다 적절한 활동, 하루 20분 이상 시행한 날)
@@ -109,6 +112,9 @@ const TemplateMyPick = () => {
       </div>
       {/* 최근 봤던 약 */}
       <CategoryTitle title="최근 봤던 약" subtitle="" link="/" />
+      <div className="flex w-full justify-evenly py-4">
+        <RecentMed pharmacy="온누리" med="프리미엄 오메가쓰리" />
+      </div>
       <NavBar location="myPick" />
     </Layout>
   );

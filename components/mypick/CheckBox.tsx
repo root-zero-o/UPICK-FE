@@ -8,7 +8,7 @@ const CheckBox = ({ title, active }: CheckBox) => {
     <>
       {active ? (
         <div className="flex flex-col justify-center items-center text-[14px]">
-          <span className="mt-4">{title}</span>
+          <span>{title}</span>
           <button className="text-blue3 p-4 cursor-pointer mt-[6px] flex justify-center items-center w-[24px] h-[24px] border-blue3 border-[2px] rounded-[4px]">
             V
           </button>

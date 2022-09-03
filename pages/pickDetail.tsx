@@ -1,15 +1,15 @@
 import Image from "next/image";
-import notification from "../assets/images/icons/nofication.svg";
+import notification from "../assets/images/icons/ic_noti.svg";
 import useClickRoute from "hooks/useClickRoute";
 import BackBtn from "components/BackBtn";
 
 const PickDetail = () => {
   const onLink = useClickRoute({ link: "/alert" });
   return (
-    <div className="w-full h-screen flex flex-col py-8 relative overflow-x-hidden bg-blue1">
+    <div className="w-full h-screen flex flex-col py-8 relative overflow-x-hidden bg-coolgray1">
       {/* 헤더 */}
       <div className="flex justify-between items-center pl-[20px] ">
-        <BackBtn isWhite={true} />
+        <BackBtn type="blue" />
         <div onClick={onLink} className="hover:cursor-pointer pr-[20px]">
           <Image alt="" src={notification} />
         </div>

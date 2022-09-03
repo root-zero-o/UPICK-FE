@@ -52,7 +52,7 @@ const Signup = () => {
     <div className="flex flex-col items-center justify-between bg-lightGray">
       <HeaderBG
         fullWidth="100%"
-        fullHeight="600px"
+        fullHeight="660px"
         fullTop="-37.56%"
         innerWidth="504px"
         innerHeight="504px"
@@ -67,6 +67,9 @@ const Signup = () => {
         rot={150}
         bgFlag={false}
       />
+      <span className="absolute top-[50px] left-[32px] text-white text-[26px] font-bold">
+        건기식 고를 땐, 유픽!
+      </span>
       <div className="InnerBox relative bg-blue3/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
         <SignHeader
           signInFlag={false}
@@ -74,7 +77,7 @@ const Signup = () => {
           error={dupCheck}
           first={false}
         />
-        <div className="flex flex-col justify-start items-center mt-[40.5px]">
+        <div className="flex flex-col justify-start items-center mt-[30px]">
           {/* 이름 input 유효성 */}
           {!nameRegCheck(name) && name.length !== 0 ? (
             <SignInput
@@ -135,7 +138,7 @@ const Signup = () => {
         </div>
         <SignArrow disabled={onDisableHandler()} onClick={onClickHandler} />
       </div>
-      <div className="flex flex-col items-center justify-start w-[164px] h-[141px] mt-[134px] mb-[40px]">
+      <div className="flex flex-col items-center justify-start w-[164px] h-[141px] mt-[134px]">
         <span className="bottomTxt">간편 회원가입</span>
         <div className="flex justify-center gap-[20px] mt-[16px]">
           <div className="social bg-kakao" onClick={onKakao}>
@@ -148,7 +151,7 @@ const Signup = () => {
             <Image src={Google} alt="" />
           </div>
         </div>
-        <span className="bottomTxt mt-[36px]">
+        <span className="bottomTxt mt-[45.5px]">
           회원가입 없이
           <strong className="cursor-pointer" onClick={onHomeLink}>
             &nbsp;둘러보기
@@ -158,7 +161,7 @@ const Signup = () => {
       <style jsx>
         {`
           .InnerBox {
-            width: calc(100% - 58px);
+            width: calc(100% - 40px);
             margin-top: 138px;
           }
           .ErrorText {
@@ -173,6 +176,7 @@ const Signup = () => {
             display: flex;
             justify-content: center;
             cursor: pointer;
+            box-shadow: -10px 4px 10px rgba(0, 0, 0, 0.04);
           }
           .bottomTxt {
             font-size: 14px;

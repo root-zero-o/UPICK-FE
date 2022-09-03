@@ -20,8 +20,8 @@ const SignHeader = ({
         {signInFlag ? (
           <>
             <div className="marDiv flex flex-col items-center justify-center cursor-pointer">
-              <span className="text-white text-[20px]">로그인</span>
-              <div className="marDiv w-[68px] border-[1px] border-lightGray" />
+              <span className="text-white text-[20px] mb-[8px]">로그인</span>
+              <div className="marDiv w-[68px] border-[1px] border-white" />
             </div>
             <div
               className="relative marDiv flex flex-col items-center justify-center"
@@ -59,14 +59,13 @@ const SignHeader = ({
               </span>
             </div>
             <div className="marDiv flex flex-col items-center justify-center cursor-pointer">
-              <span className="text-white text-[20px]">회원가입</span>
-              <div className="w-[68px] border-[1px] border-lightGray" />
+              <span className="text-white text-[20px] mb-[8px]">회원가입</span>
+              <div className="w-[68px] border-[1px] border-white" />
             </div>
           </>
         )}
         <style jsx>{`
           .marDiv {
-            width: 100%;
             max-width: 119px;
             margin: auto;
           }

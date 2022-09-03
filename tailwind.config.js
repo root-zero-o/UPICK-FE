@@ -46,18 +46,13 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        // welcome page linear gradient
-        "welcome-p-one":
+        "gradient-one":
           "linear-gradient(239.24deg, #45DDFF 28.42%, #0041E8 105.96%);",
-        "welcome-p-two":
-          "linear-gradient(317.3deg, #1576FB 5.42%, #45F1DA 85.66%);",
-        // sign page linear gradient
-        "sign-p-one":
+        "gradient-two":
           "linear-gradient(201.89deg, #45FFBC 13.17%, #45DDFF 107.88%)",
-        "sign-p-two":
+        "gradient-three":
           "linear-gradient(317.3deg, #1576FB 5.42%, #45F1DA 85.66%)",
-        // home page linear gradient
-        "home-p-one":
+        "gradient-four":
           "linear-gradient(180.37deg, #45FFBC -5.06%, #45DDFF 89.84%)",
         "gradient-five":
           "linear-gradient(350.37deg, #45DDFF -5.06%, #45FFBC 85.84%)",

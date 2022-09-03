@@ -44,7 +44,7 @@ const SignupDetail = () => {
   return (
     <div className="relative h-screen flex flex-col items-center justify-between">
       <div className="relative w-full h-[208px] bg-gradient-five rounded-b-[101px] overflow-hidden">
-        <div className="absolute w-[504px] h-[504px] rounded-full bg-sign-p-two top-[-10px] left-[-140px] rotate-[105deg]" />
+        <div className="absolute w-[504px] h-[504px] rounded-full bg-gradient-three top-[-10px] left-[-140px] rotate-[105deg]" />
         <span className="absolute text-white text-[26px] font-bold left-[40px] top-[50px]">
           회원가입
         </span>

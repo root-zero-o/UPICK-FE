@@ -28,11 +28,6 @@ const EditInput = ({ placeholder }: { placeholder: string }) => {
             background-color: #f7faff;
             border: 1px solid #b1c2d0;
             border-radius: 22px;
-            margin-bottom: 20px;
-          }
-          .error {
-            border: 1px solid #f94a23;
-            color: #f94a23;
           }
         `}
       </style>

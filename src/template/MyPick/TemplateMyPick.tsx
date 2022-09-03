@@ -78,6 +78,7 @@ const TemplateMyPick = () => {
             <MyMedicineList
               key={`my-medicine-list-${index}`}
               contents={value}
+              icon={false}
             />
           ))}
         </div>

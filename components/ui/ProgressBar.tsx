@@ -43,10 +43,10 @@ const ProgressBar = ({
       <div className="progressBarBlock">
         <div className="progressBar" />
       </div>
-      <div className="relative w-[80px] h-[80px] rounded-full bg-white">
+      <div className="relative w-[80px] h-[80px] rounded-full bg-white shadow-arrow_bg_shadow">
         <button
           disabled={onDisableHandler()}
-          className="absolute flex items-center justify-center w-[55px] h-[55px] z-1 rounded-full bg-blue2 z-1 right-1/2 top-1/2 translate-x-1/2 -translate-y-1/2"
+          className="absolute flex items-center justify-center w-[55px] h-[55px] z-1 rounded-full bg-arrow-gradient shadow-arrow_shadow z-1 right-1/2 top-1/2 translate-x-1/2 -translate-y-1/2"
           onClick={onClick}
         >
           <Image src={Arrow} alt="" />

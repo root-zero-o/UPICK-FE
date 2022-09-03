@@ -44,10 +44,10 @@ const Signin = () => {
   }, [isLogin, onHomeLink]);
 
   return (
-    <div className="flex flex-col items-center justify-between bg-lightGray">
+    <div className="relative flex flex-col items-center justify-between bg-lightGray">
       <HeaderBG
         fullWidth="100%"
-        fullHeight="600px"
+        fullHeight="650px"
         fullTop="-37.56%"
         innerWidth="504px"
         innerHeight="504px"
@@ -62,6 +62,9 @@ const Signin = () => {
         rot={150}
         bgFlag={false}
       />
+      <span className="absolute top-[50px] left-[32px] text-white text-[26px] font-bold">
+        건기식 고를 땐, 유픽!
+      </span>
       <div className="InnerBox relative bg-blue3/50 backdrop-blur-md border-[2px] border-opacity-[0.56] border-white rounded-[51px] shadow-sign-p-input">
         <SignHeader
           signInFlag={true}
@@ -69,7 +72,7 @@ const Signin = () => {
           error={false}
           first={true}
         />
-        <div className="flex flex-col justify-start items-center mt-[40.5px]">
+        <div className="flex flex-col justify-start items-center mt-[30px]">
           <SignInput
             type="text"
             placeholder="이메일"
@@ -91,7 +94,7 @@ const Signin = () => {
             textTwo="를 잊으셨나요?"
             link=""
           />
-          <div className="flex flex-col items-center justify-between w-[164px] h-[81px] mt-[16px] mb-[75px]">
+          <div className="flex flex-col items-center justify-between w-[164px] h-[81px] mt-[26px] mb-[75px]">
             <span className="bottomTxt">간편 로그인</span>
             <div className="flex justify-center gap-[20px]">
               <div className="social bg-kakao" onClick={onKakao}>
@@ -108,7 +111,7 @@ const Signin = () => {
         </div>
         <SignArrow disabled={onDisableHandler()} onClick={onClickHandler} />
       </div>
-      <span className="bottomTxt mt-[175px] mb-[30px]">
+      <span className="bottomTxt mt-[175px]">
         회원가입 없이
         <strong className="cursor-pointer" onClick={onHomeLink}>
           &nbsp;둘러보기
@@ -117,7 +120,7 @@ const Signin = () => {
       <style jsx>
         {`
           .InnerBox {
-            width: calc(100% - 58px);
+            width: calc(100% - 40px);
             margin-top: 138px;
           }
           .ErrorText {
@@ -132,6 +135,7 @@ const Signin = () => {
             display: flex;
             justify-content: center;
             cursor: pointer;
+            box-shadow: -10px 4px 10px rgba(0, 0, 0, 0.04);
           }
           .bottomTxt {
             font-size: 14px;

@@ -41,14 +41,14 @@ const HeaderBG = ({
       <div
         className={cls(
           "wholeDiv rounded-[101px] overflow-hidden",
-          bgFlag ? "bg-sign-p-one" : "bg-home-p-one"
+          bgFlag ? "bg-gradient-two" : "bg-gradient-four"
         )}
       >
         {showInnerDIv && (
-          <div className="innerDiv bg-sign-p-two  rounded-full" />
+          <div className="innerDiv bg-gradient-three  rounded-full" />
         )}
         {showOuterDiv && (
-          <div className="outerDiv bg-sign-p-two rounded-full " />
+          <div className="outerDiv bg-gradient-three rounded-full " />
         )}
       </div>
 

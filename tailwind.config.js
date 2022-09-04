@@ -43,6 +43,7 @@ module.exports = {
       error: "#F94A23",
       kakao: "#FFE600",
       naver: "#00BE35",
+      cyan: "rgba(0, 195, 240, 1)",
     },
     extend: {
       backgroundImage: {
@@ -84,6 +85,7 @@ module.exports = {
           "0px 17.5531px 20.3514px rgba(0, 44, 170, 0.0361111), 0px 11.377px 11.9188px rgba(0, 44, 170, 0.0588889), 0px 6.7612px 6.48231px rgba(0, 44, 170, 0.075), 0px 3.51062px 3.30711px rgba(0, 44, 170, 0.0911111), 0px 1.43025px 1.65826px rgba(0, 44, 170, 0.113889), 0px 0.325058px 0.800866px rgba(0, 44, 170, 0.15)",
         arrow_bg_shadow: "-10px 4px 10px rgba(0, 0, 0, 0.04)",
       },
+      button_shadow: "0px -3px 4px #B1C2D0",
       fontFamily: {
         sans: ["Noto+Sans+KR", ...defaultTheme.fontFamily.sans],
       },

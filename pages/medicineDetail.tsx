@@ -3,6 +3,7 @@ import notification from "../assets/images/icons/ic_noti.svg";
 import BackBtn from "components/BackBtn";
 import useClickRoute from "hooks/useClickRoute";
 import pathGray from "../assets/images/icons/PathGray.svg";
+import heart_line from "../assets/images/icons/heart-line.svg";
 
 const MedicineDetail = () => {
   const onLink = useClickRoute({ link: "/alert" });
@@ -96,6 +97,14 @@ const MedicineDetail = () => {
         </div>
 
         {/* 좋아요 + 예약버튼 */}
+        <div className="bg-coolgray1 flex justify-between py-[10px] px-[30px]">
+          <div className="w-[40px] h-[40px] flex justify-center mr-[20px] bg-coolgray1 rounded-full shadow-home-p-category-btn">
+            <Image src={heart_line} alt="heart" />
+          </div>
+          <button className="w-[256px] h-[40px] bg-coolgray3 rounded-[22px] text-center text-[14px] text-white shadow-button_shadow font-extrabold ">
+            약국에 영양제 픽업 예약하기
+          </button>
+        </div>
       </div>
     </>
   );

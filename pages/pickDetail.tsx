@@ -10,7 +10,7 @@ import bgOne from "../assets/images/bgOne.svg";
 const PickDetail = () => {
   const onLink = useClickRoute({ link: "/alert" });
   return (
-    <div className="w-full h-full flex flex-col pt-[32px] relative overflow-x-hidden bg-coolgray1">
+    <div className="w-full h-full flex flex-col pt-[30px] relative overflow-x-hidden bg-coolgray1">
       {/* Header - Done */}
       <div className="flex justify-between items-center pl-[20px] ">
         <BackBtn type="blue" />
@@ -19,7 +19,7 @@ const PickDetail = () => {
         </div>
       </div>
       {/* Category */}
-      <div className="flex mt-[40px] ml-[20px] text-[12px] font-bold text-darkblue1">
+      <div className="flex mt-[35px] ml-[20px] text-[12px] font-bold text-darkblue1">
         <div className="mr-[20px]">
           <span>한성준 약사</span>
         </div>

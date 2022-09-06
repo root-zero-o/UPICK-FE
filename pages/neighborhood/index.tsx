@@ -79,6 +79,7 @@ const index = () => {
               meter={123}
             />
           </div>
+          <div className="w-full h-[9px] bg-coolgray2" />
         </div>
         <CategoryBar />
         <div className="flex flex-col w-full divide-y-[1px] divide-blue3 px-6 pb-10">

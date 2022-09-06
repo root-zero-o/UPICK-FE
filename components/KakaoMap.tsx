@@ -1,3 +1,4 @@
+import useGetLocation from "hooks/useGetLocation";
 import Script from "next/script";
 import React, { ReactElement, useCallback, useRef } from "react";
 
@@ -5,7 +6,6 @@ const NEXT_PUBLIC_KAKAOMAP_KEY = process.env.NEXT_PUBLIC_KAKAOMAP_KEY;
 
 const KakaoMap = (): ReactElement | null => {
   const containerRef = useRef<HTMLDivElement>(null);
-
   const initMap = useCallback(() => {
     if (containerRef.current) {
       const map = new window.kakao.maps.Map(containerRef.current, {

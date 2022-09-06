@@ -74,6 +74,7 @@ const home = () => {
             link="/"
           />
         </div>
+        <div className="w-full h-[9px] bg-coolgray2" />
       </div>
 
       <div className="home-section-wrapper">

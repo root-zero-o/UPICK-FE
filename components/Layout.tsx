@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import notification from "../assets/images/icons/nofication.svg";
+import alertBlue from "../assets/images/icons/alertBlue.svg";
 import down from "../assets/images/icons/down.svg";
 import BackBtn from "./BackBtn";
 import useClickRoute from "hooks/useClickRoute";
@@ -27,7 +28,7 @@ const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
           </div>
         ) : (
           <div className="flex items-center">
-            <BackBtn isWhite={isWhite} />
+            {isWhite ? <BackBtn type="white" /> : <BackBtn type="blue" />}
             {isWhite ? (
               <h2 className="text-white ml-6 drop-shadow-sm text-2xl mb-2 font-bold">
                 {title}
@@ -40,7 +41,11 @@ const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
         {icon ? (
           <div className="flex justify-evenly items-center ">
             <div onClick={onLink} className="hover:cursor-pointer">
-              <Image alt="" src={notification} />
+              {isWhite ? (
+                <Image alt="" src={notification} />
+              ) : (
+                <Image alt="" src={alertBlue} />
+              )}
             </div>
           </div>
         ) : null}

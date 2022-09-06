@@ -5,7 +5,8 @@ import ChatBlue from "../../assets/images/icons/chatBlue.svg";
 const AlertCard = ({ title, text }: { title: string; text: string }) => {
   return (
     <div className="px-6">
-      <div className="w-full  h-[130px] rounded-2xl shadow-alert flex p-4 items-center">
+      <div className="relative w-full  h-[130px] rounded-2xl shadow-alert flex p-4 items-center">
+        <div className="w-[11px] h-[11px] rounded-full bg-blue2 absolute -top-[2px] right-4" />
         <div className="w-[60px] h-[60px] rounded-full bg-white shadow-lg flex justify-center items-center ">
           <Image alt="" src={ChatBlue} />
         </div>

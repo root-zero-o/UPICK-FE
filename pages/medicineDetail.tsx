@@ -95,55 +95,30 @@ const MedicineDetail = () => {
             </div>
           </div>
           {/* 가로 스크롤 후기? */}
-          <div className="w-[410px] flex mt-[19px] overflow-visible">
-            <div className="w-[122px] rounded-[13px] border-solid border-2 border-blue3 mr-[16px] px-[16px]">
-              <div className="text-darkblue1 font-extrabold text-[13px] mt-[19px]">
-                한성준 약사
-              </div>
-              <div className="mt-[13px] text-[12px] text-coolgray4 font-semibold">
-                착한 가격에 넉넉한 용량의 비타민C. 하루 1정씩, 240일치 (6개월
-                이상)
-              </div>
-              <div className="flex mt-[7px] gap-2 mb-[11px]">
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_empty} />
-              </div>
-            </div>
-            <div className="w-[122px] rounded-[13px] border-solid border-2 border-blue3 mr-[16px] px-[16px]">
-              <div className="text-darkblue1 font-extrabold text-[13px] mt-[19px]">
-                한성준 약사
-              </div>
-              <div className="mt-[13px] text-[12px] text-coolgray4 font-semibold">
-                착한 가격에 넉넉한 용량의 비타민C. 하루 1정씩, 240일치 (6개월
-                이상)
-              </div>
-              <div className="flex mt-[7px] gap-2 mb-[11px]">
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_empty} />
-              </div>
-            </div>
-            <div className="w-[122px] rounded-[13px] border-solid border-2 border-blue3 mr-[16px] px-[16px]">
-              <div className="text-darkblue1 font-extrabold text-[13px] mt-[19px]">
-                한성준 약사
-              </div>
-              <div className="mt-[13px] text-[12px] text-coolgray4 font-semibold">
-                착한 가격에 넉넉한 용량의 비타민C. 하루 1정씩, 240일치 (6개월
-                이상)
-              </div>
-              <div className="flex mt-[7px] gap-2 mb-[11px]">
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_fill} />
-                <Image alt="" src={star_empty} />
-              </div>
-            </div>
+          <div className="overflow-x-scroll flex w-[370px] mt-[19px] mb-[25px]">
+            {Array.from({ length: 5 })?.map((v, i) => {
+              return (
+                <div
+                  className="borderBox min-w-[122px] max-w-[122px] max-h-[151px] rounded-[13px] border-solid border-2 border-blue3 mr-[16px] px-[16px]"
+                  key={i}
+                >
+                  <div className="text-darkblue1 font-extrabold text-[13px] mt-[19px]">
+                    한성준 약사
+                  </div>
+                  <div className="mt-[13px] text-[12px] text-coolgray4 font-normal leading-[14px]">
+                    착한 가격에 넉넉한 용량의 비타민C. 하루 1정씩, 240일치
+                    (6개월 이상)
+                  </div>
+                  <div className="flex mt-[7px] gap-2 mb-[11px]">
+                    <Image alt="" src={star_fill} />
+                    <Image alt="" src={star_fill} />
+                    <Image alt="" src={star_fill} />
+                    <Image alt="" src={star_fill} />
+                    <Image alt="" src={star_empty} />
+                  </div>
+                </div>
+              );
+            })}
           </div>
           {/* 추천 태그 */}
         </div>
@@ -157,6 +132,10 @@ const MedicineDetail = () => {
             약국에 영양제 픽업 예약하기
           </button>
         </div>
+        <style jsx>{`
+          .borderBox {
+          }
+        `}</style>
       </div>
     </>
   );

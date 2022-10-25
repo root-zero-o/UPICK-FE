@@ -97,37 +97,37 @@ const home = () => {
             pharmacist="차은우"
             pharmacy="잘생김"
             link="/"
-            location={false}
+            meter={1231}
           />
           <PharmacistProfile
             pharmacist="차은우"
             pharmacy="잘생김"
             link="/"
-            location={false}
+            meter={1231}
           />
           <PharmacistProfile
             pharmacist="차은우"
             pharmacy="잘생김"
             link="/"
-            location={false}
+            meter={1231}
           />
           <PharmacistProfile
             pharmacist="차은우"
             pharmacy="잘생김"
             link="/"
-            location={false}
+            meter={1231}
           />
           <PharmacistProfile
             pharmacist="차은우"
             pharmacy="잘생김"
             link="/"
-            location={false}
+            meter={1231}
           />
           <PharmacistProfile
             pharmacist="차은우"
             pharmacy="잘생김"
             link="/"
-            location={false}
+            meter={1231}
           />
         </div>
       </div>

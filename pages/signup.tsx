@@ -46,7 +46,7 @@ const Signup = () => {
   // 가장 먼저 실행 -> 중복체크 원상태로
   useEffect(() => {
     dispatch(rollBackDup({ data: null }));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="flex flex-col items-center justify-between bg-lightGray">

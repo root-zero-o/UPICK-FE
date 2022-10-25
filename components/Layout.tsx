@@ -10,7 +10,7 @@ interface LayoutProps {
   home?: boolean;
   isWhite: boolean;
   icon?: boolean;
-  children: React.ReactNode;
+  children: React.ReactNode | undefined;
 }
 
 const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {

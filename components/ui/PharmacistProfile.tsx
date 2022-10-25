@@ -7,13 +7,11 @@ const PharmacistProfile = ({
   pharmacist,
   pharmacy,
   link,
-  location,
   meter,
 }: {
   pharmacist: string;
   pharmacy: string;
   link: string;
-  location: boolean;
   meter?: number;
 }) => {
   const onLink = useClickRoute({ link });
@@ -29,14 +27,14 @@ const PharmacistProfile = ({
       <span className="text-[12px] font-sdg-l text-coolgray3 font-medium">
         {pharmacy} 약국
       </span>
-      {location ? (
+      {meter && (
         <div className="flex items-center mt-[-6px]">
           <div className="mb-1">
             <Image alt="" src={LocationBlue} />
           </div>
           <span className="text-sm text-darkblue1 ml-1">{meter}m</span>
         </div>
-      ) : null}
+      )}
     </div>
   );
 };

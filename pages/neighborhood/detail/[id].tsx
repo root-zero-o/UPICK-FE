@@ -11,7 +11,7 @@ import favorite from "../../../assets/images/icons/Favorite.svg";
 import Image from "next/image";
 import ChatStatusChip from "components/ChatStatusChip";
 import { useRouter } from "next/router";
-import { sampleData } from "../SampleData";
+import { sampleData } from "../sampleData";
 
 const Detail: NextPage = () => {
   const router = useRouter();

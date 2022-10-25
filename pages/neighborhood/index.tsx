@@ -13,7 +13,7 @@ import NavBar from "components/NavBar";
 import CategoryBar from "components/CategoryBar";
 import PharmacistTime from "components/ui/PharmacistTime";
 
-import { sampleData } from "./SampleData";
+import { sampleData } from "./sampleData";
 
 const index = () => {
   return (

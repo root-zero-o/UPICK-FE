@@ -40,11 +40,11 @@ const HxForm: FC<IProps> = ({ onClick, userDx }) => {
           (숨이 차는 평소보다 적절한 활동, 하루 20분 이상 시행한 날)
         </span>
         <div className="w-[100%] flex justify-between items-center mb-4">
-          <CheckBox title="뇌졸증" active={false} />
+          {/* <CheckBox title="뇌졸증" active={false} />
           <CheckBox title="심장병" active={false} />
           <CheckBox title="고혈압" active={false} />
           <CheckBox title="당뇨병" active={false} />
-          <CheckBox title="기타(암포함)" active={false} />
+          <CheckBox title="기타(암포함)" active={false} /> */}
         </div>
         <div className="mb-4 w-[100%] h-[1px] bg-blue2 rounded"></div>
         <EditInput placeholder="특이사항을 입력해주세요"></EditInput>

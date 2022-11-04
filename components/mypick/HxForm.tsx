@@ -47,7 +47,7 @@ const HxForm: FC<IProps> = ({ onClick, userDx }) => {
           <CheckBox title="기타(암포함)" active={false} /> */}
         </div>
         <div className="mb-4 w-[100%] h-[1px] bg-blue2 rounded"></div>
-        <EditInput placeholder="특이사항을 입력해주세요"></EditInput>
+        {/* <EditInput placeholder="특이사항을 입력해주세요"></EditInput> */}
       </div>
     </div>
   );

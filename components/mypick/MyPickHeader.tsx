@@ -15,7 +15,7 @@ const MyPickHeader = () => {
           .wholeDiv {
             width: 100%;
             height: 570px;
-            top: -200px;
+            top: -380px;
           }
           .innerDiv {
             width: 554px;

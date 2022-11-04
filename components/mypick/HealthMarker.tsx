@@ -4,7 +4,7 @@ interface HealthMarkerProps {
 
 const HealthMarker = ({ contents }: HealthMarkerProps) => {
   return (
-    <div className="mt-6 w-fit h-fit flex justify-center items-center rounded-md backdrop-blur bg-coolgray1/30 p-1 mx-1">
+    <div className="mt-6 w-fit h-fit flex justify-center items-center rounded-md bg-coolgray4 p-1 mx-1">
       <span className="">{contents}</span>
     </div>
   );

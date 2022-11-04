@@ -1,17 +1,36 @@
 import HxBtn from "./HxBtn";
 import CheckBox from "./CheckBox";
 import EditInput from "./EditInput";
-const HxForm = () => {
+import { FC } from "react";
+
+interface IProps {
+  onClick: (dx: string) => void;
+  userDx: string[];
+}
+const HxForm: FC<IProps> = ({ onClick, userDx }) => {
+  const data = ["뇌졸증", "심장병", "고혈압", "당뇨병", "기타(암포함)"];
+
   return (
     <div className="px-[5%] bg-blue4 mt-4 flex flex-col items-center justify-center w-[90%] h-fit  shadow-md rounded-lg">
       <div className="w-full h-fit mb-4  flex flex-col justify-center items-center">
         <HxBtn contents="진단여부" />
         <div className="mt-4 w-[100%] flex justify-between items-center">
-          <CheckBox title="뇌졸증" active={true} />
+          {data.map((value, index) => {
+            return (
+              <CheckBox
+                key={`DxCheck-${index}`}
+                title={value}
+                userDx={userDx}
+                active={userDx.includes(value)}
+                onClick={onClick}
+              />
+            );
+          })}
+          {/* <CheckBox title="뇌졸증" active={true} />
           <CheckBox title="심장병" active={false} />
           <CheckBox title="고혈압" active={true} />
           <CheckBox title="당뇨병" active={true} />
-          <CheckBox title="기타(암포함)" active={false} />
+          <CheckBox title="기타(암포함)" active={false} /> */}
         </div>
       </div>
       <div className="mb-4 w-[100%] h-[1px] bg-blue2 rounded"></div>

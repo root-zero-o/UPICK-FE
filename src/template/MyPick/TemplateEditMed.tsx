@@ -5,7 +5,55 @@ import KeyWordTag from "components/mypick/KeyWordTag";
 import MyMedicineList from "components/mypick/MyMedicineList";
 import MedSearchInput from "components/mypick/MedSearchInput";
 import HxForm from "components/mypick/HxForm";
+import { useState } from "react";
+import SexBtn from "components/mypick/SexBtn";
 const TemplateEditMed = () => {
+  const [userName, setUserName] = useState<string>("");
+  const [userAge, setUserAge] = useState<string>("");
+  const [userSex, setUserSex] = useState<string>(""); // boolean?
+  const [userMediHx, setUserMediHx] = useState<string>("");
+  const [userKeywords, setUserKewords] = useState<string[]>([]);
+  const [userDx, setUserDx] = useState<string[]>([]);
+  const [userActivity, setUserActivity] = useState<string>("");
+
+  // console.log(`
+  //   name : ${userName},
+  //   age : ${userAge}
+  // `);
+  const data = {
+    name: userName,
+    age: userAge,
+    sex: userSex,
+    mediHx: userMediHx,
+    keywords: userKeywords,
+  };
+
+  const handleSetKeywords = (keword: string) => {
+    if (userKeywords.length > 3 && !userKeywords.includes(keword)) return;
+    if (userKeywords.length > 3 && userKeywords.includes(keword)) {
+      const newKeywords = userKeywords.filter((value) => value !== keword);
+      setUserKewords(newKeywords);
+      return;
+    }
+    if (userKeywords.includes(keword)) {
+      const newKeywords = userKeywords.filter((value) => value !== keword);
+      setUserKewords(newKeywords);
+      return;
+    }
+    const keywordsList = [...userKeywords, keword];
+    setUserKewords(keywordsList);
+  };
+
+  const handleUserDx = (dx: string) => {
+    if (userDx.includes(dx)) {
+      const newDx = userDx.filter((value) => value !== dx);
+      setUserDx(newDx);
+      return;
+    }
+    const dxList = [...userDx, dx];
+    setUserDx(dxList);
+  };
+
   return (
     <Layout home={false} title="" isWhite={false} icon={false}>
       <div className="w-full flex flex-col items-center">
@@ -17,7 +65,7 @@ const TemplateEditMed = () => {
             sub={false}
             subtitle=""
           />
-          <EditInput placeholder="이름을 입력해주세요"></EditInput>
+          <EditInput setState={setUserName} placeholder="이름을 입력해주세요" />
         </div>
         <div className="w-[90%] flex flex-col items-start mb-8">
           <FormCategoryTitle
@@ -27,30 +75,10 @@ const TemplateEditMed = () => {
             sub={false}
             subtitle=""
           />
-          <EditInput placeholder="나이를 입력해주세요"></EditInput>
+          <EditInput setState={setUserAge} placeholder="나이를 입력해주세요" />
         </div>
         {/* 성별 체크 */}
-        <div className="w-[90%] flex flex-col items-center">
-          <h1 className="text-darkblue1 text-md font-black mb-4">성별</h1>
-          <div className="w-full h-full flex justify-evenly">
-            <div className="flex flex-col items-center">
-              <div className="w-[80px] h-[80px] rounded-[13px] backdrop-blur border-[1px] border-blue3 flex flex-col justify-center items-center hover:cursor-pointer hover:shadow-md transition-all">
-                d
-              </div>
-              <span className="text-darkblue1 text-[14px] font-bold mt-2">
-                여성
-              </span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-[80px] h-[80px] rounded-[13px] backdrop-blur border-[1px] border-blue3 flex flex-col justify-center items-center hover:cursor-pointer hover:shadow-md transition-all">
-                d
-              </div>
-              <span className="text-darkblue1 text-[14px] font-bold mt-2">
-                남성
-              </span>
-            </div>
-          </div>
-        </div>
+        <SexBtn />
       </div>
       {/* devider */}
       <div className="w-full h-[10px] bg-blue3" />
@@ -75,7 +103,12 @@ const TemplateEditMed = () => {
               "면역",
               "책",
             ].map((value, index) => (
-              <KeyWordTag key={`keyword-tag-${index}`} tag={value}></KeyWordTag>
+              <KeyWordTag
+                key={`keyword-tag-${index}`}
+                tag={value}
+                onClick={handleSetKeywords}
+                userKeywords={userKeywords}
+              ></KeyWordTag>
             ))}
           </div>
 
@@ -88,7 +121,10 @@ const TemplateEditMed = () => {
             subtitle="약사분과 상담시 약사분께서 해당 건강이력을 참고할 수 있습니다."
           />
           <div className="w-full mb-8">
-            <MedSearchInput />
+            <MedSearchInput
+              placeholder="브랜드명 또는 영양제 검색"
+              setState={setUserMediHx}
+            />
           </div>
           <div className="w-full h-fit mb-8">
             {[
@@ -111,7 +147,7 @@ const TemplateEditMed = () => {
             sub={true}
             subtitle="약사분과 상담시 약사분께서 해당 건강이력을 참고할 수 있습니다."
           />
-          <HxForm />
+          <HxForm onClick={handleUserDx} userDx={userDx} />
           <div className="mb-8" />
           <FormCategoryTitle
             title="섭취 중인 영양제"

@@ -1,12 +1,21 @@
+import { Dispatch, FC, SetStateAction } from "react";
+
 function cls(...classnames: string[]) {
   return classnames.join(" ");
 }
 
-const EditInput = ({ placeholder }: { placeholder: string }) => {
+interface IProps {
+  placeholder: string;
+  setState: Dispatch<SetStateAction<string>>;
+}
+const EditInput: FC<IProps> = ({ placeholder, setState }) => {
   return (
     <>
       <div className={cls("inputDiv")}>
-        <input placeholder={placeholder} />
+        <input
+          onChange={(v) => setState(v.target.value)}
+          placeholder={placeholder}
+        />
       </div>
       <style jsx>
         {`

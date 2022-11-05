@@ -7,6 +7,7 @@ import MedSearchInput from "components/mypick/MedSearchInput";
 import HxForm from "components/mypick/HxForm";
 import { useState } from "react";
 import SexBtn from "components/mypick/SexBtn";
+import axios from "axios";
 const TemplateEditMed = () => {
   const [userName, setUserName] = useState<string>("");
   const [userAge, setUserAge] = useState<string>("");
@@ -20,13 +21,6 @@ const TemplateEditMed = () => {
   //   name : ${userName},
   //   age : ${userAge}
   // `);
-  const data = {
-    name: userName,
-    age: userAge,
-    sex: userSex,
-    mediHx: userMediHx,
-    keywords: userKeywords,
-  };
 
   const handleSetKeywords = (keword: string) => {
     if (userKeywords.length > 3 && !userKeywords.includes(keword)) return;
@@ -52,6 +46,29 @@ const TemplateEditMed = () => {
     }
     const dxList = [...userDx, dx];
     setUserDx(dxList);
+  };
+
+  const data = {
+    name: userName,
+    age: userAge,
+    sex: userSex,
+    mediHx: userMediHx,
+    keywords: userKeywords,
+  };
+
+  const submitData = async () => {
+    try {
+      const submitMyInfo = await axios({
+        method: "POST",
+        data: data,
+        url: ``,
+        // headers : {
+        //   Authorization : `Bearer 123`
+        // }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

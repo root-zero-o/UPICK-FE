@@ -1,6 +1,7 @@
 import BlurBtn from "components/ui/BlurBtn";
-import fullHeart from "../../../assets/images/icons/fullHeart.svg";
-import chat from "../../../assets/images/icons/chat.svg";
+import fullHeart from "../../../assets/images/icons/LIKE_W.svg";
+import chat from "../../../assets/images/icons/CHAT_W.svg";
+import pickUp from "../../../assets/images/icons/PICKUP_W.svg";
 import Router from "next/router";
 const TabMenu = () => {
   const handleTabMenu = (menu: number) => {
@@ -8,7 +9,7 @@ const TabMenu = () => {
       case 1:
         return;
       case 2:
-        Router.push("/pickup");
+        Router.push("/mypick/pickup");
         return;
       case 3:
         Router.push("/chat");
@@ -30,7 +31,7 @@ const TabMenu = () => {
             text="찜"
           />
           <BlurBtn
-            src={chat}
+            src={pickUp}
             func={() => {
               handleTabMenu(2);
             }}

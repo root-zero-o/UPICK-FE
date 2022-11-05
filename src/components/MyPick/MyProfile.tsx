@@ -1,3 +1,6 @@
+import setting from "../../../assets/images/icons/SETTING_W.svg";
+import Image from "next/image";
+
 const MyProfile = () => {
   return (
     <>
@@ -5,9 +8,7 @@ const MyProfile = () => {
         <span className="text-lg text-white font-semibold mb-2">
           홍길동님 (남자/26세)
         </span>
-        <span className="text-sm text-coolgray4 leading-5 block font-light">
-          아이콘
-        </span>
+        <Image alt="" src={setting} />
       </div>
     </>
   );

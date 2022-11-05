@@ -1,6 +1,5 @@
 import HxBtn from "./HxBtn";
 import CheckBox from "./CheckBox";
-import EditInput from "./EditInput";
 import { FC } from "react";
 
 interface IProps {

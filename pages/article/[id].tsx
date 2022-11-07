@@ -12,7 +12,7 @@ const Article = () => {
 
   return (
     <Layout isWhite={false} icon>
-      <div className="px-[30px] py-[50px]">
+      {/* <div className="px-[30px] py-[50px]">
         <span className="text-sm font-bold text-darkblue1">
           {article.author} 약사
         </span>
@@ -44,7 +44,7 @@ const Article = () => {
         <div className="mt-4 text-sm bg-white p-4 rounded-md break-words whitespace-pre-wrap">
           {article.text}
         </div>
-      </div>
+      </div> */}
     </Layout>
   );
 };

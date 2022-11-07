@@ -1,3 +1,5 @@
+import Router from "next/router";
+
 const HealthNotice = () => {
   return (
     <>
@@ -10,7 +12,12 @@ const HealthNotice = () => {
           <b>내 건강상태를 등록하면 어떤 점이 좋나요?</b>
         </span>
         <span className="text-[10px] text-coolgray2 text-center w-[80%]">{`약사분들께 내가 지금 섭취하고 있는 약과 건강 정보를 제공함으로써 보다 정확하게 약을 추천받을 수 있어요!`}</span>
-        <div className="mt-2 mb-4 w-[80%] bg-blue2 h-[40px] rounded-full flex justify-center items-center shadow-m hover:cursor-pointer hover:shadow-md transition-all">
+        <div
+          onClick={() => {
+            Router.push("/mypick/edit");
+          }}
+          className="mt-2 mb-4 w-[80%] bg-blue2 h-[40px] rounded-full flex justify-center items-center shadow-m hover:cursor-pointer hover:shadow-md transition-all"
+        >
           <span className="text-white text-[14px]">
             지금 바로 등록하러 가기
           </span>

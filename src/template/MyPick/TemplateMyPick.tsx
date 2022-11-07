@@ -11,6 +11,8 @@ import MyProfile from "src/components/MyPick/MyProfile";
 import HealthNotice from "src/components/MyPick/HealthNotice";
 
 const TemplateMyPick = () => {
+  const queryResult = true;
+
   return (
     <Layout home={false} title="" isWhite={true} icon={true}>
       <Seo title="mypick" />
@@ -18,7 +20,7 @@ const TemplateMyPick = () => {
         <MyPickHeader />
         <MyProfile />
         <TabMenu />
-        <HealthNotice />
+        {!queryResult && <HealthNotice />}
         <WishKeywords />
         <MedicineHx />
         <MyHx />

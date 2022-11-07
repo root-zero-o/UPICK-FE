@@ -19,7 +19,7 @@ const CheckBox = ({ title, active, onClick, userDx, onData }: CheckBox) => {
           onClick={() => onClick && onClick(title)}
           className="flex flex-col justify-center items-center text-blue1 text-[14px]"
         >
-          <Image src={uncheck} alt="" />
+          <Image src={check} alt="" />
           <span>{title}</span>
         </div>
       );

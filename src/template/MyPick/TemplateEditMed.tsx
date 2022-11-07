@@ -7,6 +7,7 @@ import MedSearchInput from "components/mypick/MedSearchInput";
 import HxForm from "components/mypick/HxForm";
 import { useState } from "react";
 import SexBtn from "components/mypick/SexBtn";
+import { HealthKeywords } from "src/types/EnumHealthKeyword";
 import axios from "axios";
 const TemplateEditMed = () => {
   const [userName, setUserName] = useState<string>("");
@@ -16,11 +17,29 @@ const TemplateEditMed = () => {
   const [userKeywords, setUserKewords] = useState<string[]>([]);
   const [userDx, setUserDx] = useState<string[]>([]);
   const [userActivity, setUserActivity] = useState<string>("");
+  const [femaleHx, setFemaleHx] = useState<string[]>([]);
+  const [userMemo, setUserMemo] = useState<string>("");
 
-  // console.log(`
-  //   name : ${userName},
-  //   age : ${userAge}
-  // `);
+  const data = {
+    name: userName,
+    age: userAge,
+    sex: userSex,
+    femaleHx: femaleHx,
+    mediHx: userMediHx,
+    keywords: userKeywords,
+    dx: userDx,
+    activity: userActivity,
+  };
+
+  const handleFemaleHx = (hx: string) => {
+    if (femaleHx.includes(hx)) {
+      const newHx = femaleHx.filter((value) => value !== hx);
+      setFemaleHx(newHx);
+      return;
+    }
+    const hxList = [...femaleHx, hx];
+    setFemaleHx(hxList);
+  };
 
   const handleSetKeywords = (keword: string) => {
     if (userKeywords.length > 3 && !userKeywords.includes(keword)) return;
@@ -48,27 +67,31 @@ const TemplateEditMed = () => {
     setUserDx(dxList);
   };
 
-  const data = {
-    name: userName,
-    age: userAge,
-    sex: userSex,
-    mediHx: userMediHx,
-    keywords: userKeywords,
+  const handleActivity = (activity: string) => {
+    setUserActivity(activity);
   };
 
-  const submitData = async () => {
-    try {
-      const submitMyInfo = await axios({
-        method: "POST",
-        data: data,
-        url: ``,
-        // headers : {
-        //   Authorization : `Bearer 123`
-        // }
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  const handleUserSex = (sex: string) => {
+    setUserSex(sex);
+  };
+
+  // const submitData = async () => {
+  //   try {
+  //     const submitMyInfo = await axios({
+  //       method: "POST",
+  //       data: data,
+  //       url: ``,
+  //       // headers : {
+  //       //   Authorization : `Bearer 123`
+  //       // }
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const submitData = () => {
+    console.log(data);
   };
 
   return (
@@ -95,7 +118,12 @@ const TemplateEditMed = () => {
           <EditInput setState={setUserAge} placeholder="나이를 입력해주세요" />
         </div>
         {/* 성별 체크 */}
-        <SexBtn />
+        <SexBtn
+          handleUserSex={handleUserSex}
+          userSex={userSex}
+          femaleHx={femaleHx}
+          handleFemaleHx={handleFemaleHx}
+        />
       </div>
       {/* devider */}
       <div className="w-full h-[10px] bg-blue3" />
@@ -110,16 +138,7 @@ const TemplateEditMed = () => {
             subtitle="관심있는 키워드를 최대 4가지 신청할 수 있습니다."
           />
           <div className="bg-yellow2 w-full h-fit mb-8">
-            {[
-              "장건강",
-              "지구력 증진",
-              "수면",
-              "뼈, 관절",
-              "시력, 눈건강",
-              "에너지, 대사",
-              "면역",
-              "책",
-            ].map((value, index) => (
+            {HealthKeywords.map((value, index) => (
               <KeyWordTag
                 key={`keyword-tag-${index}`}
                 tag={value}
@@ -164,19 +183,21 @@ const TemplateEditMed = () => {
             sub={true}
             subtitle="약사분과 상담시 약사분께서 해당 건강이력을 참고할 수 있습니다."
           />
-          <HxForm onClick={handleUserDx} userDx={userDx} />
-          <div className="mb-8" />
-          <FormCategoryTitle
-            title="섭취 중인 영양제"
-            icon={true}
-            iTitle="수정하기"
-            sub={true}
-            subtitle="약사분과 상담시 약사분께서 해당 건강이력을 참고할 수 있습니다."
+          <HxForm
+            onClick={handleUserDx}
+            userDx={userDx}
+            handleActivity={handleActivity}
+            userActivity={userActivity}
+            setUserMemo={setUserMemo}
           />
+          <div className="mb-8" />
         </div>
       </div>
       <div className="flex justify-center">
-        <button className="w-[90%] rounded-full h-[40px] text-blue2 font-bold shadow-md">
+        <button
+          onClick={submitData}
+          className="w-[90%] rounded-full h-[40px] text-blue2 font-bold shadow-md"
+        >
           저장하기
         </button>
       </div>

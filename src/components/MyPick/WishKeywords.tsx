@@ -1,17 +1,22 @@
 import HealthMarker from "components/mypick/HealthMarker";
 import CategoryTitle from "components/ui/CategoryTitle";
+import { HealthKeywords } from "src/types/EnumHealthKeyword";
 
 const WishKeywords = () => {
   const data = ["스트레스 긴장", "혈행개선", "항산화", "수면"];
   // const data = [];
+  const keywordData = [3, 5, 12, 18] as number[];
 
   return (
     <>
       <CategoryTitle title="관심키워드" subtitle="" link="/" hideIcon />
-      {data?.length > 0 ? (
+      {keywordData?.length > 0 ? (
         <div className="z-40 text-white flex text-sm mb-8">
-          {data.map((value, index) => (
-            <HealthMarker key={`health-marker-${index}`} contents={value} />
+          {keywordData.map((value, index) => (
+            <HealthMarker
+              key={`health-marker-${index}`}
+              contents={HealthKeywords[value - 1]}
+            />
           ))}
         </div>
       ) : (

@@ -11,7 +11,7 @@ import Footer from "components/ui/Footer";
 import AdSlide from "components/ui/AdSlide";
 import HomeCategoryBtn from "components/ui/HomeCategoryBtn";
 
-const home = () => {
+const Home = () => {
   return (
     <Layout home={true} title="" isWhite={true} icon={true}>
       <Seo title="home" />
@@ -149,4 +149,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;

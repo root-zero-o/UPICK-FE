@@ -32,12 +32,17 @@ const Signup = () => {
 
   // 회원가입 버튼 이벤트 - 중복검사 진행
   const onClickHandler = () => {
-    dispatch(__dupCheck({ email }));
+    // 중복체크 만들어지면 아래 dispatch 주석 풀면 됩니다. 코드라인 36
+    // dispatch(__dupCheck({ email }));
+
+    // 중복체크 만들어지면 아래 39, 40코드라인 삭제합니다.
+    dispatch(saveUserInfo({ name, email }));
+    onSuccessLink();
   };
 
   // 중복 아닐시에 페이지 이동
   useEffect(() => {
-    if (dupCheck === false) {
+    if (dupCheck === true) {
       dispatch(saveUserInfo({ name, email }));
       onSuccessLink();
     }

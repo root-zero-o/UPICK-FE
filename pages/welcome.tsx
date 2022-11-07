@@ -1,7 +1,19 @@
 import Seo from "components/Seo";
+import useLoading from "hooks/useLoading";
+import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Logo from "../assets/images/logos/Logo.svg";
 
 const Welcome = () => {
+  const loading = useLoading();
+  const router = useRouter();
+  useEffect(() => {
+    if (!loading) {
+      console.log("hi");
+      router.push(`/signin`);
+    }
+  }, [loading, router]);
   return (
     // <div className="w-full h-screen bg-green overflow-y-hidden">
     // <Seo title="welcome" />
@@ -29,8 +41,9 @@ const Welcome = () => {
       <div className="w-[70.79px] h-[70.79px] absolute bg-gradient-one blur-[10px] rounded-full top-[438.39px] left-[341.43px]" />
       <div className="flex flex-col items-center justify-start w-full h-full mt-[360px] absolute">
         <span className="font-sdg-b text-white text-[18px] leading-[36px] z-10 ">
-          나에게 딱 맞는 건강기능식품
+          내 손안 울동네약국
         </span>
+        <Image alt="" src={Logo} />
       </div>
     </div>
   );

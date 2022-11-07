@@ -1,6 +1,7 @@
 import React from "react";
 import downArrow from "../../assets/images/icons/downArrow.svg";
 import Image from "next/image";
+import ChatStatusChip from "components/ChatStatusChip";
 
 const PharmacistTime = ({
   name,
@@ -34,15 +35,7 @@ const PharmacistTime = ({
           </span>
           <span className="text-sm text-black font-medium">{time}</span>
         </div>
-        {isActive ? (
-          <div className="w-[60px] h-[20px] rounded-full bg-blue2 flex justify-center items-center font-light">
-            <span className="text-xs text-white">상담가능</span>
-          </div>
-        ) : (
-          <div className="w-[60px] h-[20px] rounded-full bg-coolgray3 flex justify-center items-center font-light">
-            <span className="text-xs text-white">상담불가</span>
-          </div>
-        )}
+        <ChatStatusChip available={isActive} />
       </div>
       <div>
         <div className="flex flex-col items-end space-y-1">

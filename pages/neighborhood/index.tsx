@@ -13,6 +13,8 @@ import NavBar from "components/NavBar";
 import CategoryBar from "components/CategoryBar";
 import PharmacistTime from "components/ui/PharmacistTime";
 
+import { sampleData } from "../../lib/sampleData";
+
 const index = () => {
   return (
     <Layout home={false} title="" isWhite={true} icon={true}>
@@ -57,27 +59,17 @@ const index = () => {
         <div className="home-section-wrapper py-4">
           <CategoryTitle title="가장 인기많은 약사순" subtitle="" link="/" />
           <div className="flex w-full justify-evenly py-4">
-            <PharmacistProfile
-              pharmacist="차은우"
-              pharmacy="잘생김"
-              link="/neighborhood/detail/1"
-              location={true}
-              meter={123}
-            />
-            <PharmacistProfile
-              pharmacist="차은우"
-              pharmacy="잘생김"
-              link="/"
-              location={true}
-              meter={123}
-            />
-            <PharmacistProfile
-              pharmacist="차은우"
-              pharmacy="잘생김"
-              link="/"
-              location={true}
-              meter={123}
-            />
+            {sampleData.map((v, i) => {
+              return (
+                <PharmacistProfile
+                  key={i}
+                  pharmacist={v.name}
+                  pharmacy={v.pharmacy_name}
+                  link={`/neighborhood/detail/${v.id}`}
+                  meter={v.meter}
+                />
+              );
+            })}
           </div>
           <div className="w-full h-[9px] bg-coolgray2" />
         </div>

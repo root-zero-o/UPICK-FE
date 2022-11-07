@@ -1,13 +1,22 @@
 import MyMedicineList from "components/mypick/MyMedicineList";
 import CategoryTitle from "components/ui/CategoryTitle";
+import { FC } from "react";
+import { TypeMyPickData } from "src/types/MyPickData";
 
-const MedicineHx = () => {
+interface IProps {
+  myPickData: TypeMyPickData;
+}
+
+const MedicineHx: FC<IProps> = ({ myPickData }) => {
   const data = [
     "Bioton 5000mcg",
     "비타할로 비타민D 2000IU",
     "동아비타민C1000플러스",
     "장건강 365 프리바이오틱스 프로바이오틱스",
   ];
+
+  const med = myPickData?.merchandises;
+
   return (
     <>
       <CategoryTitle
@@ -16,9 +25,9 @@ const MedicineHx = () => {
         link="/mypick/edit"
         hideIcon
       />
-      {data?.length > 0 ? (
+      {med?.length > 0 ? (
         <div className="pt-4 mb-[20px]">
-          {data.map((value, index) => (
+          {med.map((value, index) => (
             <MyMedicineList
               key={`my-medicine-list-${index}`}
               contents={value}

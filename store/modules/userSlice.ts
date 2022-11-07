@@ -14,7 +14,7 @@ export const __getKakao = createAsyncThunk(
     const data = await apis.getKakao(payload);
     console.log(data);
     if (data.headers.authorization !== undefined) {
-      localStorage.setItem("authorization", data.headers.authorization);
+      // localStorage.setItem("authorization", data.headers.authorization);
     }
     return data;
   }
@@ -41,7 +41,7 @@ export const __signIn = createAsyncThunk(
   LOGIN,
   async (payload: UserRegistrationModel) => {
     const response = await apis.signIn(payload);
-    localStorage.setItem("authorization", response.headers.authorization);
+    // localStorage.setItem("authorization", response.headers.authorization);
     if (response.headers.authorization) return true;
     return false;
   }

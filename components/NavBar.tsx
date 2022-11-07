@@ -8,6 +8,7 @@ import pharmacy from "../assets/images/icons/pharmacy.svg";
 import pharmacyBlue from "../assets/images/icons/phamacyBlue.svg";
 import myPick from "../assets/images/icons/myPick.svg";
 import myPickBlue from "../assets/images/icons/myPickBlue.svg";
+import Router from "next/router";
 
 const NavBar = ({ location }: { location: string }) => {
   return (
@@ -18,7 +19,7 @@ const NavBar = ({ location }: { location: string }) => {
           <span className="text-[8px]">약사픽</span>
         </div>
       ) : (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center hover:cursor-pointer">
           <Image alt="" src={pharmacist} />
           <span className="text-[8px] text-coolgray3 mt-[5px]">약사픽</span>
         </div>
@@ -29,7 +30,7 @@ const NavBar = ({ location }: { location: string }) => {
           <span className="text-[8px] mt-[-3px] text-blue1">대중픽</span>
         </div>
       ) : (
-        <div className="flex flex-col items-center ">
+        <div className="flex flex-col items-center hover:cursor-pointer ">
           <Image alt="" src={people} />
           <span className="text-[8px] text-coolgray3 mt-[5px]">대중픽</span>
         </div>
@@ -42,7 +43,7 @@ const NavBar = ({ location }: { location: string }) => {
           </span>
         </div>
       ) : (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center hover:cursor-pointer">
           <Image alt="" src={pharmacy} />
           <span className="text-[8px] text-coolgray3 mt-[5px]">울동네약사</span>
         </div>
@@ -53,7 +54,10 @@ const NavBar = ({ location }: { location: string }) => {
           <span className="text-[8px] text-blue1 t-[1px]">마이픽</span>
         </div>
       ) : (
-        <div className="flex flex-col items-center">
+        <div
+          onClick={() => Router.push("/mypick")}
+          className="flex flex-col items-center hover:cursor-pointer"
+        >
           <Image alt="" src={myPick} />
           <span className="text-[8px] text-coolgray3 mt-[5px]">마이픽</span>
         </div>

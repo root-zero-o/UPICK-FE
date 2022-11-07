@@ -11,12 +11,12 @@ import favorite from "../../../assets/images/icons/Favorite.svg";
 import Image from "next/image";
 import ChatStatusChip from "components/ChatStatusChip";
 import { useRouter } from "next/router";
-import { sampleData } from "../../../lib/sampleData";
+import { samplePharmacistData } from "../../../lib/sampleData";
 
 const Detail: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
-  const data = sampleData.find((v) => v.id === Number(id));
+  const data = samplePharmacistData.find((v) => v.id === Number(id));
 
   /** 0분을 "00"으로 바꾸는 function */
   const calcTime = (minute?: number) => {

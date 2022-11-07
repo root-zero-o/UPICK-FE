@@ -13,7 +13,7 @@ import NavBar from "components/NavBar";
 import CategoryBar from "components/CategoryBar";
 import PharmacistTime from "components/ui/PharmacistTime";
 
-import { sampleData } from "../../lib/sampleData";
+import { samplePharmacistData } from "../../lib/sampleData";
 
 const index = () => {
   return (
@@ -59,7 +59,7 @@ const index = () => {
         <div className="home-section-wrapper py-4">
           <CategoryTitle title="가장 인기많은 약사순" subtitle="" link="/" />
           <div className="flex w-full justify-evenly py-4">
-            {sampleData.map((v, i) => {
+            {samplePharmacistData.map((v, i) => {
               return (
                 <PharmacistProfile
                   key={i}

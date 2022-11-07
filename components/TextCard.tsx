@@ -1,15 +1,14 @@
 import React from "react";
 import useClickRoute from "hooks/useClickRoute";
 
-const TextCard = ({
-  title,
-  text,
-  link,
-}: {
+interface PropTypes {
+  id: number;
   title: string;
   text: string;
   link: string;
-}) => {
+}
+
+const TextCard = ({ id, title, text, link }: PropTypes) => {
   const onLink = useClickRoute({ link: link });
 
   return (

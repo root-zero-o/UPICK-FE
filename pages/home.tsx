@@ -10,6 +10,8 @@ import Layout from "../components/Layout";
 import Footer from "components/ui/Footer";
 import AdSlide from "components/ui/AdSlide";
 import HomeCategoryBtn from "components/ui/HomeCategoryBtn";
+import { sampleArticleData } from "lib/sampleData";
+import { sliceText } from "lib/utils";
 
 const Home = () => {
   return (
@@ -49,30 +51,17 @@ const Home = () => {
         />
         <AdSlide />
         <div className="divide-y-[1px] divide-coolgray3 px-12 ">
-          <TextCard
-            title="무더위, 에너지가 없다면?"
-            text="무더위로 인해 체력이 많이 떨어지는 날에는 보양식들을 많이 찾는데요,
-            비타민계에서 보양식에 해당하는 것은 바로"
-            link="/"
-          />
-          <TextCard
-            title="무더위, 에너지가 없다면?"
-            text="무더위로 인해 체력이 많이 떨어지는 날에는 보양식들을 많이 찾는데요,
-            비타민계에서 보양식에 해당하는 것은 바로"
-            link="/"
-          />
-          <TextCard
-            title="무더위, 에너지가 없다면?"
-            text="무더위로 인해 체력이 많이 떨어지는 날에는 보양식들을 많이 찾는데요,
-            비타민계에서 보양식에 해당하는 것은 바로"
-            link="/"
-          />
-          <TextCard
-            title="무더위, 에너지가 없다면?"
-            text="무더위로 인해 체력이 많이 떨어지는 날에는 보양식들을 많이 찾는데요,
-            비타민계에서 보양식에 해당하는 것은 바로"
-            link="/"
-          />
+          {sampleArticleData.map((v, i) => {
+            return (
+              <TextCard
+                key={i}
+                id={v.id}
+                title={v.title[0]}
+                text={sliceText(v.text)}
+                link={`/article/${v.id}`}
+              />
+            );
+          })}
         </div>
         <div className="w-full h-[9px] bg-coolgray2" />
       </div>

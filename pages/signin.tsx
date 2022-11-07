@@ -38,6 +38,7 @@ const Signin = () => {
 
   useEffect(() => {
     console.log(isLogin);
+    console.log(KAKAO_AUTH_URL);
     if (isLogin) {
       onHomeLink();
     }

@@ -42,7 +42,7 @@ const CheckBox = ({ title, active, onClick, userDx, onData }: CheckBox) => {
         <>{renderCheckBox} </>
       ) : (
         <div className="flex flex-col justify-center items-center text-[14px]">
-          <Image src={uncheck} alt="" />
+          <Image src={active ? check : uncheck} alt="" />
           <span>{title}</span>
         </div>
       )}

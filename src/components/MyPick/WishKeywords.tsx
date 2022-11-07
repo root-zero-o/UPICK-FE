@@ -1,21 +1,26 @@
 import HealthMarker from "components/mypick/HealthMarker";
 import CategoryTitle from "components/ui/CategoryTitle";
+import { FC } from "react";
 import { HealthKeywords } from "src/types/EnumHealthKeyword";
+import { TypeMyPickData } from "src/types/MyPickData";
+interface IProps {
+  myPickData: TypeMyPickData;
+}
 
-const WishKeywords = () => {
+const WishKeywords: FC<IProps> = ({ myPickData }) => {
   const data = ["스트레스 긴장", "혈행개선", "항산화", "수면"];
   // const data = [];
   const keywordData = [3, 5, 12, 18] as number[];
-
+  console.log(myPickData?.CustomerToConsider);
   return (
     <>
       <CategoryTitle title="관심키워드" subtitle="" link="/" hideIcon />
-      {keywordData?.length > 0 ? (
+      {myPickData?.CustomerToConsider?.length > 0 ? (
         <div className="z-40 text-white flex text-sm mb-8">
-          {keywordData.map((value, index) => (
+          {myPickData?.CustomerToConsider.map((value, index) => (
             <HealthMarker
               key={`health-marker-${index}`}
-              contents={HealthKeywords[value - 1]}
+              contents={HealthKeywords[value.considerId - 1]}
             />
           ))}
         </div>

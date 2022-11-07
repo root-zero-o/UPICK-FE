@@ -8,13 +8,25 @@ import HxForm from "components/mypick/HxForm";
 import { useState } from "react";
 import SexBtn from "components/mypick/SexBtn";
 import { HealthKeywords } from "src/types/EnumHealthKeyword";
+import { EnumDx } from "../../types/EnumDx";
+import { EnumFemaleHx } from "../../types/EnumFemaleHx";
+
+import {
+  EnumActivityDue,
+  EnumActivityDuration,
+} from "../../types/EnumActivityDuration";
+
 import axios from "axios";
+type considerIdTypes = {
+  considerId: number;
+};
 const TemplateEditMed = () => {
   const [userName, setUserName] = useState<string>("");
   const [userAge, setUserAge] = useState<string>("");
   const [userSex, setUserSex] = useState<string>(""); // boolean?
   const [userMediHx, setUserMediHx] = useState<string>("");
   const [userKeywords, setUserKewords] = useState<string[]>([]);
+  const [considerList, setConsiderList] = useState<considerIdTypes[]>([]);
   const [userDx, setUserDx] = useState<string[]>([]);
   const [userActivity, setUserActivity] = useState<string>("");
   const [femaleHx, setFemaleHx] = useState<string[]>([]);
@@ -23,12 +35,22 @@ const TemplateEditMed = () => {
   const data = {
     name: userName,
     age: userAge,
-    sex: userSex,
-    femaleHx: femaleHx,
-    mediHx: userMediHx,
-    keywords: userKeywords,
-    dx: userDx,
-    activity: userActivity,
+    gender: userSex,
+    isBreastFeed: femaleHx.includes(EnumFemaleHx.isBreastFeed),
+    isPregnant: femaleHx.includes(EnumFemaleHx.isPregnant),
+    CustomerToConsider: considerList,
+    TakingMedicine: [],
+    CustomerDetails: [
+      {
+        takingExcerciseTimePerAWeek: "every",
+        stroke: userDx.includes(EnumDx.stroke),
+        heartDisease: userDx.includes(EnumDx.heartDisease),
+        highBloodPressure: userDx.includes(EnumDx.highBloodPressure),
+        diabetes: userDx.includes(EnumDx.diabetes),
+        etc: userDx.includes(EnumDx.etc),
+        memo: userMemo,
+      },
+    ],
   };
 
   const handleFemaleHx = (hx: string) => {
@@ -46,15 +68,33 @@ const TemplateEditMed = () => {
     if (userKeywords.length > 3 && userKeywords.includes(keword)) {
       const newKeywords = userKeywords.filter((value) => value !== keword);
       setUserKewords(newKeywords);
+      const newList = newKeywords.map((value, index) => {
+        return {
+          considerId: HealthKeywords.indexOf(value) - 1,
+        };
+      });
+      setConsiderList(newList);
       return;
     }
     if (userKeywords.includes(keword)) {
       const newKeywords = userKeywords.filter((value) => value !== keword);
       setUserKewords(newKeywords);
+      const newList = newKeywords.map((value, index) => {
+        return {
+          considerId: HealthKeywords.indexOf(value) - 1,
+        };
+      });
+      setConsiderList(newList);
       return;
     }
     const keywordsList = [...userKeywords, keword];
     setUserKewords(keywordsList);
+    const newList = keywordsList.map((value, index) => {
+      return {
+        considerId: HealthKeywords.indexOf(value) + 1,
+      };
+    });
+    setConsiderList(newList);
   };
 
   const handleUserDx = (dx: string) => {
@@ -68,7 +108,26 @@ const TemplateEditMed = () => {
   };
 
   const handleActivity = (activity: string) => {
-    setUserActivity(activity);
+    switch (activity) {
+      case EnumActivityDue.Every:
+        setUserActivity(EnumActivityDuration.Every);
+        return;
+      case EnumActivityDue.One:
+        setUserActivity(EnumActivityDuration.One);
+        return;
+      case EnumActivityDue.TwoOrThree:
+        setUserActivity(EnumActivityDuration.TwoOrThree);
+        return;
+
+      case EnumActivityDue.FourOrFive:
+        setUserActivity(EnumActivityDuration.FourOrFive);
+        return;
+      case EnumActivityDue.None:
+        setUserActivity(EnumActivityDuration.None);
+        return;
+      default:
+        return;
+    }
   };
 
   const handleUserSex = (sex: string) => {

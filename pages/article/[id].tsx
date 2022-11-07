@@ -28,10 +28,21 @@ const Article = () => {
             );
           })}
         </div>
-        <div className="mt-2">
-          {article.keyword.map((v, i) => {
-            return <KeywordChip key={i} keyword={v} style="mr-2" />;
-          })}
+        <div className="flex row mt-2">
+          <div>
+            <div>
+              {article.keyword.map((v, i) => {
+                return <KeywordChip key={i} keyword={v} style="mr-2" />;
+              })}
+            </div>
+            <div className=" p-[10px] w-[233px] text-sm text-darkblue2 font-medium break-words whitespace-pre-wrap">
+              {article.explanation}
+            </div>
+          </div>
+          <div className="w-[90px] h-[113px] ml-5 bg-yellow1 rounded-md" />
+        </div>
+        <div className="mt-4 text-sm bg-white p-4 rounded-md break-words whitespace-pre-wrap">
+          {article.text}
         </div>
       </div>
     </Layout>

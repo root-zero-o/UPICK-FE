@@ -16,3 +16,14 @@ export interface UserRegistrationModel {
   password?: string;
   username?: string;
 }
+
+export interface postingType {
+  title?: string;
+  text?: string;
+}
+
+export interface postingsType {
+  loading: boolean;
+  error: any;
+  postings: postingType[];
+}

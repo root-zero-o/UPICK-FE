@@ -1,4 +1,6 @@
 import useClickRoute from "hooks/useClickRoute";
+import CheckIcon from "assets/images/icons/CheckIcon.svg";
+import Image from "next/image";
 
 const Tos = () => {
   const onLink = useClickRoute({ link: "/signupdetail" });
@@ -27,9 +29,19 @@ const Tos = () => {
           개인정보처리자의 개인정보 처리업무] [개인정보 처리업무에 따른
           처리목적]으로 개인정보를 처리합니다.
         </p>
-        <p className="title mb-[8px]">위치정보</p>
+        <div className="flex justify-between">
+          <p className="title mb-[8px]">위치정보</p>
+          <div className="mr-[15px] boxBorder">
+            <Image src={CheckIcon} width="24px" height="14px" alt="" />
+          </div>
+        </div>
         <p className="mb-[17px]">가까운 약사 및 약국 소개</p>
-        <p className="title mb-[8px]">성함, 나이, 건강정보</p>
+        <div className="flex justify-between">
+          <p className="title mb-[8px]">성함, 나이, 건강정보</p>
+          <div className="mr-[15px] boxBorder">
+            <Image src={CheckIcon} width="24px" height="14px" alt="" />
+          </div>
+        </div>
         <p>약사 상담 이용시 약사에게 정보 제공</p>
       </div>
       <button className="confirmBtn" onClick={onLink}>
@@ -52,6 +64,10 @@ const Tos = () => {
         .title {
           font-weight: 700;
           line-height: 14px;
+        }
+        .boxBorder {
+          border: 1px solid #e2f0fb;
+          border-radius: 4px;
         }
       `}</style>
     </div>

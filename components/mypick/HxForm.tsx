@@ -10,6 +10,7 @@ interface IProps {
   handleActivity: (activity: string) => void;
   userActivity: string;
   setUserMemo: Dispatch<SetStateAction<string>>;
+  setUserActivity: Dispatch<SetStateAction<string>>;
 }
 const HxForm: FC<IProps> = ({
   onClick,
@@ -17,6 +18,7 @@ const HxForm: FC<IProps> = ({
   handleActivity,
   userActivity,
   setUserMemo,
+  setUserActivity,
 }) => {
   const data = ["뇌졸증", "심장병", "고혈압", "당뇨병", "기타(암포함)"];
   const activity = ["안함", "주1회", "주2-3회", "주4-5회", "매일운동"];
@@ -31,6 +33,7 @@ const HxForm: FC<IProps> = ({
     return;
   }, [userActivity]);
 
+  console.log(userActivity);
   return (
     <div className="px-[5%] bg-blue4 mt-4 flex flex-col items-center justify-center w-[90%] h-fit  shadow-md rounded-lg">
       <div className="w-full h-fit mb-4  flex flex-col justify-center items-center">
@@ -63,7 +66,7 @@ const HxForm: FC<IProps> = ({
                 title={value}
                 userDx={actList}
                 active={userActivity === value}
-                onClick={handleActivity}
+                onClick={() => setUserActivity(value)}
               />
             );
           })}

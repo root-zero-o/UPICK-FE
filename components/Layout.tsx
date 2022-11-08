@@ -11,9 +11,17 @@ interface LayoutProps {
   isWhite: boolean;
   icon?: boolean;
   children: React.ReactNode | undefined;
+  myPick?: boolean;
 }
 
-const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
+const Layout = ({
+  home,
+  title,
+  isWhite,
+  icon,
+  children,
+  myPick,
+}: LayoutProps) => {
   const onLink = useClickRoute({ link: "/alert" });
 
   return (
@@ -28,7 +36,11 @@ const Layout = ({ home, title, isWhite, icon, children }: LayoutProps) => {
           </div>
         ) : (
           <div className="flex items-center">
-            {isWhite ? <BackBtn type="white" /> : <BackBtn type="blue" />}
+            {isWhite ? (
+              <BackBtn type="white" />
+            ) : (
+              <BackBtn type="blue" myPick={myPick} />
+            )}
             {isWhite ? (
               <h2 className="text-white ml-6 drop-shadow-sm text-2xl mb-2 font-bold">
                 {title}

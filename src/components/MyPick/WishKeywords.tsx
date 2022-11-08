@@ -1,6 +1,7 @@
 import HealthMarker from "components/mypick/HealthMarker";
 import CategoryTitle from "components/ui/CategoryTitle";
 import { FC } from "react";
+import { EnumActivityDue } from "src/types/EnumActivityDuration";
 import { HealthKeywords } from "src/types/EnumHealthKeyword";
 import { TypeMyPickData } from "src/types/MyPickData";
 interface IProps {
@@ -12,6 +13,7 @@ const WishKeywords: FC<IProps> = ({ myPickData }) => {
   // const data = [];
   const keywordData = [3, 5, 12, 18] as number[];
   console.log(myPickData?.CustomerToConsider);
+
   return (
     <>
       <CategoryTitle title="관심키워드" subtitle="" link="/" hideIcon />

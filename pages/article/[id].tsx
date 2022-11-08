@@ -3,13 +3,15 @@ import Layout from "components/Layout";
 import { sampleArticleData } from "lib/sampleData";
 
 import { useRouter } from "next/router";
+import { useAppSelector } from "src/hooks/reduxHooks";
 
 const Article = () => {
   const router = useRouter();
   const id = router.query.id;
 
   const article = sampleArticleData.filter((v) => v.id === Number(id))[0];
-
+  const postings = useAppSelector((state) => state.postings);
+  console.log(postings);
   return (
     <Layout isWhite={false} icon>
       {/* <div className="px-[30px] py-[50px]">

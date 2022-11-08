@@ -9,6 +9,9 @@ export const apis = {
     api.post(`/user/signup/checkEmail?email=${payload.email}`),
   signUp: (payload: UserRegistrationModel) => api.post(`/user/signup`, payload),
   signIn: (payload: UserRegistrationModel) => api.post(`/user/login`, payload),
+
+  // get postings
+  getPostings: () => api.get("/postings"),
 };
 
 export default apis;

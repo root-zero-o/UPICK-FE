@@ -1,9 +1,18 @@
 import useClickRoute from "hooks/useClickRoute";
 import CheckIcon from "assets/images/icons/CheckIcon.svg";
+import CheckDoneIcon from "assets/images/icons/CheckDoneIcon.svg";
 import Image from "next/image";
+import { useState } from "react";
 
 const Tos = () => {
   const onLink = useClickRoute({ link: "/signupdetail" });
+  const [locationCheck, setLocationCheck] = useState(false);
+  const [otherCheck, setOtherCheck] = useState(false);
+  const onDisabledHandler = () => {
+    console.log(locationCheck, otherCheck);
+    if (locationCheck && otherCheck) return false;
+    return true;
+  };
   return (
     <div className="relative h-screen flex flex-col items-center justify-between">
       <div className="relative flex w-full h-[158px] bg-gradient-two rounded-b-[101px] overflow-hidden">
@@ -31,20 +40,42 @@ const Tos = () => {
         </p>
         <div className="flex justify-between">
           <p className="title mb-[8px]">위치정보</p>
-          <div className="mr-[15px] boxBorder">
-            <Image src={CheckIcon} width="24px" height="14px" alt="" />
+          <div
+            className="mr-[15px] boxBorder"
+            onClick={() => {
+              setLocationCheck((b) => !b);
+            }}
+          >
+            {locationCheck ? (
+              <Image src={CheckDoneIcon} width="24px" height="14px" alt="" />
+            ) : (
+              <Image src={CheckIcon} width="24px" height="14px" alt="" />
+            )}
           </div>
         </div>
         <p className="mb-[17px]">가까운 약사 및 약국 소개</p>
         <div className="flex justify-between">
           <p className="title mb-[8px]">성함, 나이, 건강정보</p>
-          <div className="mr-[15px] boxBorder">
-            <Image src={CheckIcon} width="24px" height="14px" alt="" />
+          <div
+            className="mr-[15px] boxBorder"
+            onClick={() => {
+              setOtherCheck((b) => !b);
+            }}
+          >
+            {otherCheck ? (
+              <Image src={CheckDoneIcon} width="24px" height="14px" alt="" />
+            ) : (
+              <Image src={CheckIcon} width="24px" height="14px" alt="" />
+            )}
           </div>
         </div>
         <p>약사 상담 이용시 약사에게 정보 제공</p>
       </div>
-      <button className="confirmBtn" onClick={onLink}>
+      <button
+        className="confirmBtn"
+        onClick={onLink}
+        disabled={onDisabledHandler()}
+      >
         모두 확인
       </button>
       <style jsx>{`

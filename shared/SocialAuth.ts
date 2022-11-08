@@ -6,7 +6,8 @@ export const GOOGLE_AUTH_URL = `https://accounts.google.com/o/oauth2/v2/auth?cli
 
 // KAKAO
 const KAKAO_REST_API_KEY = process.env.NEXT_PUBLIC_KAKAO_CLIENTID;
-const KAKAO_REDIRECT_URI = `http:/localhost:3000/customers/sign-in/kakao`;
+// export const KAKAO_REDIRECT_URI = `http:/localhost:3000/customers/sign-in/kakao`;
+export const KAKAO_REDIRECT_URI = `${process.env.NEXT_PUBLIC_SERVER}/customers/sign-in/kakao`;
 
 export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
 

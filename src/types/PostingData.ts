@@ -1,13 +1,23 @@
-type MerchandiseToPostingDataType = {
+export type MerchandiseToPostingDataType = {
   id: number;
-  companyId: number;
-  name: string;
-  certification: boolean;
   createdAt: string;
-  description: string;
-  rating: string;
-  updatedAt: string;
-  merchandiseHowToConsumeId: number;
+  merchandise: {
+    id: number;
+    companyId: number;
+    name: string;
+    certification: boolean;
+    createdAt: string;
+    description: string;
+    merchandiseHowToConsumeId: number;
+    rating: string;
+    updatedAt: string;
+    Image: {
+      url: string;
+    };
+  };
+  merchandiseId: number;
+  postingId: number;
+  updatedAt: number;
 };
 
 type PostingToAgeRangeDataType = {
@@ -32,9 +42,7 @@ type PharmacistDataType = {
   userName: string;
   pharmacyName: string;
   pharmacyAddress: string;
-  Image: {
-    url: string;
-  };
+  Image: [{ url: string }];
 };
 
 export type PostingDataType = {
@@ -46,7 +54,7 @@ export type PostingDataType = {
   createdAt: string;
   gender: string;
   id: number;
-  pharmacist: PharmacistDataType[];
+  pharmacist: PharmacistDataType;
   postingLikes: string[];
   title: string;
   updatedAt: string;

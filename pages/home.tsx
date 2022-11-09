@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { SearchInput } from "../components/SearchInput";
 import Seo from "components/Seo";
 import HeaderBG from "../components/HeaderBG";
@@ -10,10 +10,7 @@ import Layout from "../components/Layout";
 import Footer from "components/ui/Footer";
 import AdSlide from "components/ui/AdSlide";
 import HomeCategoryBtn from "components/ui/HomeCategoryBtn";
-import { sampleArticleData } from "lib/sampleData";
 import { sliceText } from "lib/utils";
-import axios from "axios";
-import { PostingDataType } from "src/types/PostingData";
 import { useAppDispatch, useAppSelector } from "src/hooks/reduxHooks";
 import { selectPostings, __getPostings } from "store/modules/postingSlice";
 
@@ -24,7 +21,7 @@ const Home = () => {
     dispatch(__getPostings());
   }, []);
 
-  const data = postings.postings;
+  const data = postings.postings.slice(0, 5);
 
   return (
     <Layout home={true} title="" isWhite={true} icon={true}>
@@ -59,7 +56,7 @@ const Home = () => {
         <CategoryTitle
           title="약사픽,"
           subtitle="가장 추천하는 영양제"
-          link="/"
+          link="/article"
         />
         <AdSlide />
         <div className="divide-y-[1px] divide-coolgray3 px-12 ">
@@ -70,7 +67,7 @@ const Home = () => {
                 id={v.id}
                 title={v.title}
                 text={sliceText(v.content)}
-                link={`/article/${v.id}`}
+                link={`/article/detail/${v.id}`}
               />
             );
           })}

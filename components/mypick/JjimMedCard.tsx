@@ -4,9 +4,10 @@ import Image from "next/image";
 
 interface IProps {
   src: string;
+  name: string;
 }
 
-const JjimMedCard: FC<IProps> = ({ src }) => {
+const JjimMedCard: FC<IProps> = ({ src, name }) => {
   return (
     <div className="mb-4 relative w-full border-[1px] p-3 border-box border-coolgray3 rounded-2xl">
       <div className="flex items-center justify-between">
@@ -15,9 +16,7 @@ const JjimMedCard: FC<IProps> = ({ src }) => {
         </div>
         <div className="flex flex-col justify-between w-[75%]">
           <div className="flex  h-[60px] flex-col justify-between w-[100%]">
-            <span className="mt-2 font-bold text-[12px]">
-              고려은단 비타민 C 1000mg 240정
-            </span>
+            <span className="mt-2 font-bold text-[12px]">{name}</span>
           </div>
           {/* <div className="flex items-center">
             <div className="flex items-center">

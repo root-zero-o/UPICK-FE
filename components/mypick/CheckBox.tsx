@@ -12,15 +12,15 @@ interface CheckBox {
 }
 
 const CheckBox = ({ title, active, onClick, userDx, onData }: CheckBox) => {
-  const renderCheckBox = useMemo(() => {
+  const renderCheckBox = () => {
     if (userDx?.includes(title)) {
       return (
         <div
           onClick={() => onClick && onClick(title)}
-          className="flex flex-col justify-center items-center text-blue1 text-[14px]"
+          className="h-[30px] flex flex-col justify-center items-center text-blue1 text-[14px]"
         >
+          <span className="mb-2">{title}</span>
           <Image src={check} alt="" />
-          <span>{title}</span>
         </div>
       );
     } else {
@@ -29,21 +29,36 @@ const CheckBox = ({ title, active, onClick, userDx, onData }: CheckBox) => {
           onClick={() => onClick && onClick(title)}
           className="flex flex-col justify-center items-center text-[14px]"
         >
+          <span className="mb-2">{title}</span>
           <Image src={uncheck} alt="" />
-          <span>{title}</span>
         </div>
       );
     }
-  }, [active, userDx]);
+  };
 
   return (
     <>
       {!onData ? (
-        <>{renderCheckBox} </>
+        <>
+          <div
+            onClick={() => onClick && onClick(title)}
+            className={`flex flex-col justify-center items-center ${
+              userDx?.includes(title) ? `text-blue1` : ""
+            }  text-[14px]`}
+          >
+            <span className="mb-2">{title}</span>
+            <Image src={userDx?.includes(title) ? check : uncheck} alt="" />
+          </div>
+        </>
       ) : (
-        <div className="flex flex-col justify-center items-center text-[14px]">
+        <div
+          className={`flex flex-col justify-center items-center text-[14px] ${
+            active ? `text-blue1` : ``
+          }`}
+        >
+          <span className="mb-2">{title}</span>
+
           <Image src={active ? check : uncheck} alt="" />
-          <span>{title}</span>
         </div>
       )}
     </>

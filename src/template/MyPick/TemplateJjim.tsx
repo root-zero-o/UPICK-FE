@@ -7,12 +7,51 @@ import { FC, useEffect, useState } from "react";
 import axios from "axios";
 import JjimSubCard from "components/mypick/JjimSubCard";
 import JjimPharCard from "components/mypick/JjimPharCard";
+import { TypeLikeMed, TypesLikePhar, TypesLikeSub } from "src/types/MyPickData";
 
 interface IProps {
   type: string;
+  // jjimMed?: TypeLikeMed[];
+  // jjimPhar?: TypesLikePhar[];
+  // jjimSub?: TypesLikeSub[];
 }
 const TemplateJjim: FC<IProps> = ({ type }) => {
-  const [jjimData, setJjimData] = useState<any[]>([]);
+  const [jjimMed, setJjimMed] = useState<TypeLikeMed[]>([]);
+
+  const [jjimPhar, setJjimPhar] = useState<TypesLikePhar[]>([]);
+
+  const [jjimSub, setJjimSub] = useState<TypesLikeSub[]>([]);
+  const responseSub = async () => {
+    try {
+      const result = await axios({
+        method: "GET",
+        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/like/postings`,
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
+        },
+      });
+      console.log(result?.data?.data);
+      setJjimSub(result?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const responsePhar = async () => {
+    try {
+      const result = await axios({
+        method: "GET",
+        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/like/pharmacists`,
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
+        },
+      });
+      console.log(result?.data?.data);
+      setJjimPhar(result?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const response = async () => {
     try {
@@ -23,25 +62,23 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },
       });
-      // console.log(result?.data?.data);
-      setJjimData(result?.data?.data);
-      // setMyPickData(result?.data?.data?._customer);
+      console.log(result?.data?.data);
+      setJjimMed(result?.data?.data);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    response();
+    if (type === "med") {
+      response();
+    } else if (type === "phar") {
+      responsePhar();
+    } else if (type === "sub") {
+      responseSub();
+    }
   }, []);
 
-  const data = [
-    "고려은단 비타민 C 1000mg 240정",
-    "고려은단 비타민 C 1000mg 240정",
-    "고려은단 비타민 C 1000mg 240정",
-    "고려은단 비타민 C 1000mg 240정",
-    "고려은단 비타민 C 1000mg 240정",
-  ];
   return (
     <Layout home={false} title="" isWhite={false} icon={false} myPick>
       <div className="w-full flex justify-center box-border border-b-[1px] border-coolgray3">
@@ -66,15 +103,17 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
       <div className="w-full flex justify-center">
         <div className="w-[90%] flex justify-between flex-col">
           {type === "med" &&
-            data.map((value, index) => {
+            jjimMed &&
+            jjimMed.map((value, index) => {
               return (
                 <>
-                  <JjimMedCard src="asdf" />
+                  <JjimMedCard name={value.name} src="asdf" />
                 </>
               );
             })}
           {type === "phar" &&
-            data.map((value, index) => {
+            jjimPhar &&
+            jjimPhar.map((value, index) => {
               return (
                 <>
                   <JjimPharCard />
@@ -82,7 +121,8 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
               );
             })}
           {type === "sub" &&
-            data.map((value, index) => {
+            jjimSub &&
+            jjimSub.map((value, index) => {
               return (
                 <>
                   <div className="w-[100%] flex-col flex item-center bg-red">

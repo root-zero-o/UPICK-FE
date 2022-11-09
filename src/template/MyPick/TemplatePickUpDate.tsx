@@ -1,9 +1,10 @@
 import axios from "axios";
 import Layout from "components/Layout";
 import PickUpNotice from "components/mypick/PickUpNotice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PickUpCards from "src/components/MyPick/PickUpCards";
 import { PickUpStatusEnum } from "src/types/EnumPickUpStatus";
+import { TypesPickUp } from "src/types/MyPickData";
 const TemplatePickUpDate = () => {
   const data = [
     {
@@ -58,16 +59,31 @@ const TemplatePickUpDate = () => {
     },
   ];
 
+  const [pickData, setPickData] = useState<TypesPickUp[]>();
+  const [yetPickData, setYetPickData] = useState<TypesPickUp[]>();
+
+  const customerId = 1;
   const response = async () => {
     try {
       const result = await axios({
         method: "GET",
-        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/like/pharmacists`,
+        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/${customerId}/my-pick/pick-up-list/picked`,
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },
       });
-      console.log(result);
+      const result2 = await axios({
+        method: "GET",
+        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/${customerId}/my-pick/pick-up-list/to-pick`,
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
+        },
+      });
+      console.log("::::");
+      console.log(result2?.data?.data);
+      console.log("::::");
+      setYetPickData(result2?.data?.data);
+      setPickData(result?.data?.data);
       // setMyPickData(result?.data?.data?._customer);
     } catch (error) {
       console.log(error);
@@ -78,10 +94,12 @@ const TemplatePickUpDate = () => {
     response();
   }, []);
 
+  console.log(pickData);
   return (
     <Layout home={false} title="" isWhite={false} icon={false}>
-      <div className="w-full flex flex-col items-center mt-4 ">
-        <PickUpCards data={data} />
+      <div className="w-[100%] flex flex-col items-center mt-4 ">
+        <PickUpCards data={pickData ?? []} datas={yetPickData ?? []} />
+        <div className="h-[300px] w-[100%]"></div>
         <PickUpNotice />
       </div>
     </Layout>

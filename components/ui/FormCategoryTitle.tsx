@@ -1,9 +1,9 @@
 interface FormCateTitleProps {
   title: string;
-  icon: boolean;
-  iTitle: string;
-  sub: boolean;
-  subtitle: string;
+  icon?: boolean;
+  iTitle?: string;
+  sub?: boolean;
+  subtitle?: string;
 }
 
 const FormCategoryTitle = ({
@@ -20,7 +20,9 @@ const FormCategoryTitle = ({
         {icon && <span className="text-xs">{iTitle}</span>}
       </div>
       {sub && (
-        <span className="text-xs text-blue2 font-medium mb-4">{subtitle}</span>
+        <span className="text-xs mt-2 text-coolgray3 font-medium mb-2">
+          {subtitle}
+        </span>
       )}
     </div>
   );

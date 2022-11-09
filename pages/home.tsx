@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SearchInput } from "../components/SearchInput";
 import Seo from "components/Seo";
 import HeaderBG from "../components/HeaderBG";
@@ -12,8 +12,20 @@ import AdSlide from "components/ui/AdSlide";
 import HomeCategoryBtn from "components/ui/HomeCategoryBtn";
 import { sampleArticleData } from "lib/sampleData";
 import { sliceText } from "lib/utils";
+import axios from "axios";
+import { PostingDataType } from "src/types/PostingData";
+import { useAppDispatch, useAppSelector } from "src/hooks/reduxHooks";
+import { selectPostings, __getPostings } from "store/modules/postingSlice";
 
 const Home = () => {
+  const postings = useAppSelector(selectPostings);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(__getPostings());
+  }, []);
+
+  const data = postings.postings;
+
   return (
     <Layout home={true} title="" isWhite={true} icon={true}>
       <Seo title="home" />
@@ -51,13 +63,13 @@ const Home = () => {
         />
         <AdSlide />
         <div className="divide-y-[1px] divide-coolgray3 px-12 ">
-          {sampleArticleData.map((v, i) => {
+          {data?.map((v, i) => {
             return (
               <TextCard
                 key={i}
                 id={v.id}
-                title={v.title[0]}
-                text={sliceText(v.text)}
+                title={v.title}
+                text={sliceText(v.content)}
                 link={`/article/${v.id}`}
               />
             );

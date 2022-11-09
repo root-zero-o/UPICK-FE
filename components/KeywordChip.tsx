@@ -7,7 +7,7 @@ const KeywordChip = ({
 }) => {
   const customizingStyle = (style?: string) => {
     const defaultStyle =
-      "text-sm text-white font-light pt-[2px] pb-[3px]  bg-coolgray3 px-1 rounded-[5px]";
+      "text-sm text-white font-light pt-[2px] pb-[3px]  bg-coolgray3 px-1 rounded-[5px] mt-2";
 
     if (!style) return;
     const customStyle = defaultStyle.concat(" ", style);

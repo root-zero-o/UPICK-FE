@@ -4,6 +4,8 @@ const nextConfig = {
   swcMinify: true,
   env: {
     SERVER: process.env.SERVER,
+    KAKAO_CLIENTID: process.env.KAKAO_CLIENTID,
+    KAKAO_JSKEY: process.env.KAKAO_JSKEY,
   },
 };
 

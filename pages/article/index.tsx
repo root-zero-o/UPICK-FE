@@ -42,7 +42,7 @@ const ArticleCard = ({
       </div>
       <div className="p-2 w-[100%]">
         <span className=" text-sm text-coolgray4">
-          {content.slice(0, 105)}...
+          {content?.slice(0, 105)}...
         </span>
       </div>
       <div className="flex gap-2">
@@ -80,7 +80,7 @@ const Index = () => {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },
       });
-      setFamousPostings(result?.data?.data.slice(0, 5));
+      setFamousPostings(result?.data?.data?.slice(0, 5));
     } catch (error) {
       console.log(error);
     }
@@ -169,11 +169,11 @@ const Index = () => {
                 return (
                   <ArticleCard
                     key={i}
-                    id={v.id}
-                    title={v.title}
-                    content={v.content}
-                    profileImage={v.pharmacist.Image[0].url}
-                    MerchandiseToPosting={v.MerchandiseToPosting}
+                    id={v?.id}
+                    title={v?.title}
+                    content={v?.content}
+                    profileImage={v?.pharmacist.Image[0].url}
+                    MerchandiseToPosting={v?.MerchandiseToPosting}
                   />
                 );
               })}
@@ -206,7 +206,7 @@ const Index = () => {
               return (
                 <div
                   key={i}
-                  onClick={() => router.push(`/article/detail/${v.id}`)}
+                  onClick={() => router.push(`/article/detail/${v?.id}`)}
                   className=" border-b-[1px] cursor-pointer border-coolgray2 py-4"
                 >
                   <div className="flex justify-between items-center">
@@ -216,17 +216,17 @@ const Index = () => {
                       </span>
                       <div className="w-[250px] break-all">
                         <span className="font-bold text-lg text-darkblue2">
-                          {v.title}
+                          {v?.title}
                         </span>
                       </div>
                     </div>
                     <span className="text-sm text-coolgray4 w-[90px]">
-                      {v.pharmacist.userName} 약사
+                      {v?.pharmacist.userName} 약사
                     </span>
                   </div>
                   <div className="py-2 ml-8">
                     <span className="text-sm text-coolgray4 ">
-                      {v.content.slice(0, 100)}...
+                      {v?.content?.slice(0, 100)}...
                     </span>
                   </div>
                 </div>

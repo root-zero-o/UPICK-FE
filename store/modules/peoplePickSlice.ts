@@ -1,6 +1,4 @@
-import { UserRegistrationModel } from "./../../shared/Types";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { userType } from "shared/Types";
 import apis from "shared/api";
 
 const GENDER = "user/GENDER";

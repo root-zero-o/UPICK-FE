@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { postingsType } from "shared/Types";
-import { initialStateType, PostingDataType } from "src/types/PostingData";
+import { initialStateType } from "src/types/PostingData";
 import { RootState } from ".";
 
 const GET_POSTINGS = "posting/getPostings";

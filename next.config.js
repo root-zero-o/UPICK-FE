@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
+  env: {
+    SERVER: process.env.SERVER,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

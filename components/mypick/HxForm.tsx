@@ -38,7 +38,7 @@ const HxForm: FC<IProps> = ({
       <div className="w-full h-fit mb-4  flex flex-col justify-center items-center">
         <HxBtn contents="진단여부(선택)" />
         <div className="mt-4 w-[100%] flex justify-between items-center">
-          {data.map((value, index) => {
+          {data?.map((value, index) => {
             return (
               <CheckBox
                 key={`DxCheck-${index}`}
@@ -58,7 +58,7 @@ const HxForm: FC<IProps> = ({
           (숨이 차는 평소보다 적절한 활동, 하루 20분 이상 시행한 날)
         </span>
         <div className="w-[100%] flex justify-between items-center mb-4">
-          {activity.map((value, index) => {
+          {activity?.map((value, index) => {
             return (
               <CheckBox
                 key={`Activity-${index}`}

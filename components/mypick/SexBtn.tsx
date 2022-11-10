@@ -52,7 +52,7 @@ const SexBtn: FC<IProps> = ({
         {userSex === "female" && (
           <>
             <div className="mt-6 flex w-[100%] justify-end mr-10 pr-4">
-              {femaleData.map((value, index) => {
+              {femaleData?.map((value, index) => {
                 return (
                   <div
                     key={`femaleData-${index}`}

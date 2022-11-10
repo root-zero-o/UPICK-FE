@@ -27,6 +27,7 @@ const KeyWordTag = ({ tag, userKeywords, onClick }: KeyWordProps) => {
         </div>
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userKeywords]);
 
   return <>{renderKeywords()}</>;

@@ -26,7 +26,7 @@ const MedicineHx: FC<IProps> = ({ myPickData }) => {
       />
       {myPickData?.TakingMedicine?.length > 0 ? (
         <div className="pt-4 mb-8">
-          {myPickData?.TakingMedicine?.slice(0, 5).map((value, index) => (
+          {myPickData?.TakingMedicine?.slice(0, 5)?.map((value, index) => (
             <MyMedicineList
               key={`my-medicine-list-${index}`}
               contents={value?.merchandise?.name}

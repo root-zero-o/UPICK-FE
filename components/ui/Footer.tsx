@@ -13,7 +13,7 @@ const Footer = () => {
         <span className="mt-1">PM : 안지선</span>
         <span>Desiginer : 안지선</span>
         <span>FE : 김근영, 김준호, 이윤</span>
-        <span>BE : 고승준</span>
+        <span>BE : 황성원, 김성현, 송민지</span>
       </div>
       <div className="text-xs flex flex-col">
         <span className="text-sm">ETC</span>

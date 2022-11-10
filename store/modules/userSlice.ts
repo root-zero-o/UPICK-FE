@@ -7,18 +7,18 @@ const LOGIN = "customers/LOGIN";
 const DUPLICATE = "user/DUPLICATE";
 const SIGNUP = "user/SIGNUP";
 
-export const __getKakao = createAsyncThunk(
-  LOGIN,
-  async (payload: string | null) => {
-    console.log(payload);
-    const data = await apis.getKakao(payload);
-    console.log(data);
-    if (data.headers.authorization !== undefined) {
-      // localStorage.setItem("authorization", data.headers.authorization);
-    }
-    return data;
+export const __getKakao = createAsyncThunk(LOGIN, async (payload: any) => {
+  // const data = await apis.getKakao(payload);
+  const data = await apis.kakaoLogin(payload);
+  console.log("api에 payload를 담는중");
+  console.log(payload);
+  console.log("api에 payload를 담는중");
+  console.log(data.data);
+  if (data.headers.authorization !== undefined) {
+    localStorage.setItem("authorization", data.data);
   }
-);
+  return data;
+});
 
 export const __dupCheck = createAsyncThunk(
   DUPLICATE,
@@ -40,7 +40,9 @@ export const __signUp = createAsyncThunk(
 export const __signIn = createAsyncThunk(
   LOGIN,
   async (payload: UserRegistrationModel) => {
+    console.log("로그인 시작");
     const response = await apis.signIn(payload);
+    console.log(response);
     // localStorage.setItem("authorization", response.headers.authorization);
     if (response.headers.authorization) return true;
     return false;

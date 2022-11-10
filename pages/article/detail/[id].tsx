@@ -18,6 +18,7 @@ const Article = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(__getPostings());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const data = postings.postings;
@@ -39,17 +40,17 @@ const Article = () => {
         <div className="flex row">
           <div>
             <div className="flex flex-wrap w-[220px]">
-              {article?.PostingToAgeRange.map((v, i) => {
+              {article?.PostingToAgeRange?.map((v, i) => {
                 return (
                   <KeywordChip key={i} keyword={v.ageRange.name} style="mr-2" />
                 );
               })}
-              {article?.PostingToConsider.map((v, i) => {
+              {article?.PostingToConsider?.map((v, i) => {
                 return (
                   <KeywordChip key={i} keyword={v.consider.name} style="mr-2" />
                 );
               })}
-              {article?.PostingToIngredient.map((v, i) => {
+              {article?.PostingToIngredient?.map((v, i) => {
                 return (
                   <KeywordChip
                     key={i}
@@ -90,7 +91,7 @@ const Article = () => {
       >
         <Image layout="fill" src={MerchandiseBG} alt="" />
         <div className="absolute top-4 left-10 flex flex-col gap-4 pb-20">
-          {article?.MerchandiseToPosting.map((v, i) => {
+          {article?.MerchandiseToPosting?.map((v, i) => {
             return (
               <MerchandiseCard
                 key={i}

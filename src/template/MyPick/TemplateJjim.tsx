@@ -21,7 +21,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
     try {
       const result = await axios({
         method: "GET",
-        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/like/postings`,
+        url: `http://13.124.107.239/customers/my-pick/like/postings`,
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },
@@ -35,7 +35,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
     try {
       const result = await axios({
         method: "GET",
-        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/like/pharmacists`,
+        url: `http://13.124.107.239/customers/my-pick/like/pharmacists`,
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },
@@ -50,7 +50,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
     try {
       const result = await axios({
         method: "GET",
-        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/like/merchandises`,
+        url: `http://13.124.107.239/customers/my-pick/like/merchandises`,
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },
@@ -69,6 +69,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
     } else if (type === "sub") {
       responseSub();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const router = useRouter();
 
@@ -97,7 +98,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
         <div className="w-[90%] flex justify-between flex-col">
           {type === "med" &&
             jjimMed &&
-            jjimMed.map((value, index) => {
+            jjimMed?.map((value, index) => {
               return (
                 <>
                   <JjimMedCard name={value.name} src="asdf" />
@@ -106,7 +107,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
             })}
           {type === "phar" &&
             jjimPhar &&
-            jjimPhar.map((value, index) => {
+            jjimPhar?.map((value, index) => {
               return (
                 <>
                   <div
@@ -127,7 +128,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
             })}
           {type === "sub" &&
             jjimSub &&
-            jjimSub.map((value, index) => {
+            jjimSub?.map((value, index) => {
               return (
                 <>
                   <JjimPharCard />

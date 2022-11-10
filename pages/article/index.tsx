@@ -9,7 +9,10 @@ import Search from "assets/images/icons/Search.svg";
 import FullHeartIcon from "assets/images/icons/heart-fill.svg";
 import { useAppDispatch, useAppSelector } from "src/hooks/reduxHooks";
 import { selectPostings, __getPostings } from "store/modules/postingSlice";
-import { MerchandiseToPostingDataType } from "src/types/PostingData";
+import {
+  MerchandiseToPostingDataType,
+  PostingDataType,
+} from "src/types/PostingData";
 import useClickRoute from "hooks/useClickRoute";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -42,11 +45,11 @@ const ArticleCard = ({
       </div>
       <div className="p-2 w-[100%]">
         <span className=" text-sm text-coolgray4">
-          {content.slice(0, 105)}...
+          {content?.slice(0, 105)}...
         </span>
       </div>
       <div className="flex gap-2">
-        {MerchandiseToPosting.map((v, i) => {
+        {MerchandiseToPosting?.map((v, i) => {
           return (
             <div
               key={i}
@@ -68,6 +71,7 @@ const Index = () => {
   const postings = useAppSelector(selectPostings);
   const dispatch = useAppDispatch();
   const [value, setValue] = useState(3);
+  const [data, setData] = useState<PostingDataType[]>([]);
   const [famousPostings, setFamousPostings] = useState<any[]>([]);
   const router = useRouter();
 
@@ -75,12 +79,12 @@ const Index = () => {
     try {
       const result = await axios({
         method: "GET",
-        url: `${process.env.NEXT_PUBLIC_SERVER}/posting?orderby=like`,
+        url: `http://13.124.107.239/posting?orderby=like`,
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },
       });
-      setFamousPostings(result?.data?.data.slice(0, 5));
+      setFamousPostings(result?.data?.data?.slice(0, 5));
     } catch (error) {
       console.log(error);
     }
@@ -89,10 +93,12 @@ const Index = () => {
   useEffect(() => {
     dispatch(__getPostings());
     response();
+    if (postings) {
+      console.log(postings);
+      setData(Array.from(postings.postings));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const data = postings.postings;
-  console.log(famousPostings);
 
   return (
     <Layout home={false} title="" isWhite={true} icon={true}>
@@ -168,11 +174,11 @@ const Index = () => {
                 return (
                   <ArticleCard
                     key={i}
-                    id={v.id}
-                    title={v.title}
-                    content={v.content}
-                    profileImage={v.pharmacist.Image[0].url}
-                    MerchandiseToPosting={v.MerchandiseToPosting}
+                    id={v?.id}
+                    title={v?.title}
+                    content={v?.content}
+                    profileImage={v?.pharmacist.Image[0].url}
+                    MerchandiseToPosting={v?.MerchandiseToPosting}
                   />
                 );
               })}
@@ -201,11 +207,11 @@ const Index = () => {
                 </span>
               </div>
             </div>
-            {famousPostings.map((v, i) => {
+            {famousPostings?.map((v, i) => {
               return (
                 <div
                   key={i}
-                  onClick={() => router.push(`/article/detail/${v.id}`)}
+                  onClick={() => router.push(`/article/detail/${v?.id}`)}
                   className=" border-b-[1px] cursor-pointer border-coolgray2 py-4"
                 >
                   <div className="flex justify-between items-center">
@@ -215,17 +221,17 @@ const Index = () => {
                       </span>
                       <div className="w-[250px] break-all">
                         <span className="font-bold text-lg text-darkblue2">
-                          {v.title}
+                          {v?.title}
                         </span>
                       </div>
                     </div>
                     <span className="text-sm text-coolgray4 w-[90px]">
-                      {v.pharmacist.userName} 약사
+                      {v?.pharmacist.userName} 약사
                     </span>
                   </div>
                   <div className="py-2 ml-8">
                     <span className="text-sm text-coolgray4 ">
-                      {v.content.slice(0, 100)}...
+                      {v?.content?.slice(0, 100)}...
                     </span>
                   </div>
                 </div>
@@ -234,8 +240,7 @@ const Index = () => {
           </div>
         )}
       </div>
-
-      <NavBar location="neighborhood" />
+      <NavBar location="pharmacistPick" />
     </Layout>
   );
 };

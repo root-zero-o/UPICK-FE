@@ -29,9 +29,7 @@ const Layout = ({
       <div className="w-full flex items-center justify-between px-6 z-40">
         {home ? (
           <div className="flex items-center w-[80%]">
-            <h4 className="text-white text-lg font-light">
-              여덟글자여덟글자약국
-            </h4>
+            <h4 className="text-white text-lg font-light">애옹쓰약국</h4>
             <Image alt="" src={down} />
           </div>
         ) : (

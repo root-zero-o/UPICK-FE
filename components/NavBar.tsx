@@ -38,7 +38,7 @@ const NavBar = ({ location }: { location: string }) => {
           <span className="text-[8px] text-coolgray3 mt-[5px]">대중픽</span>
         </div>
       )}
-      {location === "peoplePick" ? (
+      {location === "home" ? (
         <div
           className="flex flex-col items-center text-skyblue"
           onClick={onHomeLink}
@@ -52,7 +52,7 @@ const NavBar = ({ location }: { location: string }) => {
           onClick={onHomeLink}
         >
           <Image alt="" src={Home} />
-          <span className="text-[8px] text-coolgray3 mt-[5px]">홈</span>
+          <span className="text-[8px] text-blue1 font-sdg-m mt-[5px]">홈</span>
         </div>
       )}
       {location === "neighborhood" ? (

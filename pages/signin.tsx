@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { emailRegCheck, passwordRegCheck } from "shared/LoginCheck";
 import { RootState } from "store/modules";
 import { KAKAO_AUTH_URL } from "shared/SocialAuth";
+import Router from "next/router";
 
 const Signin = () => {
   const onHomeLink = useClickRoute({ link: "/home" });
@@ -33,12 +34,11 @@ const Signin = () => {
 
   // 회원가입 버튼 이벤트
   const onClickHandler = () => {
-    dispatch(__signIn({ email, password: pw }));
+    // dispatch(__signIn({ email, password: pw }));
+    Router.push("/home");
   };
 
   useEffect(() => {
-    console.log(isLogin);
-    console.log(KAKAO_AUTH_URL);
     if (isLogin) {
       onHomeLink();
     }

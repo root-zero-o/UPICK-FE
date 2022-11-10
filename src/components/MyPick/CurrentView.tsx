@@ -30,7 +30,7 @@ const CurrentView: FC<IProps> = ({ myPickData }) => {
     <>
       <CategoryTitle title="최근 봤던 약" subtitle="" link="/" hideSub />
       <div className="flex w-full justify-center">
-        {myPickData.map((value, index) => {
+        {myPickData?.map((value, index) => {
           return (
             <>
               <RecentMed

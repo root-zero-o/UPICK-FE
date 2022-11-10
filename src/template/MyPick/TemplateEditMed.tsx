@@ -125,7 +125,7 @@ const TemplateEditMed = () => {
     if (userKeywords.length > 3 && userKeywords.includes(keword)) {
       const newKeywords = userKeywords.filter((value) => value !== keword);
       setUserKewords(newKeywords);
-      const newList = newKeywords.map((value, index) => {
+      const newList = newKeywords?.map((value, index) => {
         return {
           considerId: HealthKeywords.indexOf(value) - 1,
         };
@@ -136,7 +136,7 @@ const TemplateEditMed = () => {
     if (userKeywords.includes(keword)) {
       const newKeywords = userKeywords.filter((value) => value !== keword);
       setUserKewords(newKeywords);
-      const newList = newKeywords.map((value, index) => {
+      const newList = newKeywords?.map((value, index) => {
         return {
           considerId: HealthKeywords.indexOf(value) - 1,
         };
@@ -269,7 +269,7 @@ const TemplateEditMed = () => {
             subtitle="관심있는 키워드를 최대 4가지 신청할 수 있습니다."
           />
           <div className="w-full h-fit mb-8">
-            {HealthKeywords.map((value, index) => (
+            {HealthKeywords?.map((value, index) => (
               <KeyWordTag
                 key={`keyword-tag-${index}`}
                 tag={value}
@@ -352,7 +352,7 @@ const TemplateEditMed = () => {
           <FormCategoryTitle title="섭취 중인 영양제" sub={true} subtitle="" />
           <div className=" w-full flex flex-col items-center">
             <div className="w-full h-fit mb-8">
-              {userMediHx.map((value, index) => (
+              {userMediHx?.map((value, index) => (
                 <MyMedicineList
                   key={`my-medicine-list-${index}`}
                   contents={value.name}

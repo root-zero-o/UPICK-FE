@@ -46,7 +46,7 @@ const ArticleCard = ({
         </span>
       </div>
       <div className="flex gap-2">
-        {MerchandiseToPosting.map((v, i) => {
+        {MerchandiseToPosting?.map((v, i) => {
           return (
             <div
               key={i}
@@ -201,7 +201,7 @@ const Index = () => {
                 </span>
               </div>
             </div>
-            {famousPostings.map((v, i) => {
+            {famousPostings?.map((v, i) => {
               return (
                 <div
                   key={i}

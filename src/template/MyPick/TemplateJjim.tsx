@@ -97,7 +97,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
         <div className="w-[90%] flex justify-between flex-col">
           {type === "med" &&
             jjimMed &&
-            jjimMed.map((value, index) => {
+            jjimMed?.map((value, index) => {
               return (
                 <>
                   <JjimMedCard name={value.name} src="asdf" />
@@ -106,7 +106,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
             })}
           {type === "phar" &&
             jjimPhar &&
-            jjimPhar.map((value, index) => {
+            jjimPhar?.map((value, index) => {
               return (
                 <>
                   <div
@@ -127,7 +127,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
             })}
           {type === "sub" &&
             jjimSub &&
-            jjimSub.map((value, index) => {
+            jjimSub?.map((value, index) => {
               return (
                 <>
                   <JjimPharCard />

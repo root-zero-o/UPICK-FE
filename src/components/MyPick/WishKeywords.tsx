@@ -19,7 +19,7 @@ const WishKeywords: FC<IProps> = ({ myPickData }) => {
       <CategoryTitle title="관심키워드" subtitle="" link="/" hideIcon hideSub />
       {myPickData?.CustomerToConsider?.length > 0 ? (
         <div className="z-40 text-white flex text-sm mb-8">
-          {myPickData?.CustomerToConsider.map((value, index) => (
+          {myPickData?.CustomerToConsider?.map((value, index) => (
             <HealthMarker
               key={`health-marker-${index}`}
               contents={HealthKeywords[value.considerId - 1]}

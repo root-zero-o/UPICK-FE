@@ -63,7 +63,7 @@ const Detail: NextPage = () => {
         </div>
         <div className="relative -top-7 w-[90%] h-[170px] shadow-lg rounded-md flex flex-col items-center p-4 space-y-3">
           <div className="w-full flex justify-evenly ">
-            {data?.chat_tags.map((v, i) => {
+            {data?.chat_tags?.map((v, i) => {
               return (
                 <span className="text-[14px] text-darkblue1 font-bold" key={i}>
                   #{v}
@@ -90,7 +90,7 @@ const Detail: NextPage = () => {
             </span>
           </div>
           <div className="flex items-center space-x-2">
-            {data?.info_tags.map((v, i) => {
+            {data?.info_tags?.map((v, i) => {
               return (
                 <div
                   key={i}

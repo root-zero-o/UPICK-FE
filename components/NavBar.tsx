@@ -8,9 +8,12 @@ import pharmacy from "../assets/images/icons/pharmacy.svg";
 import pharmacyBlue from "../assets/images/icons/phamacyBlue.svg";
 import myPick from "../assets/images/icons/myPick.svg";
 import myPickBlue from "../assets/images/icons/myPickBlue.svg";
+import Home from "../assets/images/icons/Home.svg";
 import Router from "next/router";
+import useClickRoute from "hooks/useClickRoute";
 
 const NavBar = ({ location }: { location: string }) => {
+  const onHomeLink = useClickRoute({ link: "/home" });
   return (
     <div className="w-full h-[60px] fixed bottom-0 max-w-[420px] flex justify-evenly items-center z-40 pt-1 bg-coolgray1 ">
       {location === "pharmacistPick" ? (
@@ -33,6 +36,23 @@ const NavBar = ({ location }: { location: string }) => {
         <div className="flex flex-col items-center hover:cursor-pointer ">
           <Image alt="" src={people} />
           <span className="text-[8px] text-coolgray3 mt-[5px]">대중픽</span>
+        </div>
+      )}
+      {location === "peoplePick" ? (
+        <div
+          className="flex flex-col items-center text-skyblue"
+          onClick={onHomeLink}
+        >
+          <Image alt="" src={Home} />
+          <span className="text-[8px] mt-[-3px] text-blue1">홈</span>
+        </div>
+      ) : (
+        <div
+          className="flex flex-col items-center hover:cursor-pointer "
+          onClick={onHomeLink}
+        >
+          <Image alt="" src={Home} />
+          <span className="text-[8px] text-coolgray3 mt-[5px]">홈</span>
         </div>
       )}
       {location === "neighborhood" ? (

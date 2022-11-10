@@ -41,6 +41,7 @@ export const __signIn = createAsyncThunk(
   LOGIN,
   async (payload: UserRegistrationModel) => {
     const response = await apis.signIn(payload);
+    console.log(response);
     // localStorage.setItem("authorization", response.headers.authorization);
     if (response.headers.authorization) return true;
     return false;

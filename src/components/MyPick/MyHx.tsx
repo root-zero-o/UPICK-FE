@@ -12,7 +12,6 @@ interface IProps {
 const MyHx: FC<IProps> = ({ myPickData }) => {
   const data = ["뇌졸증", "심장병", "고혈압", "당뇨병", "기타(암포함)"];
 
-  console.log(myPickData?.CustomerDetails?.[0]?.heartDisease);
   return (
     <>
       <CategoryTitle

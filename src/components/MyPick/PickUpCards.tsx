@@ -8,8 +8,9 @@ import pathBlue from "../../../assets/images/icons/LocationBlue.svg";
 interface IProps {
   data: TypesPickUp[];
   datas: TypesPickUp[];
+  timeStamp: (v: string) => string;
 }
-const PickUpCards: FC<IProps> = ({ data, datas }) => {
+const PickUpCards: FC<IProps> = ({ data, datas, timeStamp }) => {
   return (
     <>
       {datas?.map((value, index) => {
@@ -24,7 +25,10 @@ const PickUpCards: FC<IProps> = ({ data, datas }) => {
               <FormCategoryTitle
                 title={"픽업 예정일"}
                 icon={true}
-                iTitle={value.CustomerPickUps[index].pickableAt}
+                iTitle={
+                  value.CustomerPickUps[index].pickableAt &&
+                  timeStamp(value.CustomerPickUps[index].pickableAt)
+                }
                 sub={false}
                 subtitle=""
               />
@@ -47,7 +51,7 @@ const PickUpCards: FC<IProps> = ({ data, datas }) => {
                   <PickedMed
                     url={value.Image.url}
                     med={value.name}
-                    time={value.CustomerPickUps[index].pickableAt}
+                    time={"월 - 토 오전 11:00 - 오후 8:00"}
                   />
                   <button className="mt-6 flex text-[12px] text-white py-3 justify-center items-center w-[85%] bg-blue2 rounded-lg">
                     {value.CustomerPickUps[index].isPicked
@@ -72,7 +76,7 @@ const PickUpCards: FC<IProps> = ({ data, datas }) => {
               <FormCategoryTitle
                 title={"픽업 완료"}
                 icon={true}
-                iTitle={value.CustomerPickUps[index].pickableAt}
+                iTitle={timeStamp(value.CustomerPickUps[index].pickableAt)}
                 sub={false}
                 subtitle=""
               />

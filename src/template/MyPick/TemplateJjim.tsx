@@ -1,19 +1,15 @@
 import Layout from "components/Layout";
 import JjimTab from "components/mypick/JjimTab";
 import JjimMedCard from "components/mypick/JjimMedCard";
-import JjimFooter from "components/mypick/JjimFooter";
-import fullHeart from "../../../assets/images/icons/fullHeart.svg";
 import { FC, useEffect, useState } from "react";
 import axios from "axios";
 import JjimSubCard from "components/mypick/JjimSubCard";
 import JjimPharCard from "components/mypick/JjimPharCard";
 import { TypeLikeMed, TypesLikePhar, TypesLikeSub } from "src/types/MyPickData";
+import { useRouter } from "next/router";
 
 interface IProps {
   type: string;
-  // jjimMed?: TypeLikeMed[];
-  // jjimPhar?: TypesLikePhar[];
-  // jjimSub?: TypesLikeSub[];
 }
 const TemplateJjim: FC<IProps> = ({ type }) => {
   const [jjimMed, setJjimMed] = useState<TypeLikeMed[]>([]);
@@ -30,13 +26,11 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },
       });
-      console.log(result?.data?.data);
       setJjimSub(result?.data?.data);
     } catch (error) {
       console.log(error);
     }
   };
-
   const responsePhar = async () => {
     try {
       const result = await axios({
@@ -46,7 +40,6 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },
       });
-      console.log(result?.data?.data);
       setJjimPhar(result?.data?.data);
     } catch (error) {
       console.log(error);
@@ -62,7 +55,6 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },
       });
-      console.log(result?.data?.data);
       setJjimMed(result?.data?.data);
     } catch (error) {
       console.log(error);
@@ -78,6 +70,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
       responseSub();
     }
   }, []);
+  const router = useRouter();
 
   return (
     <Layout home={false} title="" isWhite={false} icon={false} myPick>
@@ -116,7 +109,19 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
             jjimPhar.map((value, index) => {
               return (
                 <>
-                  <JjimPharCard />
+                  <div
+                    className="w-[100%] flex-col flex item-center bg-red cursor-pointer"
+                    onClick={() =>
+                      router.push(`/neighborhood/detail/${value.id}`)
+                    }
+                  >
+                    <JjimSubCard
+                      name={value.userName}
+                      at={value.pharmacyName}
+                      src={value.Image[0].url}
+                    />
+                    <div className="border-[1px] border-coolgray2 w-[100%] rounded-full" />
+                  </div>
                 </>
               );
             })}
@@ -125,10 +130,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
             jjimSub.map((value, index) => {
               return (
                 <>
-                  <div className="w-[100%] flex-col flex item-center bg-red">
-                    <JjimSubCard />
-                    <div className="border-[1px] border-coolgray3 w-[100%] rounded-full" />
-                  </div>
+                  <JjimPharCard />
                 </>
               );
             })}

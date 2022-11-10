@@ -33,7 +33,6 @@ const HxForm: FC<IProps> = ({
     return;
   }, [userActivity]);
 
-  console.log(userActivity);
   return (
     <div className="px-[5%] bg-blue4 mt-4 flex flex-col items-center justify-center w-[90%] h-fit  shadow-md rounded-lg">
       <div className="w-full h-fit mb-4  flex flex-col justify-center items-center">

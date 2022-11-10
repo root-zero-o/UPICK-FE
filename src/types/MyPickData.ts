@@ -77,16 +77,6 @@ export type TypesLikeSub = {
   gender: string;
 };
 
-export type TypesLikePhar = {
-  // id: number;
-  // title: string;
-  // content: string;
-  // pharmacistId: number;
-  // createdAt: string;
-  // updatedAt: string;
-  // gender: string;
-};
-
 export type TypePick = {
   isPicked: boolean;
   pharmacyAdress: string;
@@ -97,6 +87,14 @@ export type TypePick = {
 type ImageType = {
   url: string;
 };
+
+export type TypesLikePhar = {
+  Image: ImageType[];
+  userName: string;
+  pharmacyName: string;
+  id: number;
+};
+
 export type TypesPickUp = {
   CustomerPickUps: TypePick[];
   name: string;

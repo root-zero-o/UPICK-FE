@@ -154,7 +154,6 @@ const TemplateEditMed = () => {
     setConsiderList(newList);
   };
 
-  console.log(takingMed);
   const handleUserDx = (dx: string) => {
     if (userDx.includes(dx)) {
       const newDx = userDx.filter((value) => value !== dx);
@@ -169,14 +168,12 @@ const TemplateEditMed = () => {
     setUserSex(sex);
   };
   const handleSetMed = (value: any) => {
-    console.log(value);
     const takingMedList = [...userMediHx, value];
     setUserMediHx(takingMedList);
   };
 
   const submitData = async () => {
     try {
-      console.log(newData);
       console.log(`
       {
         name: ${userName},

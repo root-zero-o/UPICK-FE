@@ -38,6 +38,7 @@ const CurrentView: FC<IProps> = ({ myPickData }) => {
                 pharmacy={value.company.name}
                 med={value.name}
                 src={value.Image.url}
+                id={value.id}
               />
             </>
           );

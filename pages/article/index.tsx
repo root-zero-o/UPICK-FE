@@ -9,7 +9,10 @@ import Search from "assets/images/icons/Search.svg";
 import FullHeartIcon from "assets/images/icons/heart-fill.svg";
 import { useAppDispatch, useAppSelector } from "src/hooks/reduxHooks";
 import { selectPostings, __getPostings } from "store/modules/postingSlice";
-import { MerchandiseToPostingDataType } from "src/types/PostingData";
+import {
+  MerchandiseToPostingDataType,
+  PostingDataType,
+} from "src/types/PostingData";
 import useClickRoute from "hooks/useClickRoute";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -68,6 +71,7 @@ const Index = () => {
   const postings = useAppSelector(selectPostings);
   const dispatch = useAppDispatch();
   const [value, setValue] = useState(3);
+  const [data, setData] = useState<PostingDataType[]>([]);
   const [famousPostings, setFamousPostings] = useState<any[]>([]);
   const router = useRouter();
 
@@ -89,10 +93,11 @@ const Index = () => {
   useEffect(() => {
     dispatch(__getPostings());
     response();
+    if (postings) {
+      setData(Array.from(postings?.postings));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const data = Array.from(postings?.postings);
 
   return (
     <Layout home={false} title="" isWhite={true} icon={true}>
@@ -234,7 +239,6 @@ const Index = () => {
           </div>
         )}
       </div>
-
       <NavBar location="neighborhood" />
     </Layout>
   );

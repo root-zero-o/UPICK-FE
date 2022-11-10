@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SearchInput } from "../components/SearchInput";
 import Seo from "components/Seo";
 import HeaderBG from "../components/HeaderBG";
@@ -13,16 +13,24 @@ import HomeCategoryBtn from "components/ui/HomeCategoryBtn";
 import { sliceText } from "lib/utils";
 import { useAppDispatch, useAppSelector } from "src/hooks/reduxHooks";
 import { selectPostings, __getPostings } from "store/modules/postingSlice";
+import { PostingDataType } from "src/types/PostingData";
+
+import HealthProblemIcon from "assets/images/icons/health_problem.svg";
+import AgeIcon from "assets/images/icons/age.svg";
+import IngredientIcon from "assets/images/icons/ingredient.svg";
+import GenderIcon from "assets/images/icons/gender.svg";
 
 const Home = () => {
   const postings = useAppSelector(selectPostings);
+  const [data, setData] = useState<PostingDataType[]>([]);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(__getPostings());
+    if (postings) {
+      setData(Array?.from(postings?.postings).slice(0, 5));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const data = Array.from(postings?.postings).slice(-5);
 
   return (
     <Layout home={true} title="" isWhite={true} icon={true}>
@@ -48,7 +56,7 @@ const Home = () => {
         <SearchInput top="150px" width={88} />
         <div className="z-40 w-full px-2 pt-4">
           <h1 className="text-white text-2xl font-bold z-40 px-6">
-            최대일곱글자임님, 반가워요!
+            김영근짱님, 반가워요!
           </h1>
         </div>
       </div>
@@ -83,10 +91,10 @@ const Home = () => {
           link="/"
         />
         <div className="flex py-6 w-full justify-evenly">
-          <HomeCategoryBtn src="" text="건강고민" link="/" />
-          <HomeCategoryBtn src="" text="연령" link="/" />
-          <HomeCategoryBtn src="" text="원료" link="/" />
-          <HomeCategoryBtn src="" text="성별" link="/" />
+          <HomeCategoryBtn src={HealthProblemIcon} text="건강고민" link="/" />
+          <HomeCategoryBtn src={AgeIcon} text="연령" link="/" />
+          <HomeCategoryBtn src={IngredientIcon} text="원료" link="/" />
+          <HomeCategoryBtn src={GenderIcon} text="성별" link="/" />
         </div>
       </div>
       <div className="home-section-wrapper">

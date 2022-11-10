@@ -22,9 +22,9 @@ const Signin = () => {
   // const onKakao = useClickRoute({ link: `${KAKAO_AUTH_URL}` });
   const onKakao = () => {
     // **********************아래 에러난거  수정하지마세요**********************
-    window.Kakao.Auth.authorize({
-      redirectUri: `http://localhost:3000/customers/sign-in/kakao`,
-    });
+    // window.Kakao.Auth.authorize({
+    //   redirectUri: `http://localhost:3000/customers/sign-in/kakao`,
+    // });
   };
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");

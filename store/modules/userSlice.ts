@@ -13,9 +13,9 @@ export const __getKakao = createAsyncThunk(LOGIN, async (payload: any) => {
   console.log("api에 payload를 담는중");
   console.log(payload);
   console.log("api에 payload를 담는중");
-  console.log(data);
+  console.log(data.data);
   if (data.headers.authorization !== undefined) {
-    // localStorage.setItem("authorization", data.headers.authorization);
+    localStorage.setItem("authorization", data.data);
   }
   return data;
 });
@@ -40,7 +40,9 @@ export const __signUp = createAsyncThunk(
 export const __signIn = createAsyncThunk(
   LOGIN,
   async (payload: UserRegistrationModel) => {
+    console.log("로그인 시작");
     const response = await apis.signIn(payload);
+    console.log(response);
     // localStorage.setItem("authorization", response.headers.authorization);
     if (response.headers.authorization) return true;
     return false;

@@ -17,6 +17,11 @@ export const apis = {
   signIn: (payload: UserRegistrationModel) =>
     api.post(`/customers/sign-in`, payload),
 
+  // people Pick
+  getPeopleGender: (payload: any) =>
+    // api.get(`/goods/merchandises/filtering-by-gender/:${payload}`),
+    api.get(`/goods/merchandises/filtering-by-effect/?keyword=면`),
+
   // get postings
   getPostings: () => api.get("/postings"),
 };

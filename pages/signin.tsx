@@ -23,7 +23,7 @@ const Signin = () => {
   const onKakao = () => {
     // **********************아래 에러난거  수정하지마세요**********************
     window.Kakao.Auth.authorize({
-      redirectUri: `https://developers.kakao.com/tool/demo/oauth`,
+      redirectUri: `http://localhost:3000/customers/sign-in/kakao`,
     });
   };
   const [email, setEmail] = useState("");

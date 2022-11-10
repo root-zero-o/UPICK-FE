@@ -13,7 +13,7 @@ class MyDocument extends Document {
           ></link>
           {/* <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> */}
           <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-          <script>Kakao.init(`c089c8172def97eb00c07217cae17495`);</script>
+          <script>Kakao.init(`7816541a5fa13a30a93fce72c90eafa2`);</script>
         </Head>
         <body>
           <Main />

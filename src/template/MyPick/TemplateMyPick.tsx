@@ -30,7 +30,6 @@ const TemplateMyPick = () => {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },
       });
-      console.log(result?.data?.data);
       setMyPickData(result?.data?.data?._customer);
       setRecentMedList(result?.data?.data?.merchandises);
     } catch (error) {

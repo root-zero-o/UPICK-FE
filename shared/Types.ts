@@ -14,7 +14,8 @@ export interface userType {
 export interface UserRegistrationModel {
   email?: string;
   password?: string;
-  username?: string;
+  confirmPassword?: string;
+  name?: string;
 }
 
 export interface postingType {

@@ -23,7 +23,12 @@ const SignupDetail = () => {
   // 회원가입 버튼 이벤트
   const onClickHandler = () => {
     dispatch(
-      __signUp({ email: savedEmail, password: pw, username: savedName })
+      __signUp({
+        email: savedEmail,
+        password: pw,
+        name: savedName,
+        confirmPassword: pwTwo,
+      })
     );
     onSuccessLink();
   };

@@ -38,22 +38,22 @@ const index = () => {
     },
   ];
 
-  const Router = useRouter();
-  const handleTabMenu = (menu: number) => {
-    switch (menu) {
-      case 1:
-        Router.push("/mypick/jjim/med");
-        return;
-      case 2:
-        Router.push("/mypick/pickup");
-        return;
-      case 3:
-        Router.push("/chat");
-        return;
-      default:
-        return;
-    }
-  };
+  // const Router = useRouter();
+  // const handleTabMenu = (menu: number) => {
+  //   switch (menu) {
+  //     case 1:
+  //       Router.push("/mypick/jjim/med");
+  //       return;
+  //     case 2:
+  //       Router.push("/mypick/pickup");
+  //       return;
+  //     case 3:
+  //       Router.push("/chat");
+  //       return;
+  //     default:
+  //       return;
+  //   }
+  // };
 
   return (
     <Layout home={false} title="" isWhite={true} icon={true}>
@@ -81,7 +81,7 @@ const index = () => {
           <div className="flex w-full justify-evenly">
             <BlurBtn src={best} text="인기순" />
             <BlurBtn src={location} text="거리순" />
-            <BlurBtn func={() => handleTabMenu(3)} src={chat} text="약사상담" />
+            <BlurBtn src={chat} text="약사상담" />
           </div>
         </div>
         <div className="flex flex-col items-center w-[60%] py-6">

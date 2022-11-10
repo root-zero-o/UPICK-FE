@@ -167,6 +167,7 @@ const Home = () => {
           {pharList?.map((value, index) => {
             return (
               <PharmacistProfile
+                key={`phraList-${index}`}
                 pharmacist={value.name}
                 pharmacy={value.address}
                 link="/"
@@ -183,6 +184,7 @@ const Home = () => {
           {list?.map((value, index) => {
             return (
               <ProductProfile
+                key={`listlist-${index}`}
                 company={value.company}
                 name={value.name}
                 link="/"

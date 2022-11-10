@@ -12,8 +12,10 @@ export const apis = {
     ),
   dupCheck: (payload: UserRegistrationModel) =>
     api.post(`/user/signup/checkEmail?email=${payload.email}`),
-  signUp: (payload: UserRegistrationModel) => api.post(`/user/signup`, payload),
-  signIn: (payload: UserRegistrationModel) => api.post(`/user/login`, payload),
+  signUp: (payload: UserRegistrationModel) =>
+    api.post(`/customers/sign-up`, payload),
+  signIn: (payload: UserRegistrationModel) =>
+    api.post(`/customers/sign-in`, payload),
 
   // get postings
   getPostings: () => api.get("/postings"),

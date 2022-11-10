@@ -1,8 +1,15 @@
 import NavBar from "components/NavBar";
 import SearchIcon from "../assets/images/icons/SearchIcon.svg";
 import Image from "next/image";
+import { useEffect } from "react";
+import { genderPick } from "store/modules/peoplePickSlice";
+import { useAppDispatch } from "src/hooks/reduxHooks";
 
 const PeoplePick = () => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(genderPick("male"));
+  }, []);
   return (
     <div className="relative h-screen flex flex-col items-center">
       {/* 검색창 */}
@@ -39,6 +46,58 @@ const PeoplePick = () => {
       </div>
 
       {/* 약들 */}
+      <div className="details">
+        <div className="details-main">
+          <div className="details-left">
+            <div className="details-rank">
+              <span className="rank-text">1</span>
+            </div>
+            <div className="details-Image"></div>
+          </div>
+          <div className="details-right">
+            <div className="details-title">
+              일양약품 속편한 비타민C 프리미엄 1320mg x 60정
+            </div>
+            <div className="details-subTitle">
+              <div className="details-company">㈜한풍네이처팜</div>
+              <div className="details-counts">60일분</div>
+            </div>
+          </div>
+        </div>
+        <div className="details-sub">
+          <div className="details-hashtag">일양</div>
+          <div className="details-hashtag">피로개선</div>
+          <div className="details-hashtag">면역기능</div>
+          <div className="details-hashtag">비타민D 함유</div>
+        </div>
+      </div>
+
+      <div className="details">
+        <div className="details-main">
+          <div className="details-left">
+            <div className="details-rank">
+              <span className="rank-text">1</span>
+            </div>
+            <div className="details-Image"></div>
+          </div>
+          <div className="details-right">
+            <div className="details-title">
+              일양약품 속편한 비타민C 프리미엄 1320mg x 60정
+            </div>
+            <div className="details-subTitle">
+              <div className="details-company">㈜한풍네이처팜</div>
+              <div className="details-counts">60일분</div>
+            </div>
+          </div>
+        </div>
+        <div className="details-sub">
+          <div className="details-hashtag">일양</div>
+          <div className="details-hashtag">피로개선</div>
+          <div className="details-hashtag">면역기능</div>
+          <div className="details-hashtag">비타민D 함유</div>
+        </div>
+      </div>
+
       <div className="details">
         <div className="details-main">
           <div className="details-left">
@@ -153,6 +212,7 @@ const PeoplePick = () => {
         .details {
           display: flex;
           flex-direction: column;
+          margin-bottom: 40px;
         }
         .details-main {
           display: flex;

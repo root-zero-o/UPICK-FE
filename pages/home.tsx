@@ -21,7 +21,7 @@ const Home = () => {
     dispatch(__getPostings());
   }, []);
 
-  const data = postings.postings.slice(0, 5);
+  const data = postings?.postings?.slice(0, 5);
 
   return (
     <Layout home={true} title="" isWhite={true} icon={true}>

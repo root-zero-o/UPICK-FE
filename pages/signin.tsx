@@ -15,11 +15,17 @@ import { __signIn } from "store/modules/userSlice";
 import { useEffect, useState } from "react";
 import { emailRegCheck, passwordRegCheck } from "shared/LoginCheck";
 import { RootState } from "store/modules";
-import { KAKAO_AUTH_URL } from "shared/SocialAuth";
+import { KAKAO_AUTH_URL, KAKAO_REDIRECT_URI } from "shared/SocialAuth";
 
 const Signin = () => {
   const onHomeLink = useClickRoute({ link: "/home" });
-  const onKakao = useClickRoute({ link: `${KAKAO_AUTH_URL}` });
+  // const onKakao = useClickRoute({ link: `${KAKAO_AUTH_URL}` });
+  const onKakao = () => {
+    // **********************아래 에러난거  수정하지마세요**********************
+    // window.Kakao.Auth.authorize({
+    //   redirectUri: `http://localhost:3000/customers/sign-in/kakao`,
+    // });
+  };
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const dispatch: AppDispatch = useDispatch();
@@ -37,8 +43,17 @@ const Signin = () => {
   };
 
   useEffect(() => {
-    console.log(isLogin);
-    console.log(KAKAO_AUTH_URL);
+    // if (window.Kakao) {
+    //   const kakao = window.Kakao;
+    //   console.log("카카오 인스턴스 생성준비");
+
+    //   if (!kakao.isInitialized()) {
+    //     console.log("카카오가 초기화가 안되어 있습니다");
+    //     kakao.init(`c089c8172def97eb00c07217cae17495`);
+    //     console.log("카카오 초기화 완료");
+    //   }
+    //   console.log("카카오 인스턴스 생성완료");
+    // }
     if (isLogin) {
       onHomeLink();
     }

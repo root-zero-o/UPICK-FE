@@ -89,6 +89,7 @@ const Index = () => {
   useEffect(() => {
     dispatch(__getPostings());
     response();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const data = postings.postings;

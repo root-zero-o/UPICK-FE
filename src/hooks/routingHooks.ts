@@ -6,5 +6,6 @@ export const useGoHome = (skip?: boolean) => {
   useEffect(() => {
     if (skip) return;
     router.push("/home");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skip]);
 };

@@ -69,6 +69,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
     } else if (type === "sub") {
       responseSub();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const router = useRouter();
 

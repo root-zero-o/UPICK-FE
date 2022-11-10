@@ -9,6 +9,7 @@ const PeoplePick = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(genderPick("male"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="relative h-screen flex flex-col items-center">

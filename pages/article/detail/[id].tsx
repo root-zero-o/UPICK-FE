@@ -18,6 +18,7 @@ const Article = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(__getPostings());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const data = postings.postings;

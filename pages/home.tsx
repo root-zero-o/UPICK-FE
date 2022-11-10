@@ -22,7 +22,7 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const data = postings?.postings?.slice(-5);
+  const data = Array.from(postings?.postings).slice(-5);
 
   return (
     <Layout home={true} title="" isWhite={true} icon={true}>

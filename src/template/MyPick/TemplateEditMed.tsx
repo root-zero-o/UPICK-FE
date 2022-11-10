@@ -199,7 +199,7 @@ const TemplateEditMed = () => {
       const submitMyInfo = await axios({
         method: "PATCH",
         data: newData,
-        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/details`,
+        url: `http://13.124.107.239/customers/my-pick/details`,
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
         },

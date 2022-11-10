@@ -1,6 +1,5 @@
 import SearchIcon from "../assets/images/icons/SearchIcon.svg";
 import Image from "next/image";
-import KeywordChip from "components/KeywordChip";
 
 const search = () => {
   return (

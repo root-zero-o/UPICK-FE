@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { userType } from "shared/Types";
 import apis from "shared/api";
 
-const LOGIN = "user/LOGIN";
+const LOGIN = "customers/LOGIN";
 const DUPLICATE = "user/DUPLICATE";
 const SIGNUP = "user/SIGNUP";
 

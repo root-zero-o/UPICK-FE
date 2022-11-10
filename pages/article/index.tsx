@@ -240,7 +240,7 @@ const Index = () => {
           </div>
         )}
       </div>
-      <NavBar location="neighborhood" />
+      <NavBar location="pharmacistPick" />
     </Layout>
   );
 };

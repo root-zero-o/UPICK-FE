@@ -92,8 +92,7 @@ const Index = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const data = postings.postings;
-  console.log(famousPostings);
+  const data = Array.from(postings?.postings);
 
   return (
     <Layout home={false} title="" isWhite={true} icon={true}>

@@ -10,6 +10,7 @@ interface IProps {
   handleActivity: (activity: string) => void;
   userActivity: string;
   setUserMemo: Dispatch<SetStateAction<string>>;
+  setUserActivity: Dispatch<SetStateAction<string>>;
 }
 const HxForm: FC<IProps> = ({
   onClick,
@@ -17,6 +18,7 @@ const HxForm: FC<IProps> = ({
   handleActivity,
   userActivity,
   setUserMemo,
+  setUserActivity,
 }) => {
   const data = ["뇌졸증", "심장병", "고혈압", "당뇨병", "기타(암포함)"];
   const activity = ["안함", "주1회", "주2-3회", "주4-5회", "매일운동"];
@@ -34,7 +36,7 @@ const HxForm: FC<IProps> = ({
   return (
     <div className="px-[5%] bg-blue4 mt-4 flex flex-col items-center justify-center w-[90%] h-fit  shadow-md rounded-lg">
       <div className="w-full h-fit mb-4  flex flex-col justify-center items-center">
-        <HxBtn contents="진단여부" />
+        <HxBtn contents="진단여부(선택)" />
         <div className="mt-4 w-[100%] flex justify-between items-center">
           {data.map((value, index) => {
             return (
@@ -51,7 +53,7 @@ const HxForm: FC<IProps> = ({
       </div>
       <div className="mb-4 w-[100%] h-[1px] bg-blue2 rounded"></div>
       <div className="w-full h-fit mb-4  flex flex-col justify-center items-center">
-        <HxBtn contents="신체활동" />
+        <HxBtn contents="신체활동(필수)" />
         <span className="text-xs mt-2 mb-4">
           (숨이 차는 평소보다 적절한 활동, 하루 20분 이상 시행한 날)
         </span>
@@ -63,7 +65,7 @@ const HxForm: FC<IProps> = ({
                 title={value}
                 userDx={actList}
                 active={userActivity === value}
-                onClick={handleActivity}
+                onClick={() => setUserActivity(value)}
               />
             );
           })}

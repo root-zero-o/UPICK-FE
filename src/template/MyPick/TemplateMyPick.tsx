@@ -11,14 +11,16 @@ import MyProfile from "src/components/MyPick/MyProfile";
 import HealthNotice from "src/components/MyPick/HealthNotice";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { TypeMyPickData } from "src/types/MyPickData";
+import { TypeMyPickData, TypeRecentMed } from "src/types/MyPickData";
+import MyPickHeaders from "components/mypick/MyPickHeaders";
+import { Router, useRouter } from "next/router";
 
 const TemplateMyPick = () => {
   const queryResult = true;
   const [myPickData, setMyPickData] = useState<TypeMyPickData>(
     {} as TypeMyPickData
   );
-
+  const [recentMedList, setRecentMedList] = useState<TypeRecentMed[]>([]);
   const response = async () => {
     try {
       const result = await axios({
@@ -29,6 +31,7 @@ const TemplateMyPick = () => {
         },
       });
       setMyPickData(result?.data?.data?._customer);
+      setRecentMedList(result?.data?.data?.merchandises);
     } catch (error) {
       console.log(error);
     }
@@ -38,19 +41,33 @@ const TemplateMyPick = () => {
     response();
   }, []);
 
+  const router = useRouter();
+  const goEdit = () => {
+    router.push("/mypick/edit");
+  };
+
   return (
     <Layout home={false} title="" isWhite={true} icon={true}>
       <Seo title="mypick" />
       <div className=" w-full flex flex-col items-center">
-        <MyPickHeader />
+        {/* <MyPickHeader /> */}
+        {!myPickData ? <MyPickHeader /> : <MyPickHeaders />}
         <MyProfile myPickData={myPickData} />
+        {myPickData && (
+          <div
+            onClick={goEdit}
+            className="mt-4 w-[335px]  h-[48px]  text-white rounded-full bg-coolgray1/30 backdrop-blur border-[1px] border-white flex flex-col justify-center items-center hover:cursor-pointer hover:shadow-md transition-all"
+          >
+            <span className="text-[18px] my-2">내 건강문진표 수정하기</span>
+          </div>
+        )}
         <TabMenu />
-        {!queryResult && <HealthNotice />}
+        {!myPickData?.age && <HealthNotice />}
         <WishKeywords myPickData={myPickData} />
         <MedicineHx myPickData={myPickData} />
         <MyHx myPickData={myPickData} />
       </div>
-      <CurrentView />
+      <CurrentView myPickData={recentMedList} />
       <NavBar location="myPick" />
     </Layout>
   );

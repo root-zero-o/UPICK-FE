@@ -40,7 +40,7 @@ const HeaderBG = ({
     <>
       <div
         className={cls(
-          "wholeDiv rounded-[101px] overflow-hidden",
+          "wholeDiv rounded-[60px] overflow-hidden",
           bgFlag ? "bg-gradient-two" : "bg-gradient-four"
         )}
       >

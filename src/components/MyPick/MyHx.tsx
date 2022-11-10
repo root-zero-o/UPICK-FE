@@ -12,7 +12,6 @@ interface IProps {
 const MyHx: FC<IProps> = ({ myPickData }) => {
   const data = ["뇌졸증", "심장병", "고혈압", "당뇨병", "기타(암포함)"];
 
-  console.log(myPickData?.CustomerDetails?.[0]?.heartDisease);
   return (
     <>
       <CategoryTitle
@@ -20,8 +19,9 @@ const MyHx: FC<IProps> = ({ myPickData }) => {
         subtitle=""
         link="/mypick/edit"
         hideIcon
+        hideSub
       />
-      <div className="bg-blue4 mt-4 flex flex-col items-center justify-center w-[90%] h-[300px]  shadow-md rounded-lg">
+      <div className="bg-blue4 mt-4 mb-8 flex flex-col items-center justify-center w-[90%] h-[300px]  shadow-md rounded-lg">
         <div className="w-full h-fit mb-4  flex flex-col justify-center items-center">
           <HxBtn contents="진단여부" />
           <div className="mt-4 w-[80%] flex justify-between items-center">

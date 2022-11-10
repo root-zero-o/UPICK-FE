@@ -7,6 +7,7 @@ const TabMenu = () => {
   const handleTabMenu = (menu: number) => {
     switch (menu) {
       case 1:
+        Router.push("/mypick/jjim/med");
         return;
       case 2:
         Router.push("/mypick/pickup");

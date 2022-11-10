@@ -1,7 +1,13 @@
 import RecentMed from "components/mypick/RecentMed";
 import CategoryTitle from "components/ui/CategoryTitle";
+import { FC } from "react";
+import { TypeRecentMed } from "src/types/MyPickData";
 
-const CurrentView = () => {
+interface IProps {
+  myPickData: TypeRecentMed[];
+}
+
+const CurrentView: FC<IProps> = ({ myPickData }) => {
   const pharmacyData = [
     {
       pharmacy: "온누리",
@@ -24,13 +30,15 @@ const CurrentView = () => {
     <>
       <CategoryTitle title="최근 봤던 약" subtitle="" link="/" hideSub />
       <div className="flex w-full justify-center">
-        {pharmacyData.map((value, index) => {
+        {myPickData.map((value, index) => {
           return (
             <>
               <RecentMed
                 key={`currentMed-${index}`}
-                pharmacy={value.pharmacy}
-                med={value.med}
+                pharmacy={value.company.name}
+                med={value.name}
+                src={value.Image.url}
+                id={value.id}
               />
             </>
           );

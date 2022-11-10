@@ -6,9 +6,10 @@ function cls(...classnames: string[]) {
 
 interface IProps {
   placeholder: string;
-  setState: Dispatch<SetStateAction<string>>;
+  setState: Dispatch<SetStateAction<any>>;
+  search?: boolean;
 }
-const EditInput: FC<IProps> = ({ placeholder, setState }) => {
+const EditInput: FC<IProps> = ({ placeholder, setState, search }) => {
   return (
     <>
       <div className={cls("inputDiv")}>

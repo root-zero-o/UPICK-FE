@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import { cls } from "../../lib/utils";
 
+import BannerOne from "../../assets/images/banners/Banner_1.png";
+import BannerTwo from "../../assets/images/banners/Banner_2.png";
+import BannerThree from "../../assets/images/banners/Banner_3.png";
+import Image from "next/image";
+import useClickRoute from "hooks/useClickRoute";
+
 const AdSlide = () => {
   const [move, setMove] = useState(0);
   const [clicked, setClicked] = useState("first");
+  const onLinkBanner1 = useClickRoute({ link: "/article/detail/9" });
+  const onLinkBanner2 = useClickRoute({ link: "/" });
+  const onLinkBanner3 = () =>
+    window.open(
+      "https://daisycom.notion.site/Design-Guide-0a594501d9034d76984f35c9fe2f3e13"
+    );
+
   const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const id = e.currentTarget.id;
     if (id === "first") {
@@ -20,11 +33,25 @@ const AdSlide = () => {
   return (
     <div className="relative h-[130px] pt-2 ">
       <div className="slide transition-transform">
-        <div className="w-[26%] h-[130px] ml-11 mr-12  bg-yellow1 rounded-xl relative"></div>
-        <div className="w-[26%] h-[130px] mx-12  bg-blue2 rounded-xl relative"></div>
-        <div className="w-[26%] h-[130px] mx-12 bg-green rounded-xl relative"></div>
+        <div
+          onClick={onLinkBanner1}
+          className="w-[26%] h-[130px] ml-11 mr-12 rounded-xl relative cursor-pointer"
+        >
+          <Image src={BannerOne} alt="banner-1" />
+        </div>
+        <div
+          onClick={onLinkBanner2}
+          className="w-[26%] h-[130px] mx-12  rounded-xl relative cursor-pointer"
+        >
+          <Image src={BannerTwo} alt="banner-2" />
+        </div>
+        <div
+          onClick={onLinkBanner3}
+          className="w-[26%] h-[130px] mx-12 rounded-xl relative cursor-pointer"
+        >
+          <Image src={BannerThree} alt="banner-3" />
+        </div>
       </div>
-      <div className="absolute bottom-0  w-full h-[130px] flex justify-center"></div>
       <div className="absolute bottom-0 left-[50%] -translate-x-[50%] flex space-x-[8px] transition-all">
         <div
           id="first"

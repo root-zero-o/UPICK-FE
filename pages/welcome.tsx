@@ -10,7 +10,6 @@ const Welcome = () => {
   const router = useRouter();
   useEffect(() => {
     if (!loading) {
-      console.log("hi");
       router.push(`/signin`);
     }
   }, [loading, router]);

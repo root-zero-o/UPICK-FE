@@ -9,7 +9,6 @@ const Tos = () => {
   const [locationCheck, setLocationCheck] = useState(false);
   const [otherCheck, setOtherCheck] = useState(false);
   const onDisabledHandler = () => {
-    console.log(locationCheck, otherCheck);
     if (locationCheck && otherCheck) return false;
     return true;
   };

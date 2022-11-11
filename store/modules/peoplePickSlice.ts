@@ -18,13 +18,11 @@ export const GenderPick = createAsyncThunk(GENDER, async (payload: any) => {
 
 export const AgePick = createAsyncThunk(AGE, async (payload: any) => {
   const response = await apis.getPeopleAge(payload);
-  console.log(response);
   return response.data.data;
 });
 
 export const HealthPick = createAsyncThunk(HEALTH, async (payload: any) => {
   const response = await apis.getPeopleHealth(payload);
-  console.log(response);
   return response.data.data;
 });
 

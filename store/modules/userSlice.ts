@@ -42,9 +42,9 @@ export const __signIn = createAsyncThunk(
   async (payload: UserRegistrationModel) => {
     console.log("로그인 시작");
     const response = await apis.signIn(payload);
-    console.log(response);
-    // localStorage.setItem("authorization", response.headers.authorization);
-    if (response.headers.authorization) return true;
+    const token: any = response.config.headers?.authorization;
+    localStorage.setItem("authorization", token);
+    if (token) return true;
     return false;
   }
 );

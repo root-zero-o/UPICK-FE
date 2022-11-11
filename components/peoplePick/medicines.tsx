@@ -10,7 +10,7 @@ const Medicines = ({ data }: { data: any }) => {
             <div className={moduleStyle.detailsMain}>
               <div className={moduleStyle.detailsLeft}>
                 <div className={moduleStyle.detailsRank}>
-                  <span className={moduleStyle.rankText}>1</span>
+                  <span className={moduleStyle.rankText}>{i + 1}</span>
                 </div>
 
                 <div className={moduleStyle.detailsImage}>

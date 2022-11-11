@@ -19,6 +19,7 @@ import HealthProblemIcon from "assets/images/icons/health_problem.svg";
 import AgeIcon from "assets/images/icons/age.svg";
 import IngredientIcon from "assets/images/icons/ingredient.svg";
 import GenderIcon from "assets/images/icons/gender.svg";
+import NavBar from "components/NavBar";
 
 const Home = () => {
   const postings = useAppSelector(selectPostings);
@@ -194,6 +195,7 @@ const Home = () => {
           })}
         </div>
       </div>
+      <NavBar location="home" />
       <Footer />
     </Layout>
   );

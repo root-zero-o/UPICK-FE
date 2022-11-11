@@ -17,9 +17,12 @@ export const apis = {
   // people Pick
   getPeopleEffect: (payload: any) =>
     api.get(`/goods/merchandises/filtering-by-effect/?keyword=피부`),
-
   getPeopleGender: (payload: any) =>
     api.get(`/goods/merchandises/filtering-by-gender/${payload}?keyword=건강`),
+  getPeopleAge: (payload: any) =>
+    api.get(
+      `/goods/merchandises/filtering-by-Age/?minAge=${payload.minAge}&maxAge=${payload.maxAge}&keyword=비타민 `
+    ),
 
   // get postings
   getPostings: () => api.get("/postings"),

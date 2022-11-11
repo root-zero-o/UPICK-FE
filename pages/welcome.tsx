@@ -8,11 +8,11 @@ import Logo from "../assets/images/logos/Logo.svg";
 const Welcome = () => {
   const loading = useLoading();
   const router = useRouter();
-  // useEffect(() => {
-  //   if (!loading) {
-  //     router.push(`/signin`);
-  //   }
-  // }, [loading, router]);
+  useEffect(() => {
+    if (!loading) {
+      router.push(`/signin`);
+    }
+  }, [loading, router]);
   return (
     // <div className="w-full h-screen bg-green overflow-y-hidden">
     // <Seo title="welcome" />

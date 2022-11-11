@@ -15,9 +15,16 @@ export const apis = {
     api.post(`/customers/sign-in`, payload),
 
   // people Pick
+  getPeopleEffect: (payload: any) =>
+    api.get(`/goods/merchandises/filtering-by-effect/?keyword=피부`),
   getPeopleGender: (payload: any) =>
-    // api.get(`/goods/merchandises/filtering-by-gender/:${payload}`),
-    api.get(`/goods/merchandises/filtering-by-effect/?keyword=면`),
+    api.get(`/goods/merchandises/filtering-by-gender/${payload}?keyword=건강`),
+  getPeopleAge: (payload: any) =>
+    api.get(
+      `/goods/merchandises/filtering-by-Age/?minAge=${payload.minAge}&maxAge=${payload.maxAge}&keyword=비타민 `
+    ),
+  getPeopleHealth: (payload: any) =>
+    api.get(`/goods/merchandises/filtering-by-consider?keyword=${payload} `),
 
   // get postings
   getPostings: () => api.get("/postings"),

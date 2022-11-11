@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 import userSlice from "./userSlice";
 import postingSlice from "./postingSlice";
+import peoplePickSlice from "./peoplePickSlice";
 
 // 루트 리듀서
 const rootReducer = combineReducers({
   user: userSlice,
   postings: postingSlice,
+  peoplePick: peoplePickSlice,
 }); // 리듀서가 추가되면 여기에 넣는다.
 
 export default rootReducer;

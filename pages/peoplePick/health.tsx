@@ -1,7 +1,7 @@
 import NavBar from "components/NavBar";
 import SearchIcon from "../assets/images/icons/SearchIcon.svg";
 import { useEffect, useState } from "react";
-import { GenderPick } from "store/modules/peoplePickSlice";
+import { HealthPick } from "store/modules/peoplePickSlice";
 import { useAppDispatch } from "src/hooks/reduxHooks";
 import { RootState } from "store/modules";
 import { useSelector } from "react-redux";
@@ -11,56 +11,38 @@ import CategoryTab from "components/peoplePick/categoryTab";
 import Medicines from "components/peoplePick/medicines";
 import Search from "components/peoplePick/search";
 
-const Effect = () => {
-  const [gender, setGender] = useState("male");
+const Health = () => {
+  const [health, setHealth] = useState("눈건강");
   const dispatch = useAppDispatch();
   const { data } = useSelector((state: RootState) => state.peoplePick);
 
-  const onFemaleClick = () => {
-    setGender("female");
-  };
-  const onMaleClick = () => {
-    setGender("male");
+  const onEye = () => {
+    setHealth("눈건강");
   };
 
   useEffect(() => {
-    dispatch(GenderPick(gender));
+    dispatch(HealthPick(health));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gender]);
+  }, [health]);
   return (
     <div className="w-full flex flex-col py-8 relative space-y-6 overflow-x-hidden mb-[55px]">
       {/* 검색창 */}
       <Search />
 
       {/* 카테고리 */}
-      <CategoryTab txt="age" />
+      <CategoryTab txt="health" />
 
       {/* 카테고리 아래 bar */}
-      <CategoryUnderBar txt={5} />
+      <CategoryUnderBar txt={68.5} />
       {/* sub 카테고리 */}
       <div className={moduleStyle.semiCategory}>
-        {gender === "male" ? (
-          <div
-            className={moduleStyle.semiCategorySelected}
-            onClick={onMaleClick}
-          >
-            남성
+        {health === "눈건강" ? (
+          <div className={moduleStyle.semiCategorySelected} onClick={onEye}>
+            눈건강
           </div>
         ) : (
-          <div className={moduleStyle.semiCategoryText} onClick={onMaleClick}>
-            남성
-          </div>
-        )}
-        {gender === "female" ? (
-          <div
-            className={moduleStyle.semiCategorySelected}
-            onClick={onFemaleClick}
-          >
-            여성
-          </div>
-        ) : (
-          <div className={moduleStyle.semiCategoryText} onClick={onFemaleClick}>
-            여성
+          <div className={moduleStyle.semiCategoryText} onClick={onEye}>
+            눈건강
           </div>
         )}
       </div>
@@ -77,4 +59,4 @@ const Effect = () => {
   );
 };
 
-export default Effect;
+export default Health;

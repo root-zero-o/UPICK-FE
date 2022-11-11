@@ -1,27 +1,55 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import apis from "shared/api";
 
-const GENDER = "user/GENDER";
+const EFFECT = "PEOPLEPICK/EFFECT";
+const GENDER = "PEOPLEPICK/GENDER";
+const AGE = "PEOPLEPICK/AGE";
+const HEALTH = "PEOPLEPICK/HEALTH";
 
-export const genderPick = createAsyncThunk(GENDER, async (payload: any) => {
-  console.log(payload);
-  console.log("대중픽 api 시작");
-  const response = await apis.getPeopleGender(payload);
-  console.log(response);
-  console.log("대중픽 api 종료");
-  return true;
+export const EffectPick = createAsyncThunk(EFFECT, async (payload: any) => {
+  const response = await apis.getPeopleEffect(payload);
+  return response.data.data;
+});
+
+export const GenderPick = createAsyncThunk(GENDER, async (payload: any) => {
+  const response = await apis.getPeopleEffect(payload);
+  return response.data.data;
+});
+
+export const AgePick = createAsyncThunk(AGE, async (payload: any) => {
+  const response = await apis.getPeopleAge(payload);
+  return response.data.data;
+});
+
+export const HealthPick = createAsyncThunk(HEALTH, async (payload: any) => {
+  const response = await apis.getPeopleHealth(payload);
+  return response.data.data;
 });
 
 const initialState: any = {
   loading: false,
   error: null,
+  data: [],
 };
 
-const userSlice = createSlice({
+const peoplePickSlice = createSlice({
   name: "peoplePick",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(EffectPick.fulfilled, (state, { type, payload }) => {
+      state.data = payload;
+    });
+    builder.addCase(GenderPick.fulfilled, (state, { type, payload }) => {
+      state.data = payload;
+    });
+    builder.addCase(AgePick.fulfilled, (state, { type, payload }) => {
+      state.data = payload;
+    });
+    builder.addCase(HealthPick.fulfilled, (state, { type, payload }) => {
+      state.data = payload;
+    });
+  },
 });
 
-export default userSlice.reducer;
+export default peoplePickSlice.reducer;

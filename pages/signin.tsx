@@ -40,8 +40,7 @@ const Signin = () => {
 
   // 회원가입 버튼 이벤트
   const onClickHandler = () => {
-    // dispatch(__signIn({ email, password: pw }));
-    Router.push("/home");
+    dispatch(__signIn({ email, password: pw }));
   };
 
   useEffect(() => {

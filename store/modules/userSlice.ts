@@ -10,10 +10,6 @@ const SIGNUP = "user/SIGNUP";
 export const __getKakao = createAsyncThunk(LOGIN, async (payload: any) => {
   // const data = await apis.getKakao(payload);
   const data = await apis.kakaoLogin(payload);
-  console.log("api에 payload를 담는중");
-  console.log(payload);
-  console.log("api에 payload를 담는중");
-  console.log(data.data);
   if (data.headers.authorization !== undefined) {
     localStorage.setItem("authorization", data.data);
   }
@@ -40,11 +36,10 @@ export const __signUp = createAsyncThunk(
 export const __signIn = createAsyncThunk(
   LOGIN,
   async (payload: UserRegistrationModel) => {
-    console.log("로그인 시작");
     const response = await apis.signIn(payload);
-    console.log(response);
-    // localStorage.setItem("authorization", response.headers.authorization);
-    if (response.headers.authorization) return true;
+    const token: any = response.config.headers?.authorization;
+    localStorage.setItem("authorization", token);
+    if (token) return true;
     return false;
   }
 );
@@ -79,7 +74,6 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     // 회원가입
     builder.addCase(__signUp.fulfilled, (state, { type, payload }) => {
-      console.log("회원가입 성공");
     });
     // 중복체크
     builder.addCase(__dupCheck.fulfilled, (state, { type, payload }) => {
@@ -88,7 +82,6 @@ const userSlice = createSlice({
     // 로그인
     builder.addCase(__signIn.fulfilled, (state, { type, payload }) => {
       state.userInfo.isLogin = true;
-      console.log("로그인 성공");
     });
   },
 });

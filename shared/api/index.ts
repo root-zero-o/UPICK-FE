@@ -15,9 +15,9 @@ export const apis = {
     api.post(`/customers/sign-in`, payload),
 
   // people Pick
-  getPeopleGender: (payload: any) =>
+  getPeopleEffect: (payload: any) =>
     // api.get(`/goods/merchandises/filtering-by-gender/:${payload}`),
-    api.get(`/goods/merchandises/filtering-by-effect/?keyword=면`),
+    api.get(`/goods/merchandises/filtering-by-effect/?keyword=피부`),
 
   // get postings
   getPostings: () => api.get("/postings"),

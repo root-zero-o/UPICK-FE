@@ -3,25 +3,26 @@ import apis from "shared/api";
 
 const GENDER = "user/GENDER";
 
-export const genderPick = createAsyncThunk(GENDER, async (payload: any) => {
-  console.log(payload);
-  console.log("대중픽 api 시작");
-  const response = await apis.getPeopleGender(payload);
-  console.log(response);
-  console.log("대중픽 api 종료");
-  return true;
+export const EffectPick = createAsyncThunk(GENDER, async (payload: any) => {
+  const response = await apis.getPeopleEffect(payload);
+  return response.data.data;
 });
 
 const initialState: any = {
   loading: false,
   error: null,
+  data: [],
 };
 
-const userSlice = createSlice({
+const peoplePickSlice = createSlice({
   name: "peoplePick",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(EffectPick.fulfilled, (state, { type, payload }) => {
+      state.data = payload;
+    });
+  },
 });
 
-export default userSlice.reducer;
+export default peoplePickSlice.reducer;

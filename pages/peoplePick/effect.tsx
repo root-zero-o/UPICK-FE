@@ -6,11 +6,16 @@ import { EffectPick } from "store/modules/peoplePickSlice";
 import { useAppDispatch } from "src/hooks/reduxHooks";
 import { RootState } from "store/modules";
 import { useSelector } from "react-redux";
-import Layout from "components/Layout";
+import useClickRoute from "hooks/useClickRoute";
 
 const Effect = () => {
   const dispatch = useAppDispatch();
   const { data } = useSelector((state: RootState) => state.peoplePick);
+
+  const genderLink = useClickRoute({ link: "/peoplePick/gender" });
+  const effectLink = useClickRoute({ link: "/peoplePick/effect" });
+  const ageLink = useClickRoute({ link: "/peoplePick/age" });
+  const healthLink = useClickRoute({ link: "/peoplePick/health" });
 
   useEffect(() => {
     dispatch(EffectPick("male"));
@@ -28,10 +33,12 @@ const Effect = () => {
       </div>
       {/* 카테고리 */}
       <div className="category categoryTxt">
-        <span>건강고민</span>
-        <span>연령</span>
-        <span className="category-selected">원료</span>
-        <span>성별</span>
+        <span onClick={healthLink}>건강고민</span>
+        <span onClick={ageLink}>연령</span>
+        <span className="category-selected" onClick={effectLink}>
+          원료
+        </span>
+        <span onClick={genderLink}>성별</span>
       </div>
       {/* 카테고리 아래 bar */}
       <div className="categoryBar">
@@ -39,7 +46,7 @@ const Effect = () => {
       </div>
       {/* sub 카테고리 */}
       {/* 매주 월요일 업데이트 문구 */}
-      <div className="update-text ">
+      <div className="update-text">
         <span>매주 월요일 업데이트</span>
       </div>
       {/* 약들 */}
@@ -136,9 +143,9 @@ const Effect = () => {
         }
         .categoryBar-selected {
           width: 88px;
-          border: 0.1px solid #1576fb;
+          border: 3px solid #1576fb;
           position: absolute;
-          top: -1px;
+          top: -3px;
           right: 25%;
         }
         .semiCategory {
@@ -160,14 +167,13 @@ const Effect = () => {
         }
         .update-text {
           display: flex;
-          width: 100%;
           justify-content: flex-end;
           font-weight: 500;
           font-size: 10px;
           line-height: 20px;
           color: #808e99;
           margin-top: 21px;
-          margin-right: 55px;
+          margin-right: 35px;
         }
         .details {
           display: flex;

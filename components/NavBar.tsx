@@ -7,10 +7,9 @@ import peopleBlue from "../assets/images/icons/peopleBlue.svg";
 import pharmacy from "../assets/images/icons/pharmacy.svg";
 import pharmacyBlue from "../assets/images/icons/phamacyBlue.svg";
 import myPick from "../assets/images/icons/myPick.svg";
-import home from "../assets/images/icons/home.svg";
 import myPickBlue from "../assets/images/icons/myPickBlue.svg";
 import Home from "../assets/images/icons/Home.svg";
-import Router from "next/router";
+import HomeBlue from "../assets/images/icons/homeBlue.svg";
 import useClickRoute from "hooks/useClickRoute";
 
 const NavBar = ({ location }: { location: string }) => {
@@ -60,8 +59,8 @@ const NavBar = ({ location }: { location: string }) => {
           className="flex flex-col items-center text-skyblue"
           onClick={onHomeLink}
         >
-          <Image alt="" src={Home} />
-          <span className="text-[8px] mt-[-3px] text-coolgray3">홈</span>
+          <Image alt="" src={HomeBlue} />
+          <span className="text-[8px] mt-[5px] text-coolgray3">홈</span>
         </div>
       ) : (
         <div

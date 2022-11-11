@@ -4,6 +4,7 @@ import apis from "shared/api";
 const EFFECT = "PEOPLEPICK/EFFECT";
 const GENDER = "PEOPLEPICK/GENDER";
 const AGE = "PEOPLEPICK/AGE";
+const HEALTH = "PEOPLEPICK/HEALTH";
 
 export const EffectPick = createAsyncThunk(EFFECT, async (payload: any) => {
   const response = await apis.getPeopleEffect(payload);
@@ -17,6 +18,12 @@ export const GenderPick = createAsyncThunk(GENDER, async (payload: any) => {
 
 export const AgePick = createAsyncThunk(AGE, async (payload: any) => {
   const response = await apis.getPeopleAge(payload);
+  console.log(response);
+  return response.data.data;
+});
+
+export const HealthPick = createAsyncThunk(HEALTH, async (payload: any) => {
+  const response = await apis.getPeopleHealth(payload);
   console.log(response);
   return response.data.data;
 });
@@ -39,6 +46,9 @@ const peoplePickSlice = createSlice({
       state.data = payload;
     });
     builder.addCase(AgePick.fulfilled, (state, { type, payload }) => {
+      state.data = payload;
+    });
+    builder.addCase(HealthPick.fulfilled, (state, { type, payload }) => {
       state.data = payload;
     });
   },

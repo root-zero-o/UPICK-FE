@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import notification from "../assets/images/icons/nofication.svg";
 import alertBlue from "../assets/images/icons/alertBlue.svg";
@@ -23,13 +23,25 @@ const Layout = ({
   myPick,
 }: LayoutProps) => {
   const onLink = useClickRoute({ link: "/alert" });
+  const [isLogin, setIsLogin] = useState(false);
 
+  useEffect(() => {
+    const token = window.localStorage.getItem("authorization");
+    if (token) return setIsLogin(true);
+  }, []);
   return (
     <div className="w-full flex flex-col py-8 relative space-y-6 overflow-x-hidden">
       <div className="w-full flex items-center justify-between px-6 z-40">
         {home ? (
           <div className="flex items-center w-[80%]">
-            <h4 className="text-white text-lg font-light">애옹쓰약국</h4>
+            {/* 로그인 안되있다는거 알려주는 알림text */}
+            {isLogin ? (
+              <h4 className="text-white text-lg font-light">애옹쓰약국</h4>
+            ) : (
+              <h4 className="text-white text-lg font-light">
+                로그인하면 이용할 수 있어요
+              </h4>
+            )}
             <Image alt="" src={down} />
           </div>
         ) : (

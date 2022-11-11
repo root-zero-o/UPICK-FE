@@ -153,7 +153,7 @@ const Home = () => {
         <CategoryTitle
           title="대중픽,"
           subtitle="가장 인기좋은 영양제"
-          link="/"
+          link="/peoplePick/health"
         />
         <div className="flex py-6 w-full justify-evenly">
           <HomeCategoryBtn src={HealthProblemIcon} text="건강고민" link="/" />

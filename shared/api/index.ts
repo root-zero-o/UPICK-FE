@@ -16,8 +16,10 @@ export const apis = {
 
   // people Pick
   getPeopleEffect: (payload: any) =>
-    // api.get(`/goods/merchandises/filtering-by-gender/:${payload}`),
     api.get(`/goods/merchandises/filtering-by-effect/?keyword=피부`),
+
+  getPeopleGender: (payload: any) =>
+    api.get(`/goods/merchandises/filtering-by-gender/${payload}?keyword=건강`),
 
   // get postings
   getPostings: () => api.get("/postings"),

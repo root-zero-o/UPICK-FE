@@ -1,9 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import apis from "shared/api";
 
-const GENDER = "user/GENDER";
+const EFFECT = "PEOPLEPICK/EFFECT";
+const GENDER = "PEOPLEPICK/GENDER";
 
-export const EffectPick = createAsyncThunk(GENDER, async (payload: any) => {
+export const EffectPick = createAsyncThunk(EFFECT, async (payload: any) => {
+  const response = await apis.getPeopleEffect(payload);
+  return response.data.data;
+});
+
+export const GenderPick = createAsyncThunk(GENDER, async (payload: any) => {
   const response = await apis.getPeopleEffect(payload);
   return response.data.data;
 });
@@ -20,6 +26,9 @@ const peoplePickSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(EffectPick.fulfilled, (state, { type, payload }) => {
+      state.data = payload;
+    });
+    builder.addCase(GenderPick.fulfilled, (state, { type, payload }) => {
       state.data = payload;
     });
   },

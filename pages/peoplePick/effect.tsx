@@ -44,7 +44,6 @@ const Effect = () => {
       </div>
       {/* 약들 */}
       {data?.map((v: any, i: any) => {
-        console.log(v);
         return (
           <div className="details" key={i}>
             <div className="details-main">

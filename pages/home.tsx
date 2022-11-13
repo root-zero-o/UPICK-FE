@@ -28,12 +28,12 @@ const Home = () => {
   useEffect(() => {
     dispatch(__getPostings());
     if (postings) {
+      console.log(postings);
       setData(Array?.from(postings?.postings).slice(0, 5));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const data = postings?.postings?.slice(0, 5);
   const pharList = [
     {
       name: "차은우",

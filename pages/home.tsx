@@ -171,7 +171,7 @@ const Home = () => {
                 key={`phraList-${index}`}
                 pharmacist={value.name}
                 pharmacy={value.address}
-                link="/"
+                link={`/neighborhood/detail/1`}
                 meter={value.distance}
                 url={value.url}
               />

@@ -12,11 +12,14 @@ import Image from "next/image";
 import ChatStatusChip from "components/ChatStatusChip";
 import { useRouter } from "next/router";
 import { samplePharmacistData } from "../../../lib/sampleData";
+import CategoryTitle from "components/ui/CategoryTitle";
+import useClickRoute from "hooks/useClickRoute";
 
 const Detail: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
   const data = samplePharmacistData.find((v) => v.id === Number(id));
+  const onLinkChat = useClickRoute({ link: "/chat" });
 
   /** 0분을 "00"으로 바꾸는 function */
   const calcTime = (minute?: number) => {
@@ -102,11 +105,23 @@ const Detail: NextPage = () => {
             })}
           </div>
         </div>
+        <div className="w-[100%]">
+          <CategoryTitle title="영근 약사픽" link="/article" />
+          <div className="w-[380px] h-[84px] rounded-md shadow-lg mx-auto my-4 p-4 flex flex-col">
+            <span className="text-[13px] font-bold">
+              무더위, 에너지가 없다면?
+            </span>
+            <span className="text-sm text-coolgray4 mt-2">어쩌고저쩌고</span>
+          </div>
+        </div>
         <div className="max-w-[420px] w-full fixed bottom-0 h-[6%] min-h-[50px] bg-coolgray1 flex items-center justify-evenly py-2">
           <div className="w-[40px] h-[40px] rounded-full bg-coolgray1 shadow-home-p-category-btn flex items-center justify-center hover:cursor-pointer hover:bg-white transition-all">
             <Image alt="heart" src={favorite} />
           </div>
-          <div className="w-[70%] h-[40px] rounded-full flex justify-center items-center text-white bg-coolgray4 shadow-lg text-[14px] hover:cursor-pointer font-bold transition-all">
+          <div
+            onClick={onLinkChat}
+            className="w-[70%] h-[40px] rounded-full flex justify-center items-center text-white bg-coolgray4 shadow-lg text-[14px] hover:cursor-pointer font-bold transition-all"
+          >
             상담하기
           </div>
         </div>

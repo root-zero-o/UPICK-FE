@@ -11,7 +11,7 @@ const CategoryTitle = ({
   hideSub,
 }: {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   link: string;
   hideIcon?: boolean;
   hideSub?: boolean;

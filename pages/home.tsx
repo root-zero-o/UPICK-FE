@@ -118,7 +118,7 @@ const Home = () => {
           rot={150}
           bgFlag={false}
         />
-        <SearchInput top="150px" width={88} />
+        <SearchInput top="150px" width={88} link="search" />
         <div className="z-40 w-full px-2 pt-4">
           <h1 className="text-white text-2xl font-bold z-40 px-6">
             김영근짱님, 반가워요!
@@ -163,7 +163,7 @@ const Home = () => {
         </div>
       </div>
       <div className="home-section-wrapper">
-        <CategoryTitle title="우리동네약사" subtitle="" link="/neighborhood/" />
+        <CategoryTitle title="울동네약사" subtitle="" link="/neighborhood/" />
         <div className=" grid grid-cols-3 px-4 py-4">
           {pharList?.map((value, index) => {
             return (

@@ -13,10 +13,9 @@ import NavBar from "components/NavBar";
 import CategoryBar from "components/CategoryBar";
 import PharmacistTime from "components/ui/PharmacistTime";
 
-import { samplePharmacistData } from "../../lib/sampleData";
-import { useRouter } from "next/router";
+import useClickRoute from "hooks/useClickRoute";
 
-const index = () => {
+const Index = () => {
   const pharList = [
     {
       name: "은우",
@@ -55,6 +54,8 @@ const index = () => {
   //   }
   // };
 
+  const onLinkSearchPharmacist = useClickRoute({ link: "/search" });
+
   return (
     <Layout home={false} title="" isWhite={true} icon={true}>
       <Seo title="home" />
@@ -76,7 +77,8 @@ const index = () => {
           rot={150}
           bgFlag={false}
         />
-        <SearchInput top="2%" width={70} />
+        <SearchInput top="2%" width={70} link="/neighborhood/search" />
+
         <div className="home-section-wrapper z-40 pb-4">
           <div className="flex w-full justify-evenly">
             <BlurBtn src={best} text="인기순" />
@@ -139,4 +141,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

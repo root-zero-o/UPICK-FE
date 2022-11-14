@@ -20,13 +20,8 @@ import Router from "next/router";
 
 const Signin = () => {
   const onHomeLink = useClickRoute({ link: "/home" });
-  // const onKakao = useClickRoute({ link: `${KAKAO_AUTH_URL}` });
-  const onKakao = () => {
-    // **********************아래 에러난거  수정하지마세요**********************
-    // window.Kakao.Auth.authorize({
-    //   redirectUri: `http://www.u-pick.site/customers/sign-in/kakao `,
-    // });
-  };
+  const onKakao = useClickRoute({ link: `${KAKAO_AUTH_URL}` });
+
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const dispatch: AppDispatch = useDispatch();

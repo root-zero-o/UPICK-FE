@@ -4,9 +4,8 @@ import api from "./core";
 export const apis = {
   // user auth
   getKakao: (payload: string | null) =>
-    api.post(`/oauth/kakao/callback?code=${payload}&state=”kakao`),
-  kakaoLogin: (payload: any) =>
-    api.post(`http://13.124.107.239/customers/sign-in/kakao`, payload),
+    // api.post(`/oauth/kakao/callback?code=${payload}&state=”kakao`),
+    api.post(`/customers/sign-in/kakao`, payload),
   dupCheck: (payload: UserRegistrationModel) =>
     api.post(`/user/signup/checkEmail?email=${payload.email}`),
   signUp: (payload: UserRegistrationModel) =>

@@ -6,16 +6,17 @@ import axios from "axios";
 interface IProps {
   placeholder: string;
   setState: Dispatch<SetStateAction<any[]>>;
+  token: string;
 }
 
-const MedSearchInput: FC<IProps> = ({ placeholder, setState }) => {
+const MedSearchInput: FC<IProps> = ({ placeholder, setState, token }) => {
   const response = async (value: any) => {
     try {
       const result = await axios({
         method: "GET",
-        url: `http://13.124.107.239/customers/my-pick/taking-medicine?keyword=${value}`,
+        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/taking-medicine?keyword=${value}`,
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
+          Authorization: token,
         },
       });
       if (result?.data?.data?.length > 5) {

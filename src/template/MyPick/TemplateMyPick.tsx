@@ -16,7 +16,9 @@ import MyPickHeaders from "components/mypick/MyPickHeaders";
 import { Router, useRouter } from "next/router";
 
 const TemplateMyPick = () => {
-  const queryResult = true;
+  const [token, setToken] = useState<string>("");
+  // const token = localStorage.getItem("authorization");
+
   const [myPickData, setMyPickData] = useState<TypeMyPickData>(
     {} as TypeMyPickData
   );
@@ -25,9 +27,9 @@ const TemplateMyPick = () => {
     try {
       const result = await axios({
         method: "GET",
-        url: `http://13.124.107.239/customers/my-pick/details`,
+        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/details`,
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
+          Authorization: token,
         },
       });
       setMyPickData(result?.data?.data?._customer);
@@ -38,14 +40,16 @@ const TemplateMyPick = () => {
   };
 
   useEffect(() => {
+    const auth = localStorage.getItem("authorization");
+    if (!auth) return;
+    setToken(auth ?? "");
     response();
-  }, []);
+  }, [JSON.stringify(token)]);
 
   const router = useRouter();
   const goEdit = () => {
     router.push("/mypick/edit");
   };
-
   return (
     <Layout home={false} title="" isWhite={true} icon={true}>
       <Seo title="mypick" />

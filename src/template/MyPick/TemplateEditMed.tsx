@@ -27,6 +27,13 @@ const TemplateEditMed = () => {
     {} as TypeMyPickData
   );
 
+  const [token, setToken] = useState<string>("");
+  useEffect(() => {
+    const auth = localStorage.getItem("authorization");
+    if (!auth) return;
+    setToken(auth ?? "");
+  }, [JSON.stringify(token)]);
+
   const [userName, setUserName] = useState<string>("");
   const [userAge, setUserAge] = useState<number>(0);
   const [userSex, setUserSex] = useState<string>(""); // boolean?
@@ -199,9 +206,9 @@ const TemplateEditMed = () => {
       const submitMyInfo = await axios({
         method: "PATCH",
         data: newData,
-        url: `http://13.124.107.239/customers/my-pick/details`,
+        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/details`,
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
+          Authorization: token,
         },
       });
       if (submitMyInfo?.data?.success) {
@@ -288,6 +295,7 @@ const TemplateEditMed = () => {
             <MedSearchInput
               placeholder="브랜드명 또는 영양제 검색"
               setState={setTakingMed}
+              token={token}
             />
           </div>
           {takingMed?.map((value, index) => {

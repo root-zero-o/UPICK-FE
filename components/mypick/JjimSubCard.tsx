@@ -2,22 +2,21 @@ import { FC } from "react";
 import fullHeart from "../../assets/images/icons/fullHeart.svg";
 import Image from "next/image";
 import badge from "../../assets/images/icons/badge.svg";
+import Router from "next/router";
 
 interface IProps {
   name: string;
   at: string;
   src: string;
+  id: number;
 }
-const JjimSubCard: FC<IProps> = ({ name, at, src }) => {
-  const styling = {
-    backgroundImage: `url('${src}')`,
-    width: "51px",
-    height: "51px",
-    borderRadius: "51px",
+const JjimSubCard: FC<IProps> = ({ name, at, src, id }) => {
+  const goItem = () => {
+    Router.push(`/neighborhood/detail/${id}`);
   };
-  console.log(src);
+
   return (
-    <div className=" relative w-full p-2 border-box ">
+    <div onClick={goItem} className=" relative w-full p-2 border-box ">
       <div className="flex items-center justify-start">
         <div className=" relative w-[51px] m-4 h-[51px] shadow-md rounded-full bg-blue1 flex justify-center items-center">
           <Image

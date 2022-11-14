@@ -12,6 +12,7 @@ interface IProps {
   type: string;
 }
 const TemplateJjim: FC<IProps> = ({ type }) => {
+  const [token, setToken] = useState<string>("");
   const [jjimMed, setJjimMed] = useState<TypeLikeMed[]>([]);
 
   const [jjimPhar, setJjimPhar] = useState<TypesLikePhar[]>([]);
@@ -21,9 +22,9 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
     try {
       const result = await axios({
         method: "GET",
-        url: `http://13.124.107.239/customers/my-pick/like/postings`,
+        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/like/postings`,
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
+          Authorization: token,
         },
       });
       setJjimSub(result?.data?.data);
@@ -35,9 +36,9 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
     try {
       const result = await axios({
         method: "GET",
-        url: `http://13.124.107.239/customers/my-pick/like/pharmacists`,
+        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/like/pharmacists`,
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
+          Authorization: token,
         },
       });
       setJjimPhar(result?.data?.data);
@@ -50,9 +51,9 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
     try {
       const result = await axios({
         method: "GET",
-        url: `http://13.124.107.239/customers/my-pick/like/merchandises`,
+        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/like/merchandises`,
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
+          Authorization: token,
         },
       });
       setJjimMed(result?.data?.data);
@@ -61,16 +62,29 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
     }
   };
 
+  // useEffect(() => {
+  //   const auth = localStorage.getItem("authorization");
+  //   if (!auth) return;
+  //   setToken(auth ?? "");
+  //   response();
+  // }, [JSON.stringify(token)]);
+
   useEffect(() => {
+    const auth = localStorage.getItem("authorization");
+    if (!auth) return;
+    setToken(auth);
     if (type === "med") {
+      if (!auth) return;
       response();
     } else if (type === "phar") {
+      if (!auth) return;
       responsePhar();
     } else if (type === "sub") {
+      if (!auth) return;
       responseSub();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [JSON.stringify(token)]);
   const router = useRouter();
 
   return (
@@ -101,7 +115,11 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
             jjimMed?.map((value, index) => {
               return (
                 <>
-                  <JjimMedCard name={value.name} src="asdf" />
+                  <JjimMedCard
+                    id={value.id}
+                    name={value.name}
+                    src={value.Image[0].url}
+                  />
                 </>
               );
             })}
@@ -117,6 +135,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
                     }
                   >
                     <JjimSubCard
+                      id={value.id}
                       name={value.userName}
                       at={value.pharmacyName}
                       src={value.Image[0].url}
@@ -126,12 +145,19 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
                 </>
               );
             })}
+          {/* 구독 */}
           {type === "sub" &&
             jjimSub &&
             jjimSub?.map((value, index) => {
               return (
                 <>
-                  <JjimPharCard />
+                  <JjimPharCard
+                    id={value.id}
+                    name={value.pharmacistName}
+                    at={value.pharmacyName}
+                    contents={value.content}
+                    title={value.title}
+                  />
                 </>
               );
             })}

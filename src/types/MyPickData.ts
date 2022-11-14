@@ -56,6 +56,7 @@ export type TypeRecentMed = {
 };
 
 export type TypeLikeMed = {
+  Image: ImageType[];
   id: number;
   companyId: number;
   name: string;
@@ -75,6 +76,8 @@ export type TypesLikeSub = {
   createdAt: string;
   updatedAt: string;
   gender: string;
+  pharmacyName: string;
+  pharmacistName: string;
 };
 
 export type TypePick = {

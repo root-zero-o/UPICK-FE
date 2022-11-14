@@ -1,18 +1,34 @@
 import { FC } from "react";
 import fullHeart from "../../assets/images/icons/fullHeart.svg";
 import Image from "next/image";
+import Router from "next/router";
 
 interface IProps {
+  id: string;
   src: string;
   name: string;
 }
 
-const JjimMedCard: FC<IProps> = ({ src, name }) => {
+const JjimMedCard: FC<IProps> = ({ id, src, name }) => {
+  const goItem = () => {
+    Router.push(`/med/detail/${id}`);
+  };
+
   return (
-    <div className="mb-4 relative w-full border-[1px] p-3 border-box border-coolgray3 rounded-2xl">
+    <div
+      onClick={goItem}
+      className="mb-4 relative w-full border-[1px] p-3 border-box border-coolgray3 rounded-2xl"
+    >
       <div className="flex items-center justify-between">
         <div className="w-[48px] h-[60px] shadow-md rounded-[13px] bg-blue1 flex justify-center items-center">
-          d
+          <Image
+            src={src}
+            alt=""
+            width={`48px`}
+            height={`60px`}
+            unoptimized={true}
+            className="rounded-full"
+          ></Image>
         </div>
         <div className="flex flex-col justify-between w-[75%]">
           <div className="flex  h-[60px] flex-col justify-between w-[100%]">

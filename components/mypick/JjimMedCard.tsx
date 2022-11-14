@@ -4,7 +4,7 @@ import Image from "next/image";
 import Router from "next/router";
 
 interface IProps {
-  id: string;
+  id: number;
   src: string;
   name: string;
 }

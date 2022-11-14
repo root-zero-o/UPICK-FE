@@ -8,11 +8,10 @@ const DUPLICATE = "user/DUPLICATE";
 const SIGNUP = "user/SIGNUP";
 
 export const __getKakao = createAsyncThunk(LOGIN, async (payload: any) => {
-  // const data = await apis.getKakao(payload);
-  const data = await apis.kakaoLogin(payload);
-  if (data.headers.authorization !== undefined) {
-    localStorage.setItem("authorization", data.data);
-  }
+  const data = await apis.getKakao(payload);
+  const token: any = data.config.headers?.authorization;
+  localStorage.setItem("authorization", token);
+  if (token) return true;
   return data;
 });
 
@@ -73,8 +72,7 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     // 회원가입
-    builder.addCase(__signUp.fulfilled, (state, { type, payload }) => {
-    });
+    builder.addCase(__signUp.fulfilled, (state, { type, payload }) => {});
     // 중복체크
     builder.addCase(__dupCheck.fulfilled, (state, { type, payload }) => {
       state.userInfo.dupCheck = payload.data;

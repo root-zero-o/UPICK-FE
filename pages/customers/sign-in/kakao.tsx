@@ -12,14 +12,7 @@ const Callback = () => {
   useEffect(() => {
     console.log("카카오 로그인 시도중");
     const code = new URL(window.location.href).searchParams.get("code");
-    const redirectUri = "http:/localhost:3000/home";
-    console.log(code, redirectUri);
-    const payload = {
-      code: code,
-      redirectUri: redirectUri,
-    };
-    console.log(payload);
-    dispatch(__getKakao(payload));
+    dispatch(__getKakao(code));
     if (isLogin) {
       onLoginLink();
     }

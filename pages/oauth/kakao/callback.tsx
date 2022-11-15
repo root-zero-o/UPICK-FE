@@ -4,8 +4,6 @@ import { __getKakao } from "store/modules/userSlice";
 import { AppDispatch } from "store/configStore";
 import { RootState } from "store/modules";
 import useClickRoute from "hooks/useClickRoute";
-import KakaoImg from "assets/Kakao.jpg";
-import Image from "next/image";
 
 const Callback = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -21,7 +19,7 @@ const Callback = () => {
   }, [dispatch, isLogin, onLoginLink]);
   return (
     <>
-      <Image src={KakaoImg} alt=""></Image>
+      <div></div>
     </>
   );
 };

@@ -19,7 +19,7 @@ const Callback = () => {
   }, [dispatch, isLogin, onLoginLink]);
   return (
     <>
-      <span>카카오 로그인중.... 로딩화면 제작이 필요하다..</span>
+      <div></div>
     </>
   );
 };

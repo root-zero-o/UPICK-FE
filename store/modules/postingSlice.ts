@@ -14,7 +14,6 @@ export const __getPostings = createAsyncThunk(GET_POSTINGS, async () => {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
       },
     });
-    console.log(process.env.NEXT_PUBLIC_SERVER);
     return result.data.data;
   } catch (error) {
     return error;

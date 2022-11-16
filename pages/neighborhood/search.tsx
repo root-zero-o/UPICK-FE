@@ -2,9 +2,9 @@ import HeaderBG from "components/HeaderBG";
 import Layout from "components/Layout";
 import NavBar from "components/NavBar";
 
-const search = () => {
+const Search = () => {
   return (
-    <Layout home={false} title="" isWhite={true} icon={true}>
+    <Layout home={false} title="" isWhite icon>
       <HeaderBG
         fullWidth="100%"
         fullHeight="350px"
@@ -43,4 +43,4 @@ const search = () => {
   );
 };
 
-export default search;
+export default Search;

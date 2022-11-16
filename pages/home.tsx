@@ -23,14 +23,10 @@ import NavBar from "components/NavBar";
 
 const Home = () => {
   const postings = useAppSelector(selectPostings);
-  const [data, setData] = useState<PostingDataType[]>([]);
   const dispatch = useAppDispatch();
+  const data = postings?.postings.slice(0, 5);
   useEffect(() => {
     dispatch(__getPostings());
-    if (postings) {
-      console.log(postings);
-      setData(Array?.from(postings?.postings).slice(0, 5));
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

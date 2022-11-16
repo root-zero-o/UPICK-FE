@@ -95,7 +95,11 @@ const Index = () => {
           </span>
         </div>
         <div className="home-section-wrapper py-4">
-          <CategoryTitle title="가장 인기많은 약사순" subtitle="" link="/" />
+          <CategoryTitle
+            title="가장 인기많은 약사순"
+            subtitle=""
+            link="/neighborhood/search"
+          />
           <div className="flex w-full justify-evenly py-4">
             {famousPharmacistData &&
               famousPharmacistData?.map((v, i) => {

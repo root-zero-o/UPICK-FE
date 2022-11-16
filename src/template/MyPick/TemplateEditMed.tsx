@@ -32,6 +32,7 @@ const TemplateEditMed = () => {
     const auth = localStorage.getItem("authorization");
     if (!auth) return;
     setToken(auth ?? "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(token)]);
 
   const [userName, setUserName] = useState<string>("");

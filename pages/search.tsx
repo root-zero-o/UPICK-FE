@@ -36,6 +36,7 @@ const Search = () => {
     if (keyword) {
       response();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
 
   return (

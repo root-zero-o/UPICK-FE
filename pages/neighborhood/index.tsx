@@ -108,7 +108,6 @@ const Index = () => {
                   url={v.url}
                   pharmacy={v.address}
                   link={`/`}
-                  meter={v.distance}
                 />
               );
             })}

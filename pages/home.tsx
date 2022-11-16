@@ -119,7 +119,7 @@ const Home = () => {
                 key={`phraList-${index}`}
                 pharmacist={value.userName}
                 pharmacy={value.pharmacyName}
-                link={`/neighborhood/detail/1`}
+                link={`/neighborhood/detail/${value.id}`}
                 url={value.Image[0].url}
               />
             );
@@ -135,7 +135,7 @@ const Home = () => {
                 key={`listlist-${index}`}
                 company={value.company.name}
                 name={value.name}
-                link="/"
+                link={"/"}
                 url={value.Image.url}
               />
             );

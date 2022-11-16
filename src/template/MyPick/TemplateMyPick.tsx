@@ -44,6 +44,7 @@ const TemplateMyPick = () => {
     if (!auth) return;
     setToken(auth ?? "");
     response();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(token)]);
 
   const router = useRouter();

@@ -6,9 +6,26 @@ import pathGray from "assets/images/icons/PathGray.svg";
 import heart_line from "assets/images/icons/heart-line.svg";
 import star_fill from "assets/images/icons/star-fill.svg";
 import star_empty from "assets/images/icons/star-emp.svg";
+import { useEffect } from "react";
+import { GetMerchandiseDetail } from "store/modules/medicineSlice";
+import { useAppDispatch } from "src/hooks/reduxHooks";
+import { RootState } from "store/modules";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const MedicineDetail = () => {
   const onLink = useClickRoute({ link: "/alert" });
+  const router = useRouter();
+  const { id } = router.query;
+  const dispatch = useAppDispatch();
+  const { data } = useSelector((state: RootState) => state.medicine);
+  console.log(data);
+
+  useEffect(() => {
+    if (id !== undefined) dispatch(GetMerchandiseDetail(`${id}`));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
   return (
     <>
       <div className="w-full h-full flex flex-col pt-[30px] relative overflow-x-hidden bg-blue3">
@@ -21,66 +38,74 @@ const MedicineDetail = () => {
         </div>
         {/* 약 사진 */}
         <div className="flex justify-center mt-[35px]">
-          <div className="w-[320px] h-[200px] bg-orange"></div>
+          <Image
+            src={`${data?.Image.url}`}
+            alt=""
+            width={`319px`}
+            height={`199px`}
+            unoptimized={true}
+          ></Image>
         </div>
         {/* 바디부분 */}
         <div className="bg-coolgray1 px-[21px] rounded-t-[36px] mt-[32px]">
           {/* 약 이름 */}
           <div className="text-[20px] font-extrabold mt-[44px]">
-            광동 비타민C 1000mg 240정
+            {`${data?.name}`}
           </div>
+
+          {/* 영양소 소개 */}
+          <div className="text-[10px] text-coolgray4 mt-[19px]">
+            {`${data?.description}`}
+          </div>
+
+          {/* 영양정보 + mg */}
+          <div className="flex justify-between text-[16px] mt-[24px]">
+            <div className="text-cyan font-bold">영양정보</div>
+            <div className="text-[12px] text-coolgray4">섭취권장용량</div>
+          </div>
+
+          {/* 영양소 + mg */}
+          <div className="flex justify-between text-[14px] mt-[16px]">
+            <div className="flex items-center">
+              <div className="font-extrabold">비타민 C</div>
+              {/* <div className="bg-blue1 px-[4px] text-white text-[10px] ml-[12px] rounded-[33px]">
+                필수영양소
+              </div> */}
+            </div>
+            <div className="flex items-center">
+              <div className="text-white ml-[4px] text-[12px] bgOne">적당</div>
+            </div>
+          </div>
+
           {/* 약 복용횟수 */}
-          <div className="flex justify-between mt-[8px]">
+          {/* <div className="flex justify-between mt-[8px]">
             <div className="flex items-center text-white text-[12px]">
               <div className="bg-coolgray3 px-[8px] py-[4px] rounded-[37px] mr-[8px]">
                 섭취 용량
               </div>
               <div className="text-coolgray3">1일 1정 2회</div>
             </div>
-          </div>
-          {/* 영양정보 + mg */}
-          <div className="flex justify-between text-[16px] mt-[24px]">
-            <div className="text-cyan font-bold">영양정보</div>
-            <div className="font-semibold">1정(1,000)mg</div>
-          </div>
-          {/* 영양소 + mg */}
-          <div className="flex justify-between text-[14px] mt-[16px]">
-            <div className="flex items-center">
-              <div className="font-extrabold">비타민 C</div>
-              <div className="bg-blue1 px-[4px] text-white text-[10px] ml-[12px] rounded-[33px]">
-                필수영양소
-              </div>
-            </div>
-            <div className="flex items-center">
-              <div className="font-extrabold">1000mg</div>
-              <div className="text-coolgray4 ml-[4px] text-[12px]">
-                (7-8개월분)
-              </div>
-            </div>
-          </div>
-          {/* 영양소 소개 */}
-          <div className="text-[10px] text-coolgray4 mt-[19px]">
-            신체의 정상적인 기능 유지를 위해 필수적으로 필요하거나, 우리 몸에서
-            합성되지 않아 섭취해야하는 영양소를 종합하여 선정한 한국인 필수 섭취
-            영양소.
-          </div>
+          </div> */}
+
           {/* 기능 타이틀*/}
-          <div className="flex justify-between items-center mt-[98px]">
+          <div className="flex justify-between items-center mt-[34.5px]">
             <div className="text-cyan font-bold">기능</div>
-            <div className="text-[12px] text-coolgray1 bg-blue1 rounded-[33px] px-[4px]">
-              향산화
-            </div>
           </div>
+
           {/* 기능 리스트 */}
-          <div className="flex flex-row-reverse text-coolgray4 text-end text-[12px] mt-[9.5px] font-medium">
-            <div className="">
-              <div>결합조직 형성과 기능 유지에 필요</div>
-              <div className="mt-[4px]">철의 흡수에 필요</div>
-              <div className="mt-[4px]">
-                유해산소로부터 세포를 보호하는데 필요
-              </div>
-            </div>
+          <div className="flex text-coolgray4 text-end text-[12px] mt-[16px] font-medium">
+            {data?.MerchandiseEffect.map((value: any, index: any) => {
+              return (
+                <div
+                  className="text-[12px] text-coolgray1 px-[4px] bgTwo ml-[8px]"
+                  key={index}
+                >
+                  {value.effect.name}
+                </div>
+              );
+            })}
           </div>
+
           {/* 약사 후기  더보기> */}
           <div className="flex justify-between items-center mt-[40px] text-[16px]">
             <div className="text-darkblue1 font-medium">
@@ -133,7 +158,23 @@ const MedicineDetail = () => {
           </button>
         </div>
         <style jsx>{`
-          .borderBox {
+          .bgOne {
+            min-width: 39px;
+            height: 25px;
+            background: #808e99;
+            border-radius: 33px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .bgTwo {
+            min-width: 50px;
+            height: 25px;
+            background: #1576fb;
+            border-radius: 33px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         `}</style>
       </div>

@@ -4,6 +4,7 @@ import postingSlice from "./postingSlice";
 import peoplePickSlice from "./peoplePickSlice";
 import pharmacistsSlice from "./pharmacistsSlice";
 import recentMerchandisesSlice from "./recentMerchandisesSlice";
+import medicineSlice from "./medicineSlice";
 
 // 루트 리듀서
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   peoplePick: peoplePickSlice,
   pharmacists: pharmacistsSlice,
   recentMerchandises: recentMerchandisesSlice,
+  medicine: medicineSlice,
 }); // 리듀서가 추가되면 여기에 넣는다.
 
 export default rootReducer;

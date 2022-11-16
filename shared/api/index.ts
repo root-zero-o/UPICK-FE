@@ -25,6 +25,9 @@ export const apis = {
   getPeopleHealth: (payload: any) =>
     api.get(`/goods/merchandises/filtering-by-consider?keyword=${payload} `),
 
+  // medicine
+  getMedicineById: (payload: any) => api.get(`/goods/merchandises/${payload}`),
+
   // get postings
   getPostings: () => api.get("/postings"),
 };

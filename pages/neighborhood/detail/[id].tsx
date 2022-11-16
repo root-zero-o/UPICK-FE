@@ -19,20 +19,27 @@ import {
   selectPharmacists,
   __getPharmacists,
 } from "store/modules/pharmacistsSlice";
+import { selectPostings, __getPostings } from "store/modules/postingSlice";
 
 const Detail: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useAppDispatch();
+  const postings = useAppSelector(selectPostings);
   const pharmacists = useAppSelector(selectPharmacists);
   const data = Array.from(pharmacists?.pharmacists).find(
     (v) => v.id === Number(id)
   );
-  console.log(data?.Image[0].url);
+  const pharmacistPostings = postings?.postings.filter(
+    (v) => v.pharmacistId === Number(id)
+  );
+
   const onLinkChat = useClickRoute({ link: "/chat" });
+  console.log(pharmacistPostings);
 
   useEffect(() => {
     dispatch(__getPharmacists());
+    dispatch(__getPostings());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -105,12 +112,27 @@ const Detail: NextPage = () => {
         </div>
         <div className="w-[100%]">
           <CategoryTitle title={`${data?.userName}` + "픽"} link="/article" />
-          <div className="w-[380px] h-[84px] rounded-md shadow-lg mx-auto my-4 p-4 flex flex-col">
-            <span className="text-[13px] font-bold">
-              무더위, 에너지가 없다면?
-            </span>
-            <span className="text-sm text-coolgray4 mt-2">어쩌고저쩌고</span>
-          </div>
+          {pharmacistPostings &&
+            pharmacistPostings?.map((v, i) => {
+              return (
+                <div
+                  key={i}
+                  className="w-[380px] h-[84px] rounded-md shadow-lg mx-auto my-4 p-4 flex flex-col"
+                >
+                  <span className="text-[13px] font-bold">{v.title}</span>
+                  <span className="text-sm text-coolgray4 mt-2">
+                    {v.content.slice(0, 100)}
+                  </span>
+                </div>
+              );
+            })}
+          {!pharmacistPostings[0] && (
+            <div className="p-8 flex justify-center">
+              <span className="text-coolgray3">
+                약사님이 작성하신 약사픽이 없습니다.
+              </span>
+            </div>
+          )}
         </div>
         <div className="max-w-[420px] w-full fixed bottom-0 h-[6%] min-h-[50px] bg-coolgray1 flex items-center justify-evenly py-2">
           <div className="w-[40px] h-[40px] rounded-full bg-coolgray1 shadow-home-p-category-btn flex items-center justify-center hover:cursor-pointer hover:bg-white transition-all">

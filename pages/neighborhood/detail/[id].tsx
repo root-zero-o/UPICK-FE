@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { NextPage } from "next";
 import Layout from "components/Layout";
 import KakaoMap from "components/KakaoMap";
@@ -14,21 +14,34 @@ import { useRouter } from "next/router";
 import { samplePharmacistData } from "../../../lib/sampleData";
 import CategoryTitle from "components/ui/CategoryTitle";
 import useClickRoute from "hooks/useClickRoute";
+import { useAppDispatch, useAppSelector } from "src/hooks/reduxHooks";
+import {
+  selectPharmacists,
+  __getPharmacists,
+} from "store/modules/pharmacistsSlice";
+import { selectPostings, __getPostings } from "store/modules/postingSlice";
 
 const Detail: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
-  const data = samplePharmacistData.find((v) => v.id === Number(id));
+  const dispatch = useAppDispatch();
+  const postings = useAppSelector(selectPostings);
+  const pharmacists = useAppSelector(selectPharmacists);
+  const data = Array.from(pharmacists?.pharmacists).find(
+    (v) => v.id === Number(id)
+  );
+  const pharmacistPostings = postings?.postings.filter(
+    (v) => v.pharmacistId === Number(id)
+  );
+  console.log(data);
+
   const onLinkChat = useClickRoute({ link: "/chat" });
 
-  /** 0분을 "00"으로 바꾸는 function */
-  const calcTime = (minute?: number) => {
-    if (minute === 0) {
-      return "00";
-    } else {
-      return minute;
-    }
-  };
+  useEffect(() => {
+    dispatch(__getPharmacists());
+    dispatch(__getPostings());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Layout home={false} isWhite={false} icon={true}>
@@ -36,9 +49,20 @@ const Detail: NextPage = () => {
       <KakaoMap />
       <div className="bg-coolgray1 h-full w-full rounded-t-[50px] flex flex-col items-center relative -top-16 z-40 shadow-map-header">
         <div className="flex flex-col items-center relative -top-12 z-40 space-y-2">
-          <div className="w-[104px] h-[104px] bg-coolgray4 rounded-full border-[5px] border-white shadow-lg "></div>
+          <div className="w-[104px] h-[104px] rounded-full border-[5px] border-white shadow-lg ">
+            {data && (
+              <Image
+                src={data?.Image[0].url}
+                width={`104px`}
+                height={`104px`}
+                unoptimized={true}
+                style={{ borderRadius: "50%" }}
+                alt=""
+              />
+            )}
+          </div>
           <span className="text-2xl font-black text-darkblue2">
-            {data?.name} 약사
+            {data?.userName}
           </span>
           <div className="flex w-[120px] h-[24px] rounded-[12px] bg-coolgray3 shadow-md pt-[2px] justify-evenly">
             <div className="flex items-center">
@@ -51,12 +75,12 @@ const Detail: NextPage = () => {
             </div>
           </div>
           <span className="text-md font-bold text-coolgray4">
-            {data?.pharmacy_name} 약국
+            {data?.pharmacyName}
           </span>
           <div className="flex items-center">
             <Image alt="location" src={location} />
             <span className="text-sm font-light text-coolgray4 ml-1 mr-2">
-              {data?.address}
+              {data?.pharmacyAddress}
             </span>
             <div className="flex hover:cursor-pointer">
               <Image alt="copy" src={copy} />
@@ -64,28 +88,16 @@ const Detail: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className="relative -top-7 w-[90%] h-[170px] shadow-lg rounded-md flex flex-col items-center p-4 space-y-3">
-          <div className="w-full flex justify-evenly ">
-            {data?.chat_tags?.map((v, i) => {
-              return (
-                <span className="text-[14px] text-darkblue1 font-bold" key={i}>
-                  #{v}
-                </span>
-              );
-            })}
-          </div>
+        <div className="relative -top-7 w-[90%] shadow-lg rounded-md flex flex-col items-center p-4 space-y-3">
           <div className="flex flex-col items-center space-y-1">
             <span className="text-md font-bold text-darkblue2">
-              {data?.name} 약사님의 상담가능시간
+              {data?.userName}님의 상담가능시간
             </span>
             <div className="flex items-center">
               <ChatStatusChip available />
               <Image alt="time" src={time} />
               <div className="text-[14px] text-blue2">
-                {data?.available_time_start_hour}:
-                {calcTime(data?.available_time_start_minute)} ~{" "}
-                {data?.available_time_end_hour}:
-                {calcTime(data?.available_time_end_minute)}
+                {data?.counselingStartTime} ~ {data?.counselingEndTime}
               </div>
             </div>
             <span className="text-sm font-light text-coolgray4 ml-1 mr-2">
@@ -93,7 +105,7 @@ const Detail: NextPage = () => {
             </span>
           </div>
           <div className="flex items-center space-x-2">
-            {data?.info_tags?.map((v, i) => {
+            {data?.pharmacistTags.map((v, i) => {
               return (
                 <div
                   key={i}
@@ -106,13 +118,29 @@ const Detail: NextPage = () => {
           </div>
         </div>
         <div className="w-[100%]">
-          <CategoryTitle title="영근 약사픽" link="/article" />
-          <div className="w-[380px] h-[84px] rounded-md shadow-lg mx-auto my-4 p-4 flex flex-col">
-            <span className="text-[13px] font-bold">
-              무더위, 에너지가 없다면?
-            </span>
-            <span className="text-sm text-coolgray4 mt-2">어쩌고저쩌고</span>
-          </div>
+          <CategoryTitle title={`${data?.userName}` + "픽"} link="/article" />
+          {pharmacistPostings &&
+            pharmacistPostings?.map((v, i) => {
+              return (
+                <div
+                  key={i}
+                  onClick={() => router.push(`/article/detail/${v.id}`)}
+                  className="cursor-pointer w-[380px] rounded-md shadow-lg mx-auto my-4 p-4 flex flex-col"
+                >
+                  <span className="text-[13px] font-bold">{v.title}</span>
+                  <span className="text-sm text-coolgray4 mt-2">
+                    {v.content.slice(0, 100)}...
+                  </span>
+                </div>
+              );
+            })}
+          {!pharmacistPostings[0] && (
+            <div className="p-8 flex justify-center">
+              <span className="text-coolgray3">
+                약사님이 작성하신 약사픽이 없습니다.
+              </span>
+            </div>
+          )}
         </div>
         <div className="max-w-[420px] w-full fixed bottom-0 h-[6%] min-h-[50px] bg-coolgray1 flex items-center justify-evenly py-2">
           <div className="w-[40px] h-[40px] rounded-full bg-coolgray1 shadow-home-p-category-btn flex items-center justify-center hover:cursor-pointer hover:bg-white transition-all">

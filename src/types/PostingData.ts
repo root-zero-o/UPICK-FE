@@ -55,6 +55,7 @@ export type PostingDataType = {
   gender: string;
   id: number;
   pharmacist: PharmacistDataType;
+  pharmacistId: number;
   postingLikes: string[];
   title: string;
   updatedAt: string;

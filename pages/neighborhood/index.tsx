@@ -1,5 +1,5 @@
 import HeaderBG from "components/HeaderBG";
-import React from "react";
+import React, { useEffect } from "react";
 import { SearchInput } from "../../components/SearchInput";
 import best from "../../assets/images/icons/best.svg";
 import BlurBtn from "components/ui/BlurBtn";
@@ -14,8 +14,22 @@ import CategoryBar from "components/CategoryBar";
 import PharmacistTime from "components/ui/PharmacistTime";
 
 import useClickRoute from "hooks/useClickRoute";
+import {
+  selectPharmacists,
+  __getPharmacists,
+} from "store/modules/pharmacistsSlice";
+import { useAppDispatch, useAppSelector } from "src/hooks/reduxHooks";
 
 const Index = () => {
+  const pharmacists = useAppSelector(selectPharmacists);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(__getPharmacists());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const famousPharmacistData = Array.from(pharmacists?.pharmacists).slice(0, 3);
+  const pharmacistData = Array.from(pharmacists?.pharmacists);
+
   const pharList = [
     {
       name: "은우",
@@ -36,23 +50,6 @@ const Index = () => {
       url: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBYVEhgVEhUYGRgZHBgaGBkYGRgaGBwYGBgaGhgcGBwcIS4lHB4rIRgYJjgmKy8xNTU2GiQ7QDs0Py40NTEBDAwMEA8QHBISGjQhJCs0NDQ0NDQ0MTQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDE0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQxNP/AABEIAPsAyQMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAAAQIDBQYHBAj/xAA+EAACAQIDBAcECAUEAwAAAAABAgADEQQSIQUxQVEGImFxgZGhBxMywSNCUnKSsdHwFGKCsvEkosLhFSVT/8QAGAEBAQEBAQAAAAAAAAAAAAAAAAECAwT/xAAhEQEBAAICAgIDAQAAAAAAAAAAAQIRITEDQRJhEyJRMv/aAAwDAQACEQMRAD8A6BHCE6ghCOFKOEIQQhCFEITwbZ2itCkztwBIH78IJyW1Nr0sOAajan4VGrt3D5maxi+ngViEoE25uQfEZRlmjbT2u9R2qFyC3EfEewa9VOFh631w5qm+8+BP5zncr6dJjPbqNH2hIRrQcNwAZTfxNvnKR7Saataph6ijdcMh9Da3jOeJiHtYO4H3c49NYmf6zBXFtctx5qRf0j5Vbji7Zsrb+HxI+iqAt9huq/4Tv8LiZScDouqjNTYoDwYErfkDwtNl2D06rUWC4i9anexYfGg3A6/EOw6/lNTJzuP8dXhPNgMfTr0xUouHRtxHqCOBHI6iemaQRRwgKKOEBRSUUBQhC0CcdoQhBCEIBCOEBQjlWKq5EJ8oVJ3Ci7EADfczl3T/AG571slM9RTv+1bj3AyfSnabu2Sm3O53sfkBv3cpqWMdmHXsTwItr4Tnllvh1xx1yxj1DaQpl99zNx2J0FrVbNUGRTbQnW3dNyXoFh/dhSCW53mNtfG1yrCYh1OhU9+/0sZbiKj6sUNjvPxDz3jvm0dIOhHuVL09V4g8pqFOi6MQjED013G3IxMvRcbFbYo5MoII7eE8yuRuJHcRa3jLahI1dbG9rjdeVNa+ov3cdNJYxWw9F9vvhqylW6psHB+FgbXuBuPaNdNx3TtmCxS1aa1KZurC4nzqp4ec637Mcfnw70mZiyMD1j9RhYZRyBU+Ym8b6ZyjdYRwm2ShHFAUI4QIwjhAmBCAhCCElCBGShCATDdJapWmuU2JdQO8nKP7pmZhulVEthXK70Kv22U6yVqduYbWrqXO+3H+nT89f6pLojs73+KDEdRLNbmx+C/qfATB7Uq3bTcST4Xtb0E3v2dLdXe29lHkoP8AynH1a7TmyOg4anYT0qsrpLpLRJGqqxeGDqQZx7bOzvc13RhpclD/ACtrbzH5zruL2hTTRnGb7I1M0PpyBUTOiNcbza+mupt3xZq7WczTQtpohBUb8o8x/wBTBG40/wAie+o7Zjf920MaYYPuOvCa253F56Ov+JuHs6q5Meik2LK69/UzW/2A+E1unSymxE2ToDhw+0KZ+wHbyQpr2daWds2cOwQhHOrkUIQgKEcUKIQhCJCShCARxRwCEIQCRqIGUqwuCCCOYOhElCByLpP0JrU3L0g1RLk3AuwF81mA156y3obtCpTpstOmXJa+gJ0yqOHcZ1ZlvoZzXZS1cLWxGHp26tRLMRcBHuM1vuqsxlNOuF3W4bN225YLVpMnaRpMnj0Z06jWvx7JgcC+JfEOlQK9DUpUuuc3y5bBbbuve+/S1ra7Hhl+jseBI9ZyvDs1yslDDAvUQuyqWY2zGw1LG+giw3SFcSvUosUZmp3uhUkb/hJBGu8aGZ98BqWU/EMrAgEEa6EHvMuwWz0RQFVQBuCgADwEejcl25ltDoEzVRYNkY3VltdP5WB3jkZVtzoguGT3tIkgWDBje3aNJ1itoJgtsYb3tNkO5haTmLuX007oz0aWqoepvYll5gKRu7zbWbXs/Ya0sY9dR8dIK33wyknvIC/hJ4yfRrCqlNFcdZARu1+K1xyveZgPdyONgfPT5TWP+mPJf10lCSkZ3eYRRwgKEIQCKOECQkoQgEIQgEIQgEIQgExuKwKGoXtq4Ct25blfzMyUqxNMsptvGo7xM5TcaxurKKVIAaSeHX6PzPrKMLiAyzxUMG5LhqhyaWUaacQGFiPOcY9OmaoPwMuAnkwuGCWsWsNBmYtYd7Ek+JnqZoZvaiprPDVSxnvczHY6qACZGo8eI21h8NRZ67hQD8IBLHgoCjU3Mt2DUL0hWYEGt9JYkHKpFkXTTRQPEmaT0ypZ8G72+ulrb7ZwPnOhYFMtNF5Io5blE6YT25eW+nohCE6uKMIGEBQhHAUIQgTEcIQCEIQCEIQCEIQCEIQMZiUKPcfC3o3EfOYnE4/EGrkpJZRvZzZbcxb4jNmr0g6lW3H9gia86MKgSpow3MNMyncf+pyyx1dvV4c5LytwuGrEgmsQeIUC3rM1hkdB13znnYD8osJhUQXGnOPGYhEUsxAA5zDeefyvERrYi01zH4o1HyJ4nlPBjttNWfJQGnFv0mZ2Rgcgud/EyJ0w/TXCgbMqrbcqn8LKflMV7Nduv7xcNUdmSopKZiTldRmsCdylQ2m64HOe/p1tuiKT4cHO7jKwU6IDvzHn2b+6ax0CynaNEE2Az2HM+6ew/M+E9Pixsxu3n8l3XZIQjhzQMIGEAhCEBQjigWQhCAQhCAQhCAQhKsTikpjNUdEHN2VR6mBbCYHaXTDCUUze9FQ8FpWdj62A7SRNUxftLc6UMOqjg1Rix/CtreZmpjaOkzRvaRj0pojJWCYpGuiDUsjkBw4HwroGBNtVsN807avTHF1RrVKDlTvTF+9TmPiTNae5NySSSSSdSSd5JO89svw/q703LCe0mqBkqU1vuzZja/aLXlp2gcSQ+JxVNU+wHUDyveaIycoAtzmL4pW55LHSR0kwmGXLSDVCPsiwv2s1vS8wO1emleoCquKaHTKl8xHa+/ytNVCMeMmlITWPjxx9M5Z5VLOTu0EvwlRkdXRirKQysN4YG4IlYEkNJ1Yd06PbVGJwyVhYEizqPqupsw7ri47CJlJwjZO1auGbPRcpz4q1tbMp0M6B0e6fU6gyYuyPfR1B92RwvvKHzHaN055YWdK3aRkaVVXUMjBlO5lIIPcRvkpgEIQEAhCKBZCEIBCEIBNa290xoYa6J9JUGmVT1VP878O4XPdPP0926aFMUabWeoCSRvVNxtyJOl+wzlTPOmOO5ujYcf0zxVU6VSg+zTso/F8XrNfxWLeo2ao7u1t7szG3K7a2nnZrG/n3RnjN8CNR7xrK3MspygqjhEi3Fo2kdxgQbQ6iIOJ6SwO/QyDUQeN5NIrD9sM44fvxjFDuk0pjiR+caorBP+N/nLlSw1jUgbhInXfGg2bN3fvdEEh4xyj27P2tWoNmo1GQ8bHQ/eU6HxE3XY/tCOi4pAf500PeVOh8CO6c+iJkuMvau9bP2lSrrmo1FccQD1h95d6+M9QnAcNi3Rg1MsrDcwJUjuI1m/8ARbppVeotLF5CraCoDlIb6ucbiDuvpY+nO4fwb/CEJgThCEAhCUY2rkpO/wBlHb8Kk/KBxzpVtH32LqPfq5iqfdTqr52v4zBuZa0qM9H0IHWCa+VvLdEx1vCmet2H9/rCItwliSLAX85YghUUEkVkUlhECsLca8NI8kBviccYQ/dwtI9YSYY8oCCmBTtlkBAgqxk8ojIka2HieUB/syB6274YOeAHh+vZGE5/vwgTUCWq3KVBfGTBgdH6A9IWf/TVTcgE02J1IG9DzsNR2A8hN5vOGbGxJp4ik4NsrofDMM3mLjxnc8s5ZzlU4RCOYBNV9otNjgiyvlVXUuuvXDHKF07SDy0m1Tl/tJ2m74j+HFwiBWIH1nYXzHnYEAeM1jORpm6ROsZEiV7Z2EDKtx8ZabyFSEWN8UmG0lfI9nykgIUKJIRLHeEKKSMjrAnvhEDGIVKK0LxwityFBJldza3E6seX75QqPr2Lr3k7hHT3a795EAVeWn5nvk8sleImA4EyBMjryhXv2XSz16SD67ov4nAneM05J7PcD7zGq53U1ZzyvbKo82v/AEzrM553kTjihOYc4l0kxRqYus97guwXllU5V8LKJ1/bOLFHD1ahNsiMR961l9SJw3v/AGJ08c7oi0raWOTwlTNbeP34ToI5pRWe3dLnnnrDQyUXpuXw/KTvIp8I8PygTaVFgheRU3jgMxKIMYlPGBKSERigSJ/fDvkKz5QSZdSqFCHVipGoZSQwPAqRqD2ieN0LEE/CNbcTy05RROjTNrnv8ZZe3C0gWY7hlHbFkb7RgTELCQKn7XpAA9h8IVO8YlevIT04DCtVqIias7BVHC7Gwv2fpCOmezbAZMM1UjWo+n3Euo/3F/SbjPPgcKtKklNPhRVUdtha57Tvl889vKrIRXheBqntGrEYMIPr1EU/dUNUPqi+c5W86H7TsRYUU552PhlA+YnPHPDznbCfqIkwIFtRGFA19ImeaFDrbunjxLEd0yJF9J4a1M3ykacDJZwPSnwjwjYaRUzcSUqIXtxlgMgVkNRAmXkkEgBeW2kgJICISt2Y6KLdplFj20uRblG0p/hxvJvGqW03iFTJiEhcg2MkYDiMiRDLACOZ8p0H2abGvfFVF0F0pA89zv8A8fxTT9i7HfE1RSpAXIJLHRVUb2PoPETt2Fw606aIgAVFCqByAtOeV9C6EITmHCL+FuL3t2ayPuH4NMTJu4fbmPtHcnGgHctJLDvZ/mfSaiPWbt7SsI61EqsNChpkj+UlxfzbymlJunpxu5GbNAm8CsmlMkgAEk7gBcnuEytDo9iX1Wg/iAv9xEtyk7pMbemGLW4SstymQ2hgHpMErIyMb5c25rb8pFwZjgvONy8ws0rXQkSyROUtYmxnoCDhLIypjy9ktItyjVpdCoKeUeW3C8sLRZo0qnOR9SAbiL2lmaJR/nnAV7yNz3xHQ9kLyCTLcXkFfmJYd0gYDvACIzIdHtmnFYlKK3yk3c8kXVj8h2kSWjons72V7vDmuws1X4b7xTXcf6jc92WbhIIgUBVFgAAANwAFgBJThbuqcIooHg2r0moYe/vHF72C31J04d/GSw3SGiyZzUS1rliQB4nhOe0tnoherimN7sWZxqdeA7eQ5zUtpYr3lQlRlS/VXkO3t5zljja75axjpvSvbuCxFB6f8QhbetiT1huNwJzTZyZ6gpBhcsqg8Os1ge7WY5lldCsadRXtfKwJ7bEH5Cdpbi5W7d+2D0cp4emMijN9Z2HXbx4DsEzAoSGycYteglVPhdQy35HdPeonC83ddNtV6Y9Hv4rCui/GvWptxDrqPA7j2GcW99dMzCzLow4hhoQRzvPo5xOCdNtmtQ2lWyiyVCHtwIf4vHOGnTw5aumc5ubYfDOCNd53y56Y4aShEtoDJEkT1TpyXK1t8bGU+9HGSDAxsTzQJkT2RAwJAwBkcsAYDvBhFeJjACYmcDfKa+IC6ceX6zyi5frfvumLkL85Y9nATpfsqwdkrViN5Wmp7hnf+5PKc3VZ27ofgPcYKkhFmK5255nOax7gQPCZy6GbvCKEwpwiheBx3pVtt61Q0gbIh6wU3V6i3BftA1A8+7X4kEGlk1Fyu7tU5lbaiTMrdCfh3nQd53RUd+6BX/8AGYW//wA18tcvpabGJ4Nk0BTw9NBuREUf0qB8p7FbQThXXRus0L2kbCNfDmpTH0tIMy23smhdR22Fx2jtm/mePFUriSXV2v0+Y6eKI5GelMYOIInr6abI/hcY6AWRuunLKxN18DcdwEwGad8c642arMCqp4iSCjhMNmMa1mG4zX5PpGZtHnPfMUuMcb7HvH6SY2g32R6zX5MRkw/ZDNMYdoNwA8j+sgcW5427gI/JBlncKLk2754K2NJ0QW7Tv8OU8pDMesSe+eilRkuVyBQpcTPU6WIPP5SVNJawuO6amOoMh0bwS1sVSpv8LOubtUXYjxAIncROR+z7C58ch4Ir1D+EoPV51u8xl2JQkbx3mVOEjeK8DgF5F4R1JoVSeFNqqX3Z0/vErMlS+JfvL+YkpH0lQPUEtE8uH3eU9B3Tg7aWAyNTcZFIVINOZe1TZSvgzX3PRcAdqOVUjzKnwM48BO8+0Bf/AFmK709HScHaXFjyTkZYCTWSE1GEB3Ri3HSTAgUHKaEkpg7patCeUT2YdzbfN488IsSlLUSTjG+dJEISxJGCzQ6B7LqGldzv6iD/AHE/Lym/zUPZsP8AS1Dzqn0Rf1m3zjl20IQhMghCED//2Q==",
     },
   ];
-
-  // const Router = useRouter();
-  // const handleTabMenu = (menu: number) => {
-  //   switch (menu) {
-  //     case 1:
-  //       Router.push("/mypick/jjim/med");
-  //       return;
-  //     case 2:
-  //       Router.push("/mypick/pickup");
-  //       return;
-  //     case 3:
-  //       Router.push("/chat");
-  //       return;
-  //     default:
-  //       return;
-  //   }
-  // };
 
   const onLinkSearchPharmacist = useClickRoute({ link: "/search" });
 
@@ -98,41 +95,47 @@ const Index = () => {
           </span>
         </div>
         <div className="home-section-wrapper py-4">
-          <CategoryTitle title="가장 인기많은 약사순" subtitle="" link="/" />
+          <CategoryTitle
+            title="가장 인기많은 약사순"
+            subtitle=""
+            link="/neighborhood/search"
+          />
           <div className="flex w-full justify-evenly py-4">
-            {pharList?.map((v, i) => {
-              return (
-                <PharmacistProfile
-                  key={i}
-                  pharmacist={v.name}
-                  url={v.url}
-                  pharmacy={v.address}
-                  link={`/`}
-                  meter={v.distance}
-                />
-              );
-            })}
+            {famousPharmacistData &&
+              famousPharmacistData?.map((v, i) => {
+                return (
+                  <PharmacistProfile
+                    key={i}
+                    pharmacist={v.userName}
+                    url={v.Image[0].url}
+                    pharmacy={v.pharmacyName}
+                    link={`/neighborhood/detail/${v.id}`}
+                  />
+                );
+              })}
           </div>
           <div className="w-full h-[9px] bg-coolgray2" />
         </div>
         <CategoryBar />
         <div className="flex flex-col w-full divide-y-[1px] divide-blue3 px-6 pb-10">
-          <PharmacistTime
-            name="은우"
-            pharmacy="냥냥"
-            time="22:00 ~ 24:00"
-            location="청주시 금천동"
-            distance={1231}
-            isActive={true}
-          />
-          <PharmacistTime
-            name="정현규"
-            pharmacy="환승"
-            time="22:00 ~ 24:00"
-            location=""
-            distance={777}
-            isActive={false}
-          />
+          {pharmacistData &&
+            pharmacistData.map((v, i) => {
+              return (
+                <PharmacistTime
+                  key={i}
+                  name={v.userName}
+                  pharmacy={v.pharmacyName}
+                  time={
+                    `${v.counselingStartTime}` +
+                    " ~ " +
+                    `${v.counselingEndTime}`
+                  }
+                  location={v.pharmacyAddress.slice(0, 7)}
+                  isActive={true}
+                  id={v.id}
+                />
+              );
+            })}
         </div>
       </div>
 

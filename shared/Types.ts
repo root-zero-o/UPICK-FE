@@ -18,13 +18,52 @@ export interface UserRegistrationModel {
   name?: string;
 }
 
-export interface postingType {
-  title?: string;
-  text?: string;
+export interface PharmacistsDataType {
+  Image: [
+    {
+      url: string;
+    }
+  ];
+  counselingEndTime: string;
+  counselingStartTime: string;
+  createdAt: string;
+  email: string;
+  id: number;
+  password: string;
+  pharmacyAddress: string;
+  pharmacyName: string;
+  updatedAt: string;
+  userName: string;
+  pharmacistTags: string[];
 }
 
-export interface postingsType {
+export interface PharmacistInitialDataType {
+  pharmacists: PharmacistsDataType[];
   loading: boolean;
-  error: any;
-  postings: postingType[];
+  error: boolean;
+}
+
+export interface RecentMerchandisesDataType {
+  Image: {
+    url: string;
+  };
+  MerchandiseEffect: [{ effect: string }];
+  certification: boolean;
+  company: {
+    name: string;
+  };
+  companyId: number;
+  createdAt: string;
+  description: string;
+  id: number;
+  merchandiseHowToConsumeId: number;
+  name: string;
+  rating: string;
+  updatedAt: string;
+}
+
+export interface RecentMerchandisesInitialStateType {
+  recentMerchandises: RecentMerchandisesDataType[];
+  loading: boolean;
+  error: boolean;
 }

@@ -1,15 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { initialStateType } from "src/types/PostingData";
+import { PharmacistInitialDataType } from "shared/Types";
 import { RootState } from ".";
 
-const GET_POSTINGS = "posting/getPostings";
+const GET_PHARMACISTS = "posting/getPharmacists";
 
-export const __getPostings = createAsyncThunk(GET_POSTINGS, async () => {
+export const __getPharmacists = createAsyncThunk(GET_PHARMACISTS, async () => {
   try {
     const result = await axios({
       method: "GET",
-      url: `${process.env.NEXT_PUBLIC_SERVER}/posting`,
+      url: `${process.env.NEXT_PUBLIC_SERVER}/pharmacists`,
       headers: {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmNkMTJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjY3Mzk1ODkyLCJleHAiOjI2Njc0MDY2OTJ9.J7Vv2WeXjSiwOHZQdWX3QdgpuzX1yl8GethTmH8US2g`,
       },
@@ -20,35 +20,35 @@ export const __getPostings = createAsyncThunk(GET_POSTINGS, async () => {
   }
 });
 
-const initialState: initialStateType = {
-  postings: [],
+const initialState: PharmacistInitialDataType = {
+  pharmacists: [],
   loading: false,
   error: false,
 };
 
-const postingSlice = createSlice({
-  name: "posting/getPostings",
+const pharmacistsSlice = createSlice({
+  name: "posting/getPharmacists",
   initialState,
   reducers: {
     getPostings: (state, action) => {
-      state.postings = action.payload;
+      state.pharmacists = action.payload;
     },
   },
   extraReducers: {
-    [__getPostings.pending.type]: (state, action) => {
+    [__getPharmacists.pending.type]: (state, action) => {
       state.loading = true;
     },
-    [__getPostings.fulfilled.type]: (state, action) => {
+    [__getPharmacists.fulfilled.type]: (state, action) => {
       state.loading = true;
-      state.postings = action.payload;
+      state.pharmacists = action.payload;
     },
-    [__getPostings.rejected.type]: (state, action) => {
+    [__getPharmacists.rejected.type]: (state, action) => {
       state.loading = true;
       state.error = action.error;
     },
   },
 });
 
-export const selectPostings = (state: RootState) => state.postings;
+export const selectPharmacists = (state: RootState) => state.pharmacists;
 
-export default postingSlice.reducer;
+export default pharmacistsSlice.reducer;

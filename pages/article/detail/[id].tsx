@@ -29,7 +29,7 @@ const Article = () => {
     <Layout isWhite={false} icon>
       <div className="px-[30px] pt-[50px]">
         <span className="text-sm font-bold text-darkblue1">
-          {article?.pharmacist.userName} 약사
+          {article?.pharmacist.userName}
         </span>
         <span className="text-sm font-light text-coolgray3 ml-5">
           {article?.pharmacist.pharmacyName}
@@ -64,10 +64,16 @@ const Article = () => {
               {article?.MerchandiseToPosting[0].merchandise.description}
             </div>
           </div>
-          <div
-            style={{ backgroundImage: `url(${profileImage})` }}
-            className="w-[90px] h-[113px] ml-4 mt-2 rounded-md  bg-cover"
-          />
+          <div className=" ml-4 mt-2 rounded-sm">
+            <Image
+              src={profileImage}
+              width={`90px`}
+              height={`113px`}
+              unoptimized={true}
+              style={{ borderRadius: "10px" }}
+              alt=""
+            />
+          </div>
         </div>
         <div className="mt-4 text-sm bg-white p-4 rounded-md break-words whitespace-pre-wrap">
           {article?.content}

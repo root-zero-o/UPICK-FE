@@ -14,7 +14,7 @@ export const GetMerchandiseDetail = createAsyncThunk(
 const initialState: any = {
   loading: false,
   error: null,
-  data: {},
+  data: "",
 };
 
 const medicineSlice = createSlice({

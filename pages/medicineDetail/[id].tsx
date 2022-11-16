@@ -1,11 +1,11 @@
 import Image from "next/image";
-import notification from "../assets/images/icons/ic_noti.svg";
+import notification from "assets/images/icons/ic_noti.svg";
 import BackBtn from "components/BackBtn";
 import useClickRoute from "hooks/useClickRoute";
-import pathGray from "../assets/images/icons/PathGray.svg";
-import heart_line from "../assets/images/icons/heart-line.svg";
-import star_fill from "../assets/images/icons/star-fill.svg";
-import star_empty from "../assets/images/icons/star-emp.svg";
+import pathGray from "assets/images/icons/PathGray.svg";
+import heart_line from "assets/images/icons/heart-line.svg";
+import star_fill from "assets/images/icons/star-fill.svg";
+import star_empty from "assets/images/icons/star-emp.svg";
 
 const MedicineDetail = () => {
   const onLink = useClickRoute({ link: "/alert" });

@@ -1,13 +1,22 @@
 import moduleStyle from "../../pages/peoplePick/peoplePick.module.css";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Medicines = ({ data }: { data: any }) => {
+  const router = useRouter();
   console.log(data);
+
   return (
     <>
       {data?.map((v: any, i: any) => {
         return (
-          <div className={moduleStyle.details} key={i}>
+          <div
+            className={moduleStyle.details}
+            key={i}
+            onClick={() => {
+              router.push(`/medicineDetail/${v.id}`);
+            }}
+          >
             <div className={moduleStyle.detailsMain}>
               <div className={moduleStyle.detailsLeft}>
                 <div className={moduleStyle.detailsRank}>

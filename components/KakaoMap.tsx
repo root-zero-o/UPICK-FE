@@ -20,6 +20,7 @@ const KakaoMap = (): ReactElement | null => {
 
   useEffect(() => {
     window.kakao?.maps.load(initMap);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>

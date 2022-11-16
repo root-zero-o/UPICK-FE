@@ -135,7 +135,7 @@ const Home = () => {
                 key={`listlist-${index}`}
                 company={value.company.name}
                 name={value.name}
-                link={"/"}
+                link={`/medicineDetail/${value.id}`}
                 url={value.Image.url}
               />
             );

@@ -109,6 +109,9 @@
   border-radius: 2px;
   z-index: 1;
 }
+.detailsCounts {
+  opacity: 0;
+}
 .rankText {
   font-weight: 900;
   font-size: 10px;

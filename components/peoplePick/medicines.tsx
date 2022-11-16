@@ -2,6 +2,7 @@ import moduleStyle from "../../pages/peoplePick/peoplePick.module.css";
 import Image from "next/image";
 
 const Medicines = ({ data }: { data: any }) => {
+  console.log(data);
   return (
     <>
       {data?.map((v: any, i: any) => {
@@ -27,7 +28,7 @@ const Medicines = ({ data }: { data: any }) => {
                 <div className={moduleStyle.detailsTitle}>{v.name}</div>
                 <div className={moduleStyle.detailsSubTitle}>
                   <div className={moduleStyle.detailsCompany}>
-                    ㈜한풍네이처팜
+                    {v.company.name}
                   </div>
                   <div className={moduleStyle.detailsCounts}>60일분</div>
                 </div>
@@ -38,6 +39,13 @@ const Medicines = ({ data }: { data: any }) => {
                 return (
                   <div className={moduleStyle.detailsHashtag} key={index}>
                     {value.effect.name}
+                  </div>
+                );
+              })}
+              {v.MerchandiseToIngredient.map((value: any, index: any) => {
+                return (
+                  <div className={moduleStyle.detailsHashtag} key={index}>
+                    {value.ingredient.name}
                   </div>
                 );
               })}

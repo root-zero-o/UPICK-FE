@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { SearchInput } from "../components/SearchInput";
 import Seo from "components/Seo";
 import HeaderBG from "../components/HeaderBG";

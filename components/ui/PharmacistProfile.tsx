@@ -31,7 +31,7 @@ const PharmacistProfile = ({
         ></Image>
       </div>
       <span className="text-[14px] font-sdg-b text-darkblue1 mt-2 font-bold">
-        {pharmacist} 약사
+        {pharmacist}
       </span>
       <span className="text-[12px] font-sdg-l text-coolgray3 font-medium">
         {pharmacy}

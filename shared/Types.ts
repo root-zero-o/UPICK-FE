@@ -34,6 +34,7 @@ export interface PharmacistsDataType {
   pharmacyName: string;
   updatedAt: string;
   userName: string;
+  pharmacistTags: string[];
 }
 
 export interface PharmacistInitialDataType {

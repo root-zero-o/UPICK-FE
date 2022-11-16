@@ -33,6 +33,7 @@ const Detail: NextPage = () => {
   const pharmacistPostings = postings?.postings.filter(
     (v) => v.pharmacistId === Number(id)
   );
+  console.log(data);
 
   const onLinkChat = useClickRoute({ link: "/chat" });
 
@@ -104,9 +105,16 @@ const Detail: NextPage = () => {
             </span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="px-1 py-[2px] bg-blue3 text-darkblue1 text-sm font-medium rounded-full ">
-              1
-            </div>
+            {data?.pharmacistTags.map((v, i) => {
+              return (
+                <div
+                  key={i}
+                  className="px-1 py-[2px] bg-blue3 text-darkblue1 text-sm font-medium rounded-full "
+                >
+                  {v}
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="w-[100%]">

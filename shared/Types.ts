@@ -18,13 +18,26 @@ export interface UserRegistrationModel {
   name?: string;
 }
 
-export interface postingType {
-  title?: string;
-  text?: string;
+export interface PharmacistsDataType {
+  Image: [
+    {
+      url: string;
+    }
+  ];
+  counselingEndTime: string;
+  counselingStartTime: string;
+  createdAt: string;
+  email: string;
+  id: number;
+  password: string;
+  pharmacyAddress: string;
+  pharmacyName: string;
+  updatedAt: string;
+  userName: string;
 }
 
-export interface postingsType {
+export interface PharmacistInitialDataType {
+  pharmacists: PharmacistsDataType[];
   loading: boolean;
-  error: any;
-  postings: postingType[];
+  error: boolean;
 }

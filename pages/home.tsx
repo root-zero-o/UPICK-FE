@@ -13,20 +13,26 @@ import HomeCategoryBtn from "components/ui/HomeCategoryBtn";
 import { sliceText } from "lib/utils";
 import { useAppDispatch, useAppSelector } from "src/hooks/reduxHooks";
 import { selectPostings, __getPostings } from "store/modules/postingSlice";
-import { PostingDataType } from "src/types/PostingData";
-
 import HealthProblemIcon from "assets/images/icons/health_problem.svg";
 import AgeIcon from "assets/images/icons/age.svg";
 import IngredientIcon from "assets/images/icons/ingredient.svg";
 import GenderIcon from "assets/images/icons/gender.svg";
 import NavBar from "components/NavBar";
+import {
+  selectPharmacists,
+  __getPharmacists,
+} from "store/modules/pharmacistsSlice";
 
 const Home = () => {
   const postings = useAppSelector(selectPostings);
+  const pharmacists = useAppSelector(selectPharmacists);
   const dispatch = useAppDispatch();
   const data = Array.from(postings?.postings).slice(0, 5);
+  const pharmacistData = Array.from(pharmacists?.pharmacists).slice(0, 6);
+  console.log(pharmacistData);
   useEffect(() => {
     dispatch(__getPostings());
+    dispatch(__getPharmacists());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -161,15 +167,14 @@ const Home = () => {
       <div className="home-section-wrapper">
         <CategoryTitle title="울동네약사" subtitle="" link="/neighborhood/" />
         <div className=" grid grid-cols-3 px-4 py-4">
-          {pharList?.map((value, index) => {
+          {pharmacistData?.map((value, index) => {
             return (
               <PharmacistProfile
                 key={`phraList-${index}`}
-                pharmacist={value.name}
-                pharmacy={value.address}
+                pharmacist={value.userName}
+                pharmacy={value.pharmacyName}
                 link={`/neighborhood/detail/1`}
-                meter={value.distance}
-                url={value.url}
+                url={value.Image[0].url}
               />
             );
           })}

@@ -10,7 +10,7 @@ interface RecentMedProps {
 
 const RecentMed = ({ pharmacy, med, src, id }: RecentMedProps) => {
   const goItem = () => {
-    Router.push(`/med/detail/${id}`);
+    Router.push(`/medicineDetail/${id}`);
   };
 
   return (

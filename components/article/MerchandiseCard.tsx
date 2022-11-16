@@ -2,6 +2,7 @@ import StarFillIcon from "assets/images/icons/star-fill.svg";
 import StarEmpIcon from "assets/images/icons/star-emp.svg";
 
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const MerchandiseCard = ({
   image,
@@ -19,9 +20,14 @@ const MerchandiseCard = ({
   index: number;
 }) => {
   const ratingNum = Number(rating);
-
+  const router = useRouter();
   return (
-    <div className="w-[335px] rounded-[13px] border-[2px] border-coolgray2 backdrop-blur bg-searchInput shadow-md p-6">
+    <div
+      className="w-[335px] rounded-[13px] border-[2px] border-coolgray2 backdrop-blur bg-searchInput shadow-md p-6"
+      onClick={() => {
+        router.push(`/medicineDetail/${id}`);
+      }}
+    >
       <div
         style={{ backgroundImage: `url(${image})` }}
         className="w-[64px] h-[72px] bg-white rounded-md mb-4 bg-cover"

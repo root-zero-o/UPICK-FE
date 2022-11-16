@@ -107,7 +107,10 @@
   justify-content: center;
   align-items: center;
   border-radius: 2px;
-  z-index: 100000;
+  z-index: 1;
+}
+.detailsCounts {
+  opacity: 0;
 }
 .rankText {
   font-weight: 900;

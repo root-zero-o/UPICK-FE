@@ -41,3 +41,28 @@ export interface PharmacistInitialDataType {
   loading: boolean;
   error: boolean;
 }
+
+export interface RecentMerchandisesDataType {
+  Image: {
+    url: string;
+  };
+  MerchandiseEffect: [{ effect: string }];
+  certification: boolean;
+  company: {
+    name: string;
+  };
+  companyId: number;
+  createdAt: string;
+  description: string;
+  id: number;
+  merchandiseHowToConsumeId: number;
+  name: string;
+  rating: string;
+  updatedAt: string;
+}
+
+export interface RecentMerchandisesInitialStateType {
+  recentMerchandises: RecentMerchandisesDataType[];
+  loading: boolean;
+  error: boolean;
+}

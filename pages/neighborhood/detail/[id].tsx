@@ -35,7 +35,6 @@ const Detail: NextPage = () => {
   );
 
   const onLinkChat = useClickRoute({ link: "/chat" });
-  console.log(pharmacistPostings);
 
   useEffect(() => {
     dispatch(__getPharmacists());
@@ -117,11 +116,12 @@ const Detail: NextPage = () => {
               return (
                 <div
                   key={i}
-                  className="w-[380px] h-[84px] rounded-md shadow-lg mx-auto my-4 p-4 flex flex-col"
+                  onClick={() => router.push(`/article/detail/${v.id}`)}
+                  className="cursor-pointer w-[380px] rounded-md shadow-lg mx-auto my-4 p-4 flex flex-col"
                 >
                   <span className="text-[13px] font-bold">{v.title}</span>
                   <span className="text-sm text-coolgray4 mt-2">
-                    {v.content.slice(0, 100)}
+                    {v.content.slice(0, 100)}...
                   </span>
                 </div>
               );

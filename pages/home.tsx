@@ -104,10 +104,22 @@ const Home = () => {
           link="/peoplePick/health"
         />
         <div className="flex py-6 w-full justify-evenly">
-          <HomeCategoryBtn src={HealthProblemIcon} text="건강고민" link="/" />
-          <HomeCategoryBtn src={AgeIcon} text="연령" link="/" />
-          <HomeCategoryBtn src={IngredientIcon} text="원료" link="/" />
-          <HomeCategoryBtn src={GenderIcon} text="성별" link="/" />
+          <HomeCategoryBtn
+            src={HealthProblemIcon}
+            text="건강고민"
+            link="/peoplePick/health"
+          />
+          <HomeCategoryBtn src={AgeIcon} text="연령" link="/peoplePick/age" />
+          <HomeCategoryBtn
+            src={IngredientIcon}
+            text="원료"
+            link="/peoplePick/effect"
+          />
+          <HomeCategoryBtn
+            src={GenderIcon}
+            text="성별"
+            link="/peoplePick/gender"
+          />
         </div>
       </div>
       <div className="home-section-wrapper">

@@ -146,42 +146,56 @@ const MedicineDetail = () => {
                 이 약을 추천하는
                 <span className="font-bold"> 약사 후기</span>
               </div>
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <div className="text-coolgray3 text-[10px] mr-[9px]">
                   더보기
                 </div>
                 <div className="rotate-180 opacity-50">
                   <Image src={pathGray} alt="heart" />
                 </div>
+              </div> */}
+            </div>
+
+            {/* 코멘트 */}
+            <div className="flex flex-col">
+              {/* 타이틀 */}
+              <div className="flex justify-between text-[16px] mt-[24px]">
+                <div className="flex mt-[7px] gap-2 mb-[11px]">
+                  <Image alt="" src={star_fill} />
+                  <Image alt="" src={star_fill} />
+                  <Image alt="" src={star_fill} />
+                  <Image alt="" src={star_fill} />
+                  <Image alt="" src={star_empty} />
+                </div>
+                <div className="text-[13px] text-[#4A5A95] font-bold">
+                  한성준 약사
+                </div>
+              </div>
+              {/* 평가내용 */}
+              <div className="bgThree">
+                <div className="commentUp">
+                  <div className="mt-[8px] ml-[10px] min-w-[50px] text-[#00B7F0]">
+                    좋아요
+                  </div>
+                  <div className="mt-[8px] ml-[10px]">
+                    나이상관없이 남녀노소 먹어야하는 비타민 C 이 제품은 가격도
+                    저렴한 편이고 알약 사이즈가 작아서 복용하기 편해요. 많이
+                    먹어도 소변으로 배출되기 때문에 고용량을 먹어도 괜찮답니다.
+                  </div>
+                </div>
+                <div className="commentDown">
+                  <div className="mt-[8px] ml-[10px] min-w-[50px] text-[#00B7F0]">
+                    주의하세요
+                  </div>
+                  <div className="mt-[8px] ml-[10px]">
+                    임산부는 섭취에 주의를 요해요. 한꺼번에 많은 양을
+                    복용하기보다는 나눠서 섭취하는게 좋아요.
+                  </div>
+                </div>
               </div>
             </div>
-            {/* 가로 스크롤 후기? */}
-            <div className="overflow-x-scroll flex w-[370px] mt-[19px] mb-[25px]">
-              {Array.from({ length: 5 })?.map((v, i) => {
-                return (
-                  <div
-                    className="borderBox min-w-[122px] max-w-[122px] max-h-[151px] rounded-[13px] border-solid border-2 border-blue3 mr-[16px] px-[16px]"
-                    key={i}
-                  >
-                    <div className="text-darkblue1 font-extrabold text-[13px] mt-[19px]">
-                      한성준 약사
-                    </div>
-                    <div className="mt-[13px] text-[12px] text-coolgray4 font-normal leading-[14px]">
-                      착한 가격에 넉넉한 용량의 비타민C. 하루 1정씩, 240일치
-                      (6개월 이상)
-                    </div>
-                    <div className="flex mt-[7px] gap-2 mb-[11px]">
-                      <Image alt="" src={star_fill} />
-                      <Image alt="" src={star_fill} />
-                      <Image alt="" src={star_fill} />
-                      <Image alt="" src={star_fill} />
-                      <Image alt="" src={star_empty} />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            {/* 추천 태그 */}
+
+            {/* 바디부분 마지막 닫기태그 */}
           </div>
 
           {/* 좋아요 + 예약버튼 */}
@@ -212,7 +226,26 @@ const MedicineDetail = () => {
               justify-content: center;
               align-items: center;
             }
-
+            .bgThree {
+              width: 335px;
+              height: 110px;
+              background: #ffffff;
+              border-radius: 6px;
+              display: flex;
+              flex-direction: column;
+            }
+            .commentUp {
+              display: flex;
+              font-weight: 500;
+              font-size: 10px;
+              line-height: 16px;
+            }
+            .commentDown {
+              display: flex;
+              font-weight: 500;
+              font-size: 10px;
+              line-height: 14px;
+            }
             .rate {
               width: 100%;
               margin: auto;

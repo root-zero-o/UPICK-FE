@@ -80,7 +80,8 @@ const Home = () => {
         <div className="z-40 w-full px-2 pt-4">
           {isLogin ? (
             <h1 className="text-white text-2xl font-bold z-40 px-6">
-              {user?.nickname ?? ""}님, 반가워요!
+              {user?.nickname === "" ? "오늘도건강유픽러" : user?.nickname}님,
+              반가워요!
             </h1>
           ) : (
             <h1 className="text-white text-2xl font-bold z-40 px-6">

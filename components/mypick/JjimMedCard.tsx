@@ -1,55 +1,70 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import fullHeart from "../../assets/images/icons/fullHeart.svg";
 import Image from "next/image";
 import Router from "next/router";
+import axios from "axios";
 
 interface IProps {
   id: number;
   src: string;
   name: string;
+  token: string;
 }
 
-const JjimMedCard: FC<IProps> = ({ id, src, name }) => {
+const JjimMedCard: FC<IProps> = ({ id, src, name, token }) => {
+  const [isFollow, setIsFollow] = useState<boolean>(false);
   const goItem = () => {
-    Router.push(`/med/detail/${id}`);
+    Router.push(`/medicineDetail/${id}`);
+  };
+  const toggleLikeHandler = async () => {
+    try {
+      const toggleLike = await axios({
+        method: "PUT",
+        // data: { pharmacistId: 1 },
+        url: `${process.env.NEXT_PUBLIC_SERVER}/goods/merchandises/${id}/like`,
+        headers: {
+          Authorization: token,
+        },
+      });
+      setIsFollow(true);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
-    <div
-      onClick={goItem}
-      className="mb-4 relative w-full border-[1px] p-3 border-box border-coolgray3 rounded-2xl"
-    >
-      <div className="flex items-center justify-between">
-        <div className="w-[48px] h-[60px] shadow-md rounded-[13px] bg-blue1 flex justify-center items-center">
-          <Image
-            src={src}
-            alt=""
-            width={`48px`}
-            height={`60px`}
-            unoptimized={true}
-            className="rounded-full"
-          ></Image>
-        </div>
-        <div className="flex flex-col justify-between w-[75%]">
-          <div className="flex  h-[60px] flex-col justify-between w-[100%]">
-            <span className="mt-2 font-bold text-[12px]">{name}</span>
-          </div>
-          {/* <div className="flex items-center">
-            <div className="flex items-center">
-              <span className="font-black text-[24px]">12,600</span>
-              <span className="ml-1 font-medium text-[20px]">원</span>
+    <>
+      {!isFollow && (
+        <>
+          <div className="mb-4 relative w-full border-[1px] p-3 border-box border-coolgray3 rounded-2xl">
+            <div className="flex items-center justify-between">
+              <div className="w-[48px] h-[60px] shadow-md rounded-[13px] flex justify-center items-center">
+                <Image
+                  src={`${src}`}
+                  alt=""
+                  width={`48px`}
+                  height={`60px`}
+                  unoptimized={true}
+                  className="rounded-full"
+                  onClick={goItem}
+                ></Image>
+              </div>
+              <div className="flex flex-col justify-between w-[75%]">
+                <div className="flex  h-[60px] flex-col justify-between w-[100%]">
+                  <span className="mt-2 font-bold text-[12px]">{name}</span>
+                </div>
+              </div>
+              <div
+                onClick={toggleLikeHandler}
+                className="h-[60px] flex item-center cursor-pointer z-10"
+              >
+                <Image alt="" src={fullHeart} />
+              </div>
             </div>
-            <div className="ml-3 bg-coolgray2 rounded-full flex items-center py-[2px] px-[6px] text-xs">
-              <div className="bg-yellow1 rounded-full mt-[1px] w-[13px] h-[13px] mr-1.5"></div>
-              <span className="font-bold">1,200P 적립</span>
-            </div>
-          </div> */}
-        </div>
-        <div className="h-[60px] flex item-center">
-          <Image alt="" src={fullHeart} />
-        </div>
-      </div>
-    </div>
+          </div>{" "}
+        </>
+      )}
+    </>
   );
 };
 

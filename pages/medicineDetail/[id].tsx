@@ -3,16 +3,18 @@ import notification from "assets/images/icons/ic_noti.svg";
 import BackBtn from "components/BackBtn";
 import useClickRoute from "hooks/useClickRoute";
 import pathGray from "assets/images/icons/PathGray.svg";
+import heart_fill from "assets/images/icons/fullHeart.svg";
 import heart_line from "assets/images/icons/heart-line.svg";
 import star_fill from "assets/images/icons/star-fill.svg";
 import star_empty from "assets/images/icons/star-emp.svg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GetMerchandiseDetail } from "store/modules/medicineSlice";
 import { useAppDispatch } from "src/hooks/reduxHooks";
 import { RootState } from "store/modules";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import InfoIcon from "assets/images/icons/info.svg";
+import axios from "axios";
 
 const MedicineDetail = () => {
   const onLink = useClickRoute({ link: "/alert" });
@@ -20,12 +22,55 @@ const MedicineDetail = () => {
   const { id } = router.query;
   const dispatch = useAppDispatch();
   const { data } = useSelector((state: RootState) => state.medicine);
-  console.log(data);
+  const [isLike, setIsLike] = useState<boolean>(false);
 
   useEffect(() => {
     if (id !== undefined) dispatch(GetMerchandiseDetail(`${id}`));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
+  const [token, setToken] = useState<string>("");
+  useEffect(() => {
+    const auth = localStorage.getItem("authorization");
+    if (!auth) return;
+    setToken(auth ?? "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(token)]);
+
+  const toggleLikeHandler = async () => {
+    try {
+      const toggleLike = await axios({
+        method: "PUT",
+        // data: { pharmacistId: 1 },
+        url: `${process.env.NEXT_PUBLIC_SERVER}/goods/merchandises/${data?.id}/like`,
+        headers: {
+          Authorization: token,
+        },
+      });
+      console.log(toggleLike);
+      setIsLike(!isLike);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const pickUpHandler = async () => {
+    const data = 1;
+    try {
+      const toggleLike = await axios({
+        method: "PUT",
+        // data: { pharmacistId: 1 },
+        url: `${process.env.NEXT_PUBLIC_SERVER}/goods/merchandises/${data}/like`,
+        headers: {
+          Authorization: token,
+        },
+      });
+      console.log(toggleLike);
+      setIsLike(!isLike);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -162,7 +207,7 @@ const MedicineDetail = () => {
             </div>
 
             {/* 코멘트 */}
-            <div className="flex flex-col">
+            <div className="flex flex-col mb-[120px]">
               {/* 타이틀 */}
               <div className="flex justify-between text-[16px] mt-[24px]">
                 <div className="flex mt-[7px] gap-2 mb-[11px]">
@@ -205,8 +250,15 @@ const MedicineDetail = () => {
 
           {/* 좋아요 + 예약버튼 */}
           <div className="bg-coolgray1 flex justify-between py-[10px] px-[30px] fixed bottom-0">
-            <div className="w-[40px] h-[40px] flex justify-center mr-[20px] bg-coolgray1 rounded-full shadow-home-p-category-btn">
-              <Image src={heart_line} alt="heart" />
+            <div
+              onClick={toggleLikeHandler}
+              className="w-[40px] h-[40px] flex justify-center mr-[20px] bg-coolgray1 rounded-full shadow-home-p-category-btn"
+            >
+              <Image
+                src={isLike ? heart_fill : heart_line}
+                alt="heart"
+                className="cursor-pointer"
+              />
             </div>
             <button className="w-[256px] h-[40px] bg-coolgray3 rounded-[22px] text-center text-[14px] text-white shadow-button_shadow font-extrabold ">
               약국에 영양제 픽업 예약하기

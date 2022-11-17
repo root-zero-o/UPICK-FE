@@ -1,7 +1,7 @@
 import KeywordChip from "components/KeywordChip";
 import Layout from "components/Layout";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "src/hooks/reduxHooks";
@@ -9,7 +9,10 @@ import { selectPostings, __getPostings } from "store/modules/postingSlice";
 import Image from "next/image";
 import MerchandiseBG from "../../../assets/images/MerchandiseBG.svg";
 import FullHeartIcon from "assets/images/icons/heart-fill.svg";
+import NoHeartIcon from "assets/images/icons/heart-line.svg";
 import MerchandiseCard from "components/article/MerchandiseCard";
+import axios from "axios";
+import { isFloat32Array } from "util/types";
 
 const Article = () => {
   const router = useRouter();
@@ -20,10 +23,35 @@ const Article = () => {
     dispatch(__getPostings());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const [token, setToken] = useState<string>("");
+  useEffect(() => {
+    const auth = localStorage.getItem("authorization");
+    if (!auth) return;
+    setToken(auth);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(token)]);
 
   const data = postings.postings;
   const article = data?.filter((v) => v.id === Number(id))[0];
   const profileImage = article?.pharmacist?.Image[0]?.url;
+  const [isFollow, setIsFollow] = useState<boolean>(false);
+  const toggleLikeHandler = async () => {
+    console.log("hello");
+    try {
+      const toggleLike = await axios({
+        method: "PUT",
+        // data: { pharmacistId: 1 },
+        url: `${process.env.NEXT_PUBLIC_SERVER}/posting/${id}/like`,
+        headers: {
+          Authorization: token,
+        },
+      });
+      console.log(toggleLike);
+      setIsFollow(!isFollow);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Layout isWhite={false} icon>
@@ -83,9 +111,14 @@ const Article = () => {
         <span className=" text-lg font-bold text-darkblue1">
           추천 약 리스트
         </span>
-        <div className="flex flex-col">
-          <Image src={FullHeartIcon} alt="" />
-          <span className="text-sm text-darkblue1 font-bold">123</span>
+        <div
+          className="flex flex-col cursor-pointer"
+          onClick={toggleLikeHandler}
+        >
+          <Image src={isFollow ? FullHeartIcon : NoHeartIcon} alt="" />
+          <span className="text-sm text-darkblue1 font-bold">
+            {isFollow ? "124" : "123"}
+          </span>
         </div>
       </div>
       <div

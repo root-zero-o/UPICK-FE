@@ -14,10 +14,11 @@ interface IProps {
 const TemplateJjim: FC<IProps> = ({ type }) => {
   const [token, setToken] = useState<string>("");
   const [jjimMed, setJjimMed] = useState<TypeLikeMed[]>([]);
-
+  console.log(jjimMed);
   const [jjimPhar, setJjimPhar] = useState<TypesLikePhar[]>([]);
-
   const [jjimSub, setJjimSub] = useState<TypesLikeSub[]>([]);
+  console.log(jjimSub);
+
   const responseSub = async () => {
     try {
       const result = await axios({
@@ -73,20 +74,24 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
     const auth = localStorage.getItem("authorization");
     if (!auth) return;
     setToken(auth);
-    if (type === "med") {
-      if (!auth) return;
-      response();
-    } else if (type === "phar") {
-      if (!auth) return;
-      responsePhar();
-    } else if (type === "sub") {
-      if (!auth) return;
-      responseSub();
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(token)]);
   const router = useRouter();
 
+  useEffect(() => {
+    if (!token) return;
+    if (type === "med") {
+      if (!token) return;
+      response();
+    } else if (type === "phar") {
+      if (!token) return;
+      responsePhar();
+    } else if (type === "sub") {
+      if (!token) return;
+      responseSub();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(token)]);
   return (
     <Layout home={false} title="" isWhite={false} icon={false} myPick>
       <div className="w-full flex justify-center box-border border-b-[1px] border-coolgray3">
@@ -116,9 +121,10 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
               return (
                 <>
                   <JjimMedCard
-                    id={value.id}
-                    name={value.name}
-                    src={value.Image[0].url}
+                    id={value?.id}
+                    name={value?.name}
+                    src={value?.Image[0]?.url}
+                    token={token}
                   />
                 </>
               );
@@ -153,10 +159,11 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
                 <>
                   <JjimPharCard
                     id={value.id}
-                    name={value.pharmacistName}
-                    at={value.pharmacyName}
+                    name={value.pharmacist?.userName}
+                    at={value?.pharmacist?.pharmacyName}
                     contents={value.content}
                     title={value.title}
+                    token={token}
                   />
                 </>
               );

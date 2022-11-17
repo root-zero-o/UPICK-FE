@@ -76,8 +76,10 @@ export type TypesLikeSub = {
   createdAt: string;
   updatedAt: string;
   gender: string;
-  pharmacyName: string;
-  pharmacistName: string;
+  pharmacist: {
+    userName: string;
+    pharmacyName: string;
+  };
 };
 
 export type TypePick = {

@@ -26,11 +26,14 @@ import {
   selectRecentMerchandises,
   __getRecentMerchandises,
 } from "store/modules/recentMerchandisesSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "store/modules";
 
 const Home = () => {
   const postings = useAppSelector(selectPostings);
   const pharmacists = useAppSelector(selectPharmacists);
   const recentMerchandises = useAppSelector(selectRecentMerchandises);
+  const user = useSelector((state: RootState) => state.user.userInfo);
   const dispatch = useAppDispatch();
   const data = Array.from(postings?.postings).slice(0, 5);
   const pharmacistData = Array.from(pharmacists?.pharmacists).slice(0, 6);
@@ -68,9 +71,15 @@ const Home = () => {
         />
         <SearchInput top="150px" width={88} link="search" />
         <div className="z-40 w-full px-2 pt-4">
-          <h1 className="text-white text-2xl font-bold z-40 px-6">
-            김영근짱님, 반가워요!
-          </h1>
+          {user?.nickname ? (
+            <h1 className="text-white text-2xl font-bold z-40 px-6">
+              {user?.nickname}님, 반가워요!
+            </h1>
+          ) : (
+            <h1 className="text-white text-2xl font-bold z-40 px-6">
+              방문자님, 반가워요!
+            </h1>
+          )}
         </div>
       </div>
 

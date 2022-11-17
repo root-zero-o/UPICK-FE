@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import notification from "../assets/images/icons/nofication.svg";
 import alertBlue from "../assets/images/icons/alertBlue.svg";
+import logo from "../assets/images/icons/medLogo.png";
 import down from "../assets/images/icons/down.svg";
 import BackBtn from "./BackBtn";
 import useClickRoute from "hooks/useClickRoute";
@@ -36,8 +37,14 @@ const Layout = ({
           <div className="flex items-center w-[80%]">
             {/* 로그인 안되있다는거 알려주는 알림text */}
             {isLogin ? (
-              <h4 className="text-white text-lg font-light">애옹쓰약국</h4>
+              <div className="flex justify-center items-center">
+                <Image alt="" src={logo} className="mt-1" />
+                <h4 className="text-white text-lg font-bold ml-2 mb-1">
+                  UPick
+                </h4>
+              </div>
             ) : (
+              // <h4 className="text-white text-lg font-light">애옹쓰약국</h4>
               <h4 className="text-white text-lg font-light">
                 로그인하면 이용할 수 있어요
               </h4>

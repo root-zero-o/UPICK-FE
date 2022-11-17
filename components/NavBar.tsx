@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import pharmacist from "../assets/images/icons/pharmacist.svg";
+import pharmacist from "../assets/images/icons/pharmacist.png";
 import pharmacistBlue from "../assets/images/icons/pharmacistBlue.png";
 import people from "../assets/images/icons/people.svg";
 import peopleBlue from "../assets/images/icons/peopleBlue.svg";
@@ -59,8 +59,8 @@ const NavBar = ({ location }: { location: string }) => {
           className="flex flex-col items-center text-skyblue"
           onClick={onHomeLink}
         >
-          <Image alt="" src={HomeBlue} />
-          <span className="text-[8px] mt-[5px] text-coolgray3">홈</span>
+          <Image alt="" src={HomeBlue} className="shadow-2xl" />
+          <span className="text-[8px] mt-[5px] text-blue1">홈</span>
         </div>
       ) : (
         <div

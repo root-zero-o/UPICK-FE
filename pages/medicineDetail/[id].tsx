@@ -204,7 +204,7 @@ const MedicineDetail = () => {
           </div>
 
           {/* 좋아요 + 예약버튼 */}
-          <div className="bg-coolgray1 flex justify-between py-[10px] px-[30px]">
+          <div className="bg-coolgray1 flex justify-between py-[10px] px-[30px] fixed bottom-0">
             <div className="w-[40px] h-[40px] flex justify-center mr-[20px] bg-coolgray1 rounded-full shadow-home-p-category-btn">
               <Image src={heart_line} alt="heart" />
             </div>

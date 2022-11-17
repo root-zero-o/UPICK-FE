@@ -99,6 +99,7 @@ const Index = () => {
             title="가장 인기많은 약사순"
             subtitle=""
             link="/neighborhood/search"
+            hideSub
           />
           <div className="flex w-full justify-evenly py-4">
             {famousPharmacistData &&

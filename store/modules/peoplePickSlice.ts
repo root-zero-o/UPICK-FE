@@ -12,7 +12,7 @@ export const EffectPick = createAsyncThunk(EFFECT, async (payload: any) => {
 });
 
 export const GenderPick = createAsyncThunk(GENDER, async (payload: any) => {
-  const response = await apis.getPeopleEffect(payload);
+  const response = await apis.getPeopleGender(payload);
   return response.data.data;
 });
 

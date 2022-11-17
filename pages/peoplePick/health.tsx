@@ -15,19 +15,20 @@ const Health = () => {
   const [health, setHealth] = useState("눈건강");
   const dispatch = useAppDispatch();
   const { data } = useSelector((state: RootState) => state.peoplePick);
+  const [keyword, setKeyword] = useState("");
 
   const onEye = () => {
     setHealth("눈건강");
   };
 
   useEffect(() => {
-    dispatch(HealthPick(health));
+    dispatch(HealthPick({ health, keyword }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [health]);
+  }, [health, keyword]);
   return (
     <div className="w-full flex flex-col py-8 relative space-y-6 overflow-x-hidden mb-[55px]">
       {/* 검색창 */}
-      <Search />
+      <Search setKeyword={setKeyword} />
 
       {/* 카테고리 */}
       <CategoryTab txt="health" />

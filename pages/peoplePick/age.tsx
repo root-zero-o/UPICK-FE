@@ -15,6 +15,7 @@ const Age = () => {
   const [age, setAge] = useState(20);
   const dispatch = useAppDispatch();
   const { data } = useSelector((state: RootState) => state.peoplePick);
+  const [keyword, setKeyword] = useState("");
 
   const onTw = () => {
     setAge(20);
@@ -35,25 +36,25 @@ const Age = () => {
   useEffect(() => {
     switch (age) {
       case 20:
-        dispatch(AgePick({ minAge: 0, maxAge: age }));
+        dispatch(AgePick({ minAge: 0, maxAge: age, keyword }));
         break;
       case 30:
       case 40:
       case 50:
-        dispatch(AgePick({ minAge: age - 9, maxAge: age }));
+        dispatch(AgePick({ minAge: age - 9, maxAge: age, keyword }));
         break;
       case 60:
-        dispatch(AgePick({ minAge: age, maxAge: 100 }));
+        dispatch(AgePick({ minAge: age, maxAge: 100, keyword }));
         break;
       default:
         return;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [age]);
+  }, [age, keyword]);
   return (
     <div className="w-full flex flex-col py-8 relative space-y-6 overflow-x-hidden mb-[55px]">
       {/* 검색창 */}
-      <Search />
+      <Search setKeyword={setKeyword} />
 
       {/* 카테고리 */}
       <CategoryTab txt="age" />

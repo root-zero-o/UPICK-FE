@@ -15,15 +15,21 @@ export const apis = {
 
   // people Pick
   getPeopleEffect: (payload: any) =>
-    api.get(`/goods/merchandises/filtering-by-effect/?keyword=피부`),
+    api.get(
+      `/goods/merchandises/filtering-by-effect/?keyword=${payload.keyword}`
+    ),
   getPeopleGender: (payload: any) =>
-    api.get(`/goods/merchandises/filtering-by-gender/${payload}?keyword=건강`),
+    api.get(
+      `/goods/merchandises/filtering-by-gender/${payload.gender}?keyword=${payload.keyword}`
+    ),
   getPeopleAge: (payload: any) =>
     api.get(
-      `/goods/merchandises/filtering-by-Age/?minAge=${payload.minAge}&maxAge=${payload.maxAge}&keyword=비타민 `
+      `/goods/merchandises/filtering-by-Age/?minAge=${payload.minAge}&maxAge=${payload.maxAge}&keyword=${payload.keyword}`
     ),
   getPeopleHealth: (payload: any) =>
-    api.get(`/goods/merchandises/filtering-by-consider?keyword=${payload} `),
+    api.get(
+      `/goods/merchandises/filtering-by-consider?keyword=${payload.keyword}`
+    ),
 
   // medicine
   getMedicineById: (payload: any) => api.get(`/goods/merchandises/${payload}`),

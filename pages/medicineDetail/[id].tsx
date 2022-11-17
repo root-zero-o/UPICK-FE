@@ -120,7 +120,7 @@ const MedicineDetail = () => {
             <div className="rate">
               <div className="rateLeft">
                 <div className="text-coolgray4 text-[12px]">약사점수</div>
-                <div className="text-[#1576FB] text-[17.5px] mt-[8px]">
+                <div className="text-[#1576FB] text-[17.5px] mt-[8px] font-bold">
                   {data?.rating} 점
                 </div>
               </div>
@@ -128,9 +128,8 @@ const MedicineDetail = () => {
                 <div className="text-coolgray4 text-[12px]">
                   섭취용량과 방법
                 </div>
-                <div className="text-white ml-[4px] text-[12px] bgOne p-[8px]">
-                  {/* {data?.merchandiseHowToConsume.consumption} */}
-                  1일 1정 2회
+                <div className="text-[#1576FB] text-[12px] mt-[10px] font-bold">
+                  {data?.merchandiseHowToConsume.consumption}
                 </div>
               </div>
             </div>
@@ -277,7 +276,8 @@ const MedicineDetail = () => {
               background: #e2f0fb;
               border-radius: 6px;
               display: flex;
-              justify-content: space-around;
+              flex-direction: column;
+              justify-content: center;
               align-items: center;
             }
           `}</style>

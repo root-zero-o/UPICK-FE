@@ -22,7 +22,7 @@ export const apis = {
     ),
   getPeopleAge: (payload: any) =>
     api.get(
-      `/goods/merchandises/filtering-by-Age/?minAge=${payload.minAge}&maxAge=${payload.maxAge}&keyword=비타민 `
+      `/goods/merchandises/filtering-by-Age/?minAge=${payload.minAge}&maxAge=${payload.maxAge}&keyword=${payload.keyword}`
     ),
   getPeopleHealth: (payload: any) =>
     api.get(`/goods/merchandises/filtering-by-consider?keyword=${payload} `),

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SearchInput } from "../components/SearchInput";
 import Seo from "components/Seo";
 import HeaderBG from "../components/HeaderBG";
@@ -48,6 +48,13 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("authorization");
+    if (token) return setIsLogin(true);
+  }, []);
+
   return (
     <Layout home={true} title="" isWhite={true} icon={true}>
       <Seo title="home" />
@@ -71,9 +78,9 @@ const Home = () => {
         />
         <SearchInput top="150px" width={88} link="search" />
         <div className="z-40 w-full px-2 pt-4">
-          {user?.nickname ? (
+          {isLogin ? (
             <h1 className="text-white text-2xl font-bold z-40 px-6">
-              {user?.nickname}님, 반가워요!
+              {user?.nickname ?? ""}님, 반가워요!
             </h1>
           ) : (
             <h1 className="text-white text-2xl font-bold z-40 px-6">

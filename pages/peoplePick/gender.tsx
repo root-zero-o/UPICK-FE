@@ -15,6 +15,7 @@ const Effect = () => {
   const [gender, setGender] = useState("male");
   const dispatch = useAppDispatch();
   const { data } = useSelector((state: RootState) => state.peoplePick);
+  const [keyword, setKeyword] = useState("");
 
   const onFemaleClick = () => {
     setGender("female");
@@ -24,16 +25,16 @@ const Effect = () => {
   };
 
   useEffect(() => {
-    dispatch(GenderPick(gender));
+    dispatch(GenderPick({ gender, keyword }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gender]);
+  }, [gender, keyword]);
   return (
     <div className="w-full flex flex-col py-8 relative space-y-6 overflow-x-hidden mb-[55px]">
       {/* 검색창 */}
-      <Search />
+      <Search setKeyword={setKeyword} />
 
       {/* 카테고리 */}
-      <CategoryTab txt="age" />
+      <CategoryTab txt="gender" />
 
       {/* 카테고리 아래 bar */}
       <CategoryUnderBar txt={5} />

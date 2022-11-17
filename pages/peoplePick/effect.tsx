@@ -1,6 +1,6 @@
 import NavBar from "components/NavBar";
 import SearchIcon from "../assets/images/icons/SearchIcon.svg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { EffectPick } from "store/modules/peoplePickSlice";
 import { useAppDispatch } from "src/hooks/reduxHooks";
 import { RootState } from "store/modules";
@@ -14,6 +14,7 @@ import Search from "components/peoplePick/search";
 const Effect = () => {
   const dispatch = useAppDispatch();
   const { data } = useSelector((state: RootState) => state.peoplePick);
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
     dispatch(EffectPick("male"));
@@ -22,7 +23,7 @@ const Effect = () => {
   return (
     <div className="w-full flex flex-col py-8 relative space-y-6 overflow-x-hidden mb-[55px]">
       {/* 검색창 */}
-      <Search />
+      <Search setKeyword={setKeyword} />
 
       {/* 카테고리 */}
       <CategoryTab txt="effect" />

@@ -17,7 +17,9 @@ export const apis = {
   getPeopleEffect: (payload: any) =>
     api.get(`/goods/merchandises/filtering-by-effect/?keyword=피부`),
   getPeopleGender: (payload: any) =>
-    api.get(`/goods/merchandises/filtering-by-gender/${payload}?keyword=건강`),
+    api.get(
+      `/goods/merchandises/filtering-by-gender/${payload.gender}?keyword=${payload.keyword}`
+    ),
   getPeopleAge: (payload: any) =>
     api.get(
       `/goods/merchandises/filtering-by-Age/?minAge=${payload.minAge}&maxAge=${payload.maxAge}&keyword=비타민 `

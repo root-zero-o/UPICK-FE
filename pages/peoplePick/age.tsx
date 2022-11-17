@@ -15,6 +15,7 @@ const Age = () => {
   const [age, setAge] = useState(20);
   const dispatch = useAppDispatch();
   const { data } = useSelector((state: RootState) => state.peoplePick);
+  const [keyword, setKeyword] = useState("");
 
   const onTw = () => {
     setAge(20);
@@ -53,7 +54,7 @@ const Age = () => {
   return (
     <div className="w-full flex flex-col py-8 relative space-y-6 overflow-x-hidden mb-[55px]">
       {/* 검색창 */}
-      <Search />
+      <Search setKeyword={setKeyword} />
 
       {/* 카테고리 */}
       <CategoryTab txt="age" />

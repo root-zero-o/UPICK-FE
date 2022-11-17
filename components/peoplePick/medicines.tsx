@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 const Medicines = ({ data }: { data: any }) => {
   const router = useRouter();
-  console.log(data);
 
   return (
     <>

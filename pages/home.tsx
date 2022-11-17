@@ -80,7 +80,8 @@ const Home = () => {
   useEffect(() => {
     response();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(token)]);
+  }, [JSON.stringify(token), JSON.stringify(isLogin)]);
+
   return (
     <Layout home={true} title="" isWhite={true} icon={true}>
       <Seo title="home" />
@@ -104,7 +105,7 @@ const Home = () => {
         />
         <SearchInput top="150px" width={88} link="search" />
         <div className="z-40 w-full px-2 pt-4">
-          {isLogin ? (
+          {token ? (
             <h1 className="text-white text-2xl font-bold z-40 px-6">
               {myPickData?.name === "" ? "오늘도건강유픽러" : myPickData?.name}
               님, 반가워요!

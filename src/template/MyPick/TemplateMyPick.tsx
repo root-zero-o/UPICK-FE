@@ -41,7 +41,10 @@ const TemplateMyPick = () => {
 
   useEffect(() => {
     const auth = localStorage.getItem("authorization");
-    if (!auth) return;
+    if (!auth) {
+      router.push("/");
+      return;
+    }
     setToken(auth ?? "");
     response();
     // eslint-disable-next-line react-hooks/exhaustive-deps

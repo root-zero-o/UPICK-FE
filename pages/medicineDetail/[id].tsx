@@ -67,19 +67,25 @@ const MedicineDetail = () => {
             </div>
 
             {/* 영양소 + mg */}
-            <div className="flex justify-between text-[14px] mt-[16px]">
-              <div className="flex items-center">
-                <div className="font-extrabold">비타민 C</div>
-                {/* <div className="bg-blue1 px-[4px] text-white text-[10px] ml-[12px] rounded-[33px]">
-                필수영양소
-              </div> */}
-              </div>
-              <div className="flex items-center">
-                <div className="text-white ml-[4px] text-[12px] bgOne">
-                  적당
+            {data?.MerchandiseToIngredient.map((value: any, index: any) => {
+              return (
+                <div
+                  className="flex justify-between text-[14px] mt-[16px]"
+                  key={index}
+                >
+                  <div className="flex items-center">
+                    <div className="font-extrabold">
+                      {value.ingredient.name}
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="text-white ml-[4px] text-[12px] bgOne">
+                      {value.quantity}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              );
+            })}
 
             {/* 약 복용횟수 */}
             {/* <div className="flex justify-between mt-[8px]">
@@ -129,8 +135,8 @@ const MedicineDetail = () => {
               </div>
             </div>
 
-            {/* 최저섭취량 */}
-            <div className="flex justify-between text-[16px] mt-[24px]">
+            {/* 최저섭취량 - 일단 주석 */}
+            {/* <div className="flex justify-between text-[16px] mt-[24px]">
               <div className="text-[10px] text-coolgray4">섭취권장용량</div>
               <div className="flex justify-center items-center">
                 <Image src={InfoIcon} alt=""></Image>
@@ -138,7 +144,7 @@ const MedicineDetail = () => {
                   최적섭취량 30~1000mg
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* 약사 후기  더보기> */}
             <div className="flex justify-between items-center mt-[40px] text-[16px]">

@@ -6,15 +6,27 @@ import BannerTwo from "../../assets/images/banners/Banner_2.png";
 import BannerThree from "../../assets/images/banners/Banner_3.png";
 import Image from "next/image";
 import useClickRoute from "hooks/useClickRoute";
+import MainSlider from "components/MainSlider";
 
 const AdSlide = () => {
   const [move, setMove] = useState(0);
   const [clicked, setClicked] = useState("first");
+  // const onLinkBanner1 = useClickRoute({ link: "/article/detail/9" });
+  // const onLinkBanner2 = useClickRoute({
+  //   link: "https://daisycom.notion.site/UXUI-d3052802d76a4164af06adf52e8ea856",
+  // });
+
   const onLinkBanner1 = useClickRoute({ link: "/article/detail/9" });
-  const onLinkBanner2 = useClickRoute({ link: "/" });
+  const onLinkBanner2 = () =>
+    window.open(
+      "https://daisycom.notion.site/UXUI-d3052802d76a4164af06adf52e8ea856"
+    );
+
+  //   link: "https://daisycom.notion.site/UXUI-d3052802d76a4164af06adf52e8ea856",
+  // });
   const onLinkBanner3 = () =>
     window.open(
-      "https://daisycom.notion.site/Design-Guide-0a594501d9034d76984f35c9fe2f3e13"
+      "https://daisycom.notion.site/Uick-Design-System-0a594501d9034d76984f35c9fe2f3e13"
     );
 
   const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -30,27 +42,44 @@ const AdSlide = () => {
       setClicked("third");
     }
   };
+  const banner01 = () => {
+    return (
+      <div
+        onClick={onLinkBanner1}
+        className="w-[26%] h-[130px] ml-11 mr-12 rounded-xl relative cursor-pointer"
+      >
+        <Image src={BannerOne} alt="banner-1" />
+      </div>
+    );
+  };
+  const banner02 = () => {
+    return (
+      <div
+        onClick={onLinkBanner2}
+        className="w-[26%] h-[130px] mx-12  rounded-xl relative cursor-pointer"
+      >
+        <Image src={BannerTwo} alt="banner-2" />
+      </div>
+    );
+  };
+  const banner03 = () => {
+    return (
+      <div
+        onClick={onLinkBanner3}
+        className="w-[26%] h-[130px] mx-12 rounded-xl relative cursor-pointer"
+      >
+        <Image src={BannerThree} alt="banner-3" />
+      </div>
+    );
+  };
+
+  const cardSlider = [banner01(), banner02(), banner03()];
+
   return (
     <div className="relative h-[130px] pt-2 ">
       <div className="slide transition-transform">
-        <div
-          onClick={onLinkBanner1}
-          className="w-[26%] h-[130px] ml-11 mr-12 rounded-xl relative cursor-pointer"
-        >
-          <Image src={BannerOne} alt="banner-1" />
-        </div>
-        <div
-          onClick={onLinkBanner2}
-          className="w-[26%] h-[130px] mx-12  rounded-xl relative cursor-pointer"
-        >
-          <Image src={BannerTwo} alt="banner-2" />
-        </div>
-        <div
-          onClick={onLinkBanner3}
-          className="w-[26%] h-[130px] mx-12 rounded-xl relative cursor-pointer"
-        >
-          <Image src={BannerThree} alt="banner-3" />
-        </div>
+        {banner01()} {banner02()} {banner03()}
+        {/* <MainSlider cardList={cardSlider}></MainSlider> */}
       </div>
       <div className="absolute bottom-0 left-[50%] -translate-x-[50%] flex space-x-[8px] transition-all">
         <div

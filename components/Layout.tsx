@@ -6,6 +6,7 @@ import logo from "../assets/images/icons/medLogo.png";
 import down from "../assets/images/icons/down.svg";
 import BackBtn from "./BackBtn";
 import useClickRoute from "hooks/useClickRoute";
+import Router from "next/router";
 interface LayoutProps {
   title?: string;
   home?: boolean;
@@ -30,6 +31,7 @@ const Layout = ({
     const token = window.localStorage.getItem("authorization");
     if (token) return setIsLogin(true);
   }, []);
+
   return (
     <div className="w-full flex flex-col py-8 relative space-y-6 overflow-x-hidden">
       <div className="w-full flex items-center justify-between px-6 z-40">

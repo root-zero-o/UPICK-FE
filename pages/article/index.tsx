@@ -15,7 +15,7 @@ import {
 } from "src/types/PostingData";
 import useClickRoute from "hooks/useClickRoute";
 import axios from "axios";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 
 const ArticleCard = ({
   title,
@@ -100,6 +100,10 @@ const Index = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const goSearch = () => {
+    console.log("hlloeoe");
+    Router.push("/search");
+  };
   return (
     <Layout home={false} title="" isWhite={true} icon={true}>
       <Seo title="home" />
@@ -121,9 +125,22 @@ const Index = () => {
           rot={150}
           bgFlag={false}
         />
-        <div className="w-[70%] h-[48px] bg-searchInput rounded-[24px] backdrop-blur flex items-center pl-2 mx-auto absolute top-[20px] border-[1px] border-[#EEEEEE]">
-          <Image src={Search} alt="" className="ml-5" />
-          <span className="text-sm text-white">식곤증 완화 비타민</span>
+        <div
+          onClick={goSearch}
+          className="cursor-pointer w-[70%] h-[48px] bg-searchInput rounded-[24px] backdrop-blur flex items-center pl-2 mx-auto absolute top-[20px] border-[1px] border-[#EEEEEE]"
+        >
+          <Image
+            src={Search}
+            onClick={goSearch}
+            alt=""
+            className="ml-5 cursor-pointer"
+          />
+          <span
+            onClick={goSearch}
+            className="cursor-pointer text-sm text-white z-40"
+          >
+            식곤증 완화 비타민
+          </span>
         </div>
         <div className="home-section-wrapper">
           <div className="w-[100%] flex items-center justify-end mt-8 px-5">

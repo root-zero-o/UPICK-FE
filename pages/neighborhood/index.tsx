@@ -59,7 +59,7 @@ const Index = () => {
       <div className=" w-full flex flex-col items-center">
         <HeaderBG
           fullWidth="100%"
-          fullHeight="350px"
+          fullHeight="310px"
           fullTop="-200px"
           innerWidth="504px"
           innerHeight="504px"
@@ -76,21 +76,21 @@ const Index = () => {
         />
         <SearchInput top="2%" width={70} link="/neighborhood/search" />
 
-        <div className="home-section-wrapper z-40 pb-4">
+        {/* <div className="home-section-wrapper z-40 pb-4">
           <div className="flex w-full justify-evenly">
             <BlurBtn src={best} text="인기순" />
             <BlurBtn src={location} text="거리순" />
             <BlurBtn src={chat} text="약사상담" />
           </div>
-        </div>
-        <div className="flex flex-col items-center w-[60%] py-6">
+        </div> */}
+        <div className="flex flex-col items-center w-[60%] py-6 mt-8">
           <span className="text-lg text-darkblue2 font-bold mb-2">
             울동네약사
           </span>
-          <span className="text-sm text-coolgray4 leading-5 block font-light">
+          <span className="text-sm text-coolgray4 leading-5 block font-medium">
             우리지역 약사님들과의 비대면 온라인 상담으로
           </span>
-          <span className="text-sm text-coolgray4 leading-5 block font-light">
+          <span className="text-sm text-coolgray4 leading-5 block font-medium">
             나에게 딱 맞는 영양제를 골라보세요.
           </span>
         </div>

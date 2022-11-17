@@ -22,9 +22,9 @@ const Health = () => {
   };
 
   useEffect(() => {
-    dispatch(HealthPick(health));
+    dispatch(HealthPick({ health, keyword }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [health]);
+  }, [health, keyword]);
   return (
     <div className="w-full flex flex-col py-8 relative space-y-6 overflow-x-hidden mb-[55px]">
       {/* 검색창 */}

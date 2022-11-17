@@ -27,7 +27,9 @@ export const apis = {
       `/goods/merchandises/filtering-by-Age/?minAge=${payload.minAge}&maxAge=${payload.maxAge}&keyword=${payload.keyword}`
     ),
   getPeopleHealth: (payload: any) =>
-    api.get(`/goods/merchandises/filtering-by-consider?keyword=${payload} `),
+    api.get(
+      `/goods/merchandises/filtering-by-consider?keyword=${payload.keyword}`
+    ),
 
   // medicine
   getMedicineById: (payload: any) => api.get(`/goods/merchandises/${payload}`),

@@ -15,7 +15,9 @@ export const apis = {
 
   // people Pick
   getPeopleEffect: (payload: any) =>
-    api.get(`/goods/merchandises/filtering-by-effect/?keyword=피부`),
+    api.get(
+      `/goods/merchandises/filtering-by-effect/?keyword=${payload.keyword}`
+    ),
   getPeopleGender: (payload: any) =>
     api.get(
       `/goods/merchandises/filtering-by-gender/${payload.gender}?keyword=${payload.keyword}`

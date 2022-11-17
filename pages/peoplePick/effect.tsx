@@ -17,9 +17,9 @@ const Effect = () => {
   const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
-    dispatch(EffectPick("male"));
+    dispatch(EffectPick({ keyword }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [keyword]);
   return (
     <div className="w-full flex flex-col py-8 relative space-y-6 overflow-x-hidden mb-[55px]">
       {/* 검색창 */}

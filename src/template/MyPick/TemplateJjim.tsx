@@ -145,6 +145,7 @@ const TemplateJjim: FC<IProps> = ({ type }) => {
                       name={value.userName}
                       at={value.pharmacyName}
                       src={value.Image[0].url}
+                      token={token}
                     />
                     <div className="border-[1px] border-coolgray2 w-[100%] rounded-full" />
                   </div>

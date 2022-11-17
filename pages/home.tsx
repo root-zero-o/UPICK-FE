@@ -28,6 +28,8 @@ import {
 } from "store/modules/recentMerchandisesSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "store/modules";
+import { TypeMyPickData, TypeRecentMed } from "src/types/MyPickData";
+import axios from "axios";
 
 const Home = () => {
   const postings = useAppSelector(selectPostings);
@@ -47,14 +49,38 @@ const Home = () => {
     dispatch(__getRecentMerchandises());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const [isLogin, setIsLogin] = useState(false);
 
+  const [token, setToken] = useState<string>("");
+  // const token = localStorage.getItem("authorization");
+
+  const [myPickData, setMyPickData] = useState<TypeMyPickData>(
+    {} as TypeMyPickData
+  );
+  const response = async () => {
+    try {
+      const result = await axios({
+        method: "GET",
+        url: `${process.env.NEXT_PUBLIC_SERVER}/customers/my-pick/details`,
+        headers: {
+          Authorization: token,
+        },
+      });
+      setMyPickData(result?.data?.data?._customer);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     const token = window.localStorage.getItem("authorization");
-    if (token) return setIsLogin(true);
+    if (token) setToken(token);
+    return setIsLogin(true);
   }, []);
 
+  useEffect(() => {
+    response();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(token)]);
   return (
     <Layout home={true} title="" isWhite={true} icon={true}>
       <Seo title="home" />
@@ -80,8 +106,8 @@ const Home = () => {
         <div className="z-40 w-full px-2 pt-4">
           {isLogin ? (
             <h1 className="text-white text-2xl font-bold z-40 px-6">
-              {user?.nickname === "" ? "오늘도건강유픽러" : user?.nickname}님,
-              반가워요!
+              {myPickData?.name === "" ? "오늘도건강유픽러" : myPickData?.name}
+              님, 반가워요!
             </h1>
           ) : (
             <h1 className="text-white text-2xl font-bold z-40 px-6">

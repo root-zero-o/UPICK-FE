@@ -51,7 +51,7 @@ const Layout = ({
                 로그인하면 이용할 수 있어요
               </h4>
             )}
-            <Image alt="" src={down} />
+            {/* <Image alt="" src={down} /> */}
           </div>
         ) : (
           <div className="flex items-center">

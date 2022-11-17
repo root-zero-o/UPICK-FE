@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Layout from "components/Layout";
 import KakaoMap from "components/KakaoMap";
@@ -8,6 +8,7 @@ import location from "../../../assets/images/icons/LocationGray.svg";
 import copy from "../../../assets/images/icons/Copy.svg";
 import time from "../../../assets/images/icons/time.svg";
 import favorite from "../../../assets/images/icons/Favorite.svg";
+import fill from "../../../assets/images/icons/fullHeart.svg";
 import Image from "next/image";
 import ChatStatusChip from "components/ChatStatusChip";
 import { useRouter } from "next/router";
@@ -20,6 +21,7 @@ import {
   __getPharmacists,
 } from "store/modules/pharmacistsSlice";
 import { selectPostings, __getPostings } from "store/modules/postingSlice";
+import axios from "axios";
 
 const Detail: NextPage = () => {
   const router = useRouter();
@@ -42,6 +44,33 @@ const Detail: NextPage = () => {
     dispatch(__getPostings());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const [token, setToken] = useState<string>("");
+  useEffect(() => {
+    const auth = localStorage.getItem("authorization");
+    if (!auth) return;
+    setToken(auth);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(token)]);
+
+  const [isFollow, setIsFollow] = useState<boolean>(false);
+  const toggleLikeHandler = async () => {
+    console.log("hello");
+    try {
+      const toggleLike = await axios({
+        method: "PUT",
+        // data: { pharmacistId: 1 },
+        url: `${process.env.NEXT_PUBLIC_SERVER}/pharmacists/${id}/like`,
+        headers: {
+          Authorization: token,
+        },
+      });
+      console.log(toggleLike);
+      setIsFollow(!isFollow);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Layout home={false} isWhite={false} icon={true}>
@@ -143,8 +172,11 @@ const Detail: NextPage = () => {
           )}
         </div>
         <div className="max-w-[420px] w-full fixed bottom-0 h-[6%] min-h-[50px] bg-coolgray1 flex items-center justify-evenly py-2">
-          <div className="w-[40px] h-[40px] rounded-full bg-coolgray1 shadow-home-p-category-btn flex items-center justify-center hover:cursor-pointer hover:bg-white transition-all">
-            <Image alt="heart" src={favorite} />
+          <div
+            onClick={toggleLikeHandler}
+            className="cursor-pointer w-[40px] h-[40px] rounded-full bg-coolgray1 shadow-home-p-category-btn flex items-center justify-center hover:cursor-pointer hover:bg-white transition-all"
+          >
+            <Image alt="heart" src={isFollow ? fill : favorite} />
           </div>
           <div
             onClick={onLinkChat}

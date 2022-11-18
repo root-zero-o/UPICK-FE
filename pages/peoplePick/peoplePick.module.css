@@ -45,8 +45,9 @@
 }
 
 .semiCategory {
-  width: 335px;
-  height: 65px;
+  min-width: 335px;
+  max-width: 335px;
+  min-height: 65px;
   background: #e2f0fb;
   border-radius: 2px;
   margin-top: 9px;
@@ -54,6 +55,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 .semiCategoryText {
   font-weight: 500;
